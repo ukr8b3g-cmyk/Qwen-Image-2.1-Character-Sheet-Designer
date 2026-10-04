@@ -1,0 +1,15 @@
+{
+  "python": "3.13.5 (main, Jul 15 2026, 20:25:40) [GCC 14.2.0]",
+  "platform": "Linux-6.18.44-x86_64-with-glibc2.41",
+  "node": "v22.16.0",
+  "pytest": "9.0.2",
+  "aiohttp": "3.13.3",
+  "torch": "2.10.0+cpu",
+  "playwright": "1.57.0",
+  "chromium": "Chromium 144.0.7559.96 built on Debian GNU/Linux 13 (trixie)",
+  "utc": "2026-10-04T17:56:43.710035+00:00",
+  "jst": "2026-10-05T02:56:43.710035+09:00",
+  "comfyui_installed_for_integration": false,
+  "gpu_generation_performed": false,
+  "dependencies_installed": []
+}

@@ -1,0 +1,460 @@
+TAP version 13
+# Subtest: Python/JS acceptance parity: basic
+ok 1 - Python/JS acceptance parity: basic
+  ---
+  duration_ms: 2.269049
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: detail
+ok 2 - Python/JS acceptance parity: detail
+  ---
+  duration_ms: 0.425698
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: turnaround
+ok 3 - Python/JS acceptance parity: turnaround
+  ---
+  duration_ms: 0.179655
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: single
+ok 4 - Python/JS acceptance parity: single
+  ---
+  duration_ms: 0.118004
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: portraits
+ok 5 - Python/JS acceptance parity: portraits
+  ---
+  duration_ms: 0.787433
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: hands_and_feet
+ok 6 - Python/JS acceptance parity: hands_and_feet
+  ---
+  duration_ms: 0.119666
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: feet_only
+ok 7 - Python/JS acceptance parity: feet_only
+  ---
+  duration_ms: 0.093688
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: left_and_feet
+ok 8 - Python/JS acceptance parity: left_and_feet
+  ---
+  duration_ms: 0.116041
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: legacy_six
+ok 9 - Python/JS acceptance parity: legacy_six
+  ---
+  duration_ms: 0.314885
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: parts
+ok 10 - Python/JS acceptance parity: parts
+  ---
+  duration_ms: 0.498797
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: version-True
+ok 11 - Python/JS acceptance parity: version-True
+  ---
+  duration_ms: 0.544354
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: version-None
+ok 12 - Python/JS acceptance parity: version-None
+  ---
+  duration_ms: 0.091254
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: version-1.0
+ok 13 - Python/JS acceptance parity: version-1.0
+  ---
+  duration_ms: 0.056844
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: version-'1'
+ok 14 - Python/JS acceptance parity: version-'1'
+  ---
+  duration_ms: 0.100979
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: version-0
+ok 15 - Python/JS acceptance parity: version-0
+  ---
+  duration_ms: 0.068491
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: version-3
+ok 16 - Python/JS acceptance parity: version-3
+  ---
+  duration_ms: 0.055242
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: unknown-reference_mode
+ok 17 - Python/JS acceptance parity: unknown-reference_mode
+  ---
+  duration_ms: 0.067199
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: unknown-model
+ok 18 - Python/JS acceptance parity: unknown-model
+  ---
+  duration_ms: 0.125686
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: views-[]
+ok 19 - Python/JS acceptance parity: views-[]
+  ---
+  duration_ms: 0.068501
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: views-['unknown']
+ok 20 - Python/JS acceptance parity: views-['unknown']
+  ---
+  duration_ms: 0.059537
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: views-'body_front'
+ok 21 - Python/JS acceptance parity: views-'body_front'
+  ---
+  duration_ms: 0.051526
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: views-[1]
+ok 22 - Python/JS acceptance parity: views-[1]
+  ---
+  duration_ms: 0.052538
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: canonical-order
+ok 23 - Python/JS acceptance parity: canonical-order
+  ---
+  duration_ms: 0.064906
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: part-23
+ok 24 - Python/JS acceptance parity: part-23
+  ---
+  duration_ms: 0.068731
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: part-24
+ok 25 - Python/JS acceptance parity: part-24
+  ---
+  duration_ms: 0.217081
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: part-25
+ok 26 - Python/JS acceptance parity: part-25
+  ---
+  duration_ms: 0.262577
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: part-26
+ok 27 - Python/JS acceptance parity: part-26
+  ---
+  duration_ms: 0.259042
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: part-27
+ok 28 - Python/JS acceptance parity: part-27
+  ---
+  duration_ms: 0.08778
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-True
+ok 29 - Python/JS acceptance parity: body_height-True
+  ---
+  duration_ms: 0.070474
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-None
+ok 30 - Python/JS acceptance parity: body_height-None
+  ---
+  duration_ms: 0.066458
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-32.0
+ok 31 - Python/JS acceptance parity: body_height-32.0
+  ---
+  duration_ms: 0.063073
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-'32'
+ok 32 - Python/JS acceptance parity: body_height-'32'
+  ---
+  duration_ms: 0.106217
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-0
+ok 33 - Python/JS acceptance parity: body_height-0
+  ---
+  duration_ms: 0.070404
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-31
+ok 34 - Python/JS acceptance parity: body_height-31
+  ---
+  duration_ms: 0.065858
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-33
+ok 35 - Python/JS acceptance parity: body_height-33
+  ---
+  duration_ms: 0.10185
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-16416
+ok 36 - Python/JS acceptance parity: body_height-16416
+  ---
+  duration_ms: 0.075922
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-32
+ok 37 - Python/JS acceptance parity: body_height-32
+  ---
+  duration_ms: 0.084385
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: body_height-2048
+ok 38 - Python/JS acceptance parity: body_height-2048
+  ---
+  duration_ms: 0.089963
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-True
+ok 39 - Python/JS acceptance parity: manual_width-True
+  ---
+  duration_ms: 0.187667
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-None
+ok 40 - Python/JS acceptance parity: manual_width-None
+  ---
+  duration_ms: 0.103082
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-32.0
+ok 41 - Python/JS acceptance parity: manual_width-32.0
+  ---
+  duration_ms: 0.064465
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-'32'
+ok 42 - Python/JS acceptance parity: manual_width-'32'
+  ---
+  duration_ms: 0.064745
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-0
+ok 43 - Python/JS acceptance parity: manual_width-0
+  ---
+  duration_ms: 0.080448
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-31
+ok 44 - Python/JS acceptance parity: manual_width-31
+  ---
+  duration_ms: 0.069763
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-33
+ok 45 - Python/JS acceptance parity: manual_width-33
+  ---
+  duration_ms: 0.306222
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-16416
+ok 46 - Python/JS acceptance parity: manual_width-16416
+  ---
+  duration_ms: 0.085526
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-32
+ok 47 - Python/JS acceptance parity: manual_width-32
+  ---
+  duration_ms: 0.137112
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_width-2048
+ok 48 - Python/JS acceptance parity: manual_width-2048
+  ---
+  duration_ms: 0.078396
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-True
+ok 49 - Python/JS acceptance parity: manual_height-True
+  ---
+  duration_ms: 0.06715
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-None
+ok 50 - Python/JS acceptance parity: manual_height-None
+  ---
+  duration_ms: 0.113447
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-32.0
+ok 51 - Python/JS acceptance parity: manual_height-32.0
+  ---
+  duration_ms: 0.063063
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-'32'
+ok 52 - Python/JS acceptance parity: manual_height-'32'
+  ---
+  duration_ms: 0.059037
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-0
+ok 53 - Python/JS acceptance parity: manual_height-0
+  ---
+  duration_ms: 0.057354
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-31
+ok 54 - Python/JS acceptance parity: manual_height-31
+  ---
+  duration_ms: 0.056503
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-33
+ok 55 - Python/JS acceptance parity: manual_height-33
+  ---
+  duration_ms: 0.058106
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-16416
+ok 56 - Python/JS acceptance parity: manual_height-16416
+  ---
+  duration_ms: 0.094079
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-32
+ok 57 - Python/JS acceptance parity: manual_height-32
+  ---
+  duration_ms: 0.058667
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: manual_height-2048
+ok 58 - Python/JS acceptance parity: manual_height-2048
+  ---
+  duration_ms: 0.079738
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: duplicate-key
+ok 59 - Python/JS acceptance parity: duplicate-key
+  ---
+  duration_ms: 0.785609
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: missing-schema_version
+ok 60 - Python/JS acceptance parity: missing-schema_version
+  ---
+  duration_ms: 0.083523
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: missing-views
+ok 61 - Python/JS acceptance parity: missing-views
+  ---
+  duration_ms: 0.099236
+  type: 'test'
+  ...
+# Subtest: Python/JS acceptance parity: missing-size
+ok 62 - Python/JS acceptance parity: missing-size
+  ---
+  duration_ms: 0.060459
+  type: 'test'
+  ...
+# Subtest: Qwen identity and route are independent of H3
+ok 63 - Qwen identity and route are independent of H3
+  ---
+  duration_ms: 0.145585
+  type: 'test'
+  ...
+# Subtest: v1 restores without migration; real part edit moves to v2
+ok 64 - v1 restores without migration; real part edit moves to v2
+  ---
+  duration_ms: 1.315382
+  type: 'test'
+  ...
+# Subtest: invalid restore keeps original, does not fall back or migrate
+ok 65 - invalid restore keeps original, does not fall back or migrate
+  ---
+  duration_ms: 0.213135
+  type: 'test'
+  ...
+# Subtest: canonical source updates synchronously, preview never writes it
+ok 66 - canonical source updates synchronously, preview never writes it
+  ---
+  duration_ms: 18.247616
+  type: 'test'
+  ...
+# Subtest: late preview response cannot replace newer state/preview
+ok 67 - late preview response cannot replace newer state/preview
+  ---
+  duration_ms: 4.086282
+  type: 'test'
+  ...
+# Subtest: manual mode requires current preview, manual dimensions remain on view changes
+ok 68 - manual mode requires current preview, manual dimensions remain on view changes
+  ---
+  duration_ms: 2.61436
+  type: 'test'
+  ...
+# Subtest: last view protection and per-instance isolation
+ok 69 - last view protection and per-instance isolation
+  ---
+  duration_ms: 0.583832
+  type: 'test'
+  ...
+# Subtest: failed and timed out preview leaves canonical state valid
+ok 70 - failed and timed out preview leaves canonical state valid
+  ---
+  duration_ms: 15.033371
+  type: 'test'
+  ...
+# Subtest: balanced transaction callbacks and propagated errors
+ok 71 - balanced transaction callbacks and propagated errors
+  ---
+  duration_ms: 0.285692
+  type: 'test'
+  ...
+# Subtest: locale uses only primary ja and safe English fallback
+ok 72 - locale uses only primary ja and safe English fallback
+  ---
+  duration_ms: 0.278872
+  type: 'test'
+  ...
+# Subtest: preview rejects bad geometry and mismatched canvas
+ok 73 - preview rejects bad geometry and mismatched canvas
+  ---
+  duration_ms: 0.187777
+  type: 'test'
+  ...
+# Subtest: request uses exact Qwen endpoint and strict envelope
+ok 74 - request uses exact Qwen endpoint and strict envelope
+  ---
+  duration_ms: 0.208528
+  type: 'test'
+  ...
+# Subtest: local artwork IDs are safe, distinct and all seven views are supported
+ok 75 - local artwork IDs are safe, distinct and all seven views are supported
+  ---
+  duration_ms: 0.597842
+  type: 'test'
+  ...
+1..75
+# tests 75
+# suites 0
+# pass 75
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 113.899341

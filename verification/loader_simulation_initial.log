@@ -1,0 +1,40 @@
+......F................................................................. [ 12%]
+........................................................................ [ 24%]
+........................................................................ [ 37%]
+........................................................................ [ 49%]
+........................................................................ [ 61%]
+........................................................................ [ 74%]
+........................................................................ [ 86%]
+........................................................................ [ 98%]
+.......                                                                  [100%]
+=================================== FAILURES ===================================
+_ test_root_pack_only_registers_qwen[Qwen-Image-2.1-Character-Sheet-Designer] __
+
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x7f912f250750>
+pack_name = 'Qwen-Image-2.1-Character-Sheet-Designer'
+
+    @pytest.mark.parametrize("pack_name",["q21_test_pack","Qwen-Image-2.1-Character-Sheet-Designer"])
+    def test_root_pack_only_registers_qwen(monkeypatch,pack_name):
+        monkeypatch.setitem(sys.modules,"server",SimpleNamespace(PromptServer=SimpleNamespace(instance=None)))
+        root=Path(__file__).resolve().parents[1]
+        spec=importlib.util.spec_from_file_location(pack_name,root/"__init__.py",submodule_search_locations=[str(root)])
+        module=importlib.util.module_from_spec(spec)
+        monkeypatch.setitem(sys.modules,pack_name,module)
+>       spec.loader.exec_module(module)
+
+tests/test_api_node.py:112: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+<frozen importlib._bootstrap_external>:1026: in exec_module
+    ???
+<frozen importlib._bootstrap>:488: in _call_with_frames_removed
+    ???
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+    """Independent Qwen node pack: never re-register the H3 node or H3 route."""
+>   from .qwen_image21_character_sheet.node import QwenImage21CharacterSheetDesigner
+E   ModuleNotFoundError: No module named 'Qwen-Image-2'
+
+__init__.py:2: ModuleNotFoundError
+=========================== short test summary info ============================
+FAILED tests/test_api_node.py::test_root_pack_only_registers_qwen[Qwen-Image-2.1-Character-Sheet-Designer] - ModuleNotFoundError: No module named 'Qwen-Image-2'
+1 failed, 582 passed in 2.01s

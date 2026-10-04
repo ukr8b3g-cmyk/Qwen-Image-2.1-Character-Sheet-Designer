@@ -1,0 +1,150 @@
+{
+  "basic": {
+    "schema_version": 1,
+    "views": [
+      "face_front",
+      "body_front",
+      "body_left",
+      "body_back"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "detail": {
+    "schema_version": 1,
+    "views": [
+      "face_front",
+      "face_left",
+      "body_front",
+      "body_left",
+      "body_back",
+      "hands",
+      "feet"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "turnaround": {
+    "schema_version": 1,
+    "views": [
+      "body_front",
+      "body_left",
+      "body_back"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "single": {
+    "schema_version": 1,
+    "views": [
+      "body_front"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "portraits": {
+    "schema_version": 1,
+    "views": [
+      "face_front",
+      "face_left"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "hands_and_feet": {
+    "schema_version": 1,
+    "views": [
+      "hands",
+      "feet"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "feet_only": {
+    "schema_version": 1,
+    "views": [
+      "feet"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "left_and_feet": {
+    "schema_version": 1,
+    "views": [
+      "face_left",
+      "feet"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "legacy_six": {
+    "schema_version": 1,
+    "views": [
+      "face_front",
+      "body_front",
+      "body_left",
+      "body_back",
+      "hands",
+      "feet"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    }
+  },
+  "parts": {
+    "schema_version": 2,
+    "views": [
+      "face_front",
+      "body_front",
+      "body_left",
+      "body_back"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 2240,
+      "manual_height": 1280
+    },
+    "part_prompts": {
+      "back_clothing": "背中に白い三日月",
+      "hands": "  黒い革手袋🧤\n袖口を保持  ",
+      "footwear": "赤いロングブーツ",
+      "other": "keep asymmetry <Subject 1>"
+    }
+  }
+}

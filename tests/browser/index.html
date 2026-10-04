@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="ja"><head><meta charset="utf-8"><title>Qwen Designer — standalone browser verification</title>
+<style>
+body{margin:20px;background:#10151b;color:#e7edf4;font:16px system-ui}h1{font-size:21px;margin:0 0 8px}
+#notice{max-width:1200px;line-height:1.5}#nodes{display:flex;align-items:flex-start;gap:24px}
+.host{flex:none;width:870px}.node-title{font-size:19px;padding:10px}.surface{height:930px}
+.native{width:100%;min-height:120px}button{padding:8px;margin:4px}
+</style></head><body>
+<h1>Qwen Image 2.1 Character Sheet Designer</h1>
+<p id="notice">Standalone browser harness · ComfyUI host APIs are simulated. No model loading or GPU generation.</p>
+<nav><button id="undo">Undo</button><button id="redo">Redo</button><button id="ja">日本語</button><button id="en">English</button></nav>
+<div id="nodes"></div><script type="module" src="./harness.js"></script></body></html>

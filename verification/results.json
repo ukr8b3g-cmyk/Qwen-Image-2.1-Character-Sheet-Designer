@@ -1,0 +1,18 @@
+{
+  "implementation_version": "0.1.0-preview",
+  "python": {"status": "pass", "passed": 583, "failed": 0},
+  "javascript": {"status": "pass", "passed": 75, "failed": 0},
+  "browser_offline_harness": {"status": "pass", "checks": 26, "failed": 0, "comfyui_host": "simulated", "transport": "compiler_binding; HTTP tested separately"},
+  "workflow_static": {"status": "pass", "gui_workflows": 3, "nodes_each": 12, "links_each": 15},
+  "h3_parity": {"status": "pass", "full_view_mode_schema_cases": 508, "golden_cases": 10},
+  "isolated_core_latent_shape": {"status": "pass", "cases": 3, "real_model": false},
+  "original_bitmap": {"status": "not_run", "bundled": false, "fallback": "upstream SVG", "reason": "Binary could not be retrieved in this environment"},
+  "real_comfyui": {"status": "not_run"},
+  "real_queue": {"status": "not_run"},
+  "gpu_generation": {"status": "not_run"},
+  "png_save_and_metadata_reload": {"status": "not_run"},
+  "image_quality": {"status": "not_run"},
+  "git_commit": {"status": "not_run", "reason": "No explicit commit/push request"},
+  "git_push": {"status": "not_run", "reason": "No explicit commit/push request"},
+  "publication": {"status": "not_run"}
+}

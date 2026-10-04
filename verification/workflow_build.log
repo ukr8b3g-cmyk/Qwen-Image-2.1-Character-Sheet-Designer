@@ -1,0 +1,56 @@
+{
+  "QwenImage21_Character_Sheet_Designer.json": {
+    "nodes": 12,
+    "links": 15,
+    "topological_order": [
+      4,
+      15,
+      477,
+      478,
+      479,
+      480,
+      484,
+      485,
+      495,
+      482,
+      481,
+      20
+    ]
+  },
+  "QwenImage21_Basic4_1344x768_Comparison.json": {
+    "nodes": 12,
+    "links": 15,
+    "topological_order": [
+      4,
+      15,
+      477,
+      478,
+      479,
+      480,
+      484,
+      485,
+      495,
+      482,
+      481,
+      20
+    ]
+  },
+  "QwenImage21_Character_Sheet_Designer_CoreSaveImage.json": {
+    "nodes": 12,
+    "links": 15,
+    "topological_order": [
+      4,
+      15,
+      477,
+      478,
+      479,
+      480,
+      484,
+      485,
+      495,
+      482,
+      481,
+      20
+    ]
+  }
+}

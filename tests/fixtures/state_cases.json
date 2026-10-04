@@ -1,0 +1,720 @@
+[
+  {
+    "id": "basic",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "detail",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"face_left\",\"body_front\",\"body_left\",\"body_back\",\"hands\",\"feet\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back",
+        "hands",
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "turnaround",
+    "raw": "{\"schema_version\":1,\"views\":[\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "single",
+    "raw": "{\"schema_version\":1,\"views\":[\"body_front\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "body_front"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "portraits",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"face_left\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "face_left"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "hands_and_feet",
+    "raw": "{\"schema_version\":1,\"views\":[\"hands\",\"feet\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "hands",
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "feet_only",
+    "raw": "{\"schema_version\":1,\"views\":[\"feet\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "left_and_feet",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_left\",\"feet\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_left",
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "legacy_six",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\",\"hands\",\"feet\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back",
+        "hands",
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "parts",
+    "raw": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"part_prompts\":{\"back_clothing\":\"\\u80cc\\u4e2d\\u306b\\u767d\\u3044\\u4e09\\u65e5\\u6708\",\"hands\":\"  \\u9ed2\\u3044\\u9769\\u624b\\u888b\\ud83e\\udde4\\n\\u8896\\u53e3\\u3092\\u4fdd\\u6301  \",\"footwear\":\"\\u8d64\\u3044\\u30ed\\u30f3\\u30b0\\u30d6\\u30fc\\u30c4\",\"other\":\"keep asymmetry <Subject 1>\"}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 2,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      },
+      "part_prompts": {
+        "back_clothing": "\u80cc\u4e2d\u306b\u767d\u3044\u4e09\u65e5\u6708",
+        "hands": "  \u9ed2\u3044\u9769\u624b\u888b\ud83e\udde4\n\u8896\u53e3\u3092\u4fdd\u6301  ",
+        "footwear": "\u8d64\u3044\u30ed\u30f3\u30b0\u30d6\u30fc\u30c4",
+        "other": "keep asymmetry <Subject 1>"
+      }
+    }
+  },
+  {
+    "id": "version-True",
+    "raw": "{\"schema_version\":true,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unsupported_schema"
+  },
+  {
+    "id": "version-None",
+    "raw": "{\"schema_version\":null,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unsupported_schema"
+  },
+  {
+    "id": "version-1.0",
+    "raw": "{\"schema_version\":1.0,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unsupported_schema"
+  },
+  {
+    "id": "version-'1'",
+    "raw": "{\"schema_version\":\"1\",\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unsupported_schema"
+  },
+  {
+    "id": "version-0",
+    "raw": "{\"schema_version\":0,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unsupported_schema"
+  },
+  {
+    "id": "version-3",
+    "raw": "{\"schema_version\":3,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unsupported_schema"
+  },
+  {
+    "id": "unknown-reference_mode",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"reference_mode\":\"anything\"}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unknown_key"
+  },
+  {
+    "id": "unknown-model",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"model\":\"anything\"}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unknown_key"
+  },
+  {
+    "id": "views-[]",
+    "raw": "{\"schema_version\":1,\"views\":[],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "empty_views"
+  },
+  {
+    "id": "views-['unknown']",
+    "raw": "{\"schema_version\":1,\"views\":[\"unknown\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "unknown_view"
+  },
+  {
+    "id": "views-'body_front'",
+    "raw": "{\"schema_version\":1,\"views\":\"body_front\",\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_type"
+  },
+  {
+    "id": "views-[1]",
+    "raw": "{\"schema_version\":1,\"views\":[1],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_type"
+  },
+  {
+    "id": "canonical-order",
+    "raw": "{\"schema_version\":1,\"views\":[\"feet\",\"body_front\",\"feet\",\"face_front\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "part-23",
+    "raw": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"part_prompts\":{\"hands\":\"\\u3000\\n\\t\\ufeff\"}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 2,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      },
+      "part_prompts": {}
+    }
+  },
+  {
+    "id": "part-24",
+    "raw": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"part_prompts\":{\"hands\":\" hello\\nworld  \"}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 2,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      },
+      "part_prompts": {
+        "hands": " hello\nworld  "
+      }
+    }
+  },
+  {
+    "id": "part-25",
+    "raw": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"part_prompts\":{\"hands\":\"\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\"}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 2,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 1280
+      },
+      "part_prompts": {
+        "hands": "\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4"
+      }
+    }
+  },
+  {
+    "id": "part-26",
+    "raw": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"part_prompts\":{\"hands\":\"\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4x\"}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "part_prompt_too_long"
+  },
+  {
+    "id": "part-27",
+    "raw": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280},\"part_prompts\":{\"hands\":\"\\ud800\"}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_utf8"
+  },
+  {
+    "id": "body_height-True",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":true,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "body_height-None",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":null,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "body_height-32.0",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":32.0,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "body_height-'32'",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":\"32\",\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "body_height-0",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":0,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "body_height-31",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":31,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "body_height-33",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":33,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "body_height-16416",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":16416,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "size_limit"
+  },
+  {
+    "id": "body_height-32",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":32,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 32,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "body_height-2048",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":2048,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 2048,
+        "manual_width": 2240,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "manual_width-True",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":true,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_width-None",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":null,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_width-32.0",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":32.0,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_width-'32'",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":\"32\",\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_width-0",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":0,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "manual_width-31",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":31,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "manual_width-33",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":33,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "manual_width-16416",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":16416,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "size_limit"
+  },
+  {
+    "id": "manual_width-32",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":32,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 32,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "manual_width-2048",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2048,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2048,
+        "manual_height": 1280
+      }
+    }
+  },
+  {
+    "id": "manual_height-True",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":true}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_height-None",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":null}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_height-32.0",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":32.0}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_height-'32'",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":\"32\"}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_integer"
+  },
+  {
+    "id": "manual_height-0",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":0}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "manual_height-31",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":31}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "manual_height-33",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":33}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "invalid_size"
+  },
+  {
+    "id": "manual_height-16416",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":16416}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "size_limit"
+  },
+  {
+    "id": "manual_height-32",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":32}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 32
+      }
+    }
+  },
+  {
+    "id": "manual_height-2048",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":2048}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 1,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2240,
+        "manual_height": 2048
+      }
+    }
+  },
+  {
+    "id": "duplicate-key",
+    "raw": "{\"schema_version\":1,\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "duplicate_key"
+  },
+  {
+    "id": "missing-schema_version",
+    "raw": "{\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "missing_key"
+  },
+  {
+    "id": "missing-views",
+    "raw": "{\"schema_version\":1,\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2240,\"manual_height\":1280}}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "missing_key"
+  },
+  {
+    "id": "missing-size",
+    "raw": "{\"schema_version\":1,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"]}",
+    "max_resolution": 16384,
+    "valid": false,
+    "code": "missing_key"
+  }
+]

@@ -1,0 +1,111 @@
+{
+  "status": "pass",
+  "scope": "Real Chromium offline harness with real compiler via binding; simulated ComfyUI host/transport, no real Queue or GPU",
+  "checks": [
+    {
+      "name": "seven cards / five restored panels",
+      "status": "pass"
+    },
+    {
+      "name": "preserved 2816x1280 five-view state",
+      "status": "pass"
+    },
+    {
+      "name": "one canonical and one nonserialized widget",
+      "status": "pass"
+    },
+    {
+      "name": "no canonical getter/setter replacement",
+      "status": "pass"
+    },
+    {
+      "name": "H3 and Qwen independent extension records",
+      "status": "pass"
+    },
+    {
+      "name": "separate stylesheet namespaces",
+      "status": "pass"
+    },
+    {
+      "name": "view commit before preview",
+      "status": "pass"
+    },
+    {
+      "name": "undo canonical restoration",
+      "status": "pass"
+    },
+    {
+      "name": "redo canonical restoration",
+      "status": "pass"
+    },
+    {
+      "name": "Japanese, emoji, newlines and markup saved literally",
+      "status": "pass"
+    },
+    {
+      "name": "user text not executed as HTML",
+      "status": "pass"
+    },
+    {
+      "name": "modeled queue payload latest raw",
+      "status": "pass"
+    },
+    {
+      "name": "save/load has only state_json",
+      "status": "pass"
+    },
+    {
+      "name": "English locale",
+      "status": "pass"
+    },
+    {
+      "name": "Japanese language subtag",
+      "status": "pass"
+    },
+    {
+      "name": "manual numeric commit",
+      "status": "pass"
+    },
+    {
+      "name": "invalid numeric draft preserves canonical and shows error",
+      "status": "pass"
+    },
+    {
+      "name": "manual dimensions retained after view change",
+      "status": "pass"
+    },
+    {
+      "name": "five remove/re-add cycles no duplicate DOM widgets",
+      "status": "pass"
+    },
+    {
+      "name": "prior hooks still invoked",
+      "status": "pass"
+    },
+    {
+      "name": "setter receiver and return retained",
+      "status": "pass"
+    },
+    {
+      "name": "invalid saved JSON not replaced",
+      "status": "pass"
+    },
+    {
+      "name": "explicit JSON repair recovers",
+      "status": "pass"
+    },
+    {
+      "name": "API failure retains raw and exposes raw editor",
+      "status": "pass"
+    },
+    {
+      "name": "partial insertion rollback restores native input",
+      "status": "pass"
+    },
+    {
+      "name": "no JavaScript runtime errors",
+      "status": "pass"
+    }
+  ],
+  "page_errors": []
+}
