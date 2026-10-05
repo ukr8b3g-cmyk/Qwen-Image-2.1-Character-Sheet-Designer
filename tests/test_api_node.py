@@ -75,7 +75,7 @@ def test_runtime_limit_not_cached(monkeypatch):
     core.MAX_RESOLUTION=2048
     assert isinstance(cls.VALIDATE_INPUTS(q.DEFAULT_STATE_JSON), str)
     core.MAX_RESOLUTION=16384
-    assert cls().compile(q.DEFAULT_STATE_JSON)[1:3]==(2208,1280)
+    assert cls().compile(q.DEFAULT_STATE_JSON)[1:3]==(2816,1280)
     for value in (True,None,31):
         core.MAX_RESOLUTION=value
         with pytest.raises(RuntimeError):n.runtime_max_resolution()

@@ -15,9 +15,9 @@ def compile_preview_request(body: bytes, *, max_resolution: int) -> dict:
     except UnicodeDecodeError as exc:
         raise StateValidationError("Preview request must be valid UTF-8.", "invalid_utf8") from exc
     envelope = decode_json(text, byte_limit=HTTP_MAX_BYTES)
-    if type(envelope) is not dict or "state_json" not in envelope or set(envelope) - {"state_json", "use_layout_image"}:
-        raise StateValidationError("Preview request accepts state_json and optional use_layout_image only.", "invalid_request")
-    return compile_state(envelope["state_json"], max_resolution=max_resolution, use_layout_image=envelope.get("use_layout_image", False))
+    if type(envelope) is not dict or "state_json" not in envelope or set(envelope) - {"state_json", "use_layout_image", "style"}:
+        raise StateValidationError("Preview request accepts state_json and optional use_layout_image and style only.", "invalid_request")
+    return compile_state(envelope["state_json"], max_resolution=max_resolution, use_layout_image=envelope.get("use_layout_image", False), style=envelope.get("style", "none"))
 
 
 async def preview(request):

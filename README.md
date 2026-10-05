@@ -12,14 +12,14 @@ ZIP内の `Qwen-Image-2.1-Character-Sheet-Designer` フォルダーを `ComfyUI/
 
 実行用の追加pip/npm依存関係はありません。プレビューAPIはComfyUIに含まれるaiohttpを使用します。モデルや外部LLMの自動取得・実行はありません。
 
-必要なCore機能は `TextEncodeQwenImage21`、`QwenImage21Cache`、標準ローダー・KSampler・VAEDecodeです。標準ワークフローでは `SaveImageAdvanced` を使います。この保存ノードがない環境向けに標準 `SaveImage` 版も同梱しています。単にバージョン番号だけで互換性を保証せず、実環境でノード登録と出力寸法を確認してください。
+必要なCore機能は `TextEncodeQwenImage21`、`QwenImage21Cache`、標準ローダー・KSampler・VAEDecodeです。テンプレートでは `SaveImageAdvanced` を使います。この保存ノードがない環境では標準 `SaveImage` に差し替えてください。実環境でノード登録と出力寸法を確認してください。
 
 ## 使い方
 
 ノード名は **Qwen Image 2.1 Character Sheet Designer**、カテゴリは `Qwen/CharacterSheet` です。
 
 1. `workflows/QwenImage21_Character_Sheet_Designer.json` を読み込みます。
-2. `LoadImage` で実在する人物参照を選び、3つの標準ローダーで所持しているQwen 2.1モデルを選択します。
+2. `LoadImage` で実在する人物参照を選び、生成用サブグラフのモデル設定で所持しているQwen 2.1モデルを選択します。
 3. Designerのビュー、サイズ、必要な部位指定を設定して生成します。
 
 ```text
@@ -29,8 +29,7 @@ LoadImage.IMAGE ─────────── TextEncodeQwenImage21.images.i
                                   │ positive / negative
 Designer.width / height           ↓
           └─ EmptyLatentImage ── KSampler ── VAEDecode ── SaveImageAdvanced
-Designer.prompt ─────────── PreviewAny
-Designer.layout_image ──── PreviewImage
+Designer.prompt ─────────── PreviewAny（サブグラフ内）
 ```
 
 出力は `prompt: STRING`、`width: INT`、`height: INT`、`layout_image: IMAGE` の4つです。既存3出力の順序と `state_json` の保存形式は維持します。`layout_image` は画面と同じ配置計算・マネキン素材から作る白背景のRGB画像で、幅・高さはDesignerの指定と一致します。標準PreviewImageやSaveImageへ接続できます。
@@ -43,6 +42,8 @@ Designer.layout_image ──── PreviewImage
 
 正面の顔・胸、左横顔・胸、全身正面、全身左側面、全身背面、両手詳細、両足／履物詳細の7ビューです。最低1ビューを選びます。
 
+新規ノードは「標準5ビュー」（顔・胸、左横顔・胸、全身正面、全身左側面、全身背面）、Auto基準高1120、スタイル指定なしです。「基本4面」は左横顔・胸を省いた構成で、プリセットから切り替えられます。初期ノードサイズは添付ワークフローと同じ870×1100です。保存済みのビュー・スタイル選択は初期値へ置き換えません。
+
 各カードのON/OFFは生成promptとlayout_imageの両方へ反映されます。全ONなら胸像2図・全身3図・手足の詳細2図、部分選択ならその構成と図数だけを指定します。全身1図では複数図の整列指示を出しません。「生成プロンプト」を開くと、現在のチェック状態とuse_layout_image設定に対応した出力文字列を確認できます。取得中・失敗時には古い文字列を現在の出力として表示しません。
 
 部位は頭・髪、顔、上半身の服、背面の服、下半身、手・手袋、足・履物、全体・その他の8項目です。入力は自動翻訳せず原文を保持します。手・足の詳細をOFFにしても、手袋や靴の指定は全身に適用されます。背面柄は背面の衣服表面に限定し、顔を見せるための振り向きは要求しません。
@@ -50,6 +51,14 @@ Designer.layout_image ──── PreviewImage
 ビューや部位指定は即時保存です。**数値の手入力はEnterまたはフォーカスを外したときに確定**します。入力途中・不正な数値は保存やQueueに入りません。表示される注意を確認して確定してください。プレビューの遅延・失敗は保存値を巻き戻しません。API失敗時もraw `state_json` 編集欄を開けます。
 
 UI言語はComfyUIの `Comfy.Locale` が `ja` 系なら日本語、それ以外は英語です。生成用の定型文は英語です。
+
+### スタイル
+
+「部位指定」の右の「スタイル」タブで、指定なし（既定）・アニメ・フォト（写真）・写実（絵画）・写実アニメ・油彩・水彩・ガッシュ・色鉛筆・3D CGから1つを選びます。選択中はタブ外にスタイル名と解除ボタンを表示します。写実アニメは参照の顔立ち・体格に、アニメの線と立体的な陰影を指定します。
+
+指定なしでは従来のプロンプトを変更しません。選択時は参照画風の維持指示を置き換え、描画方法だけを全ビューへ共通指定します。人物・衣装・既存小物・色・柄と配置は保持し、明示された部位指定を尊重します。各スタイルは独自のプロンプト候補で、追加物や人物の変化を完全に防ぐものではありません。
+
+選択は独立したoptional COMBO入力 `style` として保存され、Undoに対応します。既存のstate_json v1/v2と出力4端子は維持します。更新後はComfyUIを再起動し、ブラウザーを再読込してください。
 
 ### 保存形式
 
@@ -63,15 +72,15 @@ Autoは基準高を保って配置を算出し、両軸を32の倍数へ切り�
 
 | 設定 | 出力 |
 |---|---:|
-| 新規ノード既定：基本4面、Auto基準高1120 | 2208×1280 |
-| 同梱標準workflow：元の5ビュー、Auto基準高1120 | 2816×1280 |
-| 比較workflow：基本4面、Manual | 1344×768 |
+| 新規ノード・標準workflow：標準5ビュー、Auto基準高1120 | 2816×1280 |
+| 基本4面プリセット：Auto基準高1120 | 2208×1280 |
+| 基本4面、Manual | 1344×768 |
 | 基本4面、Auto基準高672 | 1344×768 |
 | 詳細7面、Auto基準高672 | 1696×768 |
 
-同梱workflowのencoderは `resolution=0` で配置画像の寸法を保持します。最初の参照と生成キャンバスの寸法を一致させるためです。人物参照は自身の寸法を32倍数へ丸めて処理されます。encoder自身のLATENT出力は使わず、Designer → EmptyLatentImage → KSamplerで出力寸法を供給します。
+テンプレートは、添付のサブグラフ構成、30 steps、CFG 1、encoderの `resolution=1024`、モデル指定を保持します。添付で逆になっていた参照接続を、配置画像 `image_1`・人物画像 `image_2` に揃えています。encoder自身のLATENT出力は使わず、Designer → EmptyLatentImage → KSamplerで出力寸法を供給します。
 
-0は参照処理のメモリ使用量を増やします。負荷を下げる場合はDesignerの出力を小さくするか、encoderのresolutionを1024などへ変更できます。後者は配置参照と生成キャンバスの寸法が異なるため、配置への影響も確認してください。GPUでの速度・VRAMの比較は未実施です。
+encoderの `resolution=1024` では配置参照と生成キャンバスの寸法が異なるため、配置への影響も確認してください。GPUでの速度・VRAMの比較は未実施です。
 
 Coreの空latent補正にはチャンネル数だけでなく空間倍率も必要です。1344×768の比較ではQwen用latentが `[1,64,48,84]`、保存画像が1344×768になることを実機で確認してください。今回のCPU試験はCore関数の分離試験であり、実モデル・実保存の確認ではありません。
 
@@ -81,13 +90,11 @@ Coreの空latent補正にはチャンネル数だけでなく空間倍率も必�
 
 | ファイル | 用途 |
 |---|---|
-| `QwenImage21_Character_Sheet_Designer.json` | 元の5ビュー設定・基準高1120・SaveImageAdvancedを保持 |
-| `QwenImage21_Character_Sheet_Designer_CoreSaveImage.json` | 上記と同じ条件で保存だけ標準SaveImageへ変更 |
-| `QwenImage21_Basic4_1344x768_Comparison.json` | 基本4面・1344×768・固定seedの比較開始用 |
+| `QwenImage21_Character_Sheet_Designer.json` | 標準5ビュー・基準高1120・添付のサブグラフとSaveImageAdvancedを保持 |
 
-それぞれ13ノード・17リンクです。PreviewAnyには最終prompt、PreviewImageにはレイアウト画像が直接入ります。画像1は配置、画像2は人物参照です。
+同梱ワークフローはこの1ファイルだけです。基本4面や詳細7面への切り替えはDesignerのプリセットを使います。ルートは4ノード・6リンク、生成サブグラフ内は9ノード・22リンクです。PreviewAnyには最終promptが入ります。画像1は配置、画像2は人物参照です。
 
-`.api.json` は同梱グラフから作った**静的なAPI形式候補**です。実FrontendのgraphToPromptで得た実測payloadではありません。通常はGUI用 `.json` を使い、実環境で検証するまでAPI投入成功を前提にしないでください。
+API形式が必要な場合は、読み込んだテンプレートからComfyUIの「Export (API)」で保存します。`tools/workflow.py` もGUIテンプレート1本だけを出力します。
 
 モデル名は提供ファイルを保持しています。
 
@@ -97,7 +104,7 @@ Coreの空latent補正にはチャンネル数だけでなく空間倍率も必�
 
 ローダーの選択値は配布にモデルが含まれる意味ではありません。参照画像の名前も元の保存値であり、画像そのものは同梱しません。環境に存在しないパス・ファイル名は標準ローダーから選び直します。
 
-開始値は25 steps / CFG 1 / euler / simple / denoise 1 / batch 1、Cache auto/defaultです。標準workflowのseed動作は元のrandomizeを保持し、比較版だけ固定しています。PNG保存先は通常のComfyUI出力フォルダーです。メタデータと再読込の実機確認は未実施です。
+開始値は30 steps / CFG 1 / euler / simple / denoise 1 / batch 1、Cache auto/defaultです。seed動作は元のrandomizeを保持します。PNG保存先は通常のComfyUI出力フォルダーです。生成画像のメタデータと再読込の実機確認は未実施です。
 
 ## UIのマネキン素材について
 
@@ -109,7 +116,11 @@ Coreの空latent補正にはチャンネル数だけでなく空間倍率も必�
 
 ## 検証状況
 
-今回の追加機能はPython606件、JavaScript80件成功です。実ComfyUIの独立CPU環境で4出力登録、実FrontendからのQueue、2816×1280のレイアウトPNG保存、更新workflowの読込を確認しました。従来のH3幾何・保存stateとの互換性も検証しています。
+整理後の検証はPython1,041件、JavaScript83件成功です。スタイルと標準5ビューテンプレートの実装では、実ComfyUIの独立CPU環境でスタイル選択・解除・Undo・保存再読込、5ビュー／基本4面の切り替え、新規ノードの870×1100サイズを確認しました。スタイル指定なしの40条件は従来promptと一致し、テンプレートのAPI入力も実Frontendの出力と一致しました。今回のスタイル・テンプレートでのGPU画質評価は未実施です。記録は `verification/styles.json` と `verification/templates.json` を参照してください。
+
+以下は配置画像追加時までの検証記録です。
+
+配置画像追加時はPython606件、JavaScript80件成功です。実ComfyUIの独立CPU環境で4出力登録、実FrontendからのQueue、2816×1280のレイアウトPNG保存、更新workflowの読込を確認しました。従来のH3幾何・保存stateとの互換性も検証しています。
 
 既存のGPUサーバーで元の人物参照・seed・25 steps・CFG 1を使い、配置画像＋簡潔プロンプトで2回生成しました。拡大図2つ＋全身3つの構成になり、元の結果の中央人物の薄れは見られませんでした。ただし、正面拡大図は斜め向き、側面はガイドと逆向きのままです。配置画像は制御用のハードマスクではありません。1人物・1seedの確認であり、7ビュー全組合せ、部位変更、画質全般、VRAM比較の合格を示すものではありません。
 

@@ -1,11 +1,12 @@
 import {readFileSync} from 'node:fs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import {DEFAULT_JSON, parseState, serializeState, DesignerController, StateError, getLocale, validatePreview} from '../../web/state.js';
-import {createExtension, NODE_TYPE, graphTransaction, previewRequester} from '../../web/integration.js';
+import {DEFAULT_JSON, PRESETS, presetOf, parseState, serializeState, DesignerController, StateError, getLocale, validatePreview} from '../../web/state.js';
+import {createExtension, DEFAULT_NODE_SIZE, NODE_TYPE, graphTransaction, previewRequester} from '../../web/integration.js';
 import {PROFILE} from '../../web/profile.js';
 import {avatarSVG} from '../../web/avatar.js';
 import {artworkRect} from '../../web/artwork.js';
+import {STYLE_IDS, translations} from '../../web/ui.js';
 const cases=JSON.parse(readFileSync(new URL('../fixtures/state_cases.json',import.meta.url),'utf8'));
 for (const c of cases) test(`Python/JS acceptance parity: ${c.id}`,()=>{
   if(c.valid) assert.deepEqual(parseState(c.raw,c.max_resolution),c.normalized);
@@ -18,6 +19,13 @@ function preview(raw){
   panels:state.views.map((id,i)=>({id,rect:[i/state.views.length,0,1/state.views.length,1]}))}};
 }
 function make(raw=DEFAULT_JSON,options={}) {return new DesignerController({raw,requestPreview:async s=>preview(s),...options});}
+test('five-view default, basic preset and supplied node size',()=>{
+ const c=make();assert.deepEqual(c.state.views,['face_front','face_left','body_front','body_left','body_back']);
+ assert.equal(presetOf(c.state),'five');assert.deepEqual(DEFAULT_NODE_SIZE,[870,1100]);
+ c.preset('basic');assert.deepEqual(c.state.views,PRESETS.basic);assert.equal(presetOf(c.state),'basic');
+ const saved=c.raw;c.preset('five');assert.equal(presetOf(c.state),'five');
+ c.restore(saved);assert.equal(c.raw,saved);assert.equal(presetOf(c.state),'basic');c.dispose();
+});
 test('Qwen identity and route are independent of H3',()=>{
  assert.equal(NODE_TYPE,'QwenImage21CharacterSheetDesigner');
  assert.equal(PROFILE.previewPath,'/qwen_image21_character_sheet_designer/preview');
@@ -41,7 +49,7 @@ test('canonical source updates synchronously, preview never writes it',async()=>
  const c=make(DEFAULT_JSON,{readRaw:()=>canonical,writeRaw:v=>canonical=v,onCommit:(...args)=>commits.push(args)});
  c.toggle('feet');const saved=canonical;assert(parseState(saved).views.includes('feet'));
  await tick();assert.equal(canonical,saved);assert.equal(commits.length,1);
- canonical=DEFAULT_JSON;assert.equal(c.syncFromSource(),true);assert.equal(c.state.views.length,4);c.dispose();
+ canonical=DEFAULT_JSON;assert.equal(c.syncFromSource(),true);assert.equal(c.state.views.length,5);c.dispose();
 });
 test('late preview response cannot replace newer state/preview',async()=>{
  const requests=[];const c=make(DEFAULT_JSON,{requestPreview:raw=>new Promise(resolve=>requests.push({raw,resolve}))});
@@ -87,6 +95,18 @@ test('preview follows the layout-reference widget without changing saved state',
  const fn=previewRequester({fetchApi:async(_,args)=>{seen=JSON.parse(args.body);return {ok:true,json:async()=>({})}}},()=>enabled);
  await fn(DEFAULT_JSON);assert.deepEqual(seen,{state_json:DEFAULT_JSON,use_layout_image:true});
  enabled=false;await fn(DEFAULT_JSON);assert.deepEqual(seen,{state_json:DEFAULT_JSON});
+});
+test('style preview includes only the active style and follows clear without changing JSON',async()=>{
+ let style='anime',seen;
+ const fn=previewRequester({fetchApi:async(_,args)=>{seen=JSON.parse(args.body);return {ok:true,json:async()=>({})}}},()=>true,()=>style);
+ await fn(DEFAULT_JSON);assert.deepEqual(seen,{state_json:DEFAULT_JSON,use_layout_image:true,style:'anime'});
+ style='none';await fn(DEFAULT_JSON);assert.deepEqual(seen,{state_json:DEFAULT_JSON,use_layout_image:true});
+});
+test('all ten style options have both locale names and descriptions',()=>{
+ assert.equal(STYLE_IDS[0],'none');assert.equal(STYLE_IDS.length,10);assert.equal(new Set(STYLE_IDS).size,10);
+ for(const locale of ['ja','en'])for(const style of STYLE_IDS){
+  assert.equal(typeof translations[locale][`style_${style}`],'string');assert.equal(typeof translations[locale][`style_${style}_tip`],'string');
+ }
 });
 test('local artwork IDs are safe, distinct and all seven views are supported',()=>{
  for(const view of parseState(serializeState({...parseState(DEFAULT_JSON),views:['face_front','face_left','body_front','body_left','body_back','hands','feet']})).views){

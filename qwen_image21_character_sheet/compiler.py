@@ -16,6 +16,19 @@ from .common.state import (
 )
 from .common.geometry import compute_geometry
 
+STYLE_PROMPTS = {
+    "none": "",
+    "anime": "Apply anime-style linework and cel shading.",
+    "photo": "Apply photographic rendering with realistic surface shading.",
+    "realistic_painting": "Apply realistic painted rendering.",
+    "semi_realistic_anime": "Apply anime-style linework with softly modeled shading.",
+    "oil_painting": "Apply oil-painted brushwork to the character rendering.",
+    "watercolor": "Apply watercolor pigment shading while retaining clear character contours.",
+    "gouache": "Apply opaque gouache-style color fills and brushwork.",
+    "colored_pencil": "Apply colored-pencil strokes and shading.",
+    "3d": "Apply three-dimensional rendered surface shading.",
+}
+
 VIEW_DETAILS = {
     "face_front": (
         "front portrait",
@@ -129,7 +142,7 @@ def layout_prose(state: dict[str, Any], layout: dict[str, Any]) -> list[str]:
     return lines
 
 
-def compile_prompt(state: dict[str, Any], layout: dict[str, Any], *, use_layout_image: bool = False) -> str:
+def compile_prompt(state: dict[str, Any], layout: dict[str, Any], *, use_layout_image: bool = False, style: str = "none") -> str:
     active = active_part_prompts(state)
     views = state["views"]
     portraits = [view for view in PORTRAIT_IDS if view in views]
@@ -140,13 +153,19 @@ def compile_prompt(state: dict[str, Any], layout: dict[str, Any], *, use_layout_
             "Edit <image1> in place: replace every gray study with a finished rendering of the character from <image2>, one rendering for each existing framed panel.",
             "Preserve all black rectangular frames exactly as drawn, in their original positions and sizes, as solid black lines in the finished sheet.",
             "Keep the white canvas and each mannequin's location, visible size, viewing direction and crop fixed.",
-            "Use <image1> only for arrangement, occupied size, pose and crop; use <image2> for identity, hairstyle, clothing, visible accessories, colors and rendering medium. Replace every gray surface with finished skin, hair, clothing or footwear.",
+            "Use <image1> only for arrangement, occupied size, pose and crop; use <image2> for identity, hairstyle, clothing, visible accessories, colors" + (" and rendering medium" if style == "none" else "") + ". Replace every gray surface with finished skin, hair, clothing or footwear.",
         ]
     else:
         lines = [
             "Create a character design reference sheet from the character in the provided reference image.",
-            "Preserve the character's identity, outfit, accessories and rendering medium while redrawing the selected camera views and isolated anatomical detail crops.",
+            "Preserve the character's identity, outfit, accessories" + (" and rendering medium" if style == "none" else "") + " while redrawing the selected camera views and isolated anatomical detail crops.",
         ]
+    if style != "none":
+        reference = "<image2>" if use_layout_image else "the provided character reference image"
+        lines.extend([
+            "Change only the character's rendering style, consistently across every selected panel. " + STYLE_PROMPTS[style],
+            f"Preserve the character's identity, facial and body proportions, expression, hairstyle, outfit design, existing accessories, colors and patterns from {reference}, except for explicit part directives below. Keep each panel's specified contents, viewing direction, pose and crop. Use the reference only for the character and retain the sheet's plain white background.",
+        ])
     groups = []
     if portraits:
         groups.append(f"{len(portraits)} enlarged head-and-shoulders bust " + ("study" if len(portraits) == 1 else "studies"))
@@ -191,10 +210,12 @@ def compile_prompt(state: dict[str, Any], layout: dict[str, Any], *, use_layout_
     return " ".join(lines)
 
 
-def compile_state(state_json: str, *, max_resolution: int = DEFAULT_MAX_RESOLUTION, use_layout_image: bool = False) -> dict[str, Any]:
+def compile_state(state_json: str, *, max_resolution: int = DEFAULT_MAX_RESOLUTION, use_layout_image: bool = False, style: str = "none") -> dict[str, Any]:
     """One synchronous validation/compilation path for node and HTTP preview."""
     if type(use_layout_image) is not bool:
         raise StateValidationError("use_layout_image must be a boolean.", "invalid_type")
+    if type(style) is not str or style not in STYLE_PROMPTS:
+        raise StateValidationError("style must be one of the supported style IDs.", "unknown_style")
     state = parse_state(state_json, max_resolution=max_resolution)
     layout = compute_layout(state, max_resolution=max_resolution)
     width, height = layout["canvas"]
@@ -204,7 +225,7 @@ def compile_state(state_json: str, *, max_resolution: int = DEFAULT_MAX_RESOLUTI
         "width": width,
         "height": height,
         "layout": layout,
-        "prompt": compile_prompt(state, layout, use_layout_image=use_layout_image),
+        "prompt": compile_prompt(state, layout, use_layout_image=use_layout_image, style=style),
         "pixel_count": pixels,
         "megapixels": pixels / 1_000_000,
         # Advisory only: inherited display threshold, not a Qwen memory limit.

@@ -3,11 +3,12 @@ import {createArtwork} from './artwork.js';
 import {PROFILE} from './profile.js';
 let sequence = 0;
 export const HEIGHT_PRESETS = [672, 896, 1120, 1344, 1792];
+export const STYLE_IDS = ['none', 'anime', 'photo', 'realistic_painting', 'semi_realistic_anime', 'oil_painting', 'watercolor', 'gouache', 'colored_pencil', '3d'];
 const EN = {
   intro: 'Choose the views for your character sheet', selected: 'selected',
   face_front: 'Portrait', face_left: 'Left portrait', body_front: 'Front', body_left: 'Left side', body_back: 'Back', hands: 'Hands', feet: 'Footwear',
   face_front_tip: 'Front-facing face to chest', face_left_tip: 'Head to chest, camera facing the subject’s anatomical left side', body_front_tip: 'Full body, head to soles', body_left_tip: "Camera looks directly at the subject’s anatomical left side", body_back_tip: 'Direct rear view, full body', hands_tip: 'Both hands; retain gloves from the reference', feet_tip: 'Separate close-up of both feet in reference footwear; visible boot shafts retained',
-  preset: 'Preset', basic: 'Basic · 4 views', detail: 'Detail · 7 views', turnaround: 'Turnaround · 3', single: 'Single view', custom: 'Custom',
+  preset: 'Preset', five: 'Standard · 5 views', basic: 'Basic · 4 views', detail: 'Detail · 7 views', turnaround: 'Turnaround · 3', single: 'Single view', custom: 'Custom',
   auto: 'Auto', manual: 'Manual', size: 'Output size', bodyHeight: 'Panel height', width: 'Width', height: 'Height', returnAuto: 'Back to Auto', updating: 'Updating dimensions…',
   customHeight: 'Custom panel height', customHeightChoice: 'Custom…',
   autoHint: 'Auto keeps the requested full-body panel height.', manualHint: 'Manual keeps your canvas size when views change.',
@@ -20,6 +21,10 @@ const EN = {
   fallback: 'Graphical designer unavailable. Edit the normal state_json string; Python compilation is still available.',
   layoutTab: 'Layout', partsTab: 'Part prompts', part: 'Body part', partPrompt: 'Prompt', partCount: 'parts specified',
   generatedPrompt: 'Generated prompt', characterOnly: 'Character reference only', layoutReference: 'Layout + character references',
+  styleTab: 'Style', style: 'Style', clearStyle: 'Clear', styleHint: 'Changes rendering only. Keeps the reference character, outfit, accessories and colors, except for your part prompts. Applies to all selected views.',
+  styleUnavailable: 'Restart ComfyUI and reload the page to enable the style input.',
+  style_none: 'None · default', style_anime: 'Anime', style_photo: 'Photo', style_realistic_painting: 'Realistic painting', style_semi_realistic_anime: 'Semi-realistic anime', style_oil_painting: 'Oil painting', style_watercolor: 'Watercolor', style_gouache: 'Gouache', style_colored_pencil: 'Colored pencil', style_3d: '3D CG',
+  style_none_tip: 'Adds no style instruction.', style_anime_tip: 'Anime linework and cel shading.', style_photo_tip: 'Photographic surface rendering.', style_realistic_painting_tip: 'Realistic forms rendered as a painting.', style_semi_realistic_anime_tip: 'Anime linework with softly modeled shading; keeps reference proportions.', style_oil_painting_tip: 'Oil-painted brushwork.', style_watercolor_tip: 'Pigment washes with clear contours.', style_gouache_tip: 'Opaque painted color fills.', style_colored_pencil_tip: 'Colored-pencil strokes and shading.', style_3d_tip: 'Three-dimensional surface shading.',
   partPlaceholder: 'Describe colors, shapes, patterns, text, or placement freely.',
   partHint: 'One instruction per part, shared across related selected views. Leave blank to follow the reference.',
   partSaved: 'Saved as you type. Enter adds a new line.', partGuide: 'The layout guide uses mannequins; it does not visualize these instructions.',
@@ -31,7 +36,7 @@ const JA = {
   intro: 'キャラクターシートに使うビューを選択', selected: '選択中',
   face_front: '顔・胸', face_left: '横顔・左', body_front: '全身正面', body_left: '左側面', body_back: '全身背面', hands: '両手', feet: '足・履物',
   face_front_tip: '正面の顔から胸まで', face_left_tip: '人物の解剖学的左側から見た横顔。髪全体から胸まで', body_front_tip: '頭頂から靴底までの全身正面', body_left_tip: 'カメラが人物の解剖学的左側を正面から見る', body_back_tip: '真後ろから見た全身', hands_tip: '左右の手。参照にある手袋を保持', feet_tip: '両足の独立した拡大図。参照の履物と見えているブーツの筒を保持',
-  preset: 'プリセット', basic: '基本4面', detail: '7面・ディテール', turnaround: '三面図のみ', single: '1カット', custom: 'カスタム',
+  preset: 'プリセット', five: '標準5ビュー', basic: '基本4面', detail: '7面・ディテール', turnaround: '三面図のみ', single: '1カット', custom: 'カスタム',
   auto: 'Auto', manual: 'Manual', size: '出力サイズ', bodyHeight: '基準高', width: '幅', height: '高さ', returnAuto: 'Autoに戻す', updating: '寸法更新中…',
   customHeight: '基準高を手入力', customHeightChoice: '手入力…',
   autoHint: 'Autoは指定した全身パネルの高さを維持します。', manualHint: 'Manualはビューを変えても幅・高さを維持します。',
@@ -44,6 +49,10 @@ const JA = {
   fallback: 'GUIデザイナーを利用できません。通常のstate_json文字列を編集してください。Python実行は利用可能です。',
   layoutTab: 'レイアウト', partsTab: '部位指定', part: '部位', partPrompt: 'プロンプト', partCount: '部位を指定中',
   generatedPrompt: '生成プロンプト', characterOnly: '人物参照のみ', layoutReference: '配置画像＋人物参照',
+  styleTab: 'スタイル', style: 'スタイル', clearStyle: '解除', styleHint: '人物の描画方法だけを変更します。部位指定を除き、参照の人物・衣装・小物・色を保持し、選択中の全ビューへ共通で適用します。',
+  styleUnavailable: 'スタイル入力を有効にするには、ComfyUIを再起動してページを再読込してください。',
+  style_none: '指定なし〈デフォルト〉', style_anime: 'アニメ', style_photo: 'フォト〈写真〉', style_realistic_painting: '写実〈絵画〉', style_semi_realistic_anime: '写実アニメ', style_oil_painting: '油彩', style_watercolor: '水彩', style_gouache: 'ガッシュ〈不透明水彩〉', style_colored_pencil: '色鉛筆', style_3d: '3D CG',
+  style_none_tip: 'スタイル文を追加しません。', style_anime_tip: 'アニメ風の線とセル塗り。', style_photo_tip: '写真としての表面・陰影表現。', style_realistic_painting_tip: '写実的な形と立体感を絵として描きます。', style_semi_realistic_anime_tip: '参照の顔立ち・体格に、アニメの線と立体的な陰影。', style_oil_painting_tip: '油絵の筆触。', style_watercolor_tip: '輪郭を保った水彩の色の重なり。', style_gouache_tip: '不透明な色面と筆触。', style_colored_pencil_tip: '色鉛筆の線・塗りの質感。', style_3d_tip: '立体レンダリングの表面・陰影表現。',
   partPlaceholder: '色・形・柄・文字・位置などを自由に入力',
   partHint: '部位ごとの指示を、関連する選択ビューへ共通で反映します。空欄なら参照画像に従います。',
   partSaved: '入力は即時保存。Enterで改行します。', partGuide: 'マネキンは配置確認用です。部位指定の見た目はプレビューに反映しません。',
@@ -69,7 +78,7 @@ export function loadStyles() {
 }
 
 /** Real UI renderer shared by the ComfyUI extension and the browser test harness. */
-export function createDesignerUI({controller, locale = 'en', compatibilityWarning = false, useLayoutImage = () => false}) {
+export function createDesignerUI({controller, locale = 'en', compatibilityWarning = false, useLayoutImage = () => false, readStyle = () => 'none', writeStyle = null}) {
   loadStyles();
   const id = `q21-sheet-${++sequence}`;
   const root = element('section', 'q21-designer'); root.dataset.instance = id; root.setAttribute('aria-label', PROFILE.displayName);
@@ -127,16 +136,20 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   const status = element('div', 'q21-status'); status.setAttribute('role', 'status'); status.setAttribute('aria-live', 'polite');
   const errorBox = element('div', 'q21-error'); errorBox.setAttribute('role', 'alert');
   const retry = button('q21-retry'); listen(retry, 'click', () => { localError = null; void controller.refreshPreview(); });
+  const styleStatus = element('div', 'q21-style-status'), styleBadge = element('span'), clearStyle = button('q21-clear-style');
+  styleStatus.dataset.styleStatus = ''; styleStatus.setAttribute('role', 'status'); styleStatus.setAttribute('aria-live', 'polite');
+  clearStyle.dataset.clearStyle = ''; listen(clearStyle, 'click', () => act(() => writeStyle('none'))); styleStatus.append(styleBadge, clearStyle);
   const previewHead = element('div', 'q21-preview-head'), tabs = element('div', 'q21-tabs'), previewTag = element('span', 'q21-preview-tag');
   tabs.setAttribute('role', 'tablist'); const tabMap = new Map();
-  for (const name of ['layout', 'parts']) {
+  const tabNames = ['layout', 'parts', 'style'];
+  for (const name of tabNames) {
     const tab = button('q21-tab'); tab.id = `${id}-${name}-tab`; tab.dataset.tab = name;
     tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', `${id}-${name}-panel`);
     listen(tab, 'click', () => { activeTab = name; render(); });
     listen(tab, 'keydown', event => {
       if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
       event.preventDefault(); event.stopPropagation();
-      activeTab = event.key === 'Home' ? 'layout' : event.key === 'End' ? 'parts' : activeTab === 'layout' ? 'parts' : 'layout';
+      activeTab = event.key === 'Home' ? tabNames[0] : event.key === 'End' ? tabNames.at(-1) : tabNames[(tabNames.indexOf(activeTab) + (event.key === 'ArrowRight' ? 1 : tabNames.length - 1)) % tabNames.length];
       render(); tabMap.get(activeTab).focus();
     });
     tabs.append(tab); tabMap.set(name, tab);
@@ -163,12 +176,22 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   listen(partInput, 'input', () => commitPart());
   listen(partInput, 'keydown', event => event.stopPropagation()); // Enter remains a native newline.
   listen(partSelect, 'change', () => { selectedPart = partSelect.value; render(); });
+  const stylePanel = element('div', 'q21-style-panel'); stylePanel.id = `${id}-style-panel`; stylePanel.setAttribute('role', 'tabpanel'); stylePanel.setAttribute('aria-labelledby', `${id}-style-tab`);
+  const styleHint = element('div', 'q21-part-hint'), styleChoices = element('div', 'q21-style-choices'), styleMap = new Map();
+  styleChoices.setAttribute('role', 'radiogroup'); styleChoices.setAttribute('aria-labelledby', `${id}-style-tab`);
+  for (const style of STYLE_IDS) {
+    const choice = element('label', 'q21-style-choice'), input = element('input'), text = element('span'), label = element('strong'), hint = element('span');
+    input.type = 'radio'; input.name = `${id}-style`; input.value = style; input.dataset.style = style;
+    text.append(label, hint); choice.append(input, text); styleChoices.append(choice); styleMap.set(style, {choice, input, label, hint});
+    listen(input, 'change', () => { if (input.checked) act(() => writeStyle(style)); });
+  }
+  stylePanel.append(styleHint, styleChoices);
   const footer = element('div', 'q21-footer');
   const generated = element('details', 'q21-generated-prompt'), generatedSummary = element('summary'), generatedText = element('pre');
   generatedText.dataset.generatedPrompt = ''; generated.append(generatedSummary, generatedText);
   const jsonDetails = element('details', 'q21-json-editor'), summary = element('summary'), rawInput = element('textarea'), rawHint = element('p'), apply = button('q21-apply'); rawInput.spellcheck = false; rawInput.setAttribute('aria-label', 'state_json');
   listen(apply, 'click', () => act(() => controller.applyRaw(rawInput.value))); jsonDetails.append(summary, rawInput, rawHint, apply);
-  root.append(header, cards, presetRow, controls, metrics, warning, status, errorBox, retry, previewHead, stage, partPanel, footer, generated, jsonDetails);
+  root.append(header, cards, presetRow, controls, metrics, warning, status, errorBox, retry, styleStatus, previewHead, stage, partPanel, stylePanel, footer, generated, jsonDetails);
   // Keep node dragging out of text controls, but let browser keyboard accessibility work.
   listen(root, 'pointerdown', event => event.stopPropagation());
   const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(() => fitSheet()) : null;
@@ -193,11 +216,20 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     const state = controller.state, prompts = state?.part_prompts ?? {}, draft = partDrafts.get(selectedPart);
     tabs.setAttribute('aria-label', t.diagram);
     for (const [name, tab] of tabMap) {
-      tab.textContent = name === 'layout' ? t.layoutTab : `${t.partsTab}${Object.keys(prompts).length ? ` (${Object.keys(prompts).length})` : ''}`;
+      tab.textContent = name === 'layout' ? t.layoutTab : name === 'style' ? t.styleTab : `${t.partsTab}${Object.keys(prompts).length ? ` (${Object.keys(prompts).length})` : ''}`;
       tab.setAttribute('aria-selected', String(name === activeTab)); tab.tabIndex = name === activeTab ? 0 : -1;
     }
-    stage.hidden = activeTab !== 'layout'; partPanel.hidden = activeTab !== 'parts';
-    previewTag.textContent = activeTab === 'layout' ? t.diagram : t.partSaved;
+    stage.hidden = activeTab !== 'layout'; partPanel.hidden = activeTab !== 'parts'; stylePanel.hidden = activeTab !== 'style';
+    previewTag.textContent = activeTab === 'layout' ? t.diagram : activeTab === 'style' ? t.style : t.partSaved;
+    const selectedStyle = readStyle();
+    styleStatus.hidden = selectedStyle === 'none'; styleBadge.textContent = `${t.style}：${t[`style_${selectedStyle}`] ?? selectedStyle}`;
+    clearStyle.textContent = t.clearStyle; clearStyle.disabled = !writeStyle;
+    styleHint.textContent = writeStyle ? t.styleHint : t.styleUnavailable;
+    for (const [style, item] of styleMap) {
+      item.input.checked = style === selectedStyle; item.input.disabled = !state || !writeStyle;
+      item.choice.classList.toggle('q21-style-selected', item.input.checked);
+      item.label.textContent = t[`style_${style}`]; item.hint.textContent = t[`style_${style}_tip`];
+    }
     partLabel.textContent = t.part; partSelect.disabled = !state; partSelect.value = selectedPart;
     for (const option of partSelect.options) option.textContent = `${prompts[option.value] ? '● ' : ''}${t[`${option.value}_part`]}`;
     partCount.textContent = `${Object.keys(prompts).length} ${t.partCount}`;
@@ -286,8 +318,8 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     const problem = controller.error || localError || controller.previewError;
     errorBox.textContent = problem ? `${controller.error ? `${t.invalid} ` : ''}${errorText(problem, language)}` : ''; errorBox.hidden = !problem;
     retry.textContent = t.retry; retry.hidden = !controller.previewError || !state;
-    footer.textContent = activeTab === 'parts' ? t.partGuide : t.caveat;
-    generatedSummary.textContent = `${t.generatedPrompt} · ${useLayoutImage() ? t.layoutReference : t.characterOnly}`;
+    footer.textContent = activeTab === 'parts' ? t.partGuide : activeTab === 'style' ? t.styleHint : t.caveat;
+    generatedSummary.textContent = `${t.generatedPrompt} · ${useLayoutImage() ? t.layoutReference : t.characterOnly}${readStyle() === 'none' ? '' : ` · ${t.style}：${t[`style_${readStyle()}`] ?? readStyle()}`}`;
     generatedText.textContent = current && typeof p?.prompt === 'string' ? p.prompt : controller.pending ? t.pending : t.unavailable;
     summary.textContent = t.editJSON; rawHint.textContent = t.rawHint; apply.textContent = t.apply;
     jsonDetails.hidden = !controller.error && !controller.previewError;

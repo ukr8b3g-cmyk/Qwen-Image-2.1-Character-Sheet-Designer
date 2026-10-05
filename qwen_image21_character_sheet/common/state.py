@@ -67,6 +67,7 @@ PART_RULES = {
 # ECMAScript String.trim whitespace, for exact Python/browser normalization parity.
 _BLANK_CHARACTERS = "\u0009\u000a\u000b\u000c\u000d\u0020\u00a0\u1680\u2000\u2001\u2002\u2003\u2004\u2005\u2006\u2007\u2008\u2009\u200a\u2028\u2029\u202f\u205f\u3000\ufeff"
 PRESETS = {
+    "five": ("face_front", "face_left", "body_front", "body_left", "body_back"),
     "basic": ("face_front", "body_front", "body_left", "body_back"),
     "detail": VIEW_IDS,
     "turnaround": BODY_IDS,
@@ -74,11 +75,11 @@ PRESETS = {
 }
 DEFAULT_STATE = {
     "schema_version": 1,
-    "views": list(PRESETS["basic"]),
+    "views": list(PRESETS["five"]),
     "size": {
         "mode": "auto",
         "body_height": 1120,
-        "manual_width": 2240,
+        "manual_width": 2208,
         "manual_height": 1280,
     },
 }

@@ -27,11 +27,15 @@ def build(extra_sources=None):
         entries.append({'path':relative.as_posix(),'sha256':hashlib.sha256(payload).hexdigest(),
                         'bytes':len(payload),'purpose':purpose(relative)})
     old=json.loads((ROOT/'manifest.json').read_text()) if (ROOT/'manifest.json').exists() else {}
+    results=json.loads((ROOT/'verification/black_frames.json').read_text())
+    for name in ('styles','templates'):
+        record=ROOT/f'verification/{name}.json'
+        if record.exists():results[name]=json.loads(record.read_text())
     data={'schema_version':1,'created_utc':now,'target_repository':'ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer',
           'target_base_commit':old.get('target_base_commit'),'target_state':'Verified source payload for publication',
           'text_hash_line_endings':'LF',
           'sources':extra_sources if extra_sources is not None else old.get('sources',[]),
-          'results':json.loads((ROOT/'verification/black_frames.json').read_text()),'files':entries,
+          'results':results,'files':entries,
           'manifest_self_hash':'excluded to avoid recursive hashing'}
     (ROOT/'manifest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     return data
