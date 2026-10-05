@@ -1,16 +1,59 @@
+[English](#english)
+
 # Qwen Image 2.1 Character Sheet Designer
 <img width="1770" height="742" alt="{AC046BB6-4485-4305-9F8A-5EF5CC7C107F}" src="https://github.com/user-attachments/assets/e6889eeb-53fc-458e-a1ab-cdeebf1a6728" />
 
-
+<a id="japanese"></a>
 **選択したビューだけのQwen向けプロンプトとレイアウト画像を出力します。胸像・全身・手足の詳細を区別し、ノード内で生成プロンプトを確認できます。厳密な生成配置・向きの一致は保証しません。**
 
 人物参照1枚から静止キャラクターシートを作るための、ComfyUI用プロンプト・レイアウト作成ノードです。H3 Character Sheet Designer の7ビュー、8部位入力、Auto／Manual寸法、保存・Undoの操作を固定リビジョンから再利用しています。
+
+**同梱テンプレートではLoRAを使用していません。** 人物の画像参照、マネキンのレイアウト画像、ノードが生成する自然言語プロンプトをQwen Image 2.1へ渡して生成します。配置・ビュー・部位・スタイルをプロンプティングで指定する構成で、人物専用LoRAの学習は必要ありません。参照画像の人物・衣装を維持しながら、選択したビューを描くように指示します。
 
 このパッケージは **QwenImage21CharacterSheetDesigner のみ登録**します。H3のインストールやPythonパッケージに依存せず、既存H3のノードID・ルート・ワークフローを変更しません。モデルのロード、画像読み込み、サンプリング、保存はワークフローのCoreノードが担当します。
 
 ## インストール
 
+### Gitでインストール（clone）
+
+Gitを用意し、`<ComfyUIフォルダー>` を使用中のComfyUIの場所に置き換えて実行します。
+
+```sh
+cd "<ComfyUIフォルダー>/custom_nodes"
+git clone https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer.git
+```
+
+導入後はComfyUIを再起動し、ブラウザーを再読込します。
+
+### ZIPでインストール
+
 ZIP内の `Qwen-Image-2.1-Character-Sheet-Designer` フォルダーを `ComfyUI/custom_nodes/` 直下へ置き、ComfyUIを再起動してブラウザーを再読込します。同じQwen版を複数フォルダーに配置しないでください。
+
+### 更新（pull）
+
+cloneで導入したフォルダー内で実行します。
+
+```sh
+cd "<ComfyUIフォルダー>/custom_nodes/Qwen-Image-2.1-Character-Sheet-Designer"
+git pull --ff-only
+```
+
+更新後はComfyUIを再起動し、ブラウザーを再読込します。ローカル変更がある場合は、先にコミットまたは退避してください。ZIPで導入した場合は新しいZIPで更新します。
+
+### 開発者向け：変更を公開（push）
+
+`push` は自分の変更をGitHubへ送る操作です。通常のインストール・更新には不要で、送信先への書き込み権限が必要です。READMEを編集した場合の例：
+
+```sh
+git status
+git add README.md
+git commit -m "Update README"
+git push origin main
+```
+
+この例はリポジトリのフォルダー内で実行します。他のファイルを変更した場合は、`git add` にそのファイルを指定します。フォークを使う場合は、`origin` を自分のフォークに設定します。
+
+### 必要な環境
 
 実行用の追加pip/npm依存関係はありません。プレビューAPIはComfyUIに含まれるaiohttpを使用します。モデルや外部LLMの自動取得・実行はありません。
 
@@ -149,3 +192,188 @@ python tests/browser/verify_browser.py --chromium <Chromium実行ファイルの
 ブラウザー試験はPlaywrightが使える環境用です。実UIモジュールを静的に束ね、実Chromium内で操作し、ComfyUI hostとpreview transportは試験用代替を使います。HTTP自体はaiohttpによる別試験で検証しています。
 
 プレビューを手動確認する独立デモは `python tools/serve_demo.py --port 8197` で起動し、loopbackの `/tests/browser/index.html` を開きます。これはComfyUIではなく試験用画面です。
+
+---
+
+<a id="english"></a>
+
+## English
+
+[日本語へ戻る](#japanese)
+
+**Outputs a Qwen prompt and layout image for the selected views only. Busts, full-body views and hand/foot details are described separately. You can inspect the generated prompt inside the node. Exact placement and viewing direction are not guaranteed.**
+
+This ComfyUI node composes prompts and layouts for a static character sheet from one character reference image. It reuses the seven views, eight part inputs, Auto/Manual sizing, saved state and Undo behavior from a pinned revision of H3 Character Sheet Designer.
+
+**The bundled template does not use a LoRA.** It generates through Qwen Image 2.1 using the character reference, a mannequin layout image and the natural-language prompt produced by this node. Layout, views, part details and rendering style are specified through prompting; training a character-specific LoRA is not required. The prompt asks the model to preserve the reference character and outfit while drawing the selected views.
+
+The package registers only **QwenImage21CharacterSheetDesigner**. It does not require H3 or its Python package, and it does not change H3 node IDs, routes or workflows. Core workflow nodes handle model loading, image loading, sampling and saving.
+
+### Installation
+
+#### Install with Git (clone)
+
+Install Git and replace `<ComfyUI folder>` with the path to your ComfyUI installation.
+
+```sh
+cd "<ComfyUI folder>/custom_nodes"
+git clone https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer.git
+```
+
+Restart ComfyUI and reload the browser after installation.
+
+#### Install from ZIP
+
+Place the `Qwen-Image-2.1-Character-Sheet-Designer` folder from the ZIP directly under `ComfyUI/custom_nodes/`, then restart ComfyUI and reload the browser. Avoid installing multiple copies of this Qwen node.
+
+#### Update (pull)
+
+For a Git installation, run the following inside the cloned repository:
+
+```sh
+cd "<ComfyUI folder>/custom_nodes/Qwen-Image-2.1-Character-Sheet-Designer"
+git pull --ff-only
+```
+
+Restart ComfyUI and reload the browser after updating. Commit or set aside local edits before pulling. For a ZIP installation, update from a new ZIP.
+
+#### Publish your changes (push; developers)
+
+`push` sends your changes to GitHub. It is not needed for ordinary installation or updates and requires write access to the destination repository. Example after editing the README:
+
+```sh
+git status
+git add README.md
+git commit -m "Update README"
+git push origin main
+```
+
+Run these commands inside the repository folder. For other edits, pass the changed filenames to `git add`. If you use a fork, configure `origin` to point to your fork.
+
+#### Requirements
+
+No additional runtime pip/npm dependencies are required. The preview API uses aiohttp bundled with ComfyUI. The package does not automatically download models or run an external LLM.
+
+Required Core features are `TextEncodeQwenImage21`, `QwenImage21Cache`, standard loaders, KSampler and VAEDecode. The template uses `SaveImageAdvanced`; replace it with the standard `SaveImage` node if unavailable. Check node registration and output dimensions in your environment.
+
+### Usage
+
+Find **Qwen Image 2.1 Character Sheet Designer** under `Qwen/CharacterSheet`.
+
+1. Load `workflows/QwenImage21_Character_Sheet_Designer.json`.
+2. Select an available character reference in `LoadImage` and select your installed Qwen 2.1 models in the generation subgraph.
+3. Set the Designer views, dimensions and any part directives, then generate.
+
+```text
+Designer.prompt ─────────── TextEncodeQwenImage21.prompt
+Designer.layout_image ──── TextEncodeQwenImage21.images.image_1
+LoadImage.IMAGE ─────────── TextEncodeQwenImage21.images.image_2
+                                  │ positive / negative
+Designer.width / height           ↓
+          └─ EmptyLatentImage ── KSampler ── VAEDecode ── SaveImageAdvanced
+Designer.prompt ─────────── PreviewAny (inside the subgraph)
+```
+
+The four outputs are `prompt: STRING`, `width: INT`, `height: INT` and `layout_image: IMAGE`. The original three output positions and the `state_json` format are preserved. The layout output is a white-background RGB image made from the same geometry and mannequin artwork as the preview, at the Designer's output dimensions. It can connect to standard PreviewImage or SaveImage nodes.
+
+The bundled template enables `use_layout_image`. The prompt uses `<image1>` for placement, size and direction, and `<image2>` for character identity, clothing and rendering style. Each selected view and part directive is described once without coordinate JSON. For an existing workflow using only a character reference, keep the default OFF setting and connect the character to `images.image_1`. The ON/OFF setting is saved as an independent BOOLEAN input.
+
+Both the preview and `layout_image` enclose each selected view in a black rectangular frame. With layout referencing enabled, the prompt asks the model to keep those frames in the finished sheet and replace only the gray mannequins. It asks to preserve frame position and dimensions, mannequin size, direction and crop. Portraits are busts containing the head, neck, shoulders and upper chest only. Fixed instructions form one paragraph; original part text and line breaks are retained. See [docs/LAYOUT_REFERENCE_JA.md](docs/LAYOUT_REFERENCE_JA.md) for editing guidance and verification conditions (Japanese).
+
+#### Views and part directives
+
+Seven views are available: front face/bust, left-profile face/bust, front full body, left-side full body, back full body, both hands and feet/footwear. At least one view must remain selected.
+
+New nodes default to **Standard · 5 views**: the two busts and three full-body views, Auto body height 1120, and no style override. **Basic · 4 views** omits the left-profile bust and is available as a preset. Initial node size is 870×1100, matching the supplied workflow. Loading saved selections does not replace them with the defaults.
+
+Each view checkbox affects both the prompt and layout image. All seven enabled means two busts, three full-body views and two detail panels. A partial selection describes only those panels and their count. One full-body view does not receive multi-view alignment instructions. Open **Generated prompt** to inspect the current output for the selection and layout-reference setting. A stale prompt is not shown as current while a request is pending or has failed.
+
+The eight part inputs are head/hair, face, upper clothing, back clothing, lower body, hands/gloves, feet/footwear and overall/other. They preserve your text without automatic translation. Glove and shoe instructions still apply to full-body views when the hand/foot detail panels are disabled. Back patterns are restricted to the back of the clothing; the prompt does not ask the character to turn around to show the face.
+
+View and part edits save immediately. **Typed numeric values commit on Enter or blur.** Incomplete or invalid numbers do not enter the saved state or queue. Preview delays or failures do not roll back saved values. The raw `state_json` editor remains available when the API fails.
+
+The UI follows ComfyUI's `Comfy.Locale`: Japanese for `ja` locales, English otherwise. Fixed generation instructions are in English.
+
+#### Style
+
+Use the **Style** tab to the right of **Part directives**. Choose one of: None (default), Anime, Photo, Realistic painting, Semi-realistic anime, Oil painting, Watercolor, Gouache, Colored pencil or 3D CG. An active style badge and a Clear button stay visible outside the tab. Semi-realistic anime asks for anime linework and modeled shading while preserving the reference facial and body proportions.
+
+None leaves the existing prompt unchanged. Selecting a style replaces the instruction to preserve the reference rendering medium and applies only the rendering treatment consistently across all selected views. The prompt preserves identity, outfit, existing accessories, colors, patterns and placement, while respecting explicit part directives. These are custom prompt presets; they cannot guarantee that the model will avoid every unwanted addition or character change.
+
+Style is saved as an independent optional COMBO input, `style`, and supports Undo. Existing `state_json` v1/v2 and the four output sockets are preserved. Restart ComfyUI and reload the browser after updating.
+
+#### Saved state
+
+The node accepts H3-compatible schema v1/v2. Reading v1 alone does not migrate it; editing a part advances it to v2. No new keys are added to `state_json`.
+
+Validation covers strict JSON up to 64 KiB, dimensions of at least 32 and multiples of 32, Core MAX_RESOLUTION, and 1000 UTF-16 units per part. Unknown or duplicate keys, invalid Unicode, numeric strings, fractional dimensions, booleans as numbers, NaN and Infinity are rejected. Invalid data is not silently replaced with defaults.
+
+#### Dimensions
+
+Auto computes the arrangement from body height and rounds both dimensions up to multiples of 32. Manual fits the whole arrangement into the requested canvas while preserving its aspect ratio; changing views does not change the canvas size. High resolutions are not automatically reduced.
+
+| Setting | Output |
+|---|---:|
+| New node / template: Standard 5 views, Auto body height 1120 | 2816×1280 |
+| Basic 4-view preset, Auto body height 1120 | 2208×1280 |
+| Basic 4 views, Manual | 1344×768 |
+| Basic 4 views, Auto body height 672 | 1344×768 |
+| Detail 7 views, Auto body height 672 | 1696×768 |
+
+The template preserves the supplied subgraph, 30 steps, CFG 1, encoder `resolution=1024` and model selections. Reference connections are corrected to layout `image_1` and character `image_2`. The encoder's LATENT output is not used: Designer → EmptyLatentImage → KSampler supplies the output dimensions.
+
+At encoder `resolution=1024`, layout-reference dimensions differ from the generation canvas. Check its effect on placement in your environment. GPU speed/VRAM comparisons have not been performed.
+
+Core empty-latent correction must handle spatial scale as well as channels. For a 1344×768 comparison, check that the Qwen latent is `[1,64,48,84]` and the saved image is 1344×768. The CPU check isolates Core functions; it does not prove real-model generation or image saving.
+
+The inherited **Experimental** threshold of 1,032,192 pixels is an advisory display value, not a Qwen quality limit, a safe 16 GB VRAM ceiling or a generation prohibition.
+
+### Bundled workflow
+
+Only `workflows/QwenImage21_Character_Sheet_Designer.json` is bundled. It uses Standard 5 views, body height 1120, the supplied generation subgraph and SaveImageAdvanced. Select Basic 4 views or Detail 7 views through the Designer presets. The root has four nodes and six links; the generation subgraph has nine nodes and 22 links. PreviewAny receives the final prompt. Image 1 is the layout and image 2 is the character reference.
+
+For an API payload, load the template and use ComfyUI's **Export (API)**. `tools/workflow.py` also writes only the single GUI template.
+
+The saved model names are:
+
+- UNET: `qwen\qwen_image_2.1_int8_convrot.safetensors`
+- CLIP: `qwen3vl_8b_int8_convrot.safetensors` / type `qwen_image`
+- VAE: `qwen_image_2.1_vae_bf16.safetensors`
+
+Models and the character reference image are not bundled. Reselect filenames through the standard loaders if they do not exist in your environment.
+
+Starting settings are 30 steps / CFG 1 / euler / simple / denoise 1 / batch 1, with Cache auto/default. The supplied randomize seed behavior is preserved. PNGs save to the normal ComfyUI output folder. Generated-image metadata and reloading have not been verified in a live environment.
+
+### Mannequin artwork
+
+The original H3 bitmap, `mannequin-atlas.png`, is bundled and enabled by default. The unchanged 1254×1254 PNG is cropped at the existing coordinates for the seven views. Its Git blob is `35dd5fabbe138b7b181b89d55432a6e53d0e9c34`.
+
+Restart ComfyUI and reload the browser after updating. No manual copying from H3 is needed. The UI falls back to SVG only if the PNG cannot be loaded; image output requires the bundled PNG. Mannequins guide arrangement and direction. The character reference supplies rendering style unless a style is selected. Exact model adherence is not guaranteed.
+
+`tools/import_h3_artwork.py` remains available for recovery from missing or damaged artwork. It verifies the pinned original Git blob and does not silently overwrite a different existing image.
+
+### Verification
+
+After consolidating the workflow, **1,041 Python tests and 83 JavaScript tests passed**. An isolated CPU ComfyUI environment verified style selection/clear, Undo, save/reload, switching between five and four views, and the 870×1100 new-node size. Forty no-style conditions matched the previous prompt, and the template's API inputs matched the actual Frontend export. GPU image-quality evaluation for these style/template changes has not been performed. See `verification/styles.json` and `verification/templates.json`.
+
+Earlier verification records:
+
+- Layout-output addition: 606 Python and 80 JavaScript tests passed. Live isolated CPU ComfyUI checks covered four output sockets, queue submission through the Frontend, a saved 2816×1280 layout PNG and workflow loading.
+- Earlier GPU checks generated two sheets using one character reference, one seed, 25 steps and CFG 1 with a layout image and compact prompt. They produced two enlarged studies plus three full-body views without the original central fading. The front study was still angled, and the side view faced the opposite direction to its guide. The layout image is not a hard mask. These checks do not establish all seven-view combinations, part-edit behavior, general image quality or VRAM performance.
+- Those GPU checks used a saved layout PNG and the final prompt directly without restarting the running server. Using the Designer's four outputs after an update requires restarting ComfyUI and reloading the browser. See `verification/layout_reference.json`.
+- Original atlas update: 580 Python and 79 JavaScript tests passed. Three CPU tensor tests were not run because PyTorch was unavailable; that browser recheck was blocked by environment constraints. Pixels, matching hashes, seven crops, clipping and scale were checked. See [docs/ATLAS_VERIFICATION_JA.md](docs/ATLAS_VERIFICATION_JA.md).
+- Initial version, 2026-10-05 JST: 583 Python tests, 75 JavaScript tests and 26 isolated Chromium UI checks passed on Linux CPU. At that stage, live ComfyUI registration, queueing, saving and GPU generation were not verified. See [docs/VERIFICATION_JA.md](docs/VERIFICATION_JA.md), `verification/` and `manifest.json`.
+
+### Development checks
+
+Run in an existing Python/Node test environment. Test dependencies are not installed automatically.
+
+```text
+python -m pytest -q
+node --test tests/js/*.test.js
+python tests/browser/verify_browser.py --chromium <path-to-Chromium>
+```
+
+Browser checks require Playwright. They bundle the real UI modules and exercise them in Chromium with a test ComfyUI host and preview transport. HTTP behavior is checked separately through aiohttp.
+
+For a standalone preview demo, run `python tools/serve_demo.py --port 8197` and open loopback `/tests/browser/index.html`. This is a test page, not ComfyUI.
