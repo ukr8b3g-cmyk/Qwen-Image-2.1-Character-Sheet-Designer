@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-04T18:00:39.343815+00:00",
+  "created_utc": "2026-10-05T03:34:21.971206+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
-  "target_base_commit": null,
-  "target_state": "Empty remote at inspection; uncommitted local implementation",
+  "target_base_commit": "bd0d7b014c01bb9fb472750bc41690e6f829a545",
+  "target_state": "Original bitmap update on existing main; publication status is verified separately",
   "sources": [
     {
       "repository": "ukr8b3g-cmyk/H3-Character-Sheet-Designer",
@@ -18,7 +18,7 @@
         "web/avatar.js": "24b8a7ea7bf7dc170fe5a973ec0ba0d4feb9d9e8"
       },
       "original_png_git_blob": "35dd5fabbe138b7b181b89d55432a6e53d0e9c34",
-      "original_png_bundled": false
+      "original_png_bundled": true
     },
     {
       "repository": "Comfy-Org/ComfyUI",
@@ -93,10 +93,17 @@
       "real_model": false
     },
     "original_bitmap": {
-      "status": "not_run",
-      "bundled": false,
-      "fallback": "upstream SVG",
-      "reason": "Binary could not be retrieved in this environment"
+      "status": "pass",
+      "bundled": true,
+      "default_enabled": true,
+      "git_blob": "35dd5fabbe138b7b181b89d55432a6e53d0e9c34",
+      "sha256": "7213405d101a6ccc0152304680ab5a1b4f17ba456086f3469b41be1319b2b8f6",
+      "size": [
+        1254,
+        1254
+      ],
+      "bytes": 823743,
+      "modified": false
     },
     "real_comfyui": {
       "status": "not_run"
@@ -123,6 +130,54 @@
     },
     "publication": {
       "status": "not_run"
+    },
+    "atlas_update": {
+      "task": "bundle_original_mannequin_atlas",
+      "base_commit": "bd0d7b014c01bb9fb472750bc41690e6f829a545",
+      "original_bitmap": {
+        "status": "pass",
+        "bundled": true,
+        "default_enabled": true,
+        "git_blob": "35dd5fabbe138b7b181b89d55432a6e53d0e9c34",
+        "sha256": "7213405d101a6ccc0152304680ab5a1b4f17ba456086f3469b41be1319b2b8f6",
+        "size": [
+          1254,
+          1254
+        ],
+        "bytes": 823743,
+        "modified": false
+      },
+      "javascript": {
+        "status": "pass",
+        "passed": 79,
+        "failed": 0
+      },
+      "python": {
+        "status": "partial_pass",
+        "passed": 580,
+        "failed": 0,
+        "not_run": 3,
+        "excluded_file": "tests/test_core_contract_isolated.py",
+        "reason": "PyTorch unavailable; no model or GPU download"
+      },
+      "browser": {
+        "status": "not_run",
+        "reason": "Chromium process socket unavailable; cloud browser blocks local file/localhost preview",
+        "new_screenshots": false
+      },
+      "syntax": {
+        "status": "pass"
+      },
+      "real_comfyui": {
+        "status": "not_run"
+      },
+      "gpu_generation": {
+        "status": "not_run"
+      },
+      "environment": {
+        "python": "3.12.14",
+        "node": "v24.19.0"
+      }
     }
   },
   "files": [
@@ -134,15 +189,15 @@
     },
     {
       "path": "NOTICE.md",
-      "sha256": "ef6e901b1b23376cfb608fc178c18cc7c3524a731a1cff705da2a19dd9662887",
-      "bytes": 1017,
-      "purpose": "package metadata/documentation"
+      "sha256": "b22dfd149631c644a5c4c9e32ebfeb1c0d7812bfeff1ba65d981e3868ed950b1",
+      "bytes": 1262,
+      "purpose": "documentation"
     },
     {
       "path": "README.md",
-      "sha256": "08bb42179bbdff7cfe799951c126df2993cc2333cb52a8eaa4e1647fc51a99ad",
-      "bytes": 10281,
-      "purpose": "package metadata/documentation"
+      "sha256": "983060c4e3b7563a17bbbc68d2c45cba52a4460e8ed03478abfce035788d6c33",
+      "bytes": 10623,
+      "purpose": "documentation"
     },
     {
       "path": "__init__.py",
@@ -151,15 +206,21 @@
       "purpose": "package metadata/documentation"
     },
     {
+      "path": "docs/ATLAS_VERIFICATION_JA.md",
+      "sha256": "47625a1858513383a4047e1b4137cfd1ad3edc875f84d01eda5b876466351b8a",
+      "bytes": 3000,
+      "purpose": "documentation"
+    },
+    {
       "path": "docs/IMPLEMENTATION_NOTES_JA.md",
-      "sha256": "022227e728b6dac3359950c6bf56d3ed5a8f2b1042c96cee2c9c4fd1332122dc",
-      "bytes": 4746,
+      "sha256": "10b00a21fb33edec79d3df6bfe90be558ce596e4fd8f77636ebe78d5a6854cc5",
+      "bytes": 4975,
       "purpose": "documentation"
     },
     {
       "path": "docs/VERIFICATION_JA.md",
-      "sha256": "c024636a5d79d1839a715fffed716cc444f9603c7cffbdbc46d16303d26c7a55",
-      "bytes": 5555,
+      "sha256": "1fb8dad77abc9f8ab33fedc3014c34da422640c9fc3964331594c72eaa41f795",
+      "bytes": 5791,
       "purpose": "documentation"
     },
     {
@@ -242,8 +303,8 @@
     },
     {
       "path": "tests/browser/offline_bundle.py",
-      "sha256": "a09fbe4984181d78da4e19f72cebaf9c88829216c818d6d7cb5d1b81262d4562",
-      "bytes": 2868,
+      "sha256": "3171839bf33398ee4e4e902d3f2d11a74e8b95398583f1a4d93850a44f28ed74",
+      "bytes": 3387,
       "purpose": "test/fixture"
     },
     {
@@ -268,6 +329,12 @@
       "path": "tests/fixtures/state_cases.json",
       "sha256": "cd09bfa867cad3fbfa6e54bdff76eb1d2deb1e3ab2fc0446ad3ab1d8206a9908",
       "bytes": 45301,
+      "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/js/artwork.test.js",
+      "sha256": "0cc026934a003caf985577a4550512dd25a560f1b86754d33db93803b1b0ac5b",
+      "bytes": 3349,
       "purpose": "test/fixture"
     },
     {
@@ -511,6 +578,12 @@
       "purpose": "development utility"
     },
     {
+      "path": "verification/atlas_results.json",
+      "sha256": "b0c92de6623a796ed137a698ba7f1c234321657b182f63a3f255b081c1eed25b",
+      "bytes": 1133,
+      "purpose": "verification evidence"
+    },
+    {
       "path": "verification/browser_http_attempt.log",
       "sha256": "15e8c6f151f7ab320e71d6dec8f31b9c150bda88fb03aeddc6b90a9c807bcb49",
       "bytes": 2047,
@@ -596,8 +669,14 @@
     },
     {
       "path": "web/artwork_config.js",
-      "sha256": "f0d4e0ddbd02213ff921b118b20f163b14671b95d647f67604ff3b21a687e73d",
-      "bytes": 190,
+      "sha256": "242f1dfaaf6f8b1308851d3c3a0760741df25dfa5627c060ffe21988f1c8e5ed",
+      "bytes": 104,
+      "purpose": "frontend"
+    },
+    {
+      "path": "web/assets/mannequin-atlas.png",
+      "sha256": "7213405d101a6ccc0152304680ab5a1b4f17ba456086f3469b41be1319b2b8f6",
+      "bytes": 823743,
       "purpose": "frontend"
     },
     {

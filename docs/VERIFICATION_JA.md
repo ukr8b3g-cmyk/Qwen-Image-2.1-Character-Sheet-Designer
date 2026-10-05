@@ -1,4 +1,6 @@
-# 検証報告 — 2026-10-05 JST
+# 初版の検証報告 — 2026-10-05 JST
+
+この文書はPNG適用前の初版記録です。元PNGは後続更新で同梱・有効化しました。最新の差分検証と制限は [ATLAS_VERIFICATION_JA.md](ATLAS_VERIFICATION_JA.md) を参照してください。
 
 ## 結論
 

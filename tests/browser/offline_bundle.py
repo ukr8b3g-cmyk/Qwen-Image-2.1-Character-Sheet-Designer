@@ -5,6 +5,7 @@ preview HTTP is separately tested with aiohttp. Here a Python binding supplies
 compiler results, while real Chromium runs the UI, hooks, DOM, and interactions.
 """
 from pathlib import Path
+import base64
 import json
 import re
 
@@ -19,6 +20,13 @@ def html():
         path=path.resolve();key=path.relative_to(ROOT).as_posix()
         if key in seen:return key
         source=path.read_text(encoding='utf-8')
+        if key=='web/artwork.js':
+            # set_content has no file origin. Use the exact bundled PNG bytes
+            # for offline raster QA, rather than silently exercising fallback.
+            atlas=ROOT/'web/assets/mannequin-atlas.png'
+            if atlas.exists():
+                data_url='data:image/png;base64,'+base64.b64encode(atlas.read_bytes()).decode('ascii')
+                source=source.replace("new URL('./assets/mannequin-atlas.png', import.meta.url).href",json.dumps(data_url))
         if key=='tests/browser/harness.js':
             source=source.replace("const api={fetchApi:(path,options)=>fetch(path,options)};",'''const api={fetchApi:async(path,options)=>{
               const result=window.previewFailure

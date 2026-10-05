@@ -1,0 +1,48 @@
+{
+  "task": "bundle_original_mannequin_atlas",
+  "base_commit": "bd0d7b014c01bb9fb472750bc41690e6f829a545",
+  "original_bitmap": {
+    "status": "pass",
+    "bundled": true,
+    "default_enabled": true,
+    "git_blob": "35dd5fabbe138b7b181b89d55432a6e53d0e9c34",
+    "sha256": "7213405d101a6ccc0152304680ab5a1b4f17ba456086f3469b41be1319b2b8f6",
+    "size": [
+      1254,
+      1254
+    ],
+    "bytes": 823743,
+    "modified": false
+  },
+  "javascript": {
+    "status": "pass",
+    "passed": 79,
+    "failed": 0
+  },
+  "python": {
+    "status": "partial_pass",
+    "passed": 580,
+    "failed": 0,
+    "not_run": 3,
+    "excluded_file": "tests/test_core_contract_isolated.py",
+    "reason": "PyTorch unavailable; no model or GPU download"
+  },
+  "browser": {
+    "status": "not_run",
+    "reason": "Chromium process socket unavailable; cloud browser blocks local file/localhost preview",
+    "new_screenshots": false
+  },
+  "syntax": {
+    "status": "pass"
+  },
+  "real_comfyui": {
+    "status": "not_run"
+  },
+  "gpu_generation": {
+    "status": "not_run"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "node": "v24.19.0"
+  }
+}
