@@ -63,7 +63,7 @@ git push origin main
 
 ノード名は **Qwen Image 2.1 Character Sheet Designer**、カテゴリは `Qwen/CharacterSheet` です。
 
-1. `workflows/QwenImage21_Character_Sheet_Designer.json` を読み込みます。
+1. `workflows/QwenImage21_Character_Sheet_Designer_wf.json` を読み込みます。
 2. `LoadImage` で実在する人物参照を選び、生成用サブグラフのモデル設定で所持しているQwen 2.1モデルを選択します。
 3. Designerのビュー、サイズ、必要な部位指定を設定して生成します。
 
@@ -135,9 +135,9 @@ Coreの空latent補正にはチャンネル数だけでなく空間倍率も必�
 
 | ファイル | 用途 |
 |---|---|
-| `QwenImage21_Character_Sheet_Designer.json` | 標準5ビュー・基準高1120・添付のサブグラフとSaveImageAdvancedを保持 |
+| `QwenImage21_Character_Sheet_Designer_wf.json` | 標準5ビュー・基準高1120・添付のサブグラフとSaveImageAdvancedを保持 |
 
-同梱ワークフローはこの1ファイルだけです。基本4面や詳細7面への切り替えはDesignerのプリセットを使います。ルートは4ノード・6リンク、生成サブグラフ内は9ノード・22リンクです。PreviewAnyには最終promptが入ります。画像1は配置、画像2は人物参照です。
+同梱ワークフローはこの1ファイルだけです。基本4面や詳細7面への切り替えはDesignerのプリセットを使います。ルートは説明用MarkdownNoteを含む5ノード・6リンク、生成サブグラフ内は9ノード・22リンクです。PreviewAnyには最終promptが入ります。画像1は配置、画像2は人物参照です。
 
 API形式が必要な場合は、読み込んだテンプレートからComfyUIの「Export (API)」で保存します。`tools/workflow.py` もGUIテンプレート1本だけを出力します。
 
@@ -160,6 +160,10 @@ API形式が必要な場合は、読み込んだテンプレートからComfyUI�
 `tools/import_h3_artwork.py` は破損・欠落時の復旧用として引き続き利用できます。固定した元PNGのGit blobを検証し、異なる素材や既存の異なるコピーを黙って上書きしません。
 
 ## 検証状況
+
+2026-10-06 JST：交換済みの同梱ワークフローについて、既存のワークフロー試験4件が成功しました。ファイル名、説明用ノードを含む構成、テンプレート生成、画像1＝配置・画像2＝人物の参照順を確認し、配布マニフェストを更新しました。この修正では実Frontendの保存・再読込・QueueおよびGPU生成は再実行していません。記録は `verification/distribution.json` を参照してください。
+
+以下は2026-10-05の旧テンプレートに対する検証記録です。
 
 整理後の検証はPython1,041件、JavaScript83件成功です。スタイルと標準5ビューテンプレートの実装では、実ComfyUIの独立CPU環境でスタイル選択・解除・Undo・保存再読込、5ビュー／基本4面の切り替え、新規ノードの870×1100サイズを確認しました。スタイル指定なしの40条件は従来promptと一致し、テンプレートのAPI入力も実Frontendの出力と一致しました。今回のスタイル・テンプレートでのGPU画質評価は未実施です。記録は `verification/styles.json` と `verification/templates.json` を参照してください。
 
@@ -260,7 +264,7 @@ Required Core features are `TextEncodeQwenImage21`, `QwenImage21Cache`, standard
 
 Find **Qwen Image 2.1 Character Sheet Designer** under `Qwen/CharacterSheet`.
 
-1. Load `workflows/QwenImage21_Character_Sheet_Designer.json`.
+1. Load `workflows/QwenImage21_Character_Sheet_Designer_wf.json`.
 2. Select an available character reference in `LoadImage` and select your installed Qwen 2.1 models in the generation subgraph.
 3. Set the Designer views, dimensions and any part directives, then generate.
 
@@ -330,7 +334,7 @@ The inherited **Experimental** threshold of 1,032,192 pixels is an advisory disp
 
 ### Bundled workflow
 
-Only `workflows/QwenImage21_Character_Sheet_Designer.json` is bundled. It uses Standard 5 views, body height 1120, the supplied generation subgraph and SaveImageAdvanced. Select Basic 4 views or Detail 7 views through the Designer presets. The root has four nodes and six links; the generation subgraph has nine nodes and 22 links. PreviewAny receives the final prompt. Image 1 is the layout and image 2 is the character reference.
+Only `workflows/QwenImage21_Character_Sheet_Designer_wf.json` is bundled. It uses Standard 5 views, body height 1120, the supplied generation subgraph and SaveImageAdvanced. Select Basic 4 views or Detail 7 views through the Designer presets. The root has five nodes including the MarkdownNote, and six links; the generation subgraph has nine nodes and 22 links. PreviewAny receives the final prompt. Image 1 is the layout and image 2 is the character reference.
 
 For an API payload, load the template and use ComfyUI's **Export (API)**. `tools/workflow.py` also writes only the single GUI template.
 
@@ -353,6 +357,10 @@ Restart ComfyUI and reload the browser after updating. No manual copying from H3
 `tools/import_h3_artwork.py` remains available for recovery from missing or damaged artwork. It verifies the pinned original Git blob and does not silently overwrite a different existing image.
 
 ### Verification
+
+2026-10-06 JST: All four existing workflow tests passed for the replacement template. Checks covered the filename, graph including the note node, template generation, and image 1 as layout / image 2 as character. The distribution manifest was regenerated. Frontend save/reload/queue and GPU generation were not repeated for this fix. See `verification/distribution.json`.
+
+The following records apply to the previous template checked on 2026-10-05.
 
 After consolidating the workflow, **1,041 Python tests and 83 JavaScript tests passed**. An isolated CPU ComfyUI environment verified style selection/clear, Undo, save/reload, switching between five and four views, and the 870×1100 new-node size. Forty no-style conditions matched the previous prompt, and the template's API inputs matched the actual Frontend export. GPU image-quality evaluation for these style/template changes has not been performed. See `verification/styles.json` and `verification/templates.json`.
 

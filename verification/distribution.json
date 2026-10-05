@@ -1,0 +1,38 @@
+{
+  "checked_utc": "2026-10-05T15:20:51.521970+00:00",
+  "scope": "Replacement workflow filename, graph, reference order, builder and package manifest",
+  "source_commit": "35ebd69db6c74acdec482c7c8fcc61e4523f9369",
+  "workflow": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
+  "workflow_sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
+  "workflow_preserved_byte_for_byte": true,
+  "python_workflow_tests": {
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "graph": {
+    "nodes": 5,
+    "links": 6,
+    "topological_order": [
+      4,
+      15,
+      500,
+      498,
+      20
+    ],
+    "subgraphs": {
+      "9181cf6c-a72b-4008-a58a-fafb0253d0bd": {
+        "nodes": 9,
+        "links": 22
+      }
+    }
+  },
+  "reference_order": {
+    "image_1": "layout_image",
+    "image_2": "character_reference"
+  },
+  "readme_header_preserved": true,
+  "frontend_save_reload_queue_repeated": false,
+  "gpu_generation_performed": false
+}

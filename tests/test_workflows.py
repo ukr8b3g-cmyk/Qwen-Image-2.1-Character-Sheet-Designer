@@ -3,10 +3,10 @@ import json
 from pathlib import Path
 import pytest
 from qwen_image21_character_sheet.compiler import compile_state, DEFAULT_STATE_JSON, PRESETS
-from tools.workflow import validate_graph, api_prompt, main as workflow_main
+from tools.workflow import TEMPLATE_NAME, validate_graph, api_prompt, main as workflow_main
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATE = ROOT / "workflows/QwenImage21_Character_Sheet_Designer.json"
+TEMPLATE = ROOT / "workflows" / TEMPLATE_NAME
 
 
 def test_actual_saved_workflow():
@@ -34,7 +34,8 @@ def test_actual_saved_workflow():
     assert prompt["15"]["inputs"]["use_layout_image"] is True
     assert prompt["15"]["inputs"]["style"] == "none"
     result = compile_state(raw)
-    assert (report["nodes"], report["links"]) == (4, 6)
+    assert (report["nodes"], report["links"]) == (5, 6)
+    assert sum(node["type"] == "MarkdownNote" for node in graph["nodes"]) == 1
     assert len(graph["definitions"]["subgraphs"]) == 1
     state = json.loads(raw)
     assert state["views"] == list(PRESETS["five"]) and state["size"]["body_height"] == 1120
@@ -59,7 +60,7 @@ def test_default_state_matches_standard_five_views():
 
 
 def test_graph_checker_catches_broken_links():
-    graph = json.loads((ROOT / "workflows/QwenImage21_Character_Sheet_Designer.json").read_text(encoding="utf-8"))
+    graph = json.loads(TEMPLATE.read_text(encoding="utf-8"))
     bad = copy.deepcopy(graph); bad["links"][0][4] = 10000
     with pytest.raises((ValueError, IndexError)): validate_graph(bad)
     bad = copy.deepcopy(graph); bad["nodes"][0]["outputs"][0]["links"].append(99999)

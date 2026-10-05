@@ -28,7 +28,7 @@ def build(extra_sources=None):
                         'bytes':len(payload),'purpose':purpose(relative)})
     old=json.loads((ROOT/'manifest.json').read_text()) if (ROOT/'manifest.json').exists() else {}
     results=json.loads((ROOT/'verification/black_frames.json').read_text())
-    for name in ('styles','templates'):
+    for name in ('styles','templates','distribution'):
         record=ROOT/f'verification/{name}.json'
         if record.exists():results[name]=json.loads(record.read_text())
     data={'schema_version':1,'created_utc':now,'target_repository':'ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer',

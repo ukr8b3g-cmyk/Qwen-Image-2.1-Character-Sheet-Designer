@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-05T12:40:23.666797+00:00",
+  "created_utc": "2026-10-05T15:20:51.523972+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
   "target_base_commit": "f94b4cad5de47c490a9ecc50ba13a1f84cd792b9",
-  "target_state": "Bilingual README and Git instructions; existing implementation verification retained",
+  "target_state": "Verified source payload for publication",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -337,6 +337,44 @@
         "template_unchanged_since_actual_frontend_check": true,
         "gpu_generation_performed": false
       }
+    },
+    "distribution": {
+      "checked_utc": "2026-10-05T15:20:51.521970+00:00",
+      "scope": "Replacement workflow filename, graph, reference order, builder and package manifest",
+      "source_commit": "35ebd69db6c74acdec482c7c8fcc61e4523f9369",
+      "workflow": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
+      "workflow_sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
+      "workflow_preserved_byte_for_byte": true,
+      "python_workflow_tests": {
+        "passed": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "graph": {
+        "nodes": 5,
+        "links": 6,
+        "topological_order": [
+          4,
+          15,
+          500,
+          498,
+          20
+        ],
+        "subgraphs": {
+          "9181cf6c-a72b-4008-a58a-fafb0253d0bd": {
+            "nodes": 9,
+            "links": 22
+          }
+        }
+      },
+      "reference_order": {
+        "image_1": "layout_image",
+        "image_2": "character_reference"
+      },
+      "readme_header_preserved": true,
+      "frontend_save_reload_queue_repeated": false,
+      "gpu_generation_performed": false
     }
   },
   "files": [
@@ -450,8 +488,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "fab177d7d8b3bba6678166540d993b52ba460f826eb1227c7e126bb0d1bff18c",
-      "bytes": 33584,
+      "sha256": "f838eb871a193c7d77d3ccb378152c6a76b800bb3b6d37a5f28efa0e0b4370f9",
+      "bytes": 34689,
       "purpose": "package metadata/documentation"
     },
     {
@@ -678,8 +716,8 @@
     },
     {
       "path": "tests/test_workflows.py",
-      "sha256": "e3b486931fd7a86d5fb328504a31c5b7b126ddf2f7405f8031d99da9327c9384",
-      "bytes": 3772,
+      "sha256": "41c8179b96f41929ed529fc8f788ff0413bcc4f700774554da3fa4a002eb6bbf",
+      "bytes": 3786,
       "purpose": "test/fixture"
     },
     {
@@ -744,8 +782,8 @@
     },
     {
       "path": "tools/make_manifest.py",
-      "sha256": "8618898a203801aa20b3fbac317efc3628efd11ee981eb782a0694a002d6b5a8",
-      "bytes": 2223,
+      "sha256": "f7539b8166310cf29ebdb0d70ca23686065d3198ba936f1c83e90e3102a1964f",
+      "bytes": 2238,
       "purpose": "development utility"
     },
     {
@@ -756,8 +794,8 @@
     },
     {
       "path": "tools/workflow.py",
-      "sha256": "248241d47e9214a5d8d20896b9fcf77e3dac4257ea3f2960220de547390bab7f",
-      "bytes": 8067,
+      "sha256": "60f5a48f0115ae4db7b2f54fc20ef277c199ae97f4834a3572df7d4e75b3067e",
+      "bytes": 8100,
       "purpose": "development utility"
     },
     {
@@ -800,6 +838,12 @@
       "path": "verification/demo_server.log",
       "sha256": "2aef6345b518b611ababbd386ee69337db5afd343517218569b8c732da94a1fa",
       "bytes": 74,
+      "purpose": "verification evidence"
+    },
+    {
+      "path": "verification/distribution.json",
+      "sha256": "04126099486043fa7d6b234a9da90863b22642e0dfdcc6f2c66a2b8a4016123b",
+      "bytes": 995,
       "purpose": "verification evidence"
     },
     {
@@ -941,9 +985,9 @@
       "purpose": "frontend"
     },
     {
-      "path": "workflows/QwenImage21_Character_Sheet_Designer.json",
-      "sha256": "6085d5f5c884768e90f02a4f6ad424d292b94d19b0f83c4f24e0fb9b859cca37",
-      "bytes": 30678,
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
+      "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
+      "bytes": 33150,
       "purpose": "workflow"
     }
   ],

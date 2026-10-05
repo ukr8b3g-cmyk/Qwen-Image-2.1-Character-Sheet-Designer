@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 NODE_TYPE = "QwenImage21CharacterSheetDesigner"
+TEMPLATE_NAME = "QwenImage21_Character_Sheet_Designer_wf.json"
 
 
 def link_rows(graph: dict) -> list:
@@ -166,7 +167,7 @@ def main() -> None:
     args = parser.parse_args()
     graph = build(args.source)
     args.out.mkdir(parents=True, exist_ok=True)
-    name = "QwenImage21_Character_Sheet_Designer.json"
+    name = TEMPLATE_NAME
     (args.out / name).write_text(json.dumps(graph, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps({name: validate_graph(graph)}, indent=2))
 
