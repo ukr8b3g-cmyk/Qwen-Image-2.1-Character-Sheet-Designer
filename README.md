@@ -1,4 +1,6 @@
 # Qwen Image 2.1 Character Sheet Designer
+<img width="1770" height="742" alt="{AC046BB6-4485-4305-9F8A-5EF5CC7C107F}" src="https://github.com/user-attachments/assets/e6889eeb-53fc-458e-a1ab-cdeebf1a6728" />
+
 
 **選択したビューだけのQwen向けプロンプトとレイアウト画像を出力します。胸像・全身・手足の詳細を区別し、ノード内で生成プロンプトを確認できます。厳密な生成配置・向きの一致は保証しません。**
 
