@@ -2,7 +2,7 @@
   "id": "26f0850b-4f21-4e8d-9231-403003c1763c",
   "revision": 0,
   "last_node_id": 500,
-  "last_link_id": 37,
+  "last_link_id": 39,
   "nodes": [
     {
       "id": 4,
@@ -24,7 +24,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            20
+            39
           ]
         },
         {
@@ -39,11 +39,11 @@
         "Node name for S&R": "LoadImage"
       },
       "widgets_values": [
-        "krea2_00627_.webp",
+        "comfy_krea2-Lcu_fp8_20260930003331_00001_.webp",
         "image"
       ],
       "widgets_values_named": {
-        "image": "krea2_00627_.webp",
+        "image": "comfy_krea2-Lcu_fp8_20260930003331_00001_.webp",
         "upload": "image"
       }
     },
@@ -88,7 +88,7 @@
           "name": "layout_image",
           "type": "IMAGE",
           "links": [
-            21
+            38
           ]
         }
       ],
@@ -199,13 +199,13 @@
           "name": "images.image_1",
           "shape": 7,
           "type": "IMAGE",
-          "link": 20
+          "link": 38
         },
         {
           "name": "images.image_2",
           "shape": 7,
           "type": "IMAGE",
-          "link": 21
+          "link": 39
         },
         {
           "name": "prompt",
@@ -239,7 +239,7 @@
       "widgets_values": [
         2816,
         1280,
-        123456,
+        792351110812704,
         30,
         1,
         "qwen_image_2.1_vae_bf16.safetensors",
@@ -250,7 +250,7 @@
       "widgets_values_named": {
         "width": 2816,
         "height": 1280,
-        "seed": 123456,
+        "seed": 792351110812704,
         "steps": 30,
         "cfg": 1,
         "vae_name": "qwen_image_2.1_vae_bf16.safetensors",
@@ -305,22 +305,6 @@
       "INT"
     ],
     [
-      20,
-      4,
-      0,
-      498,
-      3,
-      "IMAGE"
-    ],
-    [
-      21,
-      15,
-      3,
-      498,
-      4,
-      "IMAGE"
-    ],
-    [
       22,
       15,
       0,
@@ -335,6 +319,22 @@
       20,
       0,
       "IMAGE"
+    ],
+    [
+      38,
+      15,
+      3,
+      498,
+      3,
+      "IMAGE"
+    ],
+    [
+      39,
+      4,
+      0,
+      498,
+      4,
+      "IMAGE"
     ]
   ],
   "groups": [],
@@ -346,7 +346,7 @@
         "state": {
           "lastGroupId": 0,
           "lastNodeId": 500,
-          "lastLinkId": 37,
+          "lastLinkId": 39,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -1286,13 +1286,16 @@
     },
     "k2cf_state_id": "k2cf_1789910292936_s4bve1vrm0k",
     "ds": {
-      "scale": 0.5748757133494268,
+      "scale": 0.7409375079872217,
       "offset": [
-        971.6243104186592,
-        262.4428414722504
+        499.9639330573902,
+        160.70683804482977
       ]
     },
     "frontendVersion": "1.53.6"
   },
-  "version": 0.4
+  "version": 0.4,
+  "seed_widgets": {
+    "498": 2
+  }
 }
