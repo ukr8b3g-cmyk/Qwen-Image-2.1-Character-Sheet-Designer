@@ -12,9 +12,9 @@ PATHS=[p for p in (ROOT/"workflows").glob("*.json") if not p.name.endswith(".api
 @pytest.mark.parametrize("path",PATHS)
 def test_actual_saved_workflows(path):
     graph=json.loads(path.read_text());report=validate_graph(graph)
-    assert (report["nodes"],report["links"])==(12,15)
+    assert (report["nodes"],report["links"])==(13,17)
     nodes={n["id"]:n for n in graph["nodes"]}
-    assert set(nodes)=={4,15,20,477,478,479,480,481,482,484,485,495}
+    assert set(nodes)=={4,15,20,477,478,479,480,481,482,484,485,495,496}
     assert not set(n["type"] for n in nodes.values())&{"TextGenerate","ComfySwitchNode","ResolutionSelector","H3CharacterSheetDesigner","SaveAnimatedWEBP"}
     prompt=api_prompt(graph)
     saved=json.loads(path.with_suffix('.api.json').read_text())
@@ -24,16 +24,20 @@ def test_actual_saved_workflows(path):
     assert prompt["480"]["inputs"]["width"]==["15",1]
     assert prompt["480"]["inputs"]["height"]==["15",2]
     assert prompt["482"]["inputs"]["latent_image"]==["480",0]
-    assert prompt["485"]["inputs"]["images.image_1"]==["4",0]
-    assert sum(k.startswith("images.") for k in prompt["485"]["inputs"])==1
+    assert prompt["485"]["inputs"]["images.image_1"]==["15",3]
+    assert prompt["485"]["inputs"]["images.image_2"]==["4",0]
+    assert prompt["496"]["inputs"]["images"]==["15",3]
+    assert nodes[496]["pos"][1]>=nodes[4]["pos"][1]+nodes[4]["size"][1]
+    assert sum(k.startswith("images.") for k in prompt["485"]["inputs"])==2
     assert not nodes[485]["outputs"][2]["links"]
-    assert prompt["485"]["inputs"]["resolution"]==1024
+    assert prompt["485"]["inputs"]["resolution"]==0
     assert prompt["482"]["inputs"]["steps"]==25
     assert prompt["482"]["inputs"]["cfg"]==1
     assert prompt["482"]["inputs"]["sampler_name"]=="euler"
     assert prompt["482"]["inputs"]["scheduler"]=="simple"
     raw=prompt["15"]["inputs"]["state_json"]
-    assert nodes[15]["widgets_values"]==[raw]
+    assert nodes[15]["widgets_values"]==[raw,True]
+    assert prompt["15"]["inputs"]["use_layout_image"] is True
     result=compile_state(raw)
     if "Comparison" in path.name:
         assert (result["width"],result["height"])==(1344,768)

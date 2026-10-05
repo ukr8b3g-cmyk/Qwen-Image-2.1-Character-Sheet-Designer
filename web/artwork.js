@@ -1,4 +1,4 @@
-/** UI-only artwork; never used as reference or generation input. */
+/** UI display of the same atlas crops used by the backend layout_image output. */
 import {VIEW_IDS} from './state.js';
 import {avatarSVG} from './avatar.js';
 import {USE_RASTER_ATLAS} from './artwork_config.js';

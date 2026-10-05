@@ -1,0 +1,178 @@
+{
+  "date": "2026-10-05",
+  "change": "Black frames stay in final artwork; gray contents replaced one-for-one",
+  "cpu": {
+    "passed": 955,
+    "failed": 0,
+    "suites": [
+      "test_compiler.py",
+      "test_layout_image.py",
+      "test_api_node.py",
+      "test_workflows.py"
+    ],
+    "black_frame_selection_combinations": 127,
+    "guided_and_unguided_selection_combinations": 127,
+    "new_dependencies": false
+  },
+  "javascript": {
+    "passed": 80,
+    "failed": 0
+  },
+  "frontend": {
+    "scope": "Real isolated ComfyUI frontend; seven UI toggles and preview API",
+    "seven_checkbox_toggles": [
+      {
+        "id": "face_front",
+        "off": 6,
+        "on": 7
+      },
+      {
+        "id": "face_left",
+        "off": 6,
+        "on": 7
+      },
+      {
+        "id": "body_front",
+        "off": 6,
+        "on": 7
+      },
+      {
+        "id": "body_left",
+        "off": 6,
+        "on": 7
+      },
+      {
+        "id": "body_back",
+        "off": 6,
+        "on": 7
+      },
+      {
+        "id": "hands",
+        "off": 6,
+        "on": 7
+      },
+      {
+        "id": "feet",
+        "off": 6,
+        "on": 7
+      }
+    ],
+    "black_frames": [
+      {
+        "id": "face_front",
+        "color": "rgb(0, 0, 0)",
+        "width": 1,
+        "style": "solid"
+      },
+      {
+        "id": "face_left",
+        "color": "rgb(0, 0, 0)",
+        "width": 1,
+        "style": "solid"
+      },
+      {
+        "id": "body_front",
+        "color": "rgb(0, 0, 0)",
+        "width": 1,
+        "style": "solid"
+      },
+      {
+        "id": "body_left",
+        "color": "rgb(0, 0, 0)",
+        "width": 1,
+        "style": "solid"
+      },
+      {
+        "id": "body_back",
+        "color": "rgb(0, 0, 0)",
+        "width": 1,
+        "style": "solid"
+      },
+      {
+        "id": "hands",
+        "color": "rgb(0, 0, 0)",
+        "width": 1,
+        "style": "solid"
+      },
+      {
+        "id": "feet",
+        "color": "rgb(0, 0, 0)",
+        "width": 1,
+        "style": "solid"
+      }
+    ],
+    "displayed_prompt_matches_node_compiler": true,
+    "page_errors": []
+  },
+  "gpu": {
+    "initial": {
+      "execution": "PASS",
+      "live_new_node_executed": true,
+      "prompt_from_node": true,
+      "layout_pixels_match": true,
+      "fresh_gpu_sampling": true,
+      "canvas": [
+        2816,
+        1280
+      ],
+      "seconds": 243.44,
+      "visual_review": {
+        "black_frames_retained": true,
+        "selected_study_count": true,
+        "front_profile_back_bodies": true,
+        "gray_template_remaining": [
+          "feet"
+        ],
+        "profile_bust": "three-quarter",
+        "footwear_consistency": false
+      }
+    },
+    "final": {
+      "execution": "PASS",
+      "live_new_node_executed": true,
+      "prompt_from_node": true,
+      "layout_pixels_match": true,
+      "fresh_gpu_sampling": true,
+      "canvas": [
+        2816,
+        1280
+      ],
+      "seconds": 243.75,
+      "visual_review": {
+        "black_frames_retained": true,
+        "selected_study_count": true,
+        "busts": 2,
+        "standing_figures": 3,
+        "hand_pairs": 1,
+        "foot_pairs": 1,
+        "front_profile_back_bodies": true,
+        "front_bust_frontal": true,
+        "profile_bust": "side profile",
+        "gray_template_remaining": [],
+        "footwear_consistency": true,
+        "pixel_exact_person_size_and_crop": "not asserted",
+        "other_people_and_seeds": "not tested"
+      }
+    },
+    "sampler": {
+      "steps": 25,
+      "cfg": 1.0,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 1.0
+    },
+    "live_new_node_executed": true
+  },
+  "backend_source_hashes": {
+    "compiler.py": "2dcd078db7ea7b5e28b5f455dbaab97938901c4b78d9730cafe0941bcaf2ae7d",
+    "layout_image.py": "b9d0180c2891a093a637bcd7f268bc8efc0e99db1d7d380d2d738441aafc53d4"
+  },
+  "limitations": [
+    "Visual confirmation uses one character and one seed.",
+    "Frame retention is model guidance; exact generated pixels and person dimensions are not guaranteed."
+  ],
+  "service": {
+    "user_server_restarted": false,
+    "stop_status": "Verified processes exited and port closed"
+  }
+}

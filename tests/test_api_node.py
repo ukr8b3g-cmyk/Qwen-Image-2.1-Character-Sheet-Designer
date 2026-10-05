@@ -46,7 +46,7 @@ def test_live_http_contract_and_queue_compile_same(monkeypatch):
                 assert payload["error"]["code"]==code
             else:
                 assert payload==q.compile_state(q.DEFAULT_STATE_JSON)
-                assert n.QwenImage21CharacterSheetDesigner().compile(q.DEFAULT_STATE_JSON)==(payload["prompt"],payload["width"],payload["height"])
+                assert n.QwenImage21CharacterSheetDesigner().compile(q.DEFAULT_STATE_JSON)[:3]==(payload["prompt"],payload["width"],payload["height"])
         async def chunks():
             for _ in range(p.HTTP_MAX_BYTES // 4096 + 1):
                 yield b" "*4096
@@ -75,7 +75,7 @@ def test_runtime_limit_not_cached(monkeypatch):
     core.MAX_RESOLUTION=2048
     assert isinstance(cls.VALIDATE_INPUTS(q.DEFAULT_STATE_JSON), str)
     core.MAX_RESOLUTION=16384
-    assert cls().compile(q.DEFAULT_STATE_JSON)[1:]==(2208,1280)
+    assert cls().compile(q.DEFAULT_STATE_JSON)[1:3]==(2208,1280)
     for value in (True,None,31):
         core.MAX_RESOLUTION=value
         with pytest.raises(RuntimeError):n.runtime_max_resolution()
@@ -114,9 +114,22 @@ def test_root_pack_only_registers_qwen(monkeypatch,pack_name):
     spec.loader.exec_module(module)
     assert set(module.NODE_CLASS_MAPPINGS)=={"QwenImage21CharacterSheetDesigner"}
     cls=module.NODE_CLASS_MAPPINGS["QwenImage21CharacterSheetDesigner"]
-    assert cls.RETURN_TYPES==("STRING","INT","INT")
-    assert cls.RETURN_NAMES==("prompt","width","height")
+    assert cls.RETURN_TYPES==("STRING","INT","INT","IMAGE")
+    assert cls.RETURN_NAMES==("prompt","width","height","layout_image")
     assert cls.FUNCTION=="compile"
     assert list(cls.INPUT_TYPES()["required"])==["state_json"]
     assert cls.INPUT_TYPES()["required"]["state_json"][1]["dynamicPrompts"] is False
+    assert cls.INPUT_TYPES()["optional"]["use_layout_image"][1]["default"] is False
     assert module.WEB_DIRECTORY=="./web"
+
+
+def test_layout_reference_preview_matches_node_and_rejects_non_boolean(monkeypatch):
+    monkeypatch.setitem(sys.modules,"nodes",SimpleNamespace(MAX_RESOLUTION=16384))
+    envelope={"state_json":q.DEFAULT_STATE_JSON,"use_layout_image":True}
+    payload=p.compile_preview_request(json.dumps(envelope).encode(),max_resolution=16384)
+    assert n.QwenImage21CharacterSheetDesigner().compile(q.DEFAULT_STATE_JSON,True)[:3]==(payload["prompt"],payload["width"],payload["height"])
+    for value in ("true",1,None):
+        envelope["use_layout_image"]=value
+        with pytest.raises(q.StateValidationError):
+            p.compile_preview_request(json.dumps(envelope).encode(),max_resolution=16384)
+        assert isinstance(n.QwenImage21CharacterSheetDesigner.VALIDATE_INPUTS(q.DEFAULT_STATE_JSON,value),str)

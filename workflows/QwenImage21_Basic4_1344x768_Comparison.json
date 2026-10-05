@@ -1,6 +1,6 @@
 {
-  "last_node_id": 495,
-  "last_link_id": 15,
+  "last_node_id": 496,
+  "last_link_id": 17,
   "nodes": [
     {
       "id": 477,
@@ -207,7 +207,7 @@
         60
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -248,7 +248,7 @@
         480
       ],
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -388,6 +388,12 @@
             "name": "prompt"
           },
           "link": 1
+        },
+        {
+          "name": "images.image_2",
+          "shape": 7,
+          "type": "IMAGE",
+          "link": 16
         }
       ],
       "outputs": [
@@ -419,12 +425,12 @@
       "widgets_values": [
         "",
         "",
-        1024
+        0
       ],
       "widgets_values_named": {
         "prompt": "",
         "negative_prompt": "",
-        "resolution": 1024
+        "resolution": 0
       }
     },
     {
@@ -483,7 +489,7 @@
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
-            5
+            16
           ]
         },
         {
@@ -520,7 +526,16 @@
       "flags": {},
       "order": 1,
       "mode": 0,
-      "inputs": [],
+      "inputs": [
+        {
+          "name": "use_layout_image",
+          "type": "BOOLEAN",
+          "widget": {
+            "name": "use_layout_image"
+          },
+          "link": null
+        }
+      ],
       "outputs": [
         {
           "name": "prompt",
@@ -543,6 +558,14 @@
           "links": [
             4
           ]
+        },
+        {
+          "name": "layout_image",
+          "type": "IMAGE",
+          "links": [
+            5,
+            17
+          ]
         }
       ],
       "properties": {
@@ -550,10 +573,12 @@
         "Node name for S&R": "QwenImage21CharacterSheetDesigner"
       },
       "widgets_values": [
-        "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"manual\",\"body_height\":672,\"manual_width\":1344,\"manual_height\":768},\"part_prompts\":{}}"
+        "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"manual\",\"body_height\":672,\"manual_width\":1344,\"manual_height\":768},\"part_prompts\":{}}",
+        true
       ],
       "widgets_values_named": {
-        "state_json": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"manual\",\"body_height\":672,\"manual_width\":1344,\"manual_height\":768},\"part_prompts\":{}}"
+        "state_json": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"manual\",\"body_height\":672,\"manual_width\":1344,\"manual_height\":768},\"part_prompts\":{}}",
+        "use_layout_image": true
       }
     },
     {
@@ -568,7 +593,7 @@
         930
       ],
       "flags": {},
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -601,6 +626,34 @@
         "format.bit_depth": "8-bit",
         "format.input_color_space": "sRGB"
       }
+    },
+    {
+      "id": 496,
+      "type": "PreviewImage",
+      "pos": [
+        930,
+        1370
+      ],
+      "size": [
+        520,
+        300
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "Node name for S&R": "PreviewImage"
+      },
+      "widgets_values": []
     }
   ],
   "links": [
@@ -638,8 +691,8 @@
     ],
     [
       5,
-      4,
-      0,
+      15,
+      3,
       485,
       1,
       "IMAGE"
@@ -723,6 +776,22 @@
       20,
       0,
       "IMAGE"
+    ],
+    [
+      16,
+      4,
+      0,
+      485,
+      4,
+      "IMAGE"
+    ],
+    [
+      17,
+      15,
+      3,
+      496,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [],
@@ -736,7 +805,7 @@
       ]
     },
     "qwen21_designer": {
-      "template_kind": "basic_four_view_comparison",
+      "template_kind": "layout_and_character_reference_basic4_comparison",
       "source_state_preserved": false,
       "validation": "static_only; real ComfyUI and GPU validation required"
     }

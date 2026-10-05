@@ -1,4 +1,4 @@
-"""Record payload hashes and test scope. Does not perform or imply a git commit."""
+"""Record source payload hashes with LF text endings and the latest test scope."""
 import datetime
 import hashlib
 import json
@@ -21,13 +21,17 @@ def build(extra_sources=None):
     for path in sorted(ROOT.rglob('*')):
         relative=path.relative_to(ROOT)
         if not path.is_file() or any(p in EXCLUDE for p in relative.parts) or str(relative)=='manifest.json':continue
-        entries.append({'path':relative.as_posix(),'sha256':hashlib.sha256(path.read_bytes()).hexdigest(),
-                        'bytes':path.stat().st_size,'purpose':purpose(relative)})
+        payload=path.read_bytes()
+        if b'\0' not in payload:
+            payload=payload.replace(b'\r\n',b'\n')
+        entries.append({'path':relative.as_posix(),'sha256':hashlib.sha256(payload).hexdigest(),
+                        'bytes':len(payload),'purpose':purpose(relative)})
     old=json.loads((ROOT/'manifest.json').read_text()) if (ROOT/'manifest.json').exists() else {}
     data={'schema_version':1,'created_utc':now,'target_repository':'ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer',
-          'target_base_commit':None,'target_state':'Empty remote at inspection; uncommitted local implementation',
+          'target_base_commit':old.get('target_base_commit'),'target_state':'Verified source payload for publication',
+          'text_hash_line_endings':'LF',
           'sources':extra_sources if extra_sources is not None else old.get('sources',[]),
-          'results':json.loads((ROOT/'verification/results.json').read_text()),'files':entries,
+          'results':json.loads((ROOT/'verification/black_frames.json').read_text()),'files':entries,
           'manifest_self_hash':'excluded to avoid recursive hashing'}
     (ROOT/'manifest.json').write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     return data

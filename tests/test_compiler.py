@@ -34,7 +34,7 @@ def raw(state):
 
 
 def test_oracle_is_pinned():
-    b = (ROOT / "tests/upstream/h3_compiler.py").read_bytes()
+    b = (ROOT / "tests/upstream/h3_compiler.py").read_bytes().replace(b"\r\n", b"\n")
     assert hashlib.sha1(b"blob " + str(len(b)).encode() + b"\0" + b).hexdigest() == "e74e778131a58d564ff55ced4ebd75df1a129111"
 
 
@@ -77,7 +77,6 @@ def test_all_layouts_state_and_h3_byte_parity(bits, mode, version):
     else:
         assert geometry["feet_y"] is None
     assert not any(token in new["prompt"] for token in TOKENS)
-    assert new["prompt"].endswith("\n")
 
 
 @pytest.mark.parametrize("height,preset,expected", [
@@ -148,5 +147,99 @@ def test_no_runtime_h3_or_gpu_dependency():
 def test_golden_snapshots():
     fixtures = json.loads((ROOT / "tests/fixtures/golden_states.json").read_text())
     for name, state in fixtures.items():
-        assert q.compile_state(raw(state))["prompt"].encode() == (ROOT / "tests/snapshots" / (name + ".qwen.txt")).read_bytes()
-        assert h3.compile_state(raw(state))["prompt"].encode() == (ROOT / "tests/snapshots" / (name + ".h3.txt")).read_bytes()
+        assert q.compile_state(raw(state))["prompt"] == (ROOT / "tests/snapshots" / (name + ".qwen.txt")).read_text(encoding="utf-8")
+        assert h3.compile_state(raw(state))["prompt"] == (ROOT / "tests/snapshots" / (name + ".h3.txt")).read_text(encoding="utf-8")
+
+
+def test_concise_prompt_and_explicit_reference_roles():
+    s=state_for(31);s["part_prompts"]={"upper_clothing":"青い絹のジャケット"}
+    plain=q.compile_state(raw(s))
+    guided=q.compile_state(raw(s),use_layout_image=True)
+    assert guided["state_json"]==plain["state_json"]
+    assert guided["layout"]==plain["layout"]
+    assert "<image1>" in guided["prompt"] and "<image2>" in guided["prompt"]
+    assert "<image1>" not in plain["prompt"] and "<image2>" not in plain["prompt"]
+    for result in (plain,guided):
+        prompt=result["prompt"]
+        assert prompt.count("青い絹のジャケット")==1
+        assert '"rect"' not in prompt and "normalized [left" not in prompt
+        assert "chest-level cropped lower edge" in prompt and "Full-body front" in prompt
+        assert "fully opaque, solid finished artwork" in prompt
+        assert "\n" not in prompt
+    assert "Edit <image1> in place" in guided["prompt"]
+    assert "Preserve all black rectangular frames exactly as drawn" in guided["prompt"]
+    assert "one rendering for each existing framed panel" in guided["prompt"]
+    assert "matching top and bottom limits" not in guided["prompt"]
+    assert "its corresponding gray bust" in guided["prompt"]
+
+
+@pytest.mark.parametrize("bits", [1, 2, 3, 31, 127])
+def test_guided_bust_crop_preserves_visible_template_extent(bits):
+    s=state_for(bits);s["part_prompts"]={}
+    prompt=q.compile_state(raw(s),use_layout_image=True)["prompt"]
+    assert "visible size, viewing direction and crop fixed" in prompt
+    assert "white space above and below" in prompt
+    assert "full height of its column" not in prompt
+    assert "matching top and bottom limits" not in prompt
+    assert "\n" not in prompt
+    if "face_front" in s["views"]:
+        assert "nose centered between the eyes" in prompt
+    if "face_left" in s["views"]:
+        assert "nose pointing toward the right edge" in prompt
+
+
+def test_guided_body_only_has_no_bust_crop_directive():
+    s=state_for(28);s["part_prompts"]={}
+    prompt=q.compile_state(raw(s),use_layout_image=True)["prompt"]
+    assert "bust" not in prompt and "chest-level" not in prompt
+    assert "full-body back" in prompt.lower()
+
+
+def test_inapplicable_part_is_absent_from_final_prompt():
+    s=state_for(1);s["part_prompts"]={"back_clothing":"背面だけの月模様"}
+    assert "背面だけの月模様" not in q.compile_state(raw(s),use_layout_image=True)["prompt"]
+
+
+@pytest.mark.parametrize("bits", range(1, 128))
+@pytest.mark.parametrize("guided", [False, True])
+def test_checked_views_only_and_separate_study_inventory(bits, guided):
+    s = state_for(bits); s["part_prompts"] = {}
+    result = q.compile_state(raw(s), use_layout_image=guided)
+    prompt = result["prompt"]
+    selected = s["views"]
+    assert [p["id"] for p in result["layout"]["panels"]] == selected
+    descriptions=q.GUIDED_VIEW_DETAILS.items() if guided else [(view,description) for view,(_,description) in q.VIEW_DETAILS.items()]
+    for view, description in descriptions:
+        assert (description in prompt) == (view in selected)
+    inventory=f"Fill exactly {len(selected)} existing black-framed panels:" if guided else f"Compose exactly {len(selected)} distinct, unlabelled view panels:"
+    assert inventory in prompt
+    assert ("Preserve all black rectangular frames exactly as drawn" in prompt)==guided
+    if guided and not any(view in q.BODY_IDS for view in selected):
+        assert "standing figures" not in prompt
+    groups = [
+        (sum(v in ("face_front", "face_left") for v in selected), "enlarged head-and-shoulders bust stud"),
+        (sum(v in ("body_front", "body_left", "body_back") for v in selected), "complete standing full-body figure"),
+        (sum(v in ("hands", "feet") for v in selected), "isolated anatomical detail stud"),
+    ]
+    for count, label in groups:
+        assert (f"{count} {label}" in prompt) == bool(count)
+    assert "separate depictions of the same character" not in prompt
+    if not guided:
+        if groups[1][0] == 1:
+            assert "Place the single" in prompt
+            assert "matching head heights" not in prompt and "full-body columns" not in prompt
+        if not groups[0][0]:
+            assert "bust" not in prompt
+        if not groups[2][0]:
+            assert "detail studies in the leftmost" not in prompt
+
+
+def test_detail_off_keeps_hands_and_shoes_on_full_body():
+    s = state_for(4)
+    s["part_prompts"] = {"hands": "青い手袋", "footwear": "黒いブーツ"}
+    for guided in (False, True):
+        result = q.compile_state(raw(s), use_layout_image=guided)
+        assert "青い手袋" in result["prompt"] and "黒いブーツ" in result["prompt"]
+        assert "Hand-detail study:" not in result["prompt"]
+        assert "Foot-detail study:" not in result["prompt"]
+        assert [p["id"] for p in result["layout"]["panels"]] == ["body_front"]

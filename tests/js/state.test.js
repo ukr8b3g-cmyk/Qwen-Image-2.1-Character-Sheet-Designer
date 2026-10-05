@@ -82,6 +82,12 @@ test('request uses exact Qwen endpoint and strict envelope',async()=>{
  assert.deepEqual(await fn(DEFAULT_JSON),{test:true});assert.equal(seen[0],PROFILE.previewPath);
  assert.deepEqual(JSON.parse(seen[1].body),{state_json:DEFAULT_JSON});
 });
+test('preview follows the layout-reference widget without changing saved state',async()=>{
+ let enabled=true,seen;
+ const fn=previewRequester({fetchApi:async(_,args)=>{seen=JSON.parse(args.body);return {ok:true,json:async()=>({})}}},()=>enabled);
+ await fn(DEFAULT_JSON);assert.deepEqual(seen,{state_json:DEFAULT_JSON,use_layout_image:true});
+ enabled=false;await fn(DEFAULT_JSON);assert.deepEqual(seen,{state_json:DEFAULT_JSON});
+});
 test('local artwork IDs are safe, distinct and all seven views are supported',()=>{
  for(const view of parseState(serializeState({...parseState(DEFAULT_JSON),views:['face_front','face_left','body_front','body_left','body_back','hands','feet']})).views){
   const a=avatarSVG(view,'<script>"'),b=avatarSVG(view,'<script>"');

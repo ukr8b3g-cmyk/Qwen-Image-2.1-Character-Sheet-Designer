@@ -105,18 +105,27 @@ def build(qwen_source: Path, h3_source: Path) -> dict:
     designer = lookup[15]
     designer["type"] = NODE_TYPE
     designer["properties"] = {"aux_id": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer", "Node name for S&R": NODE_TYPE}
+    designer["outputs"].append({"name": "layout_image", "type": "IMAGE", "links": []})
     # Preserve the exact supplied five-view saved state, including inactive dimensions.
     state = designer["widgets_values"][0]
     if designer["widgets_values_named"]["state_json"] != state:
         raise ValueError("Conflicting saved Designer values")
+    designer["widgets_values"] = [state, True]
+    designer["widgets_values_named"]["use_layout_image"] = True
+    designer["inputs"].append({"name": "use_layout_image", "type": "BOOLEAN", "widget": {"name": "use_layout_image"}, "link": None})
     compiled = compile_state(state)
     empty = lookup[480]
     empty["widgets_values"] = [compiled["width"], compiled["height"], 1]
     empty["widgets_values_named"] = {"width": compiled["width"], "height": compiled["height"], "batch_size": 1}
-    # Keep only the requested reference slot; resolve all wiring by input NAME.
+    # Layout canvas first, character appearance second; one image per input.
     lookup[485]["inputs"] = [i for i in lookup[485]["inputs"] if not i["name"].startswith("images.") or i["name"] == "images.image_1"]
-    lookup[485]["widgets_values"] = ["", "", 1024]
-    lookup[485]["widgets_values_named"] = {"prompt": "", "negative_prompt": "", "resolution": 1024}
+    lookup[485]["inputs"].append({"name": "images.image_2", "type": "IMAGE", "link": None})
+    lookup[485]["widgets_values"] = ["", "", 0]
+    lookup[485]["widgets_values_named"] = {"prompt": "", "negative_prompt": "", "resolution": 0}
+    preview = {"id": 496, "type": "PreviewImage", "size": [520, 300], "flags": {}, "order": 0, "mode": 0,
+               "inputs": [{"name": "images", "type": "IMAGE", "link": None}], "outputs": [],
+               "properties": {"cnr_id": "comfy-core", "Node name for S&R": "PreviewImage"}, "widgets_values": []}
+    nodes.append(preview); lookup[496] = preview
     lookup[20]["widgets_values"][0] = "Qwen Image 2.1 Character Sheet Designer"
     lookup[20]["widgets_values_named"]["filename_prefix"] = lookup[20]["widgets_values"][0]
     # Keep the user's seed behavior in the main template; comparisons use a separate file.
@@ -135,7 +144,8 @@ def build(qwen_source: Path, h3_source: Path) -> dict:
     for edge in (
         (15, "prompt", 485, "prompt"), (15, "prompt", 495, "source"),
         (15, "width", 480, "width"), (15, "height", 480, "height"),
-        (4, "IMAGE", 485, "images.image_1"), (478, "CLIP", 485, "clip"),
+        (15, "layout_image", 485, "images.image_1"), (4, "IMAGE", 485, "images.image_2"),
+        (15, "layout_image", 496, "images"), (478, "CLIP", 485, "clip"),
         (479, "VAE", 485, "vae"), (479, "VAE", 481, "vae"),
         (477, "MODEL", 484, "model"), (484, "MODEL", 482, "model"),
         (485, "positive", 482, "positive"), (485, "negative", 482, "negative"),
@@ -145,12 +155,12 @@ def build(qwen_source: Path, h3_source: Path) -> dict:
         connect(*edge)
     positions = {15: [20, 80], 4: [930, 700], 477: [930, 80], 478: [930, 260], 479: [930, 440],
                  484: [1510, 80], 480: [1510, 250], 485: [1510, 430], 482: [2040, 80],
-                 481: [2040, 650], 20: [2400, 80], 495: [2040, 780]}
+                 481: [2040, 650], 20: [2400, 80], 495: [2040, 780], 496: [930, 1370]}
     for n in nodes:
         n["pos"] = positions[n["id"]]
     graph = {"last_node_id": max(lookup), "last_link_id": len(links), "nodes": nodes, "links": links,
              "groups": [], "config": {}, "extra": {"ds": {"scale": 0.6, "offset": [30, 40]},
-             "qwen21_designer": {"template_kind": "single_reference", "source_state_preserved": True,
+             "qwen21_designer": {"template_kind": "layout_and_character_reference", "source_state_preserved": True,
              "validation": "static_only; real ComfyUI and GPU validation required"}}, "version": 0.4}
     report = validate_graph(graph)
     for index, node_id in enumerate(report["topological_order"]):
@@ -173,8 +183,8 @@ def main() -> None:
     state["views"] = ["face_front", "body_front", "body_left", "body_back"]
     state["size"] = {"mode": "manual", "body_height": 672, "manual_width": 1344, "manual_height": 768}
     raw = json.dumps(state, ensure_ascii=True, separators=(",", ":"))
-    by_id[15]["widgets_values"] = [raw]
-    by_id[15]["widgets_values_named"] = {"state_json": raw}
+    by_id[15]["widgets_values"] = [raw, True]
+    by_id[15]["widgets_values_named"] = {"state_json": raw, "use_layout_image": True}
     by_id[480]["widgets_values"] = [1344, 768, 1]
     by_id[480]["widgets_values_named"].update(width=1344, height=768)
     by_id[482]["widgets_values"][1] = "fixed"
@@ -186,7 +196,7 @@ def main() -> None:
     save.update(type="SaveImage", outputs=[], widgets_values=["Qwen Image 2.1 Character Sheet Designer"],
                 widgets_values_named={"filename_prefix": "Qwen Image 2.1 Character Sheet Designer"})
     save["properties"] = {"cnr_id": "comfy-core", "Node name for S&R": "SaveImage"}
-    core["extra"]["qwen21_designer"]["template_kind"] = "single_reference_core_saveimage"
+    core["extra"]["qwen21_designer"]["template_kind"] = "layout_and_character_reference_core_saveimage"
     variants["QwenImage21_Character_Sheet_Designer_CoreSaveImage.json"] = core
     reports = {}
     for name, value in variants.items():

@@ -7,10 +7,12 @@ const pendingReinstall = new WeakMap();
 export const NODE_TYPE = PROFILE.nodeType;
 export const DEFAULT_NODE_SIZE = [870, 930];
 
-export function previewRequester(api) {
+export function previewRequester(api, useLayoutImage = () => false) {
   return async (raw, signal) => {
+    const envelope = {state_json: raw};
+    if (useLayoutImage()) envelope.use_layout_image = true;
     const response = await api.fetchApi(PROFILE.previewPath, {
-      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({state_json: raw}), signal,
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(envelope), signal,
     });
     let data;
     try { data = await response.json(); } catch { throw new Error(`Preview HTTP ${response.status}`); }
@@ -108,16 +110,23 @@ export function installDesigner(node, app, api) {
   const previousCallback = original.callback;
   let ui, widget, record, installedHooks, observer, frame, ready = false;
   let unsubscribe = () => {}, restoreValueHook = () => {};
+  const useLayoutImage = () => node.widgets.find(widget => widget.name === 'use_layout_image')?.value === true;
+  let observedLayoutImage = useLayoutImage();
   const controller = new DesignerController({
     raw: original.value, readRaw: () => original.value, writeRaw: value => { original.value = value; },
-    requestPreview: previewRequester(api),
+    requestPreview: previewRequester(api, useLayoutImage),
     transaction: change => graphTransaction(node, change, app?.canvas),
     onCommit: (next, previous) => { node.onWidgetChanged?.('state_json', next, previous, original); },
     onChange: (_, reason) => ui?.render(reason),
   });
-  const sync = () => { if (ready && !record?.disposed) controller.syncFromSource(); };
+  const sync = () => {
+    if (!ready || record?.disposed) return;
+    controller.syncFromSource();
+    const next = useLayoutImage();
+    if (next !== observedLayoutImage) { observedLayoutImage = next; void controller.refreshPreview(); }
+  };
   try {
-    ui = createDesignerUI({controller, locale: getLocale(app), compatibilityWarning: Boolean(node.graph && (typeof node.graph.beforeChange !== 'function' || typeof node.graph.afterChange !== 'function'))});
+    ui = createDesignerUI({controller, locale: getLocale(app), useLayoutImage, compatibilityWarning: Boolean(node.graph && (typeof node.graph.beforeChange !== 'function' || typeof node.graph.afterChange !== 'function'))});
     let name = 'q21_designer_ui', suffix = 1;
     while (node.widgets.some(candidate => candidate.name === name)) name = `q21_designer_ui_${suffix++}`;
     widget = node.addDOMWidget(name, 'Q21_DESIGNER_UI', ui.root, {

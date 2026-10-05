@@ -1,0 +1,89 @@
+{
+  "checked_utc": "2026-10-05T04:44:36.424941+00:00",
+  "source_base_commit": "604ec0c6ea4046a3460e2c662d41f564870c15d8",
+  "python": {
+    "passed": 606,
+    "failed": 0
+  },
+  "javascript": {
+    "passed": 80,
+    "failed": 0
+  },
+  "workflow_static": {
+    "gui_workflows": 3,
+    "nodes_each": 13,
+    "links_each": 17
+  },
+  "cpu_comfyui": {
+    "version": "0.38.0",
+    "frontend": "1.53.6",
+    "registered_outputs": [
+      "STRING",
+      "INT",
+      "INT",
+      "IMAGE"
+    ],
+    "frontend_queue": "success",
+    "layout_size": [
+      2816,
+      1280
+    ],
+    "layout_rgb_matches_renderer": true,
+    "service_stopped": true
+  },
+  "gpu": {
+    "server_restart": false,
+    "designer_output_integration": "CPU verified; GPU run used saved layout PNG and identical compiled prompt",
+    "steps": 25,
+    "cfg": 1,
+    "resolution": 0,
+    "runs": [
+      {
+        "status": "success",
+        "seconds": 253.675,
+        "image_file": "qwen_sheet_designer_validation/layout_ref_seed1017736335595175_00001_.png",
+        "image_size": [
+          2816,
+          1280
+        ],
+        "image_mode": "RGBA",
+        "metadata_verified": true,
+        "same_model_seed_and_sampler": true
+      },
+      {
+        "status": "success",
+        "seconds": 231.375,
+        "image_file": "qwen_sheet_designer_validation/layout_ref_refined_seed1017736335595175_00001_.png",
+        "image_size": [
+          2816,
+          1280
+        ],
+        "image_mode": "RGBA",
+        "metadata_verified": true,
+        "same_model_seed_and_sampler": true
+      }
+    ],
+    "visual_observations": [
+      "Two enlarged portraits and three complete full-body views",
+      "No visibly faded central figures in these two outputs"
+    ],
+    "remaining": [
+      "Front portrait remains three-quarter rather than straight-on",
+      "Profiles face left despite right-facing guide and explicit text"
+    ],
+    "not_validated": [
+      "Other identities or seeds",
+      "All seven-view combinations on GPU",
+      "Part edits on GPU",
+      "Peak VRAM comparison",
+      "Pixel-exact layout adherence"
+    ]
+  },
+  "prompt": {
+    "original_chars": 5936,
+    "final_chars": 2672,
+    "coordinate_json_removed": true,
+    "part_directives_written_once": true
+  },
+  "commit_push": "not_requested"
+}

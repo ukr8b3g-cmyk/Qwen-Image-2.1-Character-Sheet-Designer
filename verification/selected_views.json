@@ -1,0 +1,91 @@
+{
+  "created_utc": "2026-10-05T06:40:46.347967+00:00",
+  "scope": "Real Designer node compiler and UI; no literal compiled prompt substitution in GPU graphs",
+  "regression": {
+    "python_full": 867,
+    "javascript": 80,
+    "final_compiler_rerun": 796,
+    "final_node_api_image_workflow_rerun": 32,
+    "selection_subsets": 127,
+    "reference_modes": 2,
+    "selected_inventory_cases": 254
+  },
+  "ui": {
+    "each_card_toggled_off_and_on": 7,
+    "partial_selection_save_reload": "PASS",
+    "layout_reference_boolean_save_reload": "PASS",
+    "displayed_prompt_matches_executed_node": "PASS",
+    "layout_image_matches_selected_preview_pixels": "PASS",
+    "canonical_widget_count": 2
+  },
+  "gpu_runs": [
+    {
+      "name": "all_retry",
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back",
+        "hands",
+        "feet"
+      ],
+      "use_layout_image": false,
+      "execution": "PASS",
+      "actual_node_prompt_matches_final_compiler": true,
+      "prompt_sha256": "a096a91807a8e639db4d233c00ac7b067c602d15e737a9a3d42e29742b4433f6",
+      "canvas": [
+        2816,
+        1280
+      ],
+      "visual_observation": "PASS for requested study inventory: two chest-cropped busts, three full bodies and isolated pairs of hands and shoes. Front bust is frontal; profile views face right. Fine position, size and costume continuity remain approximate."
+    },
+    {
+      "name": "partial_final",
+      "views": [
+        "face_front",
+        "body_front",
+        "hands"
+      ],
+      "use_layout_image": false,
+      "execution": "PASS",
+      "actual_node_prompt_matches_final_compiler": true,
+      "prompt_sha256": "36613871f476455eeb0d361aaead1d5674ba4c99e5e062ba8fca320cfb9f0d53",
+      "canvas": [
+        1216,
+        1280
+      ],
+      "visual_observation": "PASS for requested study inventory: one bust, one full body and one pair-of-hands detail, with no extra full-body figure. Bust and full-body front views are oblique; clothing and glove details drift."
+    },
+    {
+      "name": "guided",
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back",
+        "hands",
+        "feet"
+      ],
+      "use_layout_image": true,
+      "execution": "PASS",
+      "actual_node_prompt_matches_final_compiler": true,
+      "prompt_sha256": "a408ed7b34cd5fcd512ccec85e5f574ec4efbe829fdb927e656740cb46f46958",
+      "canvas": [
+        2816,
+        1280
+      ],
+      "visual_observation": "Execution PASS; exact layout and material transfer FAIL. Two busts and three full bodies appear, but bodies are smaller, hand/foot details move to the right and part of the feet remains gray template material."
+    }
+  ],
+  "preliminary_partial": "Duplicated full body; fixed singular body-placement prose before final partial run.",
+  "interrupted_run": "First all-view run interrupted to give an 8188 user job priority; excluded from successful GPU runs.",
+  "limits": [
+    "Only one character and seed GPU-tested.",
+    "Prompt/guide cannot guarantee exact generated count, orientation, crop or placement.",
+    "View OFF removes the extra study, not human hands/feet or eligible part appearance directives on full-body views."
+  ],
+  "temporary_service_stopped": true,
+  "commit_or_push": false
+}

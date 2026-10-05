@@ -19,6 +19,7 @@ const EN = {
   lastView: 'Keep at least one view selected.', sizeError: 'Enter a whole number of at least 32, in steps of 32.', maxSize: 'Exceeds the ComfyUI resolution limit.', integer: 'JSON integer fields cannot use decimal or exponent notation.', version: 'Only schema_version 1 or 2 is supported.', views: 'Select one or more of the seven known view IDs.', json: 'The JSON syntax is invalid.', duplicateKey: 'Duplicate JSON key', keys: 'Unknown or missing JSON keys', oversize: 'JSON must be no larger than 64 KiB.', mode: 'Size mode must be auto or manual.', object: 'Expected a JSON object', string: 'state_json must be a string.', preview: 'The server returned an invalid preview.', timeout: 'Preview timed out. The saved selection is unchanged.', network: 'Could not reach the preview endpoint. Queue still validates on the server.',
   fallback: 'Graphical designer unavailable. Edit the normal state_json string; Python compilation is still available.',
   layoutTab: 'Layout', partsTab: 'Part prompts', part: 'Body part', partPrompt: 'Prompt', partCount: 'parts specified',
+  generatedPrompt: 'Generated prompt', characterOnly: 'Character reference only', layoutReference: 'Layout + character references',
   partPlaceholder: 'Describe colors, shapes, patterns, text, or placement freely.',
   partHint: 'One instruction per part, shared across related selected views. Leave blank to follow the reference.',
   partSaved: 'Saved as you type. Enter adds a new line.', partGuide: 'The layout guide uses mannequins; it does not visualize these instructions.',
@@ -42,6 +43,7 @@ const JA = {
   lastView: '最低1つのビューを選択してください。', sizeError: '32以上の32倍数を整数で入力してください。', maxSize: 'ComfyUIの解像度上限を超えています。', integer: 'JSONの整数項目に小数・指数表記は使えません。', version: 'schema_versionは整数の1または2に対応しています。', views: '既知の7種類から1つ以上のビューを指定してください。', json: 'JSONの構文が不正です。', duplicateKey: 'JSONキーが重複しています', keys: 'JSONキーの不足または未知のキー', oversize: 'JSONは64 KiB以内にしてください。', mode: 'size.modeはautoまたはmanualにしてください。', object: 'JSONオブジェクトが必要です', string: 'state_jsonは文字列で指定してください。', preview: 'サーバーからのプレビューが不正です。', timeout: 'プレビューがタイムアウトしました。保存済み選択は維持しています。', network: 'プレビューを取得できません。Queue時にはサーバーで検証されます。',
   fallback: 'GUIデザイナーを利用できません。通常のstate_json文字列を編集してください。Python実行は利用可能です。',
   layoutTab: 'レイアウト', partsTab: '部位指定', part: '部位', partPrompt: 'プロンプト', partCount: '部位を指定中',
+  generatedPrompt: '生成プロンプト', characterOnly: '人物参照のみ', layoutReference: '配置画像＋人物参照',
   partPlaceholder: '色・形・柄・文字・位置などを自由に入力',
   partHint: '部位ごとの指示を、関連する選択ビューへ共通で反映します。空欄なら参照画像に従います。',
   partSaved: '入力は即時保存。Enterで改行します。', partGuide: 'マネキンは配置確認用です。部位指定の見た目はプレビューに反映しません。',
@@ -67,7 +69,7 @@ export function loadStyles() {
 }
 
 /** Real UI renderer shared by the ComfyUI extension and the browser test harness. */
-export function createDesignerUI({controller, locale = 'en', compatibilityWarning = false}) {
+export function createDesignerUI({controller, locale = 'en', compatibilityWarning = false, useLayoutImage = () => false}) {
   loadStyles();
   const id = `q21-sheet-${++sequence}`;
   const root = element('section', 'q21-designer'); root.dataset.instance = id; root.setAttribute('aria-label', PROFILE.displayName);
@@ -162,9 +164,11 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   listen(partInput, 'keydown', event => event.stopPropagation()); // Enter remains a native newline.
   listen(partSelect, 'change', () => { selectedPart = partSelect.value; render(); });
   const footer = element('div', 'q21-footer');
+  const generated = element('details', 'q21-generated-prompt'), generatedSummary = element('summary'), generatedText = element('pre');
+  generatedText.dataset.generatedPrompt = ''; generated.append(generatedSummary, generatedText);
   const jsonDetails = element('details', 'q21-json-editor'), summary = element('summary'), rawInput = element('textarea'), rawHint = element('p'), apply = button('q21-apply'); rawInput.spellcheck = false; rawInput.setAttribute('aria-label', 'state_json');
   listen(apply, 'click', () => act(() => controller.applyRaw(rawInput.value))); jsonDetails.append(summary, rawInput, rawHint, apply);
-  root.append(header, cards, presetRow, controls, metrics, warning, status, errorBox, retry, previewHead, stage, partPanel, footer, jsonDetails);
+  root.append(header, cards, presetRow, controls, metrics, warning, status, errorBox, retry, previewHead, stage, partPanel, footer, generated, jsonDetails);
   // Keep node dragging out of text controls, but let browser keyboard accessibility work.
   listen(root, 'pointerdown', event => event.stopPropagation());
   const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(() => fitSheet()) : null;
@@ -233,6 +237,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     const availableW = Math.max(1, stage.clientWidth - 30), availableH = Math.max(1, stage.clientHeight - 28);
     const scale = Math.min(availableW / p.width, availableH / p.height);
     canvas.style.width = `${p.width * scale}px`; canvas.style.height = `${p.height * scale}px`;
+    canvas.style.setProperty('--q21-frame-width', `${Math.max(1, Math.floor((Math.min(p.width, p.height) + 128) / 256)) * scale}px`);
   }
   function renderPreview() {
     const p = controller.preview, valid = Boolean(p && controller.state);
@@ -249,7 +254,6 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
           box.append(createArtwork(panel.id, `${id}-preview-${panel.id}`));
           canvas.append(box);
         }
-        if (p.layout.feet_y !== null) { const line = element('div', 'q21-baseline'); line.style.top = `${p.layout.feet_y * 100}%`; canvas.append(line); }
       }
     }
     for (const box of canvas.querySelectorAll('[data-panel]')) box.setAttribute('aria-label', t[box.dataset.panel]);
@@ -283,6 +287,8 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     errorBox.textContent = problem ? `${controller.error ? `${t.invalid} ` : ''}${errorText(problem, language)}` : ''; errorBox.hidden = !problem;
     retry.textContent = t.retry; retry.hidden = !controller.previewError || !state;
     footer.textContent = activeTab === 'parts' ? t.partGuide : t.caveat;
+    generatedSummary.textContent = `${t.generatedPrompt} · ${useLayoutImage() ? t.layoutReference : t.characterOnly}`;
+    generatedText.textContent = current && typeof p?.prompt === 'string' ? p.prompt : controller.pending ? t.pending : t.unavailable;
     summary.textContent = t.editJSON; rawHint.textContent = t.rawHint; apply.textContent = t.apply;
     jsonDetails.hidden = !controller.error && !controller.previewError;
     if (lastRaw !== controller.raw) { rawInput.value = typeof controller.raw === 'string' ? controller.raw : String(controller.raw); lastRaw = controller.raw; }

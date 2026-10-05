@@ -93,17 +93,21 @@
         0
       ],
       "negative_prompt": "",
-      "resolution": 1024,
+      "resolution": 0,
       "clip": [
         "478",
         0
       ],
       "images.image_1": [
-        "4",
-        0
+        "15",
+        3
       ],
       "vae": [
         "479",
+        0
+      ],
+      "images.image_2": [
+        "4",
         0
       ]
     }
@@ -126,7 +130,8 @@
   "15": {
     "class_type": "QwenImage21CharacterSheetDesigner",
     "inputs": {
-      "state_json": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"manual\",\"body_height\":672,\"manual_width\":1344,\"manual_height\":768},\"part_prompts\":{}}"
+      "state_json": "{\"schema_version\":2,\"views\":[\"face_front\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"manual\",\"body_height\":672,\"manual_width\":1344,\"manual_height\":768},\"part_prompts\":{}}",
+      "use_layout_image": true
     }
   },
   "20": {
@@ -139,6 +144,15 @@
       "images": [
         "481",
         0
+      ]
+    }
+  },
+  "496": {
+    "class_type": "PreviewImage",
+    "inputs": {
+      "images": [
+        "15",
+        3
       ]
     }
   }

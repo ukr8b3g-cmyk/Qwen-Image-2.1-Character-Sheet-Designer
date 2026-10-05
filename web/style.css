@@ -26,6 +26,9 @@
   scrollbar-width: thin;
 }
 .q21-designer * { box-sizing: border-box; }
+.q21-generated-prompt { font-size: 14px; }
+.q21-generated-prompt summary { cursor: pointer; color: var(--q21-muted); }
+.q21-generated-prompt pre { max-height: 220px; overflow: auto; white-space: pre-wrap; overflow-wrap: anywhere; user-select: text; padding: 8px; border: 1px solid #4c5e70; border-radius: 5px; }
 .q21-designer > :not(.q21-stage):not(.q21-part-panel) { flex-shrink: 0; }
 .q21-designer [hidden] { display: none !important; }
 .q21-designer button, .q21-designer input, .q21-designer select, .q21-designer textarea { font: inherit; color: inherit; }
@@ -77,10 +80,10 @@
 .q21-preview-head { display: flex; justify-content: space-between; gap: 8px; font-size: 16px; letter-spacing: .8px; color: #ccd8e4; }
 .q21-preview-tag { font-size: 14px; letter-spacing: 0; color: var(--q21-muted); }
 .q21-stage { position: relative; min-height: 230px; flex: 1; display: flex; justify-content: center; align-items: center; overflow: hidden; border: 1px solid #586f81; border-radius: 8px; background: radial-gradient(ellipse at 50% 45%, #303e49, #202a34 73%); }
-.q21-sheet { position: relative; flex: none; background: linear-gradient(140deg, #e5e5df, #b6c0be); border-radius: 2px; box-shadow: 0 9px 25px #0006; overflow: hidden; }
+.q21-sheet { position: relative; flex: none; background: white; border-radius: 2px; box-shadow: 0 9px 25px #0006; overflow: hidden; }
 .q21-panel { position: absolute; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .q21-panel svg, .q21-panel img { display: block; width: 100%; height: 100%; object-fit: contain; overflow: hidden; }
-.q21-baseline { position: absolute; left: 3%; right: 3%; height: 1px; background: #608a8425; pointer-events: none; }
+.q21-panel::after { content: ""; position: absolute; inset: 0; box-sizing: border-box; border: var(--q21-frame-width, 1px) solid #000; pointer-events: none; }
 .q21-empty { padding: 20px; font-size: 16px; text-align: center; color: var(--q21-muted); }
 .q21-stale { opacity: .75; }
 .q21-footer { font-size: 14px; line-height: 1.4; color: var(--q21-muted); }

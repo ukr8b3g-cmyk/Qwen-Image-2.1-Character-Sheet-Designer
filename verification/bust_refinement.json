@@ -1,0 +1,218 @@
+{
+  "checked_utc": "2026-10-05T05:14:29.683776+00:00",
+  "source_base_commit": "604ec0c6ea4046a3460e2c662d41f564870c15d8",
+  "research": {
+    "official": [
+      {
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/main/README.md",
+        "git_blob": "04c22481f6a562cd51ba4a297b8eec014b88d4ad"
+      },
+      {
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/main/prompt_rewrite/prompts/system_prompt_edit.txt",
+        "git_blob": "424fcfbe2968973c57fe67e3d629df1b0a1e1550"
+      },
+      {
+        "url": "https://github.com/QwenLM/Qwen-Image-2.1/blob/main/prompt_rewrite/README.md",
+        "git_blob": "ca940686195f708b19490cc1309f9f5f5a9a73d1"
+      }
+    ]
+  },
+  "python": {
+    "suites": [
+      "tests/test_compiler.py",
+      "tests/test_api_node.py",
+      "tests/test_workflows.py"
+    ],
+    "exit_code": 0,
+    "passed": 553,
+    "failed": 0,
+    "new_dependencies": false
+  },
+  "prompt": {
+    "baseline_chars": 2672,
+    "final_chars": 2000,
+    "operation_first": true,
+    "guided_layout_prose_removed": true,
+    "one_paragraph_for_generated_prose": true,
+    "part_input_verbatim": true
+  },
+  "gpu": {
+    "server_restart": false,
+    "designer_integration": "Saved layout PNG and exact compiled prompt; running Designer class was not reloaded",
+    "steps": 25,
+    "cfg": 1,
+    "resolution": 0,
+    "negative_prompt": "",
+    "runs": [
+      {
+        "candidate": "candidate_a",
+        "status": "success",
+        "seconds": 221.614,
+        "prompt_chars": 1659,
+        "image_file": "qwen_sheet_designer_validation/bust_candidate_a_seed1017736335595175_00001_.png",
+        "image_size": [
+          2816,
+          1280
+        ],
+        "image_mode": "RGBA",
+        "png_graph_matches_except_executor_is_changed": true,
+        "same_model_seed_sampler_and_references": true,
+        "selected": false
+      },
+      {
+        "candidate": "candidate_b",
+        "status": "success",
+        "seconds": 221.537,
+        "prompt_chars": 2111,
+        "image_file": "qwen_sheet_designer_validation/bust_candidate_b_seed1017736335595175_00001_.png",
+        "image_size": [
+          2816,
+          1280
+        ],
+        "image_mode": "RGBA",
+        "png_graph_matches_except_executor_is_changed": true,
+        "same_model_seed_sampler_and_references": true,
+        "selected": false
+      },
+      {
+        "candidate": "candidate_c",
+        "status": "success",
+        "seconds": 221.466,
+        "prompt_chars": 2000,
+        "image_file": "qwen_sheet_designer_validation/bust_candidate_c_seed1017736335595175_00001_.png",
+        "image_size": [
+          2816,
+          1280
+        ],
+        "image_mode": "RGBA",
+        "png_graph_matches_except_executor_is_changed": true,
+        "same_model_seed_sampler_and_references": true,
+        "selected": true
+      }
+    ],
+    "extent_proxy": {
+      "method": "RGB minimum channel below 225 within fixed template portrait columns; proxy extent, not semantic crop scoring",
+      "measurements": {
+        "guide": {
+          "face_front": {
+            "dark_rgb_bbox": [
+              99,
+              324,
+              630,
+              959
+            ],
+            "height": 635
+          },
+          "face_left": {
+            "dark_rgb_bbox": [
+              781,
+              283,
+              1160,
+              1050
+            ],
+            "height": 767
+          }
+        },
+        "previous": {
+          "face_front": {
+            "dark_rgb_bbox": [
+              86,
+              119,
+              646,
+              1147
+            ],
+            "height": 1028
+          },
+          "face_left": {
+            "dark_rgb_bbox": [
+              691,
+              160,
+              1251,
+              1146
+            ],
+            "height": 986
+          }
+        },
+        "candidate_a": {
+          "face_front": {
+            "dark_rgb_bbox": [
+              103,
+              220,
+              599,
+              916
+            ],
+            "height": 696
+          },
+          "face_left": {
+            "dark_rgb_bbox": [
+              698,
+              227,
+              1090,
+              916
+            ],
+            "height": 689
+          }
+        },
+        "candidate_b": {
+          "face_front": {
+            "dark_rgb_bbox": [
+              106,
+              217,
+              568,
+              900
+            ],
+            "height": 683
+          },
+          "face_left": {
+            "dark_rgb_bbox": [
+              705,
+              224,
+              1066,
+              901
+            ],
+            "height": 677
+          }
+        },
+        "candidate_c": {
+          "face_front": {
+            "dark_rgb_bbox": [
+              107,
+              245,
+              580,
+              998
+            ],
+            "height": 753
+          },
+          "face_left": {
+            "dark_rgb_bbox": [
+              708,
+              246,
+              1074,
+              972
+            ],
+            "height": 726
+          }
+        }
+      }
+    },
+    "not_validated": [
+      "Other identities or seeds",
+      "All view combinations on GPU",
+      "Part edits on GPU",
+      "Pixel-exact layout adherence",
+      "Peak VRAM comparison"
+    ],
+    "visual_observations": [
+      "Front bust faces the camera directly",
+      "Both enlarged portraits terminate through the chest rather than at the waist",
+      "Profile bust faces the right edge of the canvas",
+      "Three opaque complete full-body views remain"
+    ],
+    "remaining": [
+      "Full-body profile still faces the left edge despite the right-facing guide and prompt",
+      "Subject positions, extents and costume patterns do not match the guide or reference exactly"
+    ]
+  },
+  "publication": "not requested",
+  "selection_reason": "Retains bust framing and front-facing head; combines the appearance-preservation clauses with a shorter guided prompt and less repeated view naming. Overall template placement remains approximate."
+}
