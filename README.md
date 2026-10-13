@@ -1,5 +1,14 @@
 # Qwen Image 2.1 Character Sheet Designer
 
+## v1.4.1の主な変更点（前回公開版0.1.0から）
+
+- **Batch Out**：選択ビューを1枚ずつ生成。Autoはビュー別サイズ、Manualは指定幅×高さを各画像に適用。
+- **追加参照3枠・Sheet Encode**：参照の役割分けと明示的な範囲指定に対応。
+- **部位別選択**：衣装・手・履物をカード直下で選択。すべてAutoが初期値。
+- **生成指示の改善**：グローブ着用、左右の履物、靴の被覆、Autoの着用衣装を改善。
+
+旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
+
 **Package v1.4.1** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
