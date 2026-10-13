@@ -1,0 +1,1331 @@
+[
+  {
+    "id": "v1",
+    "raw": "{\"schema_version\": 1, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "v2",
+    "raw": "{\"schema_version\": 2, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"hands\": \"  \\u661f\\n\\u9769\\ud83e\\udde4  \"}}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {
+        "hands": "  \u661f\n\u9769\ud83e\udde4  "
+      },
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "v3",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "five",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "basic",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "detail",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"face_right\", \"face_3q_left\", \"face_3q_right\", \"face_back\", \"body_front\", \"body_left\", \"body_back\", \"clothing_front\", \"clothing_back\", \"hands\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "face_right",
+        "face_3q_left",
+        "face_3q_right",
+        "face_back",
+        "body_front",
+        "body_left",
+        "body_back",
+        "clothing_front",
+        "clothing_back",
+        "hands",
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "turnaround",
+    "raw": "{\"schema_version\": 3, \"views\": [\"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "single",
+    "raw": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "body_front"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "head",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"face_right\", \"face_3q_left\", \"face_3q_right\", \"face_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "face_right",
+        "face_3q_left",
+        "face_3q_right",
+        "face_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "clothing",
+    "raw": "{\"schema_version\": 3, \"views\": [\"clothing_front\", \"clothing_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "clothing_front",
+        "clothing_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "hand_stateNone",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": null, \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "hand_stateTrue",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": true, \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "hand_state1",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": 1, \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "hand_state'x'",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"x\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "hand_state[]",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": [], \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "hand_state{}",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": {}, \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "missing-hand_state",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "clothing_modeNone",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": null}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "clothing_modeTrue",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": true}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "clothing_mode1",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": 1}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "clothing_mode'x'",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"x\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "clothing_mode[]",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": []}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "clothing_mode{}",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": {}}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "missing-clothing_mode",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-same_character",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-face",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"face\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "face",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-head",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"head\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "head",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-clothing",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"clothing\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "clothing",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-clothing_front",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"clothing_front\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "clothing_front",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-clothing_back",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"clothing_back\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "clothing_back",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-hands",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"hands\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "hands",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "role-footwear",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"footwear\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "footwear",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "face_front",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "face_left",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_left\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_left"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "face_right",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_right\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_right"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "face_3q_left",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_3q_left\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_3q_left"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "face_3q_right",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_3q_right\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_3q_right"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "face_back",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "body_front",
+    "raw": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "body_front"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "body_left",
+    "raw": "{\"schema_version\": 3, \"views\": [\"body_left\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "body_left"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "body_back",
+    "raw": "{\"schema_version\": 3, \"views\": [\"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "clothing_front",
+    "raw": "{\"schema_version\": 3, \"views\": [\"clothing_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "clothing_front"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "clothing_back",
+    "raw": "{\"schema_version\": 3, \"views\": [\"clothing_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "clothing_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "hands",
+    "raw": "{\"schema_version\": 3, \"views\": [\"hands\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "hands"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "feet",
+    "raw": "{\"schema_version\": 3, \"views\": [\"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "canonical-views",
+    "raw": "{\"schema_version\": 3, \"views\": [\"feet\", \"hands\", \"clothing_back\", \"clothing_front\", \"body_back\", \"body_left\", \"body_front\", \"face_back\", \"face_3q_right\", \"face_3q_left\", \"face_right\", \"face_left\", \"face_front\", \"face_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "face_right",
+        "face_3q_left",
+        "face_3q_right",
+        "face_back",
+        "body_front",
+        "body_left",
+        "body_back",
+        "clothing_front",
+        "clothing_back",
+        "hands",
+        "feet"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "body_heightTrue",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": true, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "body_heightNone",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": null, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "body_height32.0",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 32.0, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "body_height'32'",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": \"32\", \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "body_height0",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 0, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "body_height31",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 31, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "body_height33",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 33, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "body_height16416",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 16416, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_widthTrue",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": true, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_widthNone",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": null, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_width32.0",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 32.0, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_width'32'",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": \"32\", \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_width0",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 0, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_width31",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 31, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_width33",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 33, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_width16416",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 16416, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_heightTrue",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": true}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_heightNone",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": null}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_height32.0",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 32.0}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_height'32'",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": \"32\"}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_height0",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 0}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_height31",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 31}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_height33",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 33}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "manual_height16416",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 16416}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "missing-views",
+    "raw": "{\"schema_version\": 3, \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "missing-part_prompts",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "missing-reference_roles",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "part-73",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"hands\": \"\\t\\n\\ufeff\"}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {},
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "part-74",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"hands\": \"\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\\u5b57\"}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {
+        "hands": "\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57\u5b57"
+      },
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "part-75",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"hands\": \"\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\"}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": true,
+    "normalized": {
+      "schema_version": 3,
+      "views": [
+        "face_front",
+        "face_left",
+        "body_front",
+        "body_left",
+        "body_back"
+      ],
+      "size": {
+        "mode": "auto",
+        "body_height": 1120,
+        "manual_width": 2208,
+        "manual_height": 1280
+      },
+      "part_prompts": {
+        "hands": "\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4\ud83e\udde4"
+      },
+      "reference_roles": {
+        "reference_image_1": "same_character",
+        "reference_image_2": "same_character",
+        "reference_image_3": "same_character"
+      },
+      "hand_state": "reference",
+      "clothing_mode": "worn"
+    }
+  },
+  {
+    "id": "part-76",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"hands\": \"\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\\ud83e\\udde4\"}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "part-77",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"hands\": \"\\ud800\"}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\"}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "duplicate-key",
+    "raw": "{\"schema_version\":3,\"schema_version\":3}",
+    "max_resolution": 16384,
+    "valid": false
+  },
+  {
+    "id": "unknown",
+    "raw": "{\"schema_version\": 3, \"views\": [\"face_front\", \"face_left\", \"body_front\", \"body_left\", \"body_back\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {}, \"reference_roles\": {\"reference_image_1\": \"same_character\", \"reference_image_2\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"path\": \"x\"}",
+    "max_resolution": 16384,
+    "valid": false
+  }
+]

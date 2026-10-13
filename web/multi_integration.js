@@ -1,0 +1,235 @@
+import {getLocale, subscribeLocale} from './state.js';
+import {createDesignerUI, translations} from './multi_ui.js';
+import {MultiReferenceController, REFERENCE_INPUTS} from './multi_state.js';
+const instances = new WeakMap();
+const textareaRecovery = new WeakMap();
+const pendingReinstall = new WeakMap();
+import {PROFILE} from './multi_profile.js';
+export const NODE_TYPE = PROFILE.nodeType;
+export const DEFAULT_NODE_SIZE = [1060, 1350];
+
+export function previewRequester(api, useLayoutImage = () => false, readStyle = () => 'none', readReferencePresence = () => ({character_image: false, reference_image_1: false, reference_image_2: false, reference_image_3: false}), readBatchOut = () => false, profile = PROFILE) {
+  return async (raw, signal) => {
+    const response = await api.fetchApi(profile.previewPath, {
+      method: 'POST', headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({state_json: raw, use_layout_image: useLayoutImage(), style: readStyle(), reference_presence: readReferencePresence(), batch_out: readBatchOut()}), signal,
+    });
+    let data;
+    try { data = await response.json(); } catch { throw new Error(`Preview HTTP ${response.status}`); }
+    if (!response.ok) { const error = new Error(data?.error?.message || `Preview HTTP ${response.status}`); error.serverMessage = error.message; error.serverCode = data?.error?.code; throw error; }
+    return data;
+  };
+}
+export function graphTransaction(node, change, canvas) {
+  const graph = node.graph;
+  const graphEvents = typeof graph?.beforeChange === 'function' && typeof graph?.afterChange === 'function';
+  const canvasEvents = typeof canvas?.emitBeforeChange === 'function' && typeof canvas?.emitAfterChange === 'function';
+  // Current Frontend history listens to canvas events, not graph callbacks.
+  // Match native canvas operations, retaining legacy graph notifications and
+  // balancing both pairs even when a commit fails. Nested pairs capture once.
+  if (canvasEvents) canvas.emitBeforeChange();
+  try {
+    if (graphEvents) {
+      graph.beforeChange(node);
+      try { change(); } finally { graph.afterChange(node); }
+    } else change();
+  } finally { if (canvasEvents) canvas.emitAfterChange(); }
+  node.setDirtyCanvas?.(true, true);
+}
+/** Chain without altering prior return values; restore only our own outer hook. */
+function chain(node, name, after) {
+  const prior = node[name];
+  const wrapped = function (...args) { const result = prior?.apply(this, args); after.apply(this, args); return result; };
+  node[name] = wrapped;
+  return () => { if (node[name] === wrapped) { if (prior === undefined) delete node[name]; else node[name] = prior; } };
+}
+function fallback(node, original, app, reason) {
+  const message = translations[getLocale(app)].fallback;
+  if (original) { original.options ??= {}; original.options.tooltip = message; original.options.dynamicPrompts = false; }
+  node.q21MultiDesignerCompatibility = {graphical: false, reason, message};
+  console.warn(`[Qwen Image 2.1 Multi Reference] ${message}`, reason);
+  app?.extensionManager?.toast?.add?.({severity: 'warn', summary: 'Qwen Image 2.1 Multi Reference', detail: message, life: 12000});
+  return null;
+}
+function removeVisualWidget(node, widget) {
+  if (!node.widgets?.includes(widget)) { widget.onRemove?.(); return; }
+  // Only our nonserialized UI is removed. Never retire the canonical STRING.
+  if (typeof node.removeWidget === 'function') node.removeWidget(widget);
+  else { widget.onRemove?.(); node.widgets.splice(node.widgets.indexOf(widget), 1); }
+  widget.element?.remove?.();
+}
+// Deletion can be followed by re-addition of the same node object. Keep a tiny
+// one-shot hook, rather than retaining a disposed controller or active observer.
+function recoverReaddedTextarea(node) {
+  const original = node.widgets?.find(widget => widget.name === 'state_json');
+  const element = original?.element ?? original?.inputEl;
+  if (element?.tagName !== 'TEXTAREA') return;
+  // Frontend aborts the original textarea's listeners when a node is deleted.
+  // Re-adding the same object does not recreate those listeners. Recover only
+  // input propagation, without double-calling a surviving official listener.
+  let recovery = textareaRecovery.get(node);
+  if (!recovery) {
+    recovery = {abort: null}; textareaRecovery.set(node, recovery);
+    // A single persistent cleanup hook reads the current controller. Creating
+    // a fresh hook each re-add would retain already-aborted hooks in core chains.
+    chain(node, 'onRemoved', () => { recovery.abort?.abort(); recovery.abort = null; });
+  }
+  recovery.abort?.abort(); recovery.abort = new AbortController();
+  element.addEventListener('input', () => {
+    if (original.value !== element.value) original.value = element.value;
+  }, {signal: recovery.abort.signal});
+}
+function armReinstall(node, app, api, profile = PROFILE) {
+  if (pendingReinstall.has(node)) return;
+  const unchain = chain(node, 'onAdded', () => {
+    unchain(); pendingReinstall.delete(node);
+    recoverReaddedTextarea(node); installDesigner(node, app, api, profile);
+  });
+  pendingReinstall.set(node, unchain);
+}
+export function installDesigner(node, app, api, profile = PROFILE) {
+  if (instances.has(node)) return instances.get(node);
+  pendingReinstall.get(node)?.(); pendingReinstall.delete(node);
+  const multiReference = true, reference = true;
+  const original = node.widgets?.find(widget => widget.name === 'state_json');
+  if (!original || typeof node.addDOMWidget !== 'function' || typeof document === 'undefined') return fallback(node, original, app, 'DOM widget API unavailable');
+  const originalIndex = node.widgets.indexOf(original);
+  const existingWidgets = new Set(node.widgets);
+  const hookNames = ['onAdded', 'onRemoved', 'onResize', 'onConfigure'];
+  const previousHooks = Object.fromEntries(hookNames.map(name => [name, node[name]]));
+  const restoreHooks = expected => {
+    for (const name of hookNames) if (!expected || node[name] === expected[name]) {
+      if (previousHooks[name] === undefined) delete node[name]; else node[name] = previousHooks[name];
+    }
+  };
+  const element = original.element ?? original.inputEl;
+  // options.hidden is the public extension-hiding flag on current Frontend;
+  // widget.hidden can also include connection suppression, which we must not own.
+  const previousHidden = original.options?.hidden ?? original.hidden;
+  const previousElementHidden = element?.hidden;
+  const previousSetValue = original.options?.setValue;
+  const previousCallback = original.callback;
+  let ui, widget, record, installedHooks, observer, frame, ready = false;
+  let unsubscribe = () => {}, restoreValueHook = () => {};
+  const useLayoutImage = () => reference && node.widgets.find(widget => widget.name === 'use_layout_image')?.value === true;
+  const styleWidget = reference ? node.widgets.find(widget => widget.name === 'style') : null;
+  const previousStyleHidden = styleWidget?.options?.hidden ?? styleWidget?.hidden;
+  const readStyle = () => styleWidget?.value ?? 'none';
+  const readBatchOut = () => node.widgets.find(widget => widget.name === 'batch_out')?.value === true;
+  const readReferencePresence = () => Object.fromEntries(['character_image', ...REFERENCE_INPUTS].map(name => {
+    const slot = node.inputs?.findIndex(input => input.name === name) ?? -1;
+    if (typeof node.isInputConnected === 'function') return [name, slot >= 0 && node.isInputConnected(slot)];
+    const link = node.inputs?.[slot]?.link;
+    return [name, link !== null && link !== undefined];
+  }));
+  let observedLayoutImage = useLayoutImage(), observedStyle = readStyle(), observedPresence = JSON.stringify(readReferencePresence()), observedBatchOut = readBatchOut();
+  const Controller = MultiReferenceController;
+  const controller = new Controller({
+    raw: original.value, readRaw: () => original.value, writeRaw: value => { original.value = value; },
+    requestPreview: previewRequester(api, useLayoutImage, readStyle, readReferencePresence, readBatchOut, profile),
+    transaction: change => graphTransaction(node, change, app?.canvas),
+    onCommit: (next, previous) => { node.onWidgetChanged?.('state_json', next, previous, original); },
+    onChange: (_, reason) => ui?.render(reason),
+  });
+  const sync = () => {
+    if (!ready || record?.disposed) return;
+    controller.syncFromSource();
+    const next = useLayoutImage(), style = readStyle(), presence = JSON.stringify(readReferencePresence()), batchOut = readBatchOut();
+    if (next !== observedLayoutImage || style !== observedStyle || (multiReference && presence !== observedPresence) || batchOut !== observedBatchOut) {
+      observedLayoutImage = next; observedStyle = style; observedPresence = presence; observedBatchOut = batchOut; void controller.refreshPreview();
+    }
+  };
+  const writeStyle = styleWidget ? value => {
+    const previous = readStyle(); if (value === previous) return;
+    graphTransaction(node, () => { styleWidget.value = value; node.onWidgetChanged?.('style', value, previous, styleWidget); }, app?.canvas);
+    sync();
+  } : null;
+  try {
+    ui = createDesignerUI({controller, locale: getLocale(app), reference, multiReference, readReferencePresence, useLayoutImage, readStyle, readBatchOut, writeStyle, perOutputReferences: Boolean(profile.perOutputReferences), partChoices: Boolean(profile.partChoices), compatibilityWarning: Boolean(node.graph && (typeof node.graph.beforeChange !== 'function' || typeof node.graph.afterChange !== 'function'))});
+    let name = 'q21_mr_designer_ui', suffix = 1;
+    while (node.widgets.some(candidate => candidate.name === name)) name = `q21_mr_designer_ui_${suffix++}`;
+    widget = node.addDOMWidget(name, 'Q21_MR_DESIGNER_UI', ui.root, {
+      getValue: () => original.value,
+      // addDOMWidget may restore positional data before it returns. That data
+      // belongs to canonical widgets, never to this presentation-only widget.
+      setValue: value => { if (ready && !record?.disposed) controller.restore(value); },
+      getMinHeight: () => multiReference ? 1120 : reference ? 870 : 760, getHeight: () => multiReference ? 1200 : reference ? 950 : 840,
+      // Frontend's legacy properties panel writes its local preview width onto
+      // this same widget. Return to the public node-width default after drawing
+      // so that opening the sidebar cannot shrink the canvas DOM presentation.
+      onDraw: drawn => { drawn.width = undefined; },
+      hideOnZoom: false, serialize: false, dynamicPrompts: false,
+    });
+    if (!widget || !node.widgets.includes(widget)) throw new Error('addDOMWidget did not return an installed widget');
+    widget.options ??= {}; widget.options.serialize = false; widget.serialize = false;
+    original.options ??= {}; original.options.dynamicPrompts = false;
+    // Preserve official setter/callback semantics, including their receivers,
+    // return values and store updates. Never redefine original.value.
+    if (typeof previousSetValue === 'function') {
+      const setValue = function (...args) { const result = previousSetValue.apply(this, args); sync(); return result; };
+      original.options.setValue = setValue;
+      restoreValueHook = () => { if (original.options.setValue === setValue) original.options.setValue = previousSetValue; };
+    } else {
+      const callback = function (...args) { const result = previousCallback?.apply(this, args); sync(); return result; };
+      original.callback = callback;
+      restoreValueHook = () => { if (original.callback === callback) { if (previousCallback === undefined) delete original.callback; else original.callback = previousCallback; } };
+    }
+    original.hidden = true;
+    if (styleWidget) styleWidget.hidden = true;
+    if (element) element.hidden = true;
+    const unhide = () => { original.hidden = previousHidden; if (element) element.hidden = previousElementHidden; if (styleWidget) styleWidget.hidden = previousStyleHidden; };
+    unsubscribe = subscribeLocale(app, value => { sync(); ui.setLocale(value); });
+    record = {controller, ui, widget, original, originalIndex, sync, dispose({reinstall = true} = {}) {
+      if (record.disposed) return; record.disposed = true; ready = false;
+      if (frame !== undefined) window.cancelAnimationFrame?.(frame);
+      if (observer !== undefined) clearInterval(observer);
+      unsubscribe(); restoreValueHook(); unhide(); controller.dispose(); ui.dispose();
+      removeVisualWidget(node, widget); restoreHooks(installedHooks); instances.delete(node);
+      if (reinstall) armReinstall(node, app, api, profile);
+    }, afterConfigure() { if (!record.disposed) { observedLayoutImage = useLayoutImage(); observedStyle = readStyle(); observedBatchOut = readBatchOut(); controller.restore(original.value); } }};
+    instances.set(node, record);
+    chain(node, 'onConfigure', () => record.afterConfigure());
+    chain(node, 'onRemoved', () => record.dispose());
+    // If a later extension wrapped our hooks, a disposed UI may still occur in
+    // its chain. Ensure it cannot remain registered when that node is re-added.
+    chain(node, 'onAdded', () => { if (record.disposed) widget.onRemove?.(); else sync(); });
+    installedHooks = Object.fromEntries(hookNames.map(name => [name, node[name]]));
+    node.q21MultiDesignerCompatibility = {graphical: true, undoTransactions: typeof node.graph?.beforeChange === 'function' && typeof node.graph?.afterChange === 'function'};
+    const nodeSize = DEFAULT_NODE_SIZE;
+    if (typeof node.setSize === 'function') node.setSize([Math.max(nodeSize[0], node.size?.[0] || 0), Math.max(nodeSize[1], node.size?.[1] || 0)]);
+    ready = true;
+    // Direct store edits do not call widget callbacks. Read only the public
+    // canonical value, at most once per frame (timer fallback in nonvisual hosts).
+    // There is no extension import/dependency on Frontend's private stores.
+    if (typeof window.requestAnimationFrame === 'function') {
+      const observe = () => { if (record.disposed) return; sync(); frame = window.requestAnimationFrame(observe); };
+      frame = window.requestAnimationFrame(observe);
+    } else { observer = setInterval(sync, 100); observer.unref?.(); }
+    ui.render();
+    return record;
+  } catch (error) {
+    ready = false;
+    if (frame !== undefined) window.cancelAnimationFrame?.(frame);
+    if (observer !== undefined) clearInterval(observer);
+    unsubscribe(); restoreValueHook(); controller.dispose(); ui?.dispose(); instances.delete(node);
+    original.hidden = previousHidden;
+    if (styleWidget) styleWidget.hidden = previousStyleHidden;
+    if (element) element.hidden = previousElementHidden;
+    // addDOMWidget may append/register a widget and then throw before returning.
+    for (const added of [...node.widgets]) if (!existingWidgets.has(added)) {
+      try { removeVisualWidget(node, added); } catch { /* Keep rollback best-effort. */ }
+    }
+    restoreHooks();
+    return fallback(node, original, app, error.message);
+  }
+}
+export function getDesigner(node) { return instances.get(node); }
+export function createExtension(app, api, profile = PROFILE) {
+  return {
+    name: profile.extensionName,
+    nodeCreated(node) { if (node.comfyClass === profile.nodeType || node.type === profile.nodeType) installDesigner(node, app, api, profile); },
+    afterConfigureGraph() {
+      for (const node of app.graph?._nodes ?? []) getDesigner(node)?.afterConfigure();
+    },
+  };
+}

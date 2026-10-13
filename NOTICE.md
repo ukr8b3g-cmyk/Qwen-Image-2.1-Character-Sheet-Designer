@@ -12,3 +12,9 @@ The isolated test excerpt in tests/upstream/core_empty_latent.py comes from Comf
 https://github.com/Comfy-Org/ComfyUI
 
 This implementation does not assign a new license to upstream material. Preserve applicable upstream notices and licensing when redistributing. No model weights, font files, or reference-image bytes are included.
+
+## Additional Reference functionality
+
+The additional Reference UI, state handling, layout code and six PNGs under `web/assets/multi_reference/` adapt the owner's H3 enhancements with Qwen-specific prompting and encoding. The original registered node, workflow and artwork remain available for compatibility. Independent node IDs, routes and DOM namespaces are used.
+
+Detailed local source snapshots and development records are retained locally and are not included in the public distribution. Public CPU/GPU validation scope is summarized in `verification/release_v141.json` and `verification/gpu_summary_v141.json`. Model weights and user reference-image bytes are not bundled.

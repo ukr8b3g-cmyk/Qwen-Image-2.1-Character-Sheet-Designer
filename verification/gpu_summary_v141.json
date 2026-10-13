@@ -1,0 +1,28 @@
+{
+  "package_version": "1.4.1",
+  "cpu_repair_tests_passed": 578,
+  "core_cpu_graphs": 12,
+  "cuda_initialized_for_cpu_checks": false,
+  "frozen_prompt_images_reviewed": 12,
+  "initial_candidate_passed": 6,
+  "initial_auto_failures_not_adopted": 2,
+  "revised_auto_cases_passed": 4,
+  "final_adopted_prompt_conditions": 10,
+  "live_designer_conditions": 4,
+  "live_designer_pixels_matching_accepted_candidates": 4,
+  "coverage": {
+    "reference_material_sets": 3,
+    "edit_seeds": 2,
+    "steps": 30,
+    "cfg": 1,
+    "webp_quality": 70
+  },
+  "limitations": [
+    "No guarantee for arbitrary references or every visual detail.",
+    "Boot upper framing may touch the image edge; lower legs can remain in foot details.",
+    "Glove-specific fingerless styles are CPU priority-checked, not GPU-tested.",
+    "Guide ON and frontend interaction were unchanged and not retested."
+  ],
+  "all_reference_images_guaranteed": false,
+  "note": "Public results summary. Detailed development records are preserved locally and are not distributed."
+}

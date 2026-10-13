@@ -10,7 +10,8 @@ TEMPLATE = ROOT / "workflows" / TEMPLATE_NAME
 
 
 def test_actual_saved_workflow():
-    assert [path.name for path in (ROOT / "workflows").iterdir()] == [TEMPLATE.name]
+    assert TEMPLATE.is_file()
+    assert (ROOT / "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json").is_file()
     graph = json.loads(TEMPLATE.read_text(encoding="utf-8"))
     report = validate_graph(graph)
     nodes = {n["id"]: n for n in graph["nodes"]}

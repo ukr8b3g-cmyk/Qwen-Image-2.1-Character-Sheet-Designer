@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "text_line_endings": "LF",
+  "files": [
+    {
+      "group": "h3",
+      "path": "web/assets/clothing_back.png",
+      "sha256": "79593c4d1e276ee2bb098ebae68c7aa8d8855354c4b43e23a45a571892536ccc",
+      "text": false
+    },
+    {
+      "group": "h3",
+      "path": "web/assets/clothing_front.png",
+      "sha256": "284b89ed1150e597a14e0c198a658c239daf85303dca190b06fce49eab82e339",
+      "text": false
+    },
+    {
+      "group": "h3",
+      "path": "web/assets/face_3q_left.png",
+      "sha256": "8641dc94f1b5403bbbe3bb02bf65f1adf8666636d64d6d5e22394226dac35b2a",
+      "text": false
+    },
+    {
+      "group": "h3",
+      "path": "web/assets/face_3q_right.png",
+      "sha256": "196b662f8f4f32c19fbbf7ddb590c7f8bb548d9fde9829df4ce90fa6a73b6c4b",
+      "text": false
+    },
+    {
+      "group": "h3",
+      "path": "web/assets/face_back.png",
+      "sha256": "55019cf29dbd3ca2c6897ba6dbb24c4b884657de5863348ac43c8fe8b7413ba3",
+      "text": false
+    },
+    {
+      "group": "h3",
+      "path": "web/assets/face_right.png",
+      "sha256": "52fda30d24dfa3eebe5b11b7734e8cc1c3a7e449f00c712e189a9c7cb707f5b0",
+      "text": false
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/__init__.py",
+      "sha256": "69b7e98fc1dfcea315875311e3c8297303217b0ddd5d0c6197e25435bbfd6890",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/common/__init__.py",
+      "sha256": "67ea61d122a3e62a21352e511ae9ce4ec1fbbefd0cf1e58fbab3269b58f6e66b",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/common/geometry.py",
+      "sha256": "6b557ffbdc3d5376b8736285ae732e4d39598fa63f2fa64487bbb7ed4edea96e",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/common/layout_serialization.py",
+      "sha256": "44a1053ec8b11dc35b397e74ce635ee9b9aaaa756b830e69be31c198d64e7246",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/common/state.py",
+      "sha256": "de97d0fc0feb09047fbeb8538de2b57d10d4a1b113f4ad41fccd8f5cfee29407",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/compiler.py",
+      "sha256": "a6b7e7abff3c572e675da6247a86ce01df4199e325b6c3772396602d507d9c6b",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/layout_image.py",
+      "sha256": "b9d0180c2891a093a637bcd7f268bc8efc0e99db1d7d380d2d738441aafc53d4",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/node.py",
+      "sha256": "02e2dfb2c959990fc9f5af81a2feabba9a1a5f8120536d72d068f3170a3da996",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "qwen_image21_character_sheet/preview.py",
+      "sha256": "60090a2143728d9ad9e8ff1d11b147b227882508d4eb1a314a5680990bc7c3b2",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/artwork.js",
+      "sha256": "b67dfc8adfbd74df845fcc7741645a45c0534726563d55d0c17b20ae1c51a356",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/artwork_config.js",
+      "sha256": "242f1dfaaf6f8b1308851d3c3a0760741df25dfa5627c060ffe21988f1c8e5ed",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/assets/mannequin-atlas.png",
+      "sha256": "7213405d101a6ccc0152304680ab5a1b4f17ba456086f3469b41be1319b2b8f6",
+      "text": false
+    },
+    {
+      "group": "qwen",
+      "path": "web/avatar.js",
+      "sha256": "3e7821ffb2afa3c653557fcffe8fa485287fe11bc5bf2eb480e8d806114550dc",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/integration.js",
+      "sha256": "f0cdcebb746e580c6c08071752f4b1f3bfc55c40cf7d2d9dd24ad3c5fcb192ff",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/profile.js",
+      "sha256": "d16a232282dd2c43452e4fdbde23398341c3bb78f999036972a61c9d73c9c5eb",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/qwen_image21_character_sheet_designer.js",
+      "sha256": "5c4ef35ee47f31a6ccee46c416ef6d9a0d05d692ad910bd916f2dfa8a983a370",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/state.js",
+      "sha256": "c3fd201d73d5dc1020fd6c7a923c76d04ec74b6fc5f13f3b9ef0a8968b4ada95",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/style.css",
+      "sha256": "2755dbb3c5375779f577289833633789d02fe023614e709c746e512301f78e63",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "web/ui.js",
+      "sha256": "e240e543cdd978b4a536bf5829607185dedad7c524ef9ff6a49a0848754bae3e",
+      "text": true
+    },
+    {
+      "group": "qwen",
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
+      "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
+      "text": true
+    }
+  ]
+}

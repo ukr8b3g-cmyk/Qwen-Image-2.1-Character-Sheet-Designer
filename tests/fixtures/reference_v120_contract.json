@@ -1,0 +1,1620 @@
+{
+  "source_compiler_sha256": "a3df945079411f21059b952036e781ce1fe15fe3137839530690a7df7c847926",
+  "state": {
+    "schema_version": 3,
+    "views": [
+      "face_front",
+      "body_front",
+      "body_back",
+      "clothing_front",
+      "hands",
+      "feet"
+    ],
+    "size": {
+      "mode": "auto",
+      "body_height": 1120,
+      "manual_width": 1536,
+      "manual_height": 864
+    },
+    "part_prompts": {},
+    "reference_roles": {
+      "reference_image_1": "face",
+      "reference_image_2": "clothing",
+      "reference_image_3": "footwear"
+    },
+    "hand_state": "reference",
+    "clothing_mode": "worn"
+  },
+  "cases": {
+    "auto-0-0": {
+      "count": 1,
+      "items": [
+        {
+          "width": 2816,
+          "height": 1280,
+          "layout": {
+            "canvas": [
+              2816,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.030682,
+                  0.0625,
+                  0.198864,
+                  0.875
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              },
+              {
+                "id": "body_front",
+                "rect": [
+                  0.245455,
+                  0.0625,
+                  0.159091,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "body_back",
+                "rect": [
+                  0.420455,
+                  0.0625,
+                  0.159091,
+                  0.875
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              },
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.595455,
+                  0.0625,
+                  0.159091,
+                  0.875
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              },
+              {
+                "id": "hands",
+                "rect": [
+                  0.770455,
+                  0.0625,
+                  0.198864,
+                  0.42
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.770455,
+                  0.5175,
+                  0.198864,
+                  0.42
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\",\"body_front\",\"body_back\",\"clothing_front\",\"hands\",\"feet\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "sheet",
+          "index": 1
+        }
+      ]
+    },
+    "auto-0-1": {
+      "count": 1,
+      "items": [
+        {
+          "width": 2816,
+          "height": 1280,
+          "layout": {
+            "canvas": [
+              2816,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.030682,
+                  0.0625,
+                  0.198864,
+                  0.875
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              },
+              {
+                "id": "body_front",
+                "rect": [
+                  0.245455,
+                  0.0625,
+                  0.159091,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "body_back",
+                "rect": [
+                  0.420455,
+                  0.0625,
+                  0.159091,
+                  0.875
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              },
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.595455,
+                  0.0625,
+                  0.159091,
+                  0.875
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              },
+              {
+                "id": "hands",
+                "rect": [
+                  0.770455,
+                  0.0625,
+                  0.198864,
+                  0.42
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.770455,
+                  0.5175,
+                  0.198864,
+                  0.42
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\",\"body_front\",\"body_back\",\"clothing_front\",\"hands\",\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "sheet",
+          "index": 1
+        }
+      ]
+    },
+    "auto-1-0": {
+      "count": 6,
+      "items": [
+        {
+          "width": 1024,
+          "height": 1024,
+          "layout": {
+            "canvas": [
+              1024,
+              1024
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.019531,
+                  0.019531,
+                  0.960938,
+                  0.960938
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "face_front": {
+                "rect": [
+                  124,
+                  50,
+                  776,
+                  924
+                ],
+                "crop": [
+                  0,
+                  75,
+                  470,
+                  560
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_01_face_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "face_front",
+          "index": 1
+        },
+        {
+          "width": 768,
+          "height": 1344,
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_02_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_front",
+          "index": 2
+        },
+        {
+          "width": 768,
+          "height": 1344,
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_back",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_back": {
+                "rect": [
+                  37,
+                  38,
+                  694,
+                  1269
+                ],
+                "crop": [
+                  71,
+                  648,
+                  317,
+                  580
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_03_body_back",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_back\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_back",
+          "index": 3
+        },
+        {
+          "width": 768,
+          "height": 1344,
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "clothing_front": {
+                "rect": [
+                  37,
+                  145,
+                  694,
+                  1053
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_04_clothing_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"clothing_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "clothing_front",
+          "index": 4
+        },
+        {
+          "width": 1184,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "hands",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "hands": {
+                "rect": [
+                  158,
+                  42,
+                  868,
+                  780
+                ],
+                "crop": [
+                  415,
+                  755,
+                  445,
+                  400
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_05_hands",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"hands\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"}]}",
+          "view_id": "hands",
+          "index": 5
+        },
+        {
+          "width": 1184,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_06_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "feet",
+          "index": 6
+        }
+      ]
+    },
+    "auto-1-1": {
+      "count": 6,
+      "items": [
+        {
+          "width": 1024,
+          "height": 1024,
+          "layout": {
+            "canvas": [
+              1024,
+              1024
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.019531,
+                  0.019531,
+                  0.960938,
+                  0.960938
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "face_front": {
+                "rect": [
+                  124,
+                  50,
+                  776,
+                  924
+                ],
+                "crop": [
+                  0,
+                  75,
+                  470,
+                  560
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_01_face_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "face_front",
+          "index": 1
+        },
+        {
+          "width": 768,
+          "height": 1344,
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_02_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_front",
+          "index": 2
+        },
+        {
+          "width": 768,
+          "height": 1344,
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_back",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_back": {
+                "rect": [
+                  37,
+                  38,
+                  694,
+                  1269
+                ],
+                "crop": [
+                  71,
+                  648,
+                  317,
+                  580
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_03_body_back",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_back\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_back",
+          "index": 3
+        },
+        {
+          "width": 768,
+          "height": 1344,
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "clothing_front": {
+                "rect": [
+                  37,
+                  145,
+                  694,
+                  1053
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_04_clothing_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"clothing_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "clothing_front",
+          "index": 4
+        },
+        {
+          "width": 1184,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "hands",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "hands": {
+                "rect": [
+                  158,
+                  42,
+                  868,
+                  780
+                ],
+                "crop": [
+                  415,
+                  755,
+                  445,
+                  400
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_05_hands",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"hands\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"}]}",
+          "view_id": "hands",
+          "index": 5
+        },
+        {
+          "width": 1184,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_06_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "feet",
+          "index": 6
+        }
+      ]
+    },
+    "manual-0-0": {
+      "count": 1,
+      "items": [
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.283203,
+                  0.960648
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              },
+              {
+                "id": "body_front",
+                "rect": [
+                  0.30013,
+                  0.019676,
+                  0.155599,
+                  0.960648
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "body_back",
+                "rect": [
+                  0.461589,
+                  0.019676,
+                  0.155599,
+                  0.960648
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              },
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.623047,
+                  0.019676,
+                  0.173177,
+                  0.960648
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              },
+              {
+                "id": "hands",
+                "rect": [
+                  0.802083,
+                  0.019676,
+                  0.186849,
+                  0.475694
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.802083,
+                  0.505787,
+                  0.186849,
+                  0.474537
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "face_front": {
+                "rect": [
+                  30,
+                  188,
+                  409,
+                  487
+                ],
+                "crop": [
+                  0,
+                  75,
+                  470,
+                  560
+                ]
+              },
+              "body_front": {
+                "rect": [
+                  472,
+                  429,
+                  217,
+                  411
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              },
+              "body_back": {
+                "rect": [
+                  716,
+                  429,
+                  225,
+                  411
+                ],
+                "crop": [
+                  71,
+                  648,
+                  317,
+                  580
+                ]
+              },
+              "clothing_front": {
+                "rect": [
+                  965,
+                  242,
+                  250,
+                  379
+                ]
+              },
+              "hands": {
+                "rect": [
+                  1241,
+                  101,
+                  269,
+                  242
+                ],
+                "crop": [
+                  415,
+                  755,
+                  445,
+                  400
+                ]
+              },
+              "feet": {
+                "rect": [
+                  1241,
+                  521,
+                  269,
+                  241
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\",\"body_front\",\"body_back\",\"clothing_front\",\"hands\",\"feet\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "sheet",
+          "index": 1
+        }
+      ]
+    },
+    "manual-0-1": {
+      "count": 1,
+      "items": [
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.283203,
+                  0.960648
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              },
+              {
+                "id": "body_front",
+                "rect": [
+                  0.30013,
+                  0.019676,
+                  0.155599,
+                  0.960648
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "body_back",
+                "rect": [
+                  0.461589,
+                  0.019676,
+                  0.155599,
+                  0.960648
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              },
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.623047,
+                  0.019676,
+                  0.173177,
+                  0.960648
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              },
+              {
+                "id": "hands",
+                "rect": [
+                  0.802083,
+                  0.019676,
+                  0.186849,
+                  0.475694
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.802083,
+                  0.505787,
+                  0.186849,
+                  0.474537
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "face_front": {
+                "rect": [
+                  30,
+                  188,
+                  409,
+                  487
+                ],
+                "crop": [
+                  0,
+                  75,
+                  470,
+                  560
+                ]
+              },
+              "body_front": {
+                "rect": [
+                  472,
+                  429,
+                  217,
+                  411
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              },
+              "body_back": {
+                "rect": [
+                  716,
+                  429,
+                  225,
+                  411
+                ],
+                "crop": [
+                  71,
+                  648,
+                  317,
+                  580
+                ]
+              },
+              "clothing_front": {
+                "rect": [
+                  965,
+                  242,
+                  250,
+                  379
+                ]
+              },
+              "hands": {
+                "rect": [
+                  1241,
+                  101,
+                  269,
+                  242
+                ],
+                "crop": [
+                  415,
+                  755,
+                  445,
+                  400
+                ]
+              },
+              "feet": {
+                "rect": [
+                  1241,
+                  521,
+                  269,
+                  241
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\",\"body_front\",\"body_back\",\"clothing_front\",\"hands\",\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "sheet",
+          "index": 1
+        }
+      ]
+    },
+    "manual-1-0": {
+      "count": 6,
+      "items": [
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "face_front": {
+                "rect": [
+                  440,
+                  42,
+                  655,
+                  780
+                ],
+                "crop": [
+                  0,
+                  75,
+                  470,
+                  560
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_01_face_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "face_front",
+          "index": 1
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  562,
+                  42,
+                  412,
+                  780
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_02_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_front",
+          "index": 2
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "body_back",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_back": {
+                "rect": [
+                  555,
+                  42,
+                  426,
+                  780
+                ],
+                "crop": [
+                  71,
+                  648,
+                  317,
+                  580
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_03_body_back",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_back\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_back",
+          "index": 3
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "clothing_front": {
+                "rect": [
+                  511,
+                  42,
+                  514,
+                  780
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_04_clothing_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"clothing_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "clothing_front",
+          "index": 4
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "hands",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "hands": {
+                "rect": [
+                  334,
+                  42,
+                  868,
+                  780
+                ],
+                "crop": [
+                  415,
+                  755,
+                  445,
+                  400
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_05_hands",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"hands\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"}]}",
+          "view_id": "hands",
+          "index": 5
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  332,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_06_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "feet",
+          "index": 6
+        }
+      ]
+    },
+    "manual-1-1": {
+      "count": 6,
+      "items": [
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "face_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "front bust",
+                "content": "A front-facing bust, complete head and hair through the upper chest; both eyes visible."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "face_front": {
+                "rect": [
+                  440,
+                  42,
+                  655,
+                  780
+                ],
+                "crop": [
+                  0,
+                  75,
+                  470,
+                  560
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_01_face_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"face_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "face_front",
+          "index": 1
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  562,
+                  42,
+                  412,
+                  780
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_02_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"face\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_front",
+          "index": 2
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "body_back",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "full-body back",
+                "content": "A direct rear neutral standing view, complete head and hair through feet or footwear. No face visible; do not turn the head."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_back": {
+                "rect": [
+                  555,
+                  42,
+                  426,
+                  780
+                ],
+                "crop": [
+                  71,
+                  648,
+                  317,
+                  580
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_03_body_back",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_back\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "body_back",
+          "index": 3
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "clothing_front",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "clothing front",
+                "content": "A front-facing detail of the same referenced outfit as worn, neck through its complete lowest clothing edge. Omit the head. Preserve the referenced garment construction, silhouette, sleeve lengths, hems, colors and patterns, except for applicable explicit clothing directives. Do not replace its garment type or add separate leg openings."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "clothing_front": {
+                "rect": [
+                  511,
+                  42,
+                  514,
+                  780
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_04_clothing_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"clothing_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_2\",\"role\":\"clothing\"}]}",
+          "view_id": "clothing_front",
+          "index": 4
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "hands",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "hands detail",
+                "content": "One isolated close-up of both complete hands, cropped at the wrists. Follow the referenced hand appearance unless an explicit applicable directive changes it. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "hands": {
+                "rect": [
+                  334,
+                  42,
+                  868,
+                  780
+                ],
+                "crop": [
+                  415,
+                  755,
+                  445,
+                  400
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_05_hands",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"hands\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"}]}",
+          "view_id": "hands",
+          "index": 5
+        },
+        {
+          "width": 1536,
+          "height": 864,
+          "layout": {
+            "canvas": [
+              1536,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.011068,
+                  0.019676,
+                  0.977865,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  332,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "filename_suffix": "_06_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"reference_image_3\",\"role\":\"footwear\"}]}",
+          "view_id": "feet",
+          "index": 6
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "package_version": "1.4.1",
+  "created_utc": "2026-10-13T14:00:25.334216+00:00",
+  "cpu_static": {
+    "python_passed": 1734,
+    "python_skipped": 1,
+    "skip_reason": "Historical pre-change local snapshot fixture unavailable",
+    "javascript_passed": 216,
+    "failures": 0,
+    "tested_from_public_distribution": true,
+    "installed_core_tests_run_with_explicit_local_test_environment": true
+  },
+  "template": {
+    "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
+    "graph": {
+      "nodes": 8,
+      "links": 13,
+      "topological_order": [
+        1,
+        13,
+        15,
+        16,
+        17,
+        18,
+        20,
+        19
+      ],
+      "subgraphs": {
+        "712dbc53-d94c-4ef3-957e-570f290b4961": {
+          "nodes": 9,
+          "links": 25
+        }
+      }
+    },
+    "load_image_titles": {
+      "1": "Character Image",
+      "15": "Reference Image 1",
+      "16": "Reference Image 2",
+      "17": "Reference Image 3"
+    },
+    "only_four_titles_changed": true,
+    "settings_and_wiring_preserved": true,
+    "optional_references_bypassed_by_default": true,
+    "gpu_retested_for_title_change": false,
+    "native_core_cpu_validation": {
+      "actual_core_prompt_validation": true,
+      "api_nodes": 12,
+      "bypass_resolved_for_cpu_validation": true,
+      "default_output": [
+        2816,
+        1280
+      ],
+      "guide_off_is_none": true,
+      "cuda_initialized": false,
+      "gpu_submissions": 0,
+      "original_subgraph_wiring_and_widget_values_preserved": true,
+      "validated_output_nodes": [
+        "20:12",
+        "19"
+      ]
+    }
+  },
+  "node_ids_preserved": true,
+  "legacy_workflows_preserved": true,
+  "legacy_public_package": {
+    "version": "0.1.0",
+    "branch": "legacy-v0.1.0",
+    "commit": "277da76a9de9f4b31b8d23d92b2db3694c581bd7"
+  },
+  "gpu_evidence": "verification/gpu_summary_v141.json",
+  "gpu_scope": {
+    "final_frozen_prompt_cases": 10,
+    "live_designer_cases": 4,
+    "live_designer_decoded_pixels_match": 4,
+    "arbitrary_reference_guarantee": false
+  },
+  "server_lifecycle_actions_during_publication": false,
+  "distribution": {
+    "contains_model_weights": false,
+    "contains_user_reference_images": false,
+    "superseded_user_templates_excluded": true,
+    "contains_private_development_records": false,
+    "private_development_records_preserved_locally": true,
+    "reference_image_screenshots_excluded": true,
+    "runtime_mannequin_assets_visually_inspected": 6,
+    "runtime_assets_identical_to_owner_h3_source": 6,
+    "remaining_new_ui_screenshots_are_reference_free_harness_views": false,
+    "ui_verification_screenshots_distributed": false,
+    "supplementary_test_workflows_distributed": false,
+    "unused_combined_atlas_not_distributed": true
+  }
+}

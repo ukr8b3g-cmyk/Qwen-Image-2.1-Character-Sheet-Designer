@@ -1,0 +1,20 @@
+<!doctype html><html lang="ja"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>カード直下の部位選択 — Qwen 2.1 Sheet Designer</title>
+<style>body{font:16px/1.8 system-ui,sans-serif;color:#20333f;margin:24px auto;padding:16px;max-width:900px}h1{font-size:24px}h2{font-size:20px}table{border-collapse:collapse;width:100%;margin:16px 0}th,td{padding:10px;border:1px solid #b7cbd6;text-align:left}th{background:#edf5f8}code{background:#edf2f5;padding:2px 5px}a{color:#165e85}.note{color:#526b79;font-size:14px}</style>
+<h1>カード直下の部位選択（パッケージ1.4.1）</h1>
+<p>現在のReference V1.2ノードで、上の画像カードの下から衣装・手・足を指定できます。カードのクリックは出力するビューの選択、下のプルダウンは部位の描き方の指定です。</p>
+<table><tr><th>場所</th><th>選択肢</th></tr><tr><td>衣装正面・背面の2枚の下に共通で1個</td><td>Auto／パンツ型／スカート・ローブ型</td></tr><tr><td>手の下</td><td>Auto／素手／グローブ</td></tr><tr><td>足・履物の下</td><td>Auto／靴あり／靴なし</td></tr></table>
+<p>初期値はすべてAuto。参照画像の状態に合わせる指示です。画像を分類して選択欄を自動で切り替える処理ではありません。新しいモデルの導入は不要です。</p>
+<h2>適用範囲</h2>
+<p>各指定はその部位が自然に見える全身ビューにも適用します。手・足の詳細ビューをOFFにしていても使えます。衣装の型は正面・背面で共通です。手の指定は着用衣装に見える手にも適用します。衣服のみでは手足を追加せず、衣装ビューを靴まで広げません。頭部・胸像の画角も保持します。</p>
+<h2>形と詳細の指定</h2>
+<p>パンツ型は脚ごとに分かれる構造、スカート・ローブ型は裾が一続きの構造を指定します。上下別／一体型、上着の重なり、丈、色、素材、柄は両立する参照と詳細文から引き継ぎます。性別では分けません。</p>
+<p>「靴あり」はハイヒール・スニーカー・サンダル・ブーツ等の種類を固定しません。参照に写っていればそのデザインを保持し、写っていなければ衣装に合う種類を生成側に任せます。「靴なし」は履物を外す指示で、参照の裸足や靴下・タイツを保持します。完全な裸足への変更や特定の靴の種類は、足・履物の詳細文で指定できます。</p>
+<p>Auto以外では選択した型・被覆を優先し、部位文はその条件と両立する形・色・素材などを指定します。部位文に型・被覆を一任したい場合はAutoを使います。入力した部位文の原文は保存します。</p>
+<h2>保存と互換性</h2>
+<p>既存の素手／グローブ指定は保持します。新しい衣装・足のキーがない保存データはAutoとして扱い、読み込みだけで書き換えません。新しい選択はstate_jsonに保存し、Preset、Auto／Manual、Batch切替でも保持します。旧V1／V1.1の画面・ノードID・生成文と、既存の6出力・参照接続・参照範囲・寸法を維持します。</p>
+<p class="note">内部値：clothing_type＝reference／pants／skirt_robe、hand_state＝reference／bare／gloved、footwear_state＝reference／shod／unshod。Autoのreferenceは出力サイズのAutoとは別です。</p>
+<h2>検証の範囲</h2>
+<p>検証結果は<a href="../verification/release_v141.json">release_v141.json</a>。CPUの状態・生成文・寸法検証と、画面操作、GPU画像の内容評価を分けて記録します。GPU検証は3素材・2編集Seedに限定され、任意画像の品質を保証しません。詳細は公開検証要約を参照してください。</p>
+<p>Pythonコードを読み込むにはComfyUIのバックエンド再起動が必要です。再起動前にファイルを更新しただけでは、稼働中のPythonには反映されません。</p>
+</html>
