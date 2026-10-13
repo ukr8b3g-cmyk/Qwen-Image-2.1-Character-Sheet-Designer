@@ -1,4 +1,7 @@
 # Qwen Image 2.1 Character Sheet Designer
+
+[English](#english)
+
 <img width="1543" height="713" alt="{3DB22210-59B7-4161-8A96-29B0211C5E33}" src="https://github.com/user-attachments/assets/785a18e0-fa55-41ab-b12a-d0d98b40f9ac" />
 
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-13T15:20:51.038842+00:00",
+  "created_utc": "2026-10-13T15:42:55.524459+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
   "target_base_commit": "277da76a9de9f4b31b8d23d92b2db3694c581bd7",
   "target_state": "Package v1.4.1: node code, required UI resources, selected user workflow, documentation and validation summary",
@@ -380,8 +380,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "002e3ff303b6f7f011eb9492969d2e0d935e4d02d62ddfd18509d8f00b921c70",
-      "bytes": 19471,
+      "sha256": "02fd6023616fc332ba0ac06f8114716ed86c18aceaa42932b1a20d1f1ddf0397",
+      "bytes": 19659,
       "purpose": "package metadata/documentation"
     },
     {
