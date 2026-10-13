@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-13T15:42:55.524459+00:00",
+  "created_utc": "2026-10-13T16:02:33.746867+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
   "target_base_commit": "277da76a9de9f4b31b8d23d92b2db3694c581bd7",
-  "target_state": "Package v1.4.1: node code, required UI resources, selected user workflow, documentation and validation summary",
+  "target_state": "v1.4.2 reference-plan-aware template and CPU routing regressions",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -171,6 +171,28 @@
       ],
       "all_reference_images_guaranteed": false,
       "note": "Public results summary. Detailed development records are preserved locally and are not distributed."
+    },
+    "release_v142": {
+      "package_version": "1.4.2",
+      "change_scope": "Added Sheet Encode template; corrected direct-wiring note; routing regression tests; bilingual documentation",
+      "cpu": {
+        "tests_passed": 159,
+        "failures": 0,
+        "added_regression_cases": 32,
+        "actual_comfyui_core_prompt_validation": true,
+        "api_nodes": 15,
+        "cuda_initialized": false,
+        "gpu_submissions": 0,
+        "offline_core_loader_limit": "An unrelated nodes_replacements entry requires PromptServer.instance; required nodes and output graph validated successfully."
+      },
+      "gpu": "Not rerun for v1.4.2; earlier GPU evidence applies to v1.4.1",
+      "preserved": [
+        "existing README image",
+        "legacy nodes",
+        "direct template connections and settings",
+        "old releases"
+      ],
+      "new_template": "QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json"
     }
   },
   "files": [
@@ -178,6 +200,18 @@
       "path": ".gitignore",
       "sha256": "b4d3599747a1872acdfb1313fd0e7fbca20a77fbd43dbd486950e35845f13697",
       "bytes": 1567,
+      "purpose": "package metadata/documentation"
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "bafb16ca406e541430ac743ee35e29b322fc59c264161a1e304b6702008997a5",
+      "bytes": 2006,
+      "purpose": "package metadata/documentation"
+    },
+    {
+      "path": "README.md",
+      "sha256": "806aa5301ede5c08a604d7e2006b4af380b96f39a5f573cf0f705bf30b9c2d1a",
+      "bytes": 22340,
       "purpose": "package metadata/documentation"
     },
     {
@@ -223,20 +257,14 @@
       "purpose": "documentation"
     },
     {
-      "path": "NOTICE.md",
-      "sha256": "bafb16ca406e541430ac743ee35e29b322fc59c264161a1e304b6702008997a5",
-      "bytes": 2006,
-      "purpose": "package metadata/documentation"
-    },
-    {
       "path": "package.json",
-      "sha256": "53c12a5edf6a4fd2cc7eeea7ae15e336dc790245f7e228eba28c74738a27455a",
+      "sha256": "471a244213ce8ce4698605414b0ac8cc2e799fc226c7654e1ab31a47363ea1ad",
       "bytes": 203,
       "purpose": "package metadata/documentation"
     },
     {
       "path": "pyproject.toml",
-      "sha256": "1bfacb6571dab318581a8d97e6f6186ead4fe4e764f9780968d079e2ca9b0e99",
+      "sha256": "2c11e72b23c021c1e60d8c45f1e11ab564edd8e8993b62a9b03d8f50ba2c0a84",
       "bytes": 450,
       "purpose": "package metadata/documentation"
     },
@@ -377,12 +405,6 @@
       "sha256": "1d3330fe262b32b6af0ed674aead4b5a4a66082f78491210efc229b9fd66e726",
       "bytes": 3011,
       "purpose": "backend"
-    },
-    {
-      "path": "README.md",
-      "sha256": "02fd6023616fc332ba0ac06f8114716ed86c18aceaa42932b1a20d1f1ddf0397",
-      "bytes": 19659,
-      "purpose": "package metadata/documentation"
     },
     {
       "path": "tests/__init__.py",
@@ -715,6 +737,12 @@
       "purpose": "test/fixture"
     },
     {
+      "path": "tests/test_template_reference_contracts.py",
+      "sha256": "83da282914b70eedf687b38437ad8ee9f523bdcd4bc9ea6d8924932e02e68840",
+      "bytes": 5126,
+      "purpose": "workflow/test/validation"
+    },
+    {
       "path": "tests/test_validation.py",
       "sha256": "e183ce47b32411fe983bc438baf0f2faa43ac448e0b921946142dd0e72886914",
       "bytes": 2985,
@@ -905,6 +933,12 @@
       "sha256": "45fb877392f569d07f1074bc1db2ae46df5606cc95b65cc3dcf459543c4d5928",
       "bytes": 2800,
       "purpose": "verification evidence"
+    },
+    {
+      "path": "verification/release_v142.json",
+      "sha256": "4a84c624d58ed71c1dd528fae4920a73719655e16ea6d62e9689e89d6b1d9451",
+      "bytes": 857,
+      "purpose": "workflow/test/validation"
     },
     {
       "path": "verification/results.json",
@@ -1099,9 +1133,15 @@
       "purpose": "frontend"
     },
     {
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json",
+      "sha256": "8dbeb1d2fb92e5282268c6fbc9f05eba066ae04cb46069b575f64858016fe74b",
+      "bytes": 40550,
+      "purpose": "workflow/test/validation"
+    },
+    {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
-      "sha256": "264f9504ef93843d9b6b6b906bcc31c0cc0d85671bbd3f27908a185b7a3213e8",
-      "bytes": 39006,
+      "sha256": "8121a2a6679bb2fac1e28255cbb213d3a9efdf1a8eab3f14bc2784854e9266b1",
+      "bytes": 40517,
       "purpose": "workflow"
     },
     {
@@ -1112,5 +1152,5 @@
     }
   ],
   "manifest_self_hash": "excluded to avoid recursive hashing",
-  "package_version": "1.4.1"
+  "package_version": "1.4.2"
 }

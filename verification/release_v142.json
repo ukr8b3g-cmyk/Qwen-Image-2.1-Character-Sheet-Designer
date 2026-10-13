@@ -1,0 +1,22 @@
+{
+  "package_version": "1.4.2",
+  "change_scope": "Added Sheet Encode template; corrected direct-wiring note; routing regression tests; bilingual documentation",
+  "cpu": {
+    "tests_passed": 159,
+    "failures": 0,
+    "added_regression_cases": 32,
+    "actual_comfyui_core_prompt_validation": true,
+    "api_nodes": 15,
+    "cuda_initialized": false,
+    "gpu_submissions": 0,
+    "offline_core_loader_limit": "An unrelated nodes_replacements entry requires PromptServer.instance; required nodes and output graph validated successfully."
+  },
+  "gpu": "Not rerun for v1.4.2; earlier GPU evidence applies to v1.4.1",
+  "preserved": [
+    "existing README image",
+    "legacy nodes",
+    "direct template connections and settings",
+    "old releases"
+  ],
+  "new_template": "QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json"
+}

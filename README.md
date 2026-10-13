@@ -5,6 +5,12 @@
 <img width="1543" height="713" alt="{3DB22210-59B7-4161-8A96-29B0211C5E33}" src="https://github.com/user-attachments/assets/785a18e0-fa55-41ab-b12a-d0d98b40f9ac" />
 
 
+## v1.4.2の変更点
+
+- **Sheet Encode対応テンプレートを追加**：部位参照の画像番号とEncoder入力を同じ参照計画に揃えます。
+- **既存テンプレートの注記を訂正**：Core直接配線の制約と、専用参照を使う場合の接続先を明記しました。
+- **CPU回帰試験を追加**：標準構成・部位参照・欠番・同役割優先・Guide・Batch Outを確認します。
+
 ## v1.4.1の主な変更点（前回公開版0.1.0から）
 
 - **Batch Out**：選択ビューを1枚ずつ生成。Autoはビュー別サイズ、Manualは指定幅×高さを各画像に適用。
@@ -14,7 +20,7 @@
 
 旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
 
-**Package v1.4.1** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
+**Package v1.4.2** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
 
@@ -22,7 +28,7 @@ Select views, keep a character consistent with image references, and generate ei
 
 ### ノードとバージョン
 
-パッケージ全体のバージョンは **1.4.1** です。ノードの表示名にあるV1／V1.1／V1.2は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.2** です。
+パッケージ全体のバージョンは **1.4.2** です。ノードの表示名にあるV1／V1.1／V1.2は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.2** です。
 
 | 表示名 | 用途 | ノードID |
 | --- | --- | --- |
@@ -46,7 +52,11 @@ Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）�
 
 ### テンプレート
 
-まず[Reference V1.2 テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json)を読み込みます。今回指定されたサブグラフ構成のワークフローを採用し、4つのLoad Imageのタイトルを次の名前へ変更しています。配線・生成設定・保存設定は元のワークフローと同じです。
+部位専用参照やBatch Outには、まず[Sheet Encode対応テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json)を読み込みます。`prompt`・`reference_plan`・`layout_image`と人物・追加参照を同名入力へ接続済みです。幅・高さ、生成・PNG保存設定は既存版を維持しています。
+
+[Core直接接続テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json)も残しています。標準シートの同一人物の補足参照用で、部位専用の役割・参照範囲はSheet Encode版を使ってください。直接配線ではビューごとの参照選別が反映されず、プロンプトの画像番号と入力画像がずれる場合があります。
+
+既存版では今回指定されたサブグラフ構成のワークフローを採用し、4つのLoad Imageのタイトルを次の名前へ変更しています。配線・生成設定・保存設定は元のワークフローと同じです。
 
 | タイトル | Designer入力 | Core Encoder入力 |
 | --- | --- | --- |
@@ -130,6 +140,13 @@ Qwenで作成した参照を編集する場合、参照作成時とは異なる�
 
 ## English
 
+### What's new in v1.4.2
+
+- **Added a Sheet Encode template** so per-part reference tags and Encoder images use the same reference plan.
+- **Corrected the preserved direct template's note** to explain its limits and when Sheet Encode is required.
+- **Added CPU regression tests** for defaults, dedicated roles, missing slots, duplicate-role priority, Guide and Batch Out.
+
+
 ### What's new in v1.4.1 (since public package 0.1.0)
 
 - **Batch Out** generates selected views individually. Auto uses view-specific sizes; Manual applies width × height to each image.
@@ -139,11 +156,13 @@ Qwenで作成した参照を編集する場合、参照作成時とは異なる�
 
 Legacy V1/V1.1 nodes and existing workflows remain compatible.
 
-Package **v1.4.1** includes the latest **Reference V1.2**, **Sheet Encode**, and the compatible **V1/V1.1** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
+Package **v1.4.2** includes the latest **Reference V1.2**, **Sheet Encode**, and the compatible **V1/V1.1** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
 
-Start with the [Reference V1.2 template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). Its four Load Image titles are **Character Image**, **Reference Image 1**, **Reference Image 2**, **Reference Image 3**. Only those titles were changed in the supplied template; wiring and generation/save settings are preserved. Optional references are bypassed by default. It uses Core TextEncodeQwenImage21 and PNG SaveImageAdvanced. Replace the save node with standard SaveImage if unavailable.
+Use the [Sheet Encode template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json) for dedicated references, per-view Batch Out routing or explicit crops. It connects prompt, reference_plan, layout and matching image inputs while preserving output dimensions, sampling and PNG saving. The preserved direct template is for standard sheets using same_character supplements; dedicated roles can make its image tags disagree with Core inputs.
+
+The original [Reference V1.2 template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). Its four Load Image titles are **Character Image**, **Reference Image 1**, **Reference Image 2**, **Reference Image 3**. Only those titles were changed in the supplied template; wiring and generation/save settings are preserved. Optional references are bypassed by default. It uses Core TextEncodeQwenImage21 and PNG SaveImageAdvanced. Replace the save node with standard SaveImage if unavailable.
 
 Connect each image to both the Designer and the Encoder. Core image slot 1 receives the layout, slot 2 the character, slots 3–5 the optional references. Guide OFF supplies None; Core compacts active image numbers. Direct Core wiring does not execute the per-output reference plan or explicit source crops. For heterogeneous references, connect matching named image inputs, prompt, reference_plan and layout_image to Qwen 2.1 Sheet Encode. Save WEBP Meta is an optional WebP output node. No reference-image bytes or model weights are distributed.
 
@@ -173,3 +192,9 @@ Tests distinguish state/layout/CPU contracts from UI and GPU image-quality evide
 Artwork and the original UI/layout foundation come from [H3 Character Sheet Designer](https://github.com/ukr8b3g-cmyk/H3-Character-Sheet-Designer). This pack uses independent node IDs, routes and DOM namespaces. See [NOTICE.md](NOTICE.md) and `manifest.json` for source provenance, public verification summaries and LF-normalized hashes of the distributed files. Private development records are kept locally, outside the distribution. Preserve upstream notices when redistributing.
 
 Installed-Core interoperability checks use the optional `QWEN_SHEET_TEST_COMFYUI_ROOT` environment variable pointing to your ComfyUI source folder. Without it, those host-specific tests skip; the distribution does not contain machine-specific paths or private source records.
+
+### v1.4.2 validation / 検証範囲
+
+This release adds workflow/documentation fixes and CPU regression coverage. GPU rendering and image quality were not retested for v1.4.2. Earlier GPU records describe v1.4.1 only. 本版は接続・案内の修正とCPU確認です。GPU再試験は行っていません。旧Release・既存画像・旧ノードを保持しています。
+
+CPU validation: **159 passed**, including **32 new regressions**. The new template passed actual installed Core prompt validation (15 API nodes), with CUDA uninitialized and zero GPU submissions. CPU確認は159件成功（追加32件）、実Coreの15ノード入力検証も成功。[v1.4.2 record](verification/release_v142.json).
