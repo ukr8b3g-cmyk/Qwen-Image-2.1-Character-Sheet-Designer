@@ -125,6 +125,15 @@ Qwenで作成した参照を編集する場合、参照作成時とは異なる�
 
 ## English
 
+### What's new in v1.4.1 (since public package 0.1.0)
+
+- **Batch Out** generates selected views individually. Auto uses view-specific sizes; Manual applies width × height to each image.
+- **Three extra references and Sheet Encode** support reference roles and explicit source regions.
+- **Per-part controls** beneath the cards select clothing, hands and footwear; all default to Auto.
+- **Improved generation prompts** cover worn gloves, paired footwear, shoe coverage and Auto clothing-on-wearer views.
+
+Legacy V1/V1.1 nodes and existing workflows remain compatible.
+
 Package **v1.4.1** includes the latest **Reference V1.2**, **Sheet Encode**, and the compatible **V1/V1.1** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
