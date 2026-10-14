@@ -34,6 +34,7 @@
           "links": []
         }
       ],
+      "title": "Character Image",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.38.0",
@@ -46,8 +47,7 @@
       "widgets_values_named": {
         "image": "comfy_krea2-Lcu_fp8_20260930003331_00001_.webp",
         "upload": "image"
-      },
-      "title": "Character Image"
+      }
     },
     {
       "id": 13,
@@ -66,14 +66,12 @@
       "inputs": [],
       "outputs": [],
       "title": "Note: Model links",
-      "properties": {
-        "text": "# Core direct wiring / Core直接接続\n\nUse this preserved template for standard character sheets with supplemental same_character references. Dedicated reference roles (face, footwear, clothing, etc.) require the separate Sheet Encode template.\n\nIMPORTANT: Core direct wiring does not execute reference_plan or reference_regions. Designer may omit a source for the selected view; its image tags can then point to different images in Core. Do not set dedicated roles on this wiring.\n\nこのテンプレートは標準キャラクターシートの同一人物の補足参照用です。部位専用参照・範囲指定・詳細ビューの参照選別には、別のSheet Encode対応テンプレートを使ってください。直接配線はreference_planを適用せず、画像番号がずれる場合があります。\n\nCharacter → Designer.character_image and Core image_2; extras 1/2/3 → corresponding Designer inputs and Core image_3/4/5; layout → Core image_1. Guide OFF supplies None. Width/height → EmptyLatentImage. Sampling and PNG saving are unchanged."
-      },
+      "properties": {},
       "widgets_values": [
-        "# Core direct wiring / Core直接接続\n\nUse this preserved template for standard character sheets with supplemental same_character references. Dedicated reference roles (face, footwear, clothing, etc.) require the separate Sheet Encode template.\n\nIMPORTANT: Core direct wiring does not execute reference_plan or reference_regions. Designer may omit a source for the selected view; its image tags can then point to different images in Core. Do not set dedicated roles on this wiring.\n\nこのテンプレートは標準キャラクターシートの同一人物の補足参照用です。部位専用参照・範囲指定・詳細ビューの参照選別には、別のSheet Encode対応テンプレートを使ってください。直接配線はreference_planを適用せず、画像番号がずれる場合があります。\n\nCharacter → Designer.character_image and Core image_2; extras 1/2/3 → corresponding Designer inputs and Core image_3/4/5; layout → Core image_1. Guide OFF supplies None. Width/height → EmptyLatentImage. Sampling and PNG saving are unchanged."
+        "# Multi Reference wiring\n\nCharacter LoadImage → Designer.character_image AND Encoder.images.image_2.\nExtra 1 → Designer.reference_image_1 AND Encoder.images.image_3.\nExtra 2 → Designer.reference_image_2 AND Encoder.images.image_4 (works without extra 1).\nDesigner.layout_image → Encoder.images.image_1. OFF returns None and compacts Qwen image tags.\nKeep each pair of connections synchronized when removing a reference.\nGuide images constrain arrangement only.\nDesigner width/height → EmptyLatentImage → KSampler, not the Encoder latent output.\nDefault: five views, Auto 1120, layout OFF, 30 steps / CFG 1 / Euler / simple.\n\nThis legacy template connects directly to Core. Do not set dedicated roles or source regions here; use the Sheet Encode template for those settings and per-view reference routing.\n旧版はCore直接配線です。部位専用の役割・参照範囲・ビュー別の参照振り分けにはSheet Encode版を使用してください。"
       ],
       "widgets_values_named": {
-        "text": "# Multi Reference wiring\n\nCharacter LoadImage → Designer.character_image AND Encoder.images.image_2.\nExtra 1 → Designer.reference_image_1 AND Encoder.images.image_3.\nExtra 2 → Designer.reference_image_2 AND Encoder.images.image_4 (works without extra 1).\nDesigner.layout_image → Encoder.images.image_1. OFF returns None and compacts Qwen image tags.\nKeep each pair of connections synchronized when removing a reference.\nSet additional roles in Part directives. Guide images constrain arrangement only.\nDesigner width/height → EmptyLatentImage → KSampler, not the Encoder latent output.\nDefault: five views, Auto 1120, layout OFF, 30 steps / CFG 1 / Euler / simple."
+        "text": "# Multi Reference wiring\n\nCharacter LoadImage → Designer.character_image AND Encoder.images.image_2.\nExtra 1 → Designer.reference_image_1 AND Encoder.images.image_3.\nExtra 2 → Designer.reference_image_2 AND Encoder.images.image_4 (works without extra 1).\nDesigner.layout_image → Encoder.images.image_1. OFF returns None and compacts Qwen image tags.\nKeep each pair of connections synchronized when removing a reference.\nGuide images constrain arrangement only.\nDesigner width/height → EmptyLatentImage → KSampler, not the Encoder latent output.\nDefault: five views, Auto 1120, layout OFF, 30 steps / CFG 1 / Euler / simple.\n\nThis legacy template connects directly to Core. Do not set dedicated roles or source regions here; use the Sheet Encode template for those settings and per-view reference routing.\n旧版はCore直接配線です。部位専用の役割・参照範囲・ビュー別の参照振り分けにはSheet Encode版を使用してください。"
       },
       "color": "#222",
       "bgcolor": "#000"
@@ -108,6 +106,7 @@
           "links": []
         }
       ],
+      "title": "Reference Image 1",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.38.0",
@@ -120,8 +119,7 @@
       "widgets_values_named": {
         "image": "example.png",
         "upload": "image"
-      },
-      "title": "Reference Image 1"
+      }
     },
     {
       "id": 16,
@@ -153,6 +151,7 @@
           "links": []
         }
       ],
+      "title": "Reference Image 2",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.38.0",
@@ -165,8 +164,7 @@
       "widgets_values_named": {
         "image": "example.png",
         "upload": "image"
-      },
-      "title": "Reference Image 2"
+      }
     },
     {
       "id": 17,
@@ -198,6 +196,7 @@
           "links": []
         }
       ],
+      "title": "Reference Image 3",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.38.0",
@@ -210,8 +209,7 @@
       "widgets_values_named": {
         "image": "example.png",
         "upload": "image"
-      },
-      "title": "Reference Image 3"
+      }
     },
     {
       "id": 18,
@@ -602,7 +600,7 @@
             912,
             211,
             128,
-            228
+            328
           ]
         },
         "outputNode": {
@@ -745,8 +743,8 @@
               54
             ],
             "pos": [
-              0,
-              0
+              1016,
+              415
             ]
           },
           {
@@ -757,8 +755,8 @@
               55
             ],
             "pos": [
-              0,
-              0
+              1016,
+              435
             ]
           },
           {
@@ -769,8 +767,8 @@
               56
             ],
             "pos": [
-              0,
-              0
+              1016,
+              455
             ]
           },
           {
@@ -781,8 +779,8 @@
               57
             ],
             "pos": [
-              0,
-              0
+              1016,
+              475
             ]
           },
           {
@@ -793,8 +791,8 @@
               58
             ],
             "pos": [
-              0,
-              0
+              1016,
+              495
             ]
           }
         ],
@@ -1015,7 +1013,7 @@
             ],
             "size": [
               250,
-              306
+              350
             ],
             "flags": {},
             "order": 4,
@@ -1033,22 +1031,6 @@
                 "shape": 7,
                 "type": "IMAGE",
                 "link": 29
-              },
-              {
-                "localized_name": "vae",
-                "name": "vae",
-                "shape": 7,
-                "type": "VAE",
-                "link": 49
-              },
-              {
-                "localized_name": "prompt",
-                "name": "prompt",
-                "type": "STRING",
-                "widget": {
-                  "name": "prompt"
-                },
-                "link": 48
               },
               {
                 "localized_name": "image_2",
@@ -1084,6 +1066,29 @@
                 "shape": 7,
                 "type": "IMAGE",
                 "link": null
+              },
+              {
+                "localized_name": "image_7",
+                "name": "images.image_7",
+                "shape": 7,
+                "type": "IMAGE",
+                "link": null
+              },
+              {
+                "localized_name": "vae",
+                "name": "vae",
+                "shape": 7,
+                "type": "VAE",
+                "link": 49
+              },
+              {
+                "localized_name": "prompt",
+                "name": "prompt",
+                "type": "STRING",
+                "widget": {
+                  "name": "prompt"
+                },
+                "link": 48
               }
             ],
             "outputs": [
@@ -1138,7 +1143,7 @@
               120
             ],
             "flags": {},
-            "order": 0,
+            "order": 1,
             "mode": 0,
             "inputs": [
               {
@@ -1196,7 +1201,7 @@
               70
             ],
             "flags": {},
-            "order": 1,
+            "order": 2,
             "mode": 0,
             "inputs": [
               {
@@ -1251,7 +1256,7 @@
               90
             ],
             "flags": {},
-            "order": 2,
+            "order": 0,
             "mode": 0,
             "inputs": [
               {
@@ -1495,70 +1500,6 @@
             "type": "INT"
           },
           {
-            "id": 10,
-            "origin_id": 4,
-            "origin_slot": 0,
-            "target_id": 7,
-            "target_slot": 0,
-            "type": "CLIP"
-          },
-          {
-            "id": 29,
-            "origin_id": -10,
-            "origin_slot": 0,
-            "target_id": 7,
-            "target_slot": 1,
-            "type": "IMAGE"
-          },
-          {
-            "id": 49,
-            "origin_id": 5,
-            "origin_slot": 0,
-            "target_id": 7,
-            "target_slot": 2,
-            "type": "VAE"
-          },
-          {
-            "id": 48,
-            "origin_id": -10,
-            "origin_slot": 5,
-            "target_id": 7,
-            "target_slot": 3,
-            "type": "STRING"
-          },
-          {
-            "id": 50,
-            "origin_id": -10,
-            "origin_slot": 1,
-            "target_id": 7,
-            "target_slot": 4,
-            "type": "IMAGE"
-          },
-          {
-            "id": 51,
-            "origin_id": -10,
-            "origin_slot": 2,
-            "target_id": 7,
-            "target_slot": 5,
-            "type": "IMAGE"
-          },
-          {
-            "id": 52,
-            "origin_id": -10,
-            "origin_slot": 3,
-            "target_id": 7,
-            "target_slot": 6,
-            "type": "IMAGE"
-          },
-          {
-            "id": 53,
-            "origin_id": -10,
-            "origin_slot": 4,
-            "target_id": 7,
-            "target_slot": 7,
-            "type": "IMAGE"
-          },
-          {
             "id": 54,
             "origin_id": -10,
             "origin_slot": 9,
@@ -1597,6 +1538,70 @@
             "target_id": 3,
             "target_slot": 0,
             "type": "COMBO"
+          },
+          {
+            "id": 10,
+            "origin_id": 4,
+            "origin_slot": 0,
+            "target_id": 7,
+            "target_slot": 0,
+            "type": "CLIP"
+          },
+          {
+            "id": 29,
+            "origin_id": -10,
+            "origin_slot": 0,
+            "target_id": 7,
+            "target_slot": 1,
+            "type": "IMAGE"
+          },
+          {
+            "id": 50,
+            "origin_id": -10,
+            "origin_slot": 1,
+            "target_id": 7,
+            "target_slot": 2,
+            "type": "IMAGE"
+          },
+          {
+            "id": 51,
+            "origin_id": -10,
+            "origin_slot": 2,
+            "target_id": 7,
+            "target_slot": 3,
+            "type": "IMAGE"
+          },
+          {
+            "id": 52,
+            "origin_id": -10,
+            "origin_slot": 3,
+            "target_id": 7,
+            "target_slot": 4,
+            "type": "IMAGE"
+          },
+          {
+            "id": 53,
+            "origin_id": -10,
+            "origin_slot": 4,
+            "target_id": 7,
+            "target_slot": 5,
+            "type": "IMAGE"
+          },
+          {
+            "id": 49,
+            "origin_id": 5,
+            "origin_slot": 0,
+            "target_id": 7,
+            "target_slot": 8,
+            "type": "VAE"
+          },
+          {
+            "id": 48,
+            "origin_id": -10,
+            "origin_slot": 5,
+            "target_id": 7,
+            "target_slot": 9,
+            "type": "STRING"
           }
         ],
         "extra": {}
@@ -1605,26 +1610,23 @@
   },
   "config": {},
   "extra": {
-    "ds": {
-      "scale": 0.4457302325581422,
-      "offset": [
-        2425.410577595744,
-        242.14525356252324
-      ]
-    },
     "qwen21_multi_reference": {
       "spec": "Q21-CSD-MR-1.0"
     },
     "k2cf_state_id": "k2cf_1791708156510_lri5gqt0nam",
-    "frontendVersion": "1.53.10"
+    "frontendVersion": "1.55.17",
+    "ds": {
+      "scale": 0.46650738020973354,
+      "offset": [
+        2115.7948898482546,
+        420.22535384513435
+      ]
+    }
   },
   "extensions": {
     "seed_widgets": {
-      "9": 0
+      "20": 3
     }
   },
-  "version": 0.4,
-  "seed_widgets": {
-    "20": 3
-  }
+  "version": 0.4
 }

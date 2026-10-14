@@ -2,6 +2,12 @@
 
 [English](#english)
 
+## v1.5.2の変更点
+
+- **配布ワークフローを更新**：指定の通常版・Turbo版V1.3と旧V1.2を採用。サブグラフの並び・配置・生成設定を維持し、V1.3は標準Save Image、旧V1.2はSave Image AdvancedでPNG保存します。保存名は保存ノードで直接指定します。
+- **未使用の補助出力を非表示**：`filename_suffix`・`sheet_plan`・`view_records`は未接続なら非表示。右クリックの「補助出力を表示」から戻せます。接続済みの出力と出力番号は維持します。
+- **日英READMEの要件を明記**：ComfyUI Core v0.37.0以上。旧ノード・既存テンプレート・画像・旧Releaseは引き続き利用できます。
+
 <img width="1543" height="713" alt="{3DB22210-59B7-4161-8A96-29B0211C5E33}" src="https://github.com/user-attachments/assets/785a18e0-fa55-41ab-b12a-d0d98b40f9ac" />
 
 
@@ -9,7 +15,7 @@
 
 - V1.2の操作と配置を維持。標準はBatch Out OFF・Use Layout Image OFFで、保存ノードは1つです。Batch Out ONでも同じ保存先から各ビューを出力します。
 - 合成設定は合成接続時だけ、既存Layout内の「Assembly / 合成」で表示します。プレビューの段を追加せず、生成サイズと合成サイズを分けます。旧ノード・テンプレートは維持します。
-- [標準WebPテンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json)。合成テンプレートは任意です。
+- [標準テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json)。合成テンプレートは任意です。
 
 ## v1.5.0の変更点
 
@@ -34,7 +40,7 @@
 
 旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
 
-**Package v1.5.1** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
+**Package v1.5.2** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
 
@@ -42,7 +48,7 @@ Select views, keep a character consistent with image references, and generate ei
 
 ### ノードとバージョン
 
-パッケージ全体のバージョンは **1.5.1** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
+パッケージ全体のバージョンは **1.5.2** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
 
 | 表示名 | 用途 | ノードID |
 | --- | --- | --- |
@@ -66,9 +72,18 @@ ZIPの場合は[Releases](https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Charact
 
 Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）とQwen 2.1のモデル・テキストエンコーダー・VAEが必要です。モデルは同梱していません。テンプレート内のモデル名は環境に合わせて選び直してください。
 
+### システム要件
+
+- **ComfyUI Core v0.37.0以上**。Qwen Image 2.1の初対応版です（2026年9月21日公開）。不具合修正を含む最新の安定版を推奨します。[公式Release](https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.37.0)。
+- Qwen Image 2.1のモデル、Qwen3-VLテキストエンコーダー、対応VAEが必要です。モデルは同梱しません。
+- 通常版・Turbo版は標準Save Image、旧V1.2はSave Image AdvancedでPNG保存します。Save WEBP Metaは配布用3本には不要です。
+- ローカルの実機確認環境はCore v0.40.0／Frontend 1.55.17です。初対応版で全機能を実機確認したという意味ではありません。
+
 ### テンプレート
 
-部位専用参照やBatch Outには、まず[Sheet Encode対応テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json)を読み込みます。`prompt`・`reference_plan`・`layout_image`と人物・追加参照を同名入力へ接続済みです。幅・高さ、生成・PNG保存設定は既存版を維持しています。
+今回の配布用は[通常版V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json)、[Turbo版V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json)、[旧版Reference V1.2](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json)の3本です。通常版・Turbo版はSheet Encode経由、旧V1.2はCore直接配線とSave Image Advancedを維持します。保存名は各保存ノードで指定できます。
+
+旧V1.2で部位専用参照やBatch Outを使う場合は、[Sheet Encode対応テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json)を読み込みます。`prompt`・`reference_plan`・`layout_image`と人物・追加参照を同名入力へ接続済みです。幅・高さ、生成・PNG保存設定は既存版を維持しています。
 
 [Core直接接続テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json)も残しています。標準シートの同一人物の補足参照用で、部位専用の役割・参照範囲はSheet Encode版を使ってください。直接配線ではビューごとの参照選別が反映されず、プロンプトの画像番号と入力画像がずれる場合があります。
 
@@ -83,7 +98,7 @@ Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）�
 
 `layout_image`は`images.image_1`へ接続済みです。Guide OFFではNoneとなり、Coreが有効画像の番号を詰めます。追加参照3つは初期状態でバイパスされています。自分の画像を各Load Imageで選び、使う追加参照だけを有効にしてください。画像データは配布物に含めていません。
 
-標準5ビュー、Auto・基準高1120、Guide OFF、Batch Out OFF、30ステップ、CFG 1、Euler／simple、Encoder resolution 1024です。保存は指定ワークフローどおり`SaveImageAdvanced`のPNGです。この保存ノードがない環境では標準`SaveImage`へ置き換えられます。
+標準5ビュー、Auto・基準高1120、Guide OFF、Batch Out OFF、30ステップ、CFG 1、Euler／simple、Encoder resolution 1024です。通常版の配布テンプレートは標準`SaveImage`のPNG保存です。Turbo版は8ステップのManual Sigmas・CFG 1・Eulerで、同じく標準`SaveImage`を使用します。
 
 参照の役割をビューごとに振り分ける場合は、Qwen 2.1 Sheet Encodeを使い、Designerの`prompt`・`reference_plan`・`layout_image`と、人物・追加参照を同じ名前の入力へ接続します。WebP保存には[Save WEBP Meta](https://github.com/ukr8b3g-cmyk/ComfyUI-save-webp-meta-node)を利用できます。Core Encoderへ直接つなぐテンプレートでは、`reference_plan`による参照の除外・並べ替えや`reference_regions`の切り取りは実行されません。
 
@@ -154,6 +169,10 @@ Sheet Encodeの`reference_regions`で参照範囲を明示できます。空の`
 
 Qwenで作成した参照を編集する場合、参照作成時とは異なる編集Seedを選び、その編集Seedを比較中は固定する方法を確認しました。強い斑点が改善した局所試験ですが、すべての荒れの原因や解決を保証しません。WebP品質70は保存容量の設定で、生成された画素の不整合を直す設定ではありません。
 
+### v1.5.2の確認範囲
+
+今回の変更はフロントエンドの補助出力表示・配布ワークフロー・文書です。Python **1,813件成功・1件スキップ**（旧ローカル素材未提供）、JavaScript **226件成功**。6テンプレートを構造検査し、指定の3本を実ComfyUIで読み込み、実際のAPI出力のSeed・Steps・CFG・モデル名を確認しました。[今回の検証記録](verification/release_v152.json)。以前のGPU検証は下記v1.5.1の記録であり、今回の配布3本でGPU生成を再実行した結果ではありません。
+
 ### v1.5.1の確認範囲
 
 Python **1,815件成功・1件スキップ**（旧ローカル比較素材が未提供）、JavaScript **222件成功**。7テンプレート、実Core CPU、実ComfyUI画面のUndo／Redo・保存・再読込を確認しました。GPUはAuto／Manual・Batch Out・Guideの5条件10枚を確認し、個別5枚は更新前と画素が一致しました。[検証記録](verification/release_v151.json)。
@@ -180,11 +199,17 @@ Manualの縦長サイズでは顔画像の余白が大きくなるため、個�
 
 ## English
 
+### What's new in v1.5.2
+
+- **Updated distribution workflows**: adopted the supplied normal/Turbo V1.3 and legacy V1.2 templates, preserving subgraph ordering, positions and generation settings. V1.3 uses standard Save Image; legacy V1.2 keeps Save Image Advanced. Both save PNG, with filenames set directly in the save node.
+- **Hidden unused auxiliary outputs**: unconnected `filename_suffix`, `sheet_plan` and `view_records` are hidden. Use “Show auxiliary outputs” from the context menu to reveal them. Connected ports and output indexes stay intact.
+- **Documented requirements in both languages**: ComfyUI Core v0.37.0 or higher. Compatible nodes, existing templates, artwork and previous releases remain available.
+
 ### What's new in v1.5.1
 
 - **Retained the V1.2 interface** with Batch Out and Use Layout Image defaulting OFF. The standard template uses one save node for either a sheet or separate views.
 - **Moved optional assembly controls into the existing Layout area**, preserving preview size without another preview row. Generation and assembly sizes remain independent.
-- **Added the standard WebP 70 template**. Legacy nodes, templates, artwork and previous releases remain available.
+- **Added the one-save standard template**. Legacy nodes, templates, artwork and previous releases remain available.
 
 ### What's new in v1.5.0
 
@@ -210,13 +235,22 @@ Legacy V1/V1.1/V1.2 nodes, existing templates and previous releases remain avail
 
 Legacy V1/V1.1 nodes and existing workflows remain compatible.
 
-Package **v1.5.1** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
+Package **v1.5.2** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
 
+### System requirements
+
+- **ComfyUI Core v0.37.0 or higher**: the first stable release with Qwen Image 2.1 support, published September 21, 2026. Use the latest stable release for subsequent fixes. [Official release](https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.37.0).
+- Qwen Image 2.1 model weights, Qwen3-VL text encoder and the matching VAE are required and are not bundled.
+- Normal and Turbo use standard **Save Image (PNG)**; legacy V1.2 keeps **Save Image Advanced (PNG)**. Save WEBP Meta is not required by these three templates; WebP 70 is used for tests.
+- The local validation environment uses Core v0.40.0 / Frontend 1.55.17; this does not claim all-feature runtime validation on the initial supported release.
+
+Use [normal V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json), [Turbo V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json), or compatible [Reference V1.2](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). V1.3 uses Sheet Encode and standard Save Image; legacy V1.2 keeps direct Core wiring and Save Image Advanced. Filenames are editable in each save node. Normal uses 30 steps / CFG 1 / Euler-simple; Turbo uses the supplied eight-step Manual Sigmas schedule / CFG 1 / Euler. Original save-node position and dimensions are preserved.
+
 Use the [Sheet Encode template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json) for dedicated references, per-view Batch Out routing or explicit crops. It connects prompt, reference_plan, layout and matching image inputs while preserving output dimensions, sampling and PNG saving. The preserved direct template is for standard sheets using same_character supplements; dedicated roles can make its image tags disagree with Core inputs.
 
-The original [Reference V1.2 template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). Its four Load Image titles are **Character Image**, **Reference Image 1**, **Reference Image 2**, **Reference Image 3**. Only those titles were changed in the supplied template; wiring and generation/save settings are preserved. Optional references are bypassed by default. It uses Core TextEncodeQwenImage21 and PNG SaveImageAdvanced. Replace the save node with standard SaveImage if unavailable.
+The original [Reference V1.2 template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). Its four Load Image titles are **Character Image**, **Reference Image 1**, **Reference Image 2**, **Reference Image 3**. Wiring, subgraph ordering and generation/save settings are preserved; the note explains the direct-Core reference limitation. Optional references are bypassed by default. It uses Core TextEncodeQwenImage21 and PNG SaveImageAdvanced. Replace the save node with standard SaveImage if unavailable.
 
 Connect each image to both the Designer and the Encoder. Core image slot 1 receives the layout, slot 2 the character, slots 3–5 the optional references. Guide OFF supplies None; Core compacts active image numbers. Direct Core wiring does not execute the per-output reference plan or explicit source crops. For heterogeneous references, connect matching named image inputs, prompt, reference_plan and layout_image to Qwen 2.1 Sheet Encode. Save WEBP Meta is an optional WebP output node. No reference-image bytes or model weights are distributed.
 
@@ -242,6 +276,10 @@ Use the [assembly template](workflows/QwenImage21_Character_Sheet_Designer_Refer
 Use **Batch Out ON and latent batch_size=1**. Output size controls each generated image; Sheet canvas mode / width / height controls the final sheet. Sheet Auto packs the complete selection; Sheet Manual fixes the final dimensions. With assembly connected, “Assembly” in the existing Layout area shows canvas settings and destination panel bounds without adding another preview row.
 
 Sheet Assemble validates original list lengths, one image per view, IDs, plan hashes and dimensions. Missing, duplicate or mismatched records fail instead of repeating the last image. CPU composition preserves aspect ratio on white, composites RGBA transparency onto white, and neither crops, stretches nor mirrors images. The maximum canvas is 16,777,216 pixels. It verifies declared placement, not generated camera, figure count, body scale, sole alignment or already duplicated/mislabeled upstream content.
+
+### v1.5.2 validation
+
+This update changes auxiliary-output visibility, distributed workflows and documentation. **1,813 Python passes, one unavailable historical-fixture skip; 226 JavaScript passes**. Six workflows passed structure checks. All three supplied templates were loaded in actual ComfyUI, and their API exports confirmed seeds, steps, CFG and model selections. See the [current verification record](verification/release_v152.json). GPU results below belong to v1.5.1; they are not new GPU runs of these three distribution workflows.
 
 ### v1.5.1 validation
 

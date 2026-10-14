@@ -1,0 +1,63 @@
+{
+  "package_version": "1.5.2",
+  "created_utc": "2026-10-14T10:48:35.459818+00:00",
+  "change_scope": "Auxiliary-output visibility, user-supplied normal/Turbo/legacy templates, editable save filename and bilingual requirements.",
+  "cpu_static": {
+    "python_passed": 1813,
+    "python_skipped": 1,
+    "skip_reason": "Historical pre-change local fixture unavailable",
+    "javascript_passed": 226,
+    "failures": 0,
+    "installed_core_cpu_checks": true,
+    "templates_validated": 6
+  },
+  "browser_ui": {
+    "actual_frontend": true,
+    "templates_loaded": 3,
+    "exported_api_parameters_verified": true,
+    "cases": [
+      {
+        "template": "QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
+        "save_node": "SaveImageAdvanced",
+        "source_layout_wiring_and_generation_settings_preserved": true,
+        "actual_frontend_api_settings_match": true
+      },
+      {
+        "template": "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json",
+        "save_node": "SaveImage",
+        "source_layout_wiring_and_generation_settings_preserved": true,
+        "actual_frontend_api_settings_match": true
+      },
+      {
+        "template": "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json",
+        "save_node": "SaveImage",
+        "source_layout_wiring_and_generation_settings_preserved": true,
+        "actual_frontend_api_settings_match": true
+      }
+    ],
+    "existing_user_workflows_preserved": true
+  },
+  "gpu": {
+    "new_submissions": 0,
+    "note": "No new model inference in this workflow/UI/documentation update. Historical GPU evidence remains in release_v151.json."
+  },
+  "source_adjustments": [
+    "The legacy direct-Core note retains the dedicated-reference warning; no ports, ordering, sizes, positions or generation settings were changed."
+  ],
+  "preserved": [
+    "Registered node IDs and output indexes",
+    "Legacy workflows and previous releases",
+    "Existing artwork and licenses"
+  ],
+  "template_sha256": {
+    "QwenImage21_Character_Sheet_Designer_Reference_V12_template.json": "ad94af1f187c2c453f2b2f22e76ee10db1f34cfb75cb3d15a4e2cdebcece9f61",
+    "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json": "e785e1536bb4c2bb93d195c5c9143406468bc2b5034b7e01148095d66951286d",
+    "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json": "bcfdd345e5dc65f652d7b2845353758f6e00744ce9318d7ca1e9d3f5dc7fc3ed"
+  },
+  "limits": [
+    "Prompt-only hand and footwear controls do not guarantee exact results",
+    "Legacy direct-Core routing does not execute reference selection or crops",
+    "Images and model weights are not bundled"
+  ],
+  "backend_stopped_or_restarted": false
+}

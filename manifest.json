@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-14T08:25:19.057222+00:00",
+  "created_utc": "2026-10-14T10:48:35.459818+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
-  "target_base_commit": "457cfa9f58db3aaceba0f53891423c2c2ae35c48",
-  "target_state": "v1.5.1 compatible UI and standard one-save template",
+  "target_base_commit": "5ff1398d1f46c1bb4590dec797f3b982af6ade9d",
+  "target_state": "v1.5.2 supplied PNG workflows and hidden unconnected auxiliary outputs",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -630,6 +630,69 @@
         "local APIs and detailed machine logs"
       ],
       "backend_left_running": true
+    },
+    "release_v152": {
+      "package_version": "1.5.2",
+      "created_utc": "2026-10-14T10:48:35.459818+00:00",
+      "change_scope": "Auxiliary-output visibility, user-supplied normal/Turbo/legacy templates, editable save filename and bilingual requirements.",
+      "cpu_static": {
+        "python_passed": 1813,
+        "python_skipped": 1,
+        "skip_reason": "Historical pre-change local fixture unavailable",
+        "javascript_passed": 226,
+        "failures": 0,
+        "installed_core_cpu_checks": true,
+        "templates_validated": 6
+      },
+      "browser_ui": {
+        "actual_frontend": true,
+        "templates_loaded": 3,
+        "exported_api_parameters_verified": true,
+        "cases": [
+          {
+            "template": "QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
+            "save_node": "SaveImageAdvanced",
+            "source_layout_wiring_and_generation_settings_preserved": true,
+            "actual_frontend_api_settings_match": true
+          },
+          {
+            "template": "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json",
+            "save_node": "SaveImage",
+            "source_layout_wiring_and_generation_settings_preserved": true,
+            "actual_frontend_api_settings_match": true
+          },
+          {
+            "template": "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json",
+            "save_node": "SaveImage",
+            "source_layout_wiring_and_generation_settings_preserved": true,
+            "actual_frontend_api_settings_match": true
+          }
+        ],
+        "existing_user_workflows_preserved": true
+      },
+      "gpu": {
+        "new_submissions": 0,
+        "note": "No new model inference in this workflow/UI/documentation update. Historical GPU evidence remains in release_v151.json."
+      },
+      "source_adjustments": [
+        "The legacy direct-Core note retains the dedicated-reference warning; no ports, ordering, sizes, positions or generation settings were changed."
+      ],
+      "preserved": [
+        "Registered node IDs and output indexes",
+        "Legacy workflows and previous releases",
+        "Existing artwork and licenses"
+      ],
+      "template_sha256": {
+        "QwenImage21_Character_Sheet_Designer_Reference_V12_template.json": "ad94af1f187c2c453f2b2f22e76ee10db1f34cfb75cb3d15a4e2cdebcece9f61",
+        "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json": "e785e1536bb4c2bb93d195c5c9143406468bc2b5034b7e01148095d66951286d",
+        "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json": "bcfdd345e5dc65f652d7b2845353758f6e00744ce9318d7ca1e9d3f5dc7fc3ed"
+      },
+      "limits": [
+        "Prompt-only hand and footwear controls do not guarantee exact results",
+        "Legacy direct-Core routing does not execute reference selection or crops",
+        "Images and model weights are not bundled"
+      ],
+      "backend_stopped_or_restarted": false
     }
   },
   "files": [
@@ -637,30 +700,6 @@
       "path": ".gitignore",
       "sha256": "b4d3599747a1872acdfb1313fd0e7fbca20a77fbd43dbd486950e35845f13697",
       "bytes": 1567,
-      "purpose": "package metadata/documentation"
-    },
-    {
-      "path": "LICENSE",
-      "sha256": "c3a933cb956d7157860cbb1cedf66a6a01b3b978505d736562dcb4ba87ed8951",
-      "bytes": 1459,
-      "purpose": "backend/frontend/workflow/test/verification"
-    },
-    {
-      "path": "LICENSES/ComfyUI-GPL-3.0.txt",
-      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
-      "bytes": 35149,
-      "purpose": "backend/frontend/workflow/test/verification"
-    },
-    {
-      "path": "NOTICE.md",
-      "sha256": "7f126ed863cd2215a1b33b32dc963f7f74968deceac161d154cf44a010a764a5",
-      "bytes": 5057,
-      "purpose": "package metadata/documentation"
-    },
-    {
-      "path": "README.md",
-      "sha256": "895e9d6d071d73e662b69297087ce15b0bed323d375457e79ca47b14272b6312",
-      "bytes": 33557,
       "purpose": "package metadata/documentation"
     },
     {
@@ -706,14 +745,32 @@
       "purpose": "documentation"
     },
     {
+      "path": "LICENSE",
+      "sha256": "c3a933cb956d7157860cbb1cedf66a6a01b3b978505d736562dcb4ba87ed8951",
+      "bytes": 1459,
+      "purpose": "package metadata/documentation"
+    },
+    {
+      "path": "LICENSES/ComfyUI-GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149,
+      "purpose": "package metadata/documentation"
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "7f126ed863cd2215a1b33b32dc963f7f74968deceac161d154cf44a010a764a5",
+      "bytes": 5057,
+      "purpose": "package metadata/documentation"
+    },
+    {
       "path": "package.json",
-      "sha256": "cddfa3a858b99fd382f78033f0bf2d4943bc9cbd1a5dda1b74d2404b70b6fb20",
+      "sha256": "a0157b684b73d8effa46b01fa1326b0c33d49875542205070a87e5f4932eb613",
       "bytes": 203,
       "purpose": "package metadata/documentation"
     },
     {
       "path": "pyproject.toml",
-      "sha256": "19da80be2041482e2b9a1da00425b655fd2936188c01e3de1ca2c91eaac6ea14",
+      "sha256": "2a8d876a68d6ff685ff5b7ca33e97667fce81ec020c4a1eec5c1ae7f2fb5fa23",
       "bytes": 493,
       "purpose": "package metadata/documentation"
     },
@@ -853,19 +910,19 @@
       "path": "qwen_image21_character_sheet/reference_v13_node.py",
       "sha256": "d3efe682e88028ec5de1bd07104e6a201a97689bc1aeede4dbf744c69c6a7dc3",
       "bytes": 3397,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v13_preview.py",
       "sha256": "00ee5bdfacd747a4c75330923912d390dd860be68388c8a474bf0109e9dd65b1",
       "bytes": 2692,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/sheet_assemble.py",
       "sha256": "061ab4e352204967ed853771e8bf848ac3e4b09bc8d4b6373a8ae3502e59a66a",
       "bytes": 4880,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/sheet_encode.py",
@@ -877,7 +934,13 @@
       "path": "qwen_image21_character_sheet/sheet_plan.py",
       "sha256": "763ebefd6fd5049b3a761d7d5bde66f6049e3c1e2c25062fb60b5a94ed9d9d80",
       "bytes": 4379,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "backend"
+    },
+    {
+      "path": "README.md",
+      "sha256": "f6dc5a1222acd407ce04a3718925d9b22ac9a6cb322086eb0019811be9ff07ac",
+      "bytes": 38786,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": "tests/__init__.py",
@@ -931,7 +994,7 @@
       "path": "tests/fixtures/foot_reference_label_baseline.json",
       "sha256": "f88a2571cd435e377c997d433f369447efe435c4efe7ce3bd9a490e577411541",
       "bytes": 108125,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/golden_states.json",
@@ -982,6 +1045,12 @@
       "purpose": "test/fixture"
     },
     {
+      "path": "tests/js/optional_outputs.test.js",
+      "sha256": "23dc19edcd42f9f874c06b4791aa74e2d177e84c2207e50bbb114479513f9721",
+      "bytes": 3203,
+      "purpose": "test/fixture"
+    },
+    {
       "path": "tests/js/output_preview.test.js",
       "sha256": "63aad334189d3768e42104d7e6ee2244460d5d712bf03bb9653f4609415eae5a",
       "bytes": 1934,
@@ -1003,7 +1072,7 @@
       "path": "tests/js/sheet_assembly_ui.test.js",
       "sha256": "34df6572a654b5241b8257345a3e47de5683bb29e51be94c6e7c0453d7133ada",
       "bytes": 5699,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/state.test.js",
@@ -1217,9 +1286,9 @@
     },
     {
       "path": "tests/test_sheet_assemble.py",
-      "sha256": "89489aac79604774d6b4444dd1b42eb84afbb7ff17f0fcba81dc39c5223e1ee3",
-      "bytes": 12672,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "sha256": "193331b648a9d09ad0b9a92a4450dabd635b64cbcc91e45e3051b90142b9eb7b",
+      "bytes": 12871,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_styles.py",
@@ -1231,7 +1300,7 @@
       "path": "tests/test_template_reference_contracts.py",
       "sha256": "83da282914b70eedf687b38437ad8ee9f523bdcd4bc9ea6d8924932e02e68840",
       "bytes": 5126,
-      "purpose": "workflow/test/validation"
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_validation.py",
@@ -1393,7 +1462,7 @@
       "path": "verification/gpu_summary_v150.json",
       "sha256": "78d87ec4b7cfe14d0cb199c3d28292e660b6a14b6b01f084f1fb842368bf8d26",
       "bytes": 7676,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/javascript_tests.log",
@@ -1435,19 +1504,25 @@
       "path": "verification/release_v142.json",
       "sha256": "4a84c624d58ed71c1dd528fae4920a73719655e16ea6d62e9689e89d6b1d9451",
       "bytes": 857,
-      "purpose": "workflow/test/validation"
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v150.json",
       "sha256": "58c56d0ecd805f6a236d750998cec1703e7a8e6a6054e69b8db09b774604e21b",
       "bytes": 2877,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v151.json",
       "sha256": "b64ac68707ebadded817bce130243cd49ccb85f6227bbb74c1863599efd2dcd9",
       "bytes": 4556,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "verification evidence"
+    },
+    {
+      "path": "verification/release_v152.json",
+      "sha256": "21fe043cdd5cd2528ed7f67e5f70118ca6c3a0bd8316df6ea41fbc028d77312a",
+      "bytes": 2708,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/results.json",
@@ -1594,6 +1669,12 @@
       "purpose": "frontend"
     },
     {
+      "path": "web/optional_outputs.js",
+      "sha256": "2c3ab603cf5bf8acffe15b9da2d8786846b70eb343cfa6347d71d87d0bd75723",
+      "bytes": 3772,
+      "purpose": "frontend"
+    },
+    {
       "path": "web/output_preview.js",
       "sha256": "2c5e4b3db58cbe71cb585aa64c96b0c54c1e808b8088bc4f13271f2f5d3a9146",
       "bytes": 2550,
@@ -1625,15 +1706,15 @@
     },
     {
       "path": "web/qwen_image21_character_sheet_designer_reference_v13.js",
-      "sha256": "c251b1e29a3455063cf01b7bdf61d5ac292f6d57400574a2dd60fa269a1d516a",
-      "bytes": 2295,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "sha256": "95f64bbf2fe68d51b60ef3c8cebf8ec4fd4a187fc08b47f1f7e708a0b75f00fd",
+      "bytes": 2540,
+      "purpose": "frontend"
     },
     {
       "path": "web/sheet_assembly_ui.js",
       "sha256": "5ff48a2ddb4147e3e29e6aa73b526a2e536aae203eee6997e88c037b113284f6",
       "bytes": 6216,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "frontend"
     },
     {
       "path": "web/state.js",
@@ -1657,25 +1738,31 @@
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json",
       "sha256": "8dbeb1d2fb92e5282268c6fbc9f05eba066ae04cb46069b575f64858016fe74b",
       "bytes": 40550,
-      "purpose": "workflow/test/validation"
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
-      "sha256": "8121a2a6679bb2fac1e28255cbb213d3a9efdf1a8eab3f14bc2784854e9266b1",
-      "bytes": 40517,
+      "sha256": "970d466f0fc8f131767e6939f4451858ec4727a48325984e8dba7a9af849327a",
+      "bytes": 39809,
       "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json",
       "sha256": "a3c24bf80d6dd6f1a96434fb66bf8c604af0d02e75cd46de662d04d4a5b91148",
       "bytes": 22024,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json",
-      "sha256": "ecf2ddac491c76a67111921116c7aed494d7b1ffdd56210d918769876864566b",
-      "bytes": 20028,
-      "purpose": "backend/frontend/workflow/test/verification"
+      "sha256": "e785e1536bb4c2bb93d195c5c9143406468bc2b5034b7e01148095d66951286d",
+      "bytes": 39559,
+      "purpose": "workflow"
+    },
+    {
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json",
+      "sha256": "bcfdd345e5dc65f652d7b2845353758f6e00744ce9318d7ca1e9d3f5dc7fc3ed",
+      "bytes": 40305,
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",

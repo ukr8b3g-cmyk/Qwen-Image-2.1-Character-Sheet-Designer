@@ -201,8 +201,11 @@ def test_standard_v13_workflow_has_one_save_for_both_modes_and_no_assembly_branc
     graph = json.loads(path.read_text(encoding='utf-8'))
     validate_graph(graph)
     designer = next(node for node in graph['nodes'] if node['type'] == 'QwenImage21CharacterSheetDesignerReferenceV13')
-    saves = [node for node in graph['nodes'] if node['type'] == 'SaveWebPMeta']
-    assert len(saves) == 1 and saves[0]['widgets_values_named']['quality'] == 70
+    saves = [node for node in graph['nodes'] if node['type'] == 'SaveImage']
+    assert len(saves) == 1
+    assert not any(node['type'] == 'StringConcatenate' for node in graph['nodes'])
+    assert not any(i['name'] == 'filename_prefix' for i in saves[0]['inputs'])
+    assert saves[0]['widgets_values_named']['filename_prefix'] == 'qwen21_character_sheet_multi'
     assert designer['widgets_values_named']['batch_out'] is False
     assert not any(node['type'] == 'QwenImage21CharacterSheetAssemble' for node in graph['nodes'])
     for batch, count in [(False, 1), (True, 5)]:
@@ -215,4 +218,4 @@ def test_standard_v13_workflow_has_one_save_for_both_modes_and_no_assembly_branc
         assert len(compiled[0]) == count
         assert len(compiled[1]) == count and len(compiled[5]) == count
         assert compiled[3] == [None] * count
-        assert sum(node['class_type'] == 'SaveWebPMeta' for node in api.values()) == 1
+        assert sum(node['class_type'] == 'SaveImage' for node in api.values()) == 1

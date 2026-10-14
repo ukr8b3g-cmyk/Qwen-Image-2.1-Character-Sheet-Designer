@@ -2,6 +2,7 @@ import {app} from '../../scripts/app.js';
 import {api} from '../../scripts/api.js';
 import {createExtension, getDesigner, graphTransaction} from './multi_integration.js';
 import {SHEET_FIELDS, installAssemblyUI} from './sheet_assembly_ui.js';
+import {installOptionalOutputs} from './optional_outputs.js';
 
 const profile = {
   nodeType: 'QwenImage21CharacterSheetDesignerReferenceV13',
@@ -31,17 +32,18 @@ app.registerExtension({
         node.onWidgetChanged?.(widget.name, value, previous, widget);
       }, app.canvas);
     });
+    const optionalOutputs = installOptionalOutputs(node, designer.ui.root, action => graphTransaction(node, action, app.canvas));
     let disposed = false, frame, observed = JSON.stringify(read());
     const update = () => {
       if (disposed) return;
       const key = JSON.stringify(read());
       if (key !== observed) { observed = key; void designer.controller.refreshPreview(); }
-      assembly?.update();
+      assembly?.update(); optionalOutputs.update();
       frame = requestAnimationFrame(update);
     };
     const previous = node.onRemoved;
     node.onRemoved = function(...args) {
-      disposed = true; cancelAnimationFrame(frame); assembly?.dispose(); instances.delete(node);
+      disposed = true; cancelAnimationFrame(frame); assembly?.dispose(); optionalOutputs.dispose(); instances.delete(node);
       return previous?.apply(this, args);
     };
     instances.set(node, {refresh: () => designer.afterConfigure()});
