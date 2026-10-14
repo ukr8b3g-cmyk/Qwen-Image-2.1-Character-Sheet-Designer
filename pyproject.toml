@@ -12,3 +12,6 @@ Repository = "https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Des
 pythonpath = ["."]
 testpaths = ["tests"]
 addopts = "-ra --import-mode=importlib --confcutdir=tests"
+
+[tool.comfy]
+PublisherId = "ukr8b3g-cmyk"

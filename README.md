@@ -250,3 +250,9 @@ Installed-Core interoperability checks use the optional `QWEN_SHEET_TEST_COMFYUI
 This release adds workflow/documentation fixes and CPU regression coverage. GPU rendering and image quality were not retested for v1.4.2. Earlier GPU records describe v1.4.1 only. 本版は接続・案内の修正とCPU確認です。GPU再試験は行っていません。旧Release・既存画像・旧ノードを保持しています。
 
 CPU validation: **159 passed**, including **32 new regressions**. The new template passed actual installed Core prompt validation (15 API nodes), with CUDA uninitialized and zero GPU submissions. CPU確認は159件成功（追加32件）、実Coreの15ノード入力検証も成功。[v1.4.2 record](verification/release_v142.json).
+
+## License / ライセンス
+
+Original code and documentation for which ukr8b3g-cmyk holds the applicable rights are available under the [MIT License](LICENSE). Third-party material retains its original terms; images, artwork, screenshots, model weights and user-provided references are outside this MIT grant. See [NOTICE.md](NOTICE.md) before redistributing. This does not guarantee rights to any image or generated output, or replace the terms of ComfyUI, models, dependencies or external services.
+
+ukr8b3g-cmykが権利を有する自作コード・文書には[MIT License](LICENSE)を適用します。第三者由来の素材は元の条件を維持し、画像・アートワーク・スクリーンショット・モデル重み・利用者の参照素材は今回のMIT許諾に含めません。再配布時は[NOTICE.md](NOTICE.md)を確認してください。画像・生成物の権利を保証するものではなく、ComfyUI・モデル・依存先・外部サービスの条件も別途適用されます。
