@@ -1,0 +1,43 @@
+# Registry packages are built only from a clean, fixed Git checkout.
+# Keep runtime code, browser assets, templates, user docs and legal notices.
+.github/
+.gitignore
+.comfyignore
+.gitattributes
+.gitmodules
+.agents/
+.codex/
+.vscode/
+.idea/
+tests/
+tools/
+verification/
+manifest.json
+package.json
+package-lock.json
+docs/REGISTRY_PUBLISHING.md
+
+# Never distribute local credentials, caches, generated output or build debris.
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*
+*token*
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+node_modules/
+.venv/
+venv/
+.DS_Store
+*.log
+*.tmp
+*.bak
+node.zip
+dist/
+build/

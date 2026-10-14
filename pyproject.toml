@@ -2,6 +2,8 @@
 name = "qwen-image21-character-sheet-designer"
 version = "1.5.3"
 description = "Deterministic Qwen Image 2.1 character-sheet prompt and layout designer for ComfyUI"
+readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
 dependencies = []
 
@@ -15,3 +17,4 @@ addopts = "-ra --import-mode=importlib --confcutdir=tests"
 
 [tool.comfy]
 PublisherId = "ukr8b3g-cmyk"
+DisplayName = "Qwen Image 2.1 Character Sheet Designer"
