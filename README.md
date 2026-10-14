@@ -5,6 +5,12 @@
 <img width="1543" height="713" alt="{3DB22210-59B7-4161-8A96-29B0211C5E33}" src="https://github.com/user-attachments/assets/785a18e0-fa55-41ab-b12a-d0d98b40f9ac" />
 
 
+## v1.5.1の変更点
+
+- V1.2の操作と配置を維持。標準はBatch Out OFF・Use Layout Image OFFで、保存ノードは1つです。Batch Out ONでも同じ保存先から各ビューを出力します。
+- 合成設定は合成接続時だけ、既存Layout内の「Assembly / 合成」で表示します。プレビューの段を追加せず、生成サイズと合成サイズを分けます。旧ノード・テンプレートは維持します。
+- [標準WebPテンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json)。合成テンプレートは任意です。
+
 ## v1.5.0の変更点
 
 - **Reference V1.3・Sheet Assembleを追加**：ビューを個別生成し、ID・枚数・配置計画を検査して1枚のシートへ合成します。生成サイズと合成サイズを別々に指定できます。
@@ -28,7 +34,7 @@
 
 旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
 
-**Package v1.5.0** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
+**Package v1.5.1** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
 
@@ -36,7 +42,7 @@ Select views, keep a character consistent with image references, and generate ei
 
 ### ノードとバージョン
 
-パッケージ全体のバージョンは **1.5.0** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
+パッケージ全体のバージョンは **1.5.1** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
 
 | 表示名 | 用途 | ノードID |
 | --- | --- | --- |
@@ -136,7 +142,7 @@ Guide ONは配置の参照画像を作ります。Guide OFFでは作成せずNon
 
 [合成対応テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json)を使用します。V1.3の先頭6出力はV1.2と同じで、追加の`sheet_plan`・`view_records`とデコードしたIMAGEをSheet Assembleへ接続します。参照画像はDesignerとSheet Encodeの同名入力へ接続します。WebP保存には[Save WEBP Meta](https://github.com/ukr8b3g-cmyk/ComfyUI-save-webp-meta-node)が必要です。
 
-**Batch Out ON・latent batch_size=1**で使用してください。Output sizeは各ビューの生成サイズ、Sheet canvas mode / width / heightは合成先のサイズです。合成Autoは選択全体を配置し、合成Manualは入力した幅×高さを固定します。下のシートプレビューは合成先のパネル枠を表示します。
+**Batch Out ON・latent batch_size=1**で使用してください。Output sizeは各ビューの生成サイズ、Sheet canvas mode / width / heightは合成先のサイズです。合成Autoは選択全体を配置し、合成Manualは入力した幅×高さを固定します。合成を接続すると既存Layout内の「Assembly / 合成」で合成サイズと配置を確認できます。通常のLayout表示の大きさは維持します。
 
 Sheet Assembleは元のリスト長、1ビュー1画像、ビューID、計画ハッシュ、寸法を検査します。欠損・重複・計画不一致はエラーにし、短いリストを末尾画像で補いません。画像はCPUで縦横比を保って白い枠内へ収め、RGBAの透明部分を白背景へ合成します。切り抜き・引き伸ばし・反転は行いません。合成上限は16,777,216画素です。
 
@@ -147,6 +153,12 @@ Sheet Assembleは元のリスト長、1ビュー1画像、ビューID、計画�
 Sheet Encodeの`reference_regions`で参照範囲を明示できます。空の`{}`は参照全体を使い、画像別・ビュー別の正規化矩形で入力範囲を指定できます。自動分類・自動切り取りはしません。[範囲指定の説明](docs/REFERENCE_REGIONS_JA.md)を参照してください。Encoderの`resolution`は参照のリサンプル量で、出力Width/Heightとは別です。
 
 Qwenで作成した参照を編集する場合、参照作成時とは異なる編集Seedを選び、その編集Seedを比較中は固定する方法を確認しました。強い斑点が改善した局所試験ですが、すべての荒れの原因や解決を保証しません。WebP品質70は保存容量の設定で、生成された画素の不整合を直す設定ではありません。
+
+### v1.5.1の確認範囲
+
+Python **1,815件成功・1件スキップ**（旧ローカル比較素材が未提供）、JavaScript **222件成功**。7テンプレート、実Core CPU、実ComfyUI画面のUndo／Redo・保存・再読込を確認しました。GPUはAuto／Manual・Batch Out・Guideの5条件10枚を確認し、個別5枚は更新前と画素が一致しました。[検証記録](verification/release_v151.json)。
+
+Manualの縦長サイズでは顔画像の余白が大きくなるため、個別出力の基本はAutoを推奨します。Guideは厳密な配置を保証せず、手・履物のプロンプト制御にも既存の限界があります。GPU確認は1参照・1Seedの限定試験です。
 
 ### v1.5.0の確認範囲
 
@@ -167,6 +179,12 @@ Qwenで作成した参照を編集する場合、参照作成時とは異なる�
 記録は[最新GPU検証](verification/gpu_summary_v141.json)、[配布検証](verification/release_v141.json)にあります。公開対象はノード本体・必須UI素材・指定ワークフロー・README・利用説明と検証要約です。作業用仕様書、検証用画像、ローカル構成付き詳細記録と追加テストワークフローはローカルに保持し、配布しません。
 
 ## English
+
+### What's new in v1.5.1
+
+- **Retained the V1.2 interface** with Batch Out and Use Layout Image defaulting OFF. The standard template uses one save node for either a sheet or separate views.
+- **Moved optional assembly controls into the existing Layout area**, preserving preview size without another preview row. Generation and assembly sizes remain independent.
+- **Added the standard WebP 70 template**. Legacy nodes, templates, artwork and previous releases remain available.
 
 ### What's new in v1.5.0
 
@@ -192,7 +210,7 @@ Legacy V1/V1.1/V1.2 nodes, existing templates and previous releases remain avail
 
 Legacy V1/V1.1 nodes and existing workflows remain compatible.
 
-Package **v1.5.0** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
+Package **v1.5.1** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
 
@@ -216,13 +234,20 @@ v1.4.1 improves worn gloves, consistent paired footwear, identifiable footwear c
 
 Previous public package 0.1.0 is preserved on [legacy-v0.1.0](https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer/tree/legacy-v0.1.0); use Code → Download ZIP on that branch. New releases are added as separate versions while previous downloads remain available. Compatible old nodes remain included with their stable IDs.
 
+
 ### Assemble independently generated views (V1.3)
 
 Use the [assembly template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json). Connect decoded IMAGE plus V1.3's sheet_plan and view_records to Sheet Assemble. The first six outputs preserve V1.2's contract. Reference images go to matching Designer and Sheet Encode inputs. This template requires [Save WEBP Meta](https://github.com/ukr8b3g-cmyk/ComfyUI-save-webp-meta-node).
 
-Use **Batch Out ON and latent batch_size=1**. Output size controls each generated image; Sheet canvas mode / width / height controls the final sheet. Sheet Auto packs the complete selection; Sheet Manual fixes the final dimensions. The sheet preview shows destination panel bounds.
+Use **Batch Out ON and latent batch_size=1**. Output size controls each generated image; Sheet canvas mode / width / height controls the final sheet. Sheet Auto packs the complete selection; Sheet Manual fixes the final dimensions. With assembly connected, “Assembly” in the existing Layout area shows canvas settings and destination panel bounds without adding another preview row.
 
 Sheet Assemble validates original list lengths, one image per view, IDs, plan hashes and dimensions. Missing, duplicate or mismatched records fail instead of repeating the last image. CPU composition preserves aspect ratio on white, composites RGBA transparency onto white, and neither crops, stretches nor mirrors images. The maximum canvas is 16,777,216 pixels. It verifies declared placement, not generated camera, figure count, body scale, sole alignment or already duplicated/mislabeled upstream content.
+
+### v1.5.1 validation
+
+**1,815 Python passes, one unavailable historical local-fixture skip, and 222 JavaScript passes**. Seven templates, actual Core CPU behavior, and actual ComfyUI Undo/Redo, export and reload were verified. Five GPU conditions produced ten images covering Auto/Manual, Batch Out and Guide; five separate views matched pre-update pixels exactly. See [verification record](verification/release_v151.json).
+
+Manual portrait dimensions can leave large margins around busts; Auto is the default recommendation for individual views. Guide does not guarantee exact geometry, and prompt-only hand/footwear control retains its existing limits. GPU evidence is limited to one reference and one seed.
 
 ### v1.5.0 validation
 

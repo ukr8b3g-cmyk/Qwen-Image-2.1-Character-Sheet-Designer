@@ -1,0 +1,159 @@
+{
+  "package_version": "1.5.1",
+  "created_utc": "2026-10-14T08:25:19.057222+00:00",
+  "change_scope": "V1.2 interface continuity, optional in-place assembly controls and one-save standard WebP template.",
+  "cpu_static": {
+    "python_passed": 1815,
+    "python_skipped": 1,
+    "skip_reason": "Historical pre-change local fixture unavailable",
+    "javascript_passed": 222,
+    "failures": 0,
+    "actual_core_cpu": true,
+    "templates_validated": 7
+  },
+  "browser_ui": {
+    "environment": "Actual ComfyUI frontend",
+    "checks": [
+      "selection and Manual dimensions Undo/Redo",
+      "workflow export and reimport",
+      "Designer delete and undo without duplicate UI",
+      "assembly Manual size Undo/Redo and reload",
+      "generation and assembly sizes independent"
+    ],
+    "extra_preview_rows": 0,
+    "existing_user_workflows_preserved": true
+  },
+  "gpu": {
+    "conditions": 5,
+    "images": 10,
+    "seed": 4202601013,
+    "steps": 30,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "webp_quality": 70,
+    "lora": false,
+    "cases": [
+      {
+        "case": "G01_AUTO_SHEET",
+        "seconds": 122.42,
+        "dimensions": [
+          [
+            2816,
+            1280
+          ]
+        ],
+        "metadata_matched": true,
+        "visual_review": {
+          "status": "major_views_passed",
+          "note": "正面・横顔・全身正面／側面／背面の5ビュー。人物・衣装と素足を維持。Guide OFFのため厳密な矩形一致は保証しない。"
+        }
+      },
+      {
+        "case": "G02_MANUAL_SHEET",
+        "seconds": 41.03,
+        "dimensions": [
+          [
+            1536,
+            864
+          ]
+        ],
+        "metadata_matched": true,
+        "visual_review": {
+          "status": "major_views_passed",
+          "note": "指定1536×864で5ビュー。寸法を変更しても主要ビューの欠損なし。"
+        }
+      },
+      {
+        "case": "G03_AUTO_BATCH5",
+        "seconds": 137.89,
+        "dimensions": [
+          [
+            1024,
+            1024
+          ],
+          [
+            1024,
+            1024
+          ],
+          [
+            768,
+            1344
+          ],
+          [
+            768,
+            1344
+          ],
+          [
+            768,
+            1344
+          ]
+        ],
+        "metadata_matched": true,
+        "visual_review": {
+          "status": "major_views_passed",
+          "note": "顔2枚は1024×1024、全身3枚は768×1344。各画像の向きとファイル名のビューIDが対応。"
+        }
+      },
+      {
+        "case": "G04_MANUAL_BATCH2",
+        "seconds": 56.2,
+        "dimensions": [
+          [
+            768,
+            1344
+          ],
+          [
+            768,
+            1344
+          ]
+        ],
+        "metadata_matched": true,
+        "visual_review": {
+          "status": "passed_with_spacing_note",
+          "note": "顔・全身とも指定768×1344を維持。顔画像の下部に大きな余白あり。Manualはビューに合わせて自動変更しないため、個別生成の基本はAutoを推奨。"
+        }
+      },
+      {
+        "case": "G05_MANUAL_GUIDE_ON",
+        "seconds": 51.42,
+        "dimensions": [
+          [
+            1536,
+            864
+          ]
+        ],
+        "metadata_matched": true,
+        "visual_review": {
+          "status": "major_views_passed",
+          "note": "Guide ONで5ビューと枠を描画。顔2ビューを左列に縦積みし、全身3ビューを配置。人物参照の混入・灰色マネキンの残存は今回見られない。厳密な幾何一致の保証ではない。"
+        }
+      }
+    ],
+    "pre_update_pixel_matches": 5,
+    "scope": "One reference, one seed, five configurations; not universal image-quality acceptance."
+  },
+  "defaults": {
+    "batch_out": false,
+    "use_layout_image": false,
+    "standard_save_nodes": 1
+  },
+  "preserved": [
+    "six registered nodes",
+    "legacy IDs and output contracts",
+    "previous templates and artwork",
+    "previous releases",
+    "public license documents and PublisherId"
+  ],
+  "limits": [
+    "Manual uses the requested dimensions per image and can leave large margins",
+    "Guide does not guarantee exact geometry",
+    "Prompt-only hand and footwear controls can fail and may require another generation"
+  ],
+  "private_artifacts_excluded": [
+    "test and reference images",
+    "screenshots",
+    "local APIs and detailed machine logs"
+  ],
+  "backend_left_running": true
+}

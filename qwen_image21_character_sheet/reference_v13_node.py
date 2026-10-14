@@ -9,7 +9,7 @@ from .compiler import StateValidationError
 
 
 class QwenImage21CharacterSheetDesignerReferenceV13(QwenImage21CharacterSheetDesignerReferenceV12):
-    DESCRIPTION = 'Generate independent views with Batch Out ON, then connect decoded images, view_records and sheet_plan to Sheet Assemble. Generation dimensions and sheet canvas dimensions are separate.'
+    DESCRIPTION = 'V1.2-style sheet generation. Batch Out OFF generates one sheet; ON generates individual views through the same save node. Optional Sheet Assemble uses separate canvas settings in the Layout preview.'
     RETURN_TYPES = QwenImage21CharacterSheetDesignerReferenceV12.RETURN_TYPES + ('STRING', 'STRING')
     RETURN_NAMES = QwenImage21CharacterSheetDesignerReferenceV12.RETURN_NAMES + ('sheet_plan', 'view_records')
     OUTPUT_IS_LIST = QwenImage21CharacterSheetDesignerReferenceV12.OUTPUT_IS_LIST + (False, True)
@@ -17,7 +17,6 @@ class QwenImage21CharacterSheetDesignerReferenceV13(QwenImage21CharacterSheetDes
     @classmethod
     def INPUT_TYPES(cls):
         inputs = super().INPUT_TYPES()
-        inputs['optional']['batch_out'][1]['default'] = True
         inputs['optional'].update(
             sheet_size_mode=(['auto', 'manual'], {'default': 'auto', 'tooltip': 'Sheet canvas only. Generation sizes remain in the Designer Output size controls.'}),
             sheet_width=('INT', {'default': 1536, 'min': 32, 'max': runtime_max_resolution(), 'step': 32}),
@@ -25,7 +24,7 @@ class QwenImage21CharacterSheetDesignerReferenceV13(QwenImage21CharacterSheetDes
         return inputs
 
     @classmethod
-    def VALIDATE_INPUTS(cls, state_json, use_layout_image=False, style='none', batch_out=True,
+    def VALIDATE_INPUTS(cls, state_json, use_layout_image=False, style='none', batch_out=False,
                         sheet_size_mode='auto', sheet_width=1536, sheet_height=864):
         try:
             compile_output_plan_v12(state_json, strict=False, max_resolution=runtime_max_resolution(),
@@ -37,7 +36,7 @@ class QwenImage21CharacterSheetDesignerReferenceV13(QwenImage21CharacterSheetDes
         return True
 
     def compile(self, state_json, character_image=None, reference_image_1=None, reference_image_2=None,
-                reference_image_3=None, use_layout_image=False, style='none', batch_out=True,
+                reference_image_3=None, use_layout_image=False, style='none', batch_out=False,
                 sheet_size_mode='auto', sheet_width=1536, sheet_height=864):
         sheet = make_sheet_plan(state_json, sheet_size_mode=sheet_size_mode, sheet_width=sheet_width,
                                 sheet_height=sheet_height, max_resolution=runtime_max_resolution())

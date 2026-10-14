@@ -183,3 +183,36 @@ def test_rgba_is_composited_on_white_without_changing_source(alpha):
     expected, _ = QwenImage21CharacterSheetAssemble().assemble([rgb * alpha + (1 - alpha)], records, root)
     assert torch.equal(output, expected)
     assert torch.equal(rgba, before)
+
+
+def test_v13_defaults_match_v12_single_sheet_without_guide():
+    assert V13.INPUT_TYPES()['optional']['batch_out'][1]['default'] is False
+    assert V13.INPUT_TYPES()['optional']['use_layout_image'][1]['default'] is False
+    image = torch.zeros(1, 32, 32, 3)
+    old = V12().compile(DEFAULT_V12_STATE_JSON, character_image=image)
+    new = V13().compile(DEFAULT_V12_STATE_JSON, character_image=image)
+    assert new[:6] == old
+    assert len(new[0]) == 1 and new[3] == [None] and new[7] == []
+
+
+def test_standard_v13_workflow_has_one_save_for_both_modes_and_no_assembly_branch():
+    from tools.workflow import validate_graph, api_prompt
+    path = Path(__file__).parents[1] / 'workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json'
+    graph = json.loads(path.read_text(encoding='utf-8'))
+    validate_graph(graph)
+    designer = next(node for node in graph['nodes'] if node['type'] == 'QwenImage21CharacterSheetDesignerReferenceV13')
+    saves = [node for node in graph['nodes'] if node['type'] == 'SaveWebPMeta']
+    assert len(saves) == 1 and saves[0]['widgets_values_named']['quality'] == 70
+    assert designer['widgets_values_named']['batch_out'] is False
+    assert not any(node['type'] == 'QwenImage21CharacterSheetAssemble' for node in graph['nodes'])
+    for batch, count in [(False, 1), (True, 5)]:
+        designer['widgets_values'][3] = batch
+        designer['widgets_values_named']['batch_out'] = batch
+        active = deepcopy(graph)
+        for node in active['nodes']: node['mode'] = 0
+        api = api_prompt(active)
+        compiled = V13().compile(designer['widgets_values_named']['state_json'], character_image=torch.zeros(1, 32, 32, 3), batch_out=batch)
+        assert len(compiled[0]) == count
+        assert len(compiled[1]) == count and len(compiled[5]) == count
+        assert compiled[3] == [None] * count
+        assert sum(node['class_type'] == 'SaveWebPMeta' for node in api.values()) == 1

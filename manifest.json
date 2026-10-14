@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-14T04:55:56.823612+00:00",
+  "created_utc": "2026-10-14T08:25:19.057222+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
-  "target_base_commit": "9c1c0b2202253801211bc706f0de3707cecbb964",
-  "target_state": "v1.5.0 independent-view assembly and prompt-control limits",
+  "target_base_commit": "457cfa9f58db3aaceba0f53891423c2c2ae35c48",
+  "target_state": "v1.5.1 compatible UI and standard one-save template",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -471,6 +471,165 @@
         "Coverage correctness does not establish anatomy, material, camera or layout quality.",
         "No test-end backend shutdown performed."
       ]
+    },
+    "release_v151": {
+      "package_version": "1.5.1",
+      "created_utc": "2026-10-14T08:25:19.057222+00:00",
+      "change_scope": "V1.2 interface continuity, optional in-place assembly controls and one-save standard WebP template.",
+      "cpu_static": {
+        "python_passed": 1815,
+        "python_skipped": 1,
+        "skip_reason": "Historical pre-change local fixture unavailable",
+        "javascript_passed": 222,
+        "failures": 0,
+        "actual_core_cpu": true,
+        "templates_validated": 7
+      },
+      "browser_ui": {
+        "environment": "Actual ComfyUI frontend",
+        "checks": [
+          "selection and Manual dimensions Undo/Redo",
+          "workflow export and reimport",
+          "Designer delete and undo without duplicate UI",
+          "assembly Manual size Undo/Redo and reload",
+          "generation and assembly sizes independent"
+        ],
+        "extra_preview_rows": 0,
+        "existing_user_workflows_preserved": true
+      },
+      "gpu": {
+        "conditions": 5,
+        "images": 10,
+        "seed": 4202601013,
+        "steps": 30,
+        "cfg": 1,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "webp_quality": 70,
+        "lora": false,
+        "cases": [
+          {
+            "case": "G01_AUTO_SHEET",
+            "seconds": 122.42,
+            "dimensions": [
+              [
+                2816,
+                1280
+              ]
+            ],
+            "metadata_matched": true,
+            "visual_review": {
+              "status": "major_views_passed",
+              "note": "正面・横顔・全身正面／側面／背面の5ビュー。人物・衣装と素足を維持。Guide OFFのため厳密な矩形一致は保証しない。"
+            }
+          },
+          {
+            "case": "G02_MANUAL_SHEET",
+            "seconds": 41.03,
+            "dimensions": [
+              [
+                1536,
+                864
+              ]
+            ],
+            "metadata_matched": true,
+            "visual_review": {
+              "status": "major_views_passed",
+              "note": "指定1536×864で5ビュー。寸法を変更しても主要ビューの欠損なし。"
+            }
+          },
+          {
+            "case": "G03_AUTO_BATCH5",
+            "seconds": 137.89,
+            "dimensions": [
+              [
+                1024,
+                1024
+              ],
+              [
+                1024,
+                1024
+              ],
+              [
+                768,
+                1344
+              ],
+              [
+                768,
+                1344
+              ],
+              [
+                768,
+                1344
+              ]
+            ],
+            "metadata_matched": true,
+            "visual_review": {
+              "status": "major_views_passed",
+              "note": "顔2枚は1024×1024、全身3枚は768×1344。各画像の向きとファイル名のビューIDが対応。"
+            }
+          },
+          {
+            "case": "G04_MANUAL_BATCH2",
+            "seconds": 56.2,
+            "dimensions": [
+              [
+                768,
+                1344
+              ],
+              [
+                768,
+                1344
+              ]
+            ],
+            "metadata_matched": true,
+            "visual_review": {
+              "status": "passed_with_spacing_note",
+              "note": "顔・全身とも指定768×1344を維持。顔画像の下部に大きな余白あり。Manualはビューに合わせて自動変更しないため、個別生成の基本はAutoを推奨。"
+            }
+          },
+          {
+            "case": "G05_MANUAL_GUIDE_ON",
+            "seconds": 51.42,
+            "dimensions": [
+              [
+                1536,
+                864
+              ]
+            ],
+            "metadata_matched": true,
+            "visual_review": {
+              "status": "major_views_passed",
+              "note": "Guide ONで5ビューと枠を描画。顔2ビューを左列に縦積みし、全身3ビューを配置。人物参照の混入・灰色マネキンの残存は今回見られない。厳密な幾何一致の保証ではない。"
+            }
+          }
+        ],
+        "pre_update_pixel_matches": 5,
+        "scope": "One reference, one seed, five configurations; not universal image-quality acceptance."
+      },
+      "defaults": {
+        "batch_out": false,
+        "use_layout_image": false,
+        "standard_save_nodes": 1
+      },
+      "preserved": [
+        "six registered nodes",
+        "legacy IDs and output contracts",
+        "previous templates and artwork",
+        "previous releases",
+        "public license documents and PublisherId"
+      ],
+      "limits": [
+        "Manual uses the requested dimensions per image and can leave large margins",
+        "Guide does not guarantee exact geometry",
+        "Prompt-only hand and footwear controls can fail and may require another generation"
+      ],
+      "private_artifacts_excluded": [
+        "test and reference images",
+        "screenshots",
+        "local APIs and detailed machine logs"
+      ],
+      "backend_left_running": true
     }
   },
   "files": [
@@ -481,15 +640,27 @@
       "purpose": "package metadata/documentation"
     },
     {
+      "path": "LICENSE",
+      "sha256": "c3a933cb956d7157860cbb1cedf66a6a01b3b978505d736562dcb4ba87ed8951",
+      "bytes": 1459,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
+      "path": "LICENSES/ComfyUI-GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
       "path": "NOTICE.md",
-      "sha256": "bafb16ca406e541430ac743ee35e29b322fc59c264161a1e304b6702008997a5",
-      "bytes": 2006,
+      "sha256": "7f126ed863cd2215a1b33b32dc963f7f74968deceac161d154cf44a010a764a5",
+      "bytes": 5057,
       "purpose": "package metadata/documentation"
     },
     {
       "path": "README.md",
-      "sha256": "96ad4bbadef239380c114e93eba174786261f01601659e91c40fd9f1079e576c",
-      "bytes": 29791,
+      "sha256": "895e9d6d071d73e662b69297087ce15b0bed323d375457e79ca47b14272b6312",
+      "bytes": 33557,
       "purpose": "package metadata/documentation"
     },
     {
@@ -536,14 +707,14 @@
     },
     {
       "path": "package.json",
-      "sha256": "a5afb6515b40a2cc3701bd2a0592daa29897f5cbb1f1ac9c1e731e3febd7c4d4",
+      "sha256": "cddfa3a858b99fd382f78033f0bf2d4943bc9cbd1a5dda1b74d2404b70b6fb20",
       "bytes": 203,
       "purpose": "package metadata/documentation"
     },
     {
       "path": "pyproject.toml",
-      "sha256": "2bc0bfc966b4d7406bf8d157f667d64c977150af95508cfb6fbf14548819fff0",
-      "bytes": 450,
+      "sha256": "19da80be2041482e2b9a1da00425b655fd2936188c01e3de1ca2c91eaac6ea14",
+      "bytes": 493,
       "purpose": "package metadata/documentation"
     },
     {
@@ -680,8 +851,8 @@
     },
     {
       "path": "qwen_image21_character_sheet/reference_v13_node.py",
-      "sha256": "0a9481ed2afbf241be79b662c4aef3acaa613d2fdc670cd296503ab1f49dbf87",
-      "bytes": 3443,
+      "sha256": "d3efe682e88028ec5de1bd07104e6a201a97689bc1aeede4dbf744c69c6a7dc3",
+      "bytes": 3397,
       "purpose": "backend/frontend/workflow/test/verification"
     },
     {
@@ -827,6 +998,12 @@
       "sha256": "ace3e85e41f1eb4042748ed275505759a95059c2e16cf7cce20db06de8371aea",
       "bytes": 2028,
       "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/js/sheet_assembly_ui.test.js",
+      "sha256": "34df6572a654b5241b8257345a3e47de5683bb29e51be94c6e7c0453d7133ada",
+      "bytes": 5699,
+      "purpose": "backend/frontend/workflow/test/verification"
     },
     {
       "path": "tests/js/state.test.js",
@@ -1040,8 +1217,8 @@
     },
     {
       "path": "tests/test_sheet_assemble.py",
-      "sha256": "a75a35ae9bda65fae12290d460ea16e1419ca21733ed584187ae1942aabb0ce5",
-      "bytes": 10723,
+      "sha256": "89489aac79604774d6b4444dd1b42eb84afbb7ff17f0fcba81dc39c5223e1ee3",
+      "bytes": 12672,
       "purpose": "backend/frontend/workflow/test/verification"
     },
     {
@@ -1267,6 +1444,12 @@
       "purpose": "backend/frontend/workflow/test/verification"
     },
     {
+      "path": "verification/release_v151.json",
+      "sha256": "b64ac68707ebadded817bce130243cd49ccb85f6227bbb74c1863599efd2dcd9",
+      "bytes": 4556,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
       "path": "verification/results.json",
       "sha256": "991aee1df63079b62d40e53395d3abcf86311da454525f0937728f9707e9c0dc",
       "bytes": 1187,
@@ -1442,8 +1625,14 @@
     },
     {
       "path": "web/qwen_image21_character_sheet_designer_reference_v13.js",
-      "sha256": "96c7c6a57016a184544caac137b7078fd7c5f31910bea0f1e57f700302afb7d7",
-      "bytes": 4060,
+      "sha256": "c251b1e29a3455063cf01b7bdf61d5ac292f6d57400574a2dd60fa269a1d516a",
+      "bytes": 2295,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
+      "path": "web/sheet_assembly_ui.js",
+      "sha256": "5ff48a2ddb4147e3e29e6aa73b526a2e536aae203eee6997e88c037b113284f6",
+      "bytes": 6216,
       "purpose": "backend/frontend/workflow/test/verification"
     },
     {
@@ -1483,6 +1672,12 @@
       "purpose": "backend/frontend/workflow/test/verification"
     },
     {
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json",
+      "sha256": "ecf2ddac491c76a67111921116c7aed494d7b1ffdd56210d918769876864566b",
+      "bytes": 20028,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
       "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
       "bytes": 33150,
@@ -1490,5 +1685,5 @@
     }
   ],
   "manifest_self_hash": "excluded to avoid recursive hashing",
-  "package_version": "1.5.0"
+  "package_version": "1.5.1"
 }

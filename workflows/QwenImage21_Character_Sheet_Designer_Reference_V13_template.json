@@ -1,0 +1,1094 @@
+{
+  "last_node_id": 19,
+  "last_link_id": 32,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [
+        -520,
+        0
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1,
+            20
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "character_image.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "character_image.png"
+      },
+      "title": "Character Image"
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -520,
+        430
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 4,
+      "order": 1,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            2,
+            21
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "reference_image_1.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "reference_image_1.png"
+      },
+      "title": "Reference Image 1"
+    },
+    {
+      "id": 3,
+      "type": "LoadImage",
+      "pos": [
+        -520,
+        850
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 4,
+      "order": 2,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            3,
+            22
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "reference_image_2.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "reference_image_2.png"
+      },
+      "title": "Reference Image 2"
+    },
+    {
+      "id": 4,
+      "type": "LoadImage",
+      "pos": [
+        -520,
+        1270
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 4,
+      "order": 3,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            4,
+            23
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "reference_image_3.png",
+        "image"
+      ],
+      "widgets_values_named": {
+        "image": "reference_image_3.png"
+      },
+      "title": "Reference Image 3"
+    },
+    {
+      "id": 5,
+      "type": "QwenImage21CharacterSheetDesignerReferenceV13",
+      "pos": [
+        0,
+        0
+      ],
+      "size": [
+        1060,
+        1460
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 4,
+      "inputs": [
+        {
+          "name": "character_image",
+          "type": "IMAGE",
+          "link": 1,
+          "shape": 7
+        },
+        {
+          "name": "reference_image_1",
+          "type": "IMAGE",
+          "link": 2,
+          "shape": 7
+        },
+        {
+          "name": "reference_image_2",
+          "type": "IMAGE",
+          "link": 3,
+          "shape": 7
+        },
+        {
+          "name": "reference_image_3",
+          "type": "IMAGE",
+          "link": 4,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "links": [
+            7,
+            16,
+            26
+          ],
+          "shape": 6
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            24
+          ],
+          "shape": 6
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            25
+          ],
+          "shape": 6
+        },
+        {
+          "name": "layout_image",
+          "type": "IMAGE",
+          "links": [
+            19
+          ],
+          "shape": 6
+        },
+        {
+          "name": "filename_suffix",
+          "type": "STRING",
+          "links": [
+            27
+          ],
+          "shape": 6
+        },
+        {
+          "name": "reference_plan",
+          "type": "STRING",
+          "links": [
+            17
+          ],
+          "shape": 6
+        },
+        {
+          "name": "sheet_plan",
+          "type": "STRING",
+          "links": []
+        },
+        {
+          "name": "view_records",
+          "type": "STRING",
+          "links": [],
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenImage21CharacterSheetDesignerReferenceV13"
+      },
+      "widgets_values": [
+        "{\"schema_version\":3,\"views\":[\"face_front\",\"face_left\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2208,\"manual_height\":1280},\"part_prompts\":{},\"reference_roles\":{\"reference_image_1\":\"same_character\",\"reference_image_2\":\"same_character\",\"reference_image_3\":\"same_character\"},\"hand_state\":\"reference\",\"clothing_mode\":\"worn\",\"clothing_type\":\"reference\",\"footwear_state\":\"reference\"}",
+        false,
+        "none",
+        false,
+        "auto",
+        1536,
+        864
+      ],
+      "widgets_values_named": {
+        "state_json": "{\"schema_version\":3,\"views\":[\"face_front\",\"face_left\",\"body_front\",\"body_left\",\"body_back\"],\"size\":{\"mode\":\"auto\",\"body_height\":1120,\"manual_width\":2208,\"manual_height\":1280},\"part_prompts\":{},\"reference_roles\":{\"reference_image_1\":\"same_character\",\"reference_image_2\":\"same_character\",\"reference_image_3\":\"same_character\"},\"hand_state\":\"reference\",\"clothing_mode\":\"worn\",\"clothing_type\":\"reference\",\"footwear_state\":\"reference\"}",
+        "use_layout_image": false,
+        "style": "none",
+        "batch_out": false,
+        "sheet_size_mode": "auto",
+        "sheet_width": 1536,
+        "sheet_height": 864
+      }
+    },
+    {
+      "id": 6,
+      "type": "SaveWebPMeta",
+      "pos": [
+        2370,
+        0
+      ],
+      "size": [
+        560,
+        460
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 5,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 6
+        },
+        {
+          "name": "filename_prefix",
+          "type": "STRING",
+          "link": 5,
+          "widget": {
+            "name": "filename_prefix"
+          }
+        },
+        {
+          "name": "positive_text",
+          "type": "STRING",
+          "link": 7,
+          "shape": 7
+        },
+        {
+          "name": "negative_text",
+          "type": "STRING",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveWebPMeta"
+      },
+      "widgets_values": [
+        "comfy_%model%_%date%",
+        "webp",
+        70
+      ],
+      "widgets_values_named": {
+        "file_format": "webp",
+        "quality": 70
+      },
+      "title": "Output · WebP 70"
+    },
+    {
+      "id": 7,
+      "type": "KSampler",
+      "pos": [
+        1950,
+        0
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 6,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 8
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 10
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 11
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        283098499466316,
+        "fixed",
+        30,
+        1,
+        "euler",
+        "simple",
+        1
+      ],
+      "widgets_values_named": {
+        "seed": 283098499466316,
+        "steps": 30,
+        "cfg": 1,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1
+      }
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        1950,
+        650
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 7,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 12
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            6
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 9,
+      "type": "QwenImage21Cache",
+      "pos": [
+        1510,
+        0
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 8,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenImage21Cache"
+      },
+      "widgets_values": [
+        "auto",
+        "default"
+      ],
+      "widgets_values_named": {
+        "device": "auto",
+        "dtype": "default"
+      }
+    },
+    {
+      "id": 10,
+      "type": "QwenImage21CharacterSheetEncode",
+      "pos": [
+        1510,
+        300
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 9,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 15
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 16
+        },
+        {
+          "name": "reference_plan",
+          "type": "STRING",
+          "link": 17
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 18,
+          "shape": 7
+        },
+        {
+          "name": "layout_image",
+          "type": "IMAGE",
+          "link": 19,
+          "shape": 7
+        },
+        {
+          "name": "character_image",
+          "type": "IMAGE",
+          "link": 20,
+          "shape": 7
+        },
+        {
+          "name": "reference_image_1",
+          "type": "IMAGE",
+          "link": 21,
+          "shape": 7
+        },
+        {
+          "name": "reference_image_2",
+          "type": "IMAGE",
+          "link": 22,
+          "shape": 7
+        },
+        {
+          "name": "reference_image_3",
+          "type": "IMAGE",
+          "link": 23,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenImage21CharacterSheetEncode"
+      },
+      "widgets_values": [
+        "",
+        1024,
+        "{}"
+      ],
+      "widgets_values_named": {
+        "negative_prompt": "",
+        "resolution": 1024,
+        "reference_regions": "{}"
+      }
+    },
+    {
+      "id": 11,
+      "type": "CLIPLoader",
+      "pos": [
+        1130,
+        200
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 10,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            15
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_8b_int8_convrot.safetensors",
+        "qwen_image",
+        "default"
+      ],
+      "widgets_values_named": {
+        "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
+        "type": "qwen_image",
+        "device": "default"
+      }
+    },
+    {
+      "id": 12,
+      "type": "VAELoader",
+      "pos": [
+        1130,
+        400
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 11,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            13,
+            18
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "qwen_image_2.1_vae_bf16.safetensors"
+      ],
+      "widgets_values_named": {
+        "vae_name": "qwen_image_2.1_vae_bf16.safetensors"
+      }
+    },
+    {
+      "id": 13,
+      "type": "UNETLoader",
+      "pos": [
+        1130,
+        0
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 12,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            14
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "qwen\\qwen_image_2.1_int8_convrot.safetensors",
+        "default"
+      ],
+      "widgets_values_named": {
+        "unet_name": "qwen\\qwen_image_2.1_int8_convrot.safetensors",
+        "weight_dtype": "default"
+      }
+    },
+    {
+      "id": 14,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1510,
+        670
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 13,
+      "inputs": [
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 24,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 25,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ],
+      "widgets_values_named": {
+        "batch_size": 1
+      }
+    },
+    {
+      "id": 15,
+      "type": "PreviewAny",
+      "pos": [
+        1130,
+        930
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 14,
+      "inputs": [
+        {
+          "name": "source",
+          "type": "*",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewAny"
+      },
+      "widgets_values": [],
+      "widgets_values_named": {}
+    },
+    {
+      "id": 16,
+      "type": "StringConcatenate",
+      "pos": [
+        1130,
+        1220
+      ],
+      "size": [
+        360,
+        230
+      ],
+      "flags": {},
+      "mode": 0,
+      "order": 15,
+      "inputs": [
+        {
+          "name": "string_b",
+          "type": "STRING",
+          "link": 27,
+          "widget": {
+            "name": "string_b"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringConcatenate"
+      },
+      "widgets_values": [
+        "qwen21_sheet_v13_views",
+        "",
+        ""
+      ],
+      "widgets_values_named": {
+        "string_a": "qwen21_sheet_v13_views",
+        "delimiter": ""
+      }
+    },
+    {
+      "id": 19,
+      "type": "MarkdownNote",
+      "pos": [
+        -520,
+        1700
+      ],
+      "size": [
+        920,
+        360
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "# Qwen 2.1 Sheet Designer Reference V1.3\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Output uses Save WEBP Meta, WebP quality 70. Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      1,
+      0,
+      5,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      2,
+      0,
+      5,
+      1,
+      "IMAGE"
+    ],
+    [
+      3,
+      3,
+      0,
+      5,
+      2,
+      "IMAGE"
+    ],
+    [
+      4,
+      4,
+      0,
+      5,
+      3,
+      "IMAGE"
+    ],
+    [
+      5,
+      16,
+      0,
+      6,
+      1,
+      "STRING"
+    ],
+    [
+      6,
+      8,
+      0,
+      6,
+      0,
+      "IMAGE"
+    ],
+    [
+      7,
+      5,
+      0,
+      6,
+      2,
+      "STRING"
+    ],
+    [
+      8,
+      9,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      9,
+      10,
+      0,
+      7,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      10,
+      10,
+      1,
+      7,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      11,
+      14,
+      0,
+      7,
+      3,
+      "LATENT"
+    ],
+    [
+      12,
+      7,
+      0,
+      8,
+      0,
+      "LATENT"
+    ],
+    [
+      13,
+      12,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      14,
+      13,
+      0,
+      9,
+      0,
+      "MODEL"
+    ],
+    [
+      15,
+      11,
+      0,
+      10,
+      0,
+      "CLIP"
+    ],
+    [
+      16,
+      5,
+      0,
+      10,
+      1,
+      "STRING"
+    ],
+    [
+      17,
+      5,
+      5,
+      10,
+      2,
+      "STRING"
+    ],
+    [
+      18,
+      12,
+      0,
+      10,
+      3,
+      "VAE"
+    ],
+    [
+      19,
+      5,
+      3,
+      10,
+      4,
+      "IMAGE"
+    ],
+    [
+      20,
+      1,
+      0,
+      10,
+      5,
+      "IMAGE"
+    ],
+    [
+      21,
+      2,
+      0,
+      10,
+      6,
+      "IMAGE"
+    ],
+    [
+      22,
+      3,
+      0,
+      10,
+      7,
+      "IMAGE"
+    ],
+    [
+      23,
+      4,
+      0,
+      10,
+      8,
+      "IMAGE"
+    ],
+    [
+      24,
+      5,
+      1,
+      14,
+      0,
+      "INT"
+    ],
+    [
+      25,
+      5,
+      2,
+      14,
+      1,
+      "INT"
+    ],
+    [
+      26,
+      5,
+      0,
+      15,
+      0,
+      "STRING"
+    ],
+    [
+      27,
+      5,
+      4,
+      16,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.6,
+      "offset": [
+        530,
+        40
+      ]
+    }
+  },
+  "version": 0.4
+}
