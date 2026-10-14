@@ -135,7 +135,7 @@ def test_user_tokens_never_removed(token):
 
 def test_no_runtime_h3_or_gpu_dependency():
     for path in (ROOT / "qwen_image21_character_sheet").rglob("*.py"):
-        if path.name in ("node.py", "preview.py", "multi_reference_node.py", "multi_preview.py", "reference_v12_node.py", "reference_v12_preview.py", "sheet_encode.py"):
+        if path.name in ("node.py", "preview.py", "multi_reference_node.py", "multi_preview.py", "reference_v12_node.py", "reference_v12_preview.py", "sheet_encode.py", "reference_v13_node.py", "reference_v13_preview.py", "sheet_assemble.py"):
             continue
         tree = ast.parse(path.read_text())
         for n in ast.walk(tree):

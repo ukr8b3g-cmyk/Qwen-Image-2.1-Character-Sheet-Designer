@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-13T16:02:33.746867+00:00",
+  "created_utc": "2026-10-14T04:55:56.823612+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
-  "target_base_commit": "277da76a9de9f4b31b8d23d92b2db3694c581bd7",
-  "target_state": "v1.4.2 reference-plan-aware template and CPU routing regressions",
+  "target_base_commit": "9c1c0b2202253801211bc706f0de3707cecbb964",
+  "target_state": "v1.5.0 independent-view assembly and prompt-control limits",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -193,6 +193,284 @@
         "old releases"
       ],
       "new_template": "QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json"
+    },
+    "release_v150": {
+      "package_version": "1.5.0",
+      "created_utc": "2026-10-14T04:55:56.823612+00:00",
+      "change_scope": "Added Reference V1.3, validated CPU Sheet Assemble, dedicated WebP template, foot-reference wording and bilingual prompt-control limits.",
+      "cpu_static": {
+        "python_passed": 1811,
+        "python_skipped": 1,
+        "skip_reason": "Historical pre-change local snapshot unavailable",
+        "javascript_passed": 216,
+        "failures": 0,
+        "tested_from_staged_distribution": true,
+        "installed_core_contract_environment_enabled": true
+      },
+      "actual_core_cpu": {
+        "actual_core_validation": true,
+        "api_nodes": 18,
+        "output_nodes": [
+          "6",
+          "15",
+          "18"
+        ],
+        "actual_core_list_dispatch": true,
+        "short_images_rejected_without_padding": true,
+        "guide_off_none": true,
+        "rgb_rgba_verified": true,
+        "cuda_initialized": false,
+        "gpu_submissions": 0,
+        "source_sha256": "b3424c0c1b93faeb566720b0b847bf52b8f8010741e51bbaa4d2c52bc112f6ef",
+        "graph": {
+          "nodes": 19,
+          "links": 32,
+          "topological_order": [
+            1,
+            2,
+            3,
+            4,
+            11,
+            12,
+            13,
+            19,
+            5,
+            9,
+            10,
+            14,
+            15,
+            16,
+            7,
+            8,
+            6,
+            17,
+            18
+          ]
+        },
+        "offline_core_loader_limit": "Unrelated nodes_replacements entry requires PromptServer.instance; required output graph and CPU list dispatch validated successfully."
+      },
+      "template": {
+        "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json",
+        "sha256": "b3424c0c1b93faeb566720b0b847bf52b8f8010741e51bbaa4d2c52bc112f6ef",
+        "graph": {
+          "nodes": 19,
+          "links": 32,
+          "topological_order": [
+            1,
+            2,
+            3,
+            4,
+            11,
+            12,
+            13,
+            19,
+            5,
+            9,
+            10,
+            14,
+            15,
+            16,
+            7,
+            8,
+            6,
+            17,
+            18
+          ]
+        },
+        "generation_size_and_sheet_size_separate": true,
+        "batch_out": true,
+        "latent_batch_size": 1,
+        "save_webp_quality": 70
+      },
+      "gpu_summary": "verification/gpu_summary_v150.json",
+      "gpu_scope": "5-view end-to-end RGB/RGBA assembly succeeded. Foot-label comparison: 10 pairs / 20 images. New holdout: 15 conditions, coverage matched 13; two removals did not follow selected controls. Not universal image-quality acceptance.",
+      "browser_ui": "Actual ComfyUI frontend save/reload was not revalidated in this release; backend registration, static JS and CPU/GPU paths are separate evidence.",
+      "preserved": [
+        "legacy V1/V1.1/V1.2 IDs and output contracts",
+        "existing templates",
+        "existing artwork",
+        "previous releases"
+      ],
+      "private_artifacts_excluded": [
+        "generated reference and test images",
+        "HTML visual reports",
+        "machine-specific APIs and logs"
+      ]
+    },
+    "gpu_v150": {
+      "package_version": "1.5.0",
+      "date": "2026-10-14",
+      "assembly": {
+        "final_e2e": "passed",
+        "individual_images": 5,
+        "assembled_images": 1,
+        "assembled_size": [
+          1536,
+          864
+        ],
+        "rgba_support_verified": true,
+        "metadata_matches": true,
+        "content_quality_not_guaranteed": true
+      },
+      "foot_label_comparison": {
+        "images": 20,
+        "pairs": 10,
+        "materials": 8,
+        "edit_seeds": [
+          4202601013,
+          4202601014
+        ],
+        "auto_complete_fix": false,
+        "auto_body_shortening_tested": false,
+        "outcomes": {
+          "BARE_TEXTURED_S1": [
+            "未解決",
+            "靴の被覆が不自然なまま残る。呼称だけでは素足を安定維持できない。"
+          ],
+          "BARE_TEXTURED_S2": [
+            "改善",
+            "変更前はサンダルを追加。変更後は左右とも素足を維持。"
+          ],
+          "BARE_CLEAN_S1": [
+            "被覆維持・画質課題",
+            "前後とも靴は追加しないが、皮膚の粗い金色テクスチャが発生。"
+          ],
+          "SOCKS_S1": [
+            "被覆維持・画質課題",
+            "前後とも靴下を維持。濃い編み目と足指の過剰な分離が残る。"
+          ],
+          "TIGHTS_S1": [
+            "被覆維持",
+            "前後ともタイツの被覆を維持。"
+          ],
+          "SHOES_S1": [
+            "被覆維持",
+            "前後とも閉じた青いスニーカーを維持。"
+          ],
+          "BOOTS_S1": [
+            "被覆維持",
+            "前後とも左右のブーツと閉じたつま先を維持。"
+          ],
+          "BOOTS_S2": [
+            "被覆維持",
+            "左右の閉じたブーツを維持。変更後は筒の上に下腿が加わる。"
+          ],
+          "SANDALS_S1": [
+            "被覆維持",
+            "前後とも開いたサンダルを維持。"
+          ],
+          "ASYMMETRIC_S1": [
+            "被覆維持・画質課題",
+            "前後とも片側素足・片側ブーツを維持。素足の粗いテクスチャが残る。"
+          ]
+        }
+      },
+      "new_reference_holdout": {
+        "reference_materials": 5,
+        "conditions": 15,
+        "saved_images": 15,
+        "coverage_matches": 13,
+        "coverage_mismatches": 2,
+        "edit_seed": 4202603014,
+        "steps": 30,
+        "cfg": 1,
+        "sampler": "euler",
+        "scheduler": "simple",
+        "output_size": [
+          1184,
+          864
+        ],
+        "webp_quality": 70,
+        "guide": false,
+        "batch_out": true,
+        "lora": false,
+        "route": "Designer V1.2 -> Sheet Encode",
+        "product_sources_unchanged_during_comparison": true,
+        "visual_reviews": {
+          "HANDS_BARE_AUTO": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "素手の左右一組を維持。各5本の指が見え、肌の見え方も参照に近い。片方は手の甲、片方は手のひら。"
+          },
+          "HANDS_BARE_ON": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "素手から白いフルフィンガーグローブを追加。両手の指と手のひらを覆い、手首には肌が見える。グローブの種類は入力で限定していない。"
+          },
+          "HANDS_BARE_OFF": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "素手を維持。左右一組と各5本の指が見える。肌色・質感は参照と完全には一致しない。"
+          },
+          "HANDS_GLOVED_AUTO": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "青緑の布グローブとフルフィンガーの被覆を維持。手首の肌が見え、左右一組が出力された。"
+          },
+          "HANDS_GLOVED_ON": {
+            "coverage_status": "pass",
+            "anatomy_status": "wearing_ambiguous",
+            "observation_ja": "青緑のグローブは維持。ただしカフから腕が続いておらず、空のグローブを並べたようにも見える。着用している表現は不十分。"
+          },
+          "HANDS_GLOVED_OFF": {
+            "coverage_status": "fail",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "素手を選択したが、両手に青緑のグローブが残った。生成文のbare指定とSheet Encode配線・参照番号は照合済み。"
+          },
+          "FEET_BARE_AUTO": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "素足を維持し、靴・サンダルを追加しなかった。各足の指が描かれ、今回の素材では以前の強い斑状の荒れは見られない。"
+          },
+          "FEET_BARE_ON": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "素足にベージュの開いた履物を追加。靴ありの選択には従った。種類を限定していないため、サンダルの生成は選択仕様内。"
+          },
+          "FEET_BARE_OFF": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "靴を追加せず素足を維持。参照より肌色が明るく、肌の質感・コントラストが弱まった。"
+          },
+          "FEET_BOOTS_AUTO": {
+            "coverage_status": "pass",
+            "anatomy_status": "acceptable_in_sample",
+            "observation_ja": "バーガンディ色の閉じたアンクルブーツを維持。空のブーツ参照から、脚を入れて着用した表現を生成。細部や左右の形状は完全一致しない。"
+          },
+          "FEET_BOOTS_ON": {
+            "coverage_status": "pass",
+            "anatomy_status": "opening_changed",
+            "observation_ja": "両足にブーツを維持。ただし左側の側面が大きく開き、肌が見える。着用状態が合っても、参照の閉じた構造までは安定しない。"
+          },
+          "FEET_BOOTS_OFF": {
+            "coverage_status": "pass",
+            "anatomy_status": "poor_toe_definition",
+            "observation_ja": "ブーツは除去された。一方、足指の分離や爪が曖昧で潰れ、人体の足としての形状は不自然。着用状態の一致を画質合格とは扱わない。"
+          },
+          "FEET_OPEN_AUTO": {
+            "coverage_status": "pass",
+            "anatomy_status": "minor_detail_variation",
+            "observation_ja": "黒い開いたストラップサンダルとヒールを維持。つま先を出した被覆も維持。左右のストラップと足指の細部は完全には一致しない。"
+          },
+          "FEET_OPEN_ON": {
+            "coverage_status": "pass",
+            "anatomy_status": "minor_detail_variation",
+            "observation_ja": "黒い開いたサンダルの着用を維持。靴ありの選択には従った。左右の細部と足指の形は厳密な複製ではない。"
+          },
+          "FEET_OPEN_OFF": {
+            "coverage_status": "fail",
+            "anatomy_status": "covered_toes_ambiguous",
+            "observation_ja": "靴なしを選択したが、黒いサンダルが残った。さらに肌が布状の被覆に変わり、足指が曖昧。生成文のunshod指定とSheet Encode配線・参照番号は照合済み。"
+          }
+        },
+        "scope": "Five fresh synthetic dedicated-part references; one fixed edit seed per condition; not an all-character or success-rate estimate."
+      },
+      "limits": [
+        "Glove removal and sandal removal did not follow selected controls in the holdout.",
+        "Footwear-off boot output removed boots but had poor toe definition.",
+        "Coverage correctness does not establish anatomy, material, camera or layout quality.",
+        "No test-end backend shutdown performed."
+      ]
     }
   },
   "files": [
@@ -210,14 +488,14 @@
     },
     {
       "path": "README.md",
-      "sha256": "806aa5301ede5c08a604d7e2006b4af380b96f39a5f573cf0f705bf30b9c2d1a",
-      "bytes": 22340,
+      "sha256": "96ad4bbadef239380c114e93eba174786261f01601659e91c40fd9f1079e576c",
+      "bytes": 29791,
       "purpose": "package metadata/documentation"
     },
     {
       "path": "__init__.py",
-      "sha256": "2d69a1266b81ffd36909aa0c1d7a78500e5be35bb4fc1847ffad225a86e507c4",
-      "bytes": 1747,
+      "sha256": "a3ffcfef9e97cd6a41bc4c4bb8fd3def59cb810ddd0fe6aa66453dfc436002d7",
+      "bytes": 2493,
       "purpose": "package metadata/documentation"
     },
     {
@@ -258,13 +536,13 @@
     },
     {
       "path": "package.json",
-      "sha256": "471a244213ce8ce4698605414b0ac8cc2e799fc226c7654e1ab31a47363ea1ad",
+      "sha256": "a5afb6515b40a2cc3701bd2a0592daa29897f5cbb1f1ac9c1e731e3febd7c4d4",
       "bytes": 203,
       "purpose": "package metadata/documentation"
     },
     {
       "path": "pyproject.toml",
-      "sha256": "2c11e72b23c021c1e60d8c45f1e11ab564edd8e8993b62a9b03d8f50ba2c0a84",
+      "sha256": "2bc0bfc966b4d7406bf8d157f667d64c977150af95508cfb6fbf14548819fff0",
       "bytes": 450,
       "purpose": "package metadata/documentation"
     },
@@ -378,8 +656,8 @@
     },
     {
       "path": "qwen_image21_character_sheet/reference_v12_compiler.py",
-      "sha256": "6fd8f8f9bf2a23613ab291a4df8b6db37c22bd835b2219fbc24290eda19f1393",
-      "bytes": 18174,
+      "sha256": "28b3d27056b80a7d0d37246f2cca69980dc335761eed82e132f33faddf824fc8",
+      "bytes": 18601,
       "purpose": "backend"
     },
     {
@@ -401,10 +679,34 @@
       "purpose": "backend"
     },
     {
+      "path": "qwen_image21_character_sheet/reference_v13_node.py",
+      "sha256": "0a9481ed2afbf241be79b662c4aef3acaa613d2fdc670cd296503ab1f49dbf87",
+      "bytes": 3443,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
+      "path": "qwen_image21_character_sheet/reference_v13_preview.py",
+      "sha256": "00ee5bdfacd747a4c75330923912d390dd860be68388c8a474bf0109e9dd65b1",
+      "bytes": 2692,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
+      "path": "qwen_image21_character_sheet/sheet_assemble.py",
+      "sha256": "061ab4e352204967ed853771e8bf848ac3e4b09bc8d4b6373a8ae3502e59a66a",
+      "bytes": 4880,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
       "path": "qwen_image21_character_sheet/sheet_encode.py",
       "sha256": "1d3330fe262b32b6af0ed674aead4b5a4a66082f78491210efc229b9fd66e726",
       "bytes": 3011,
       "purpose": "backend"
+    },
+    {
+      "path": "qwen_image21_character_sheet/sheet_plan.py",
+      "sha256": "763ebefd6fd5049b3a761d7d5bde66f6049e3c1e2c25062fb60b5a94ed9d9d80",
+      "bytes": 4379,
+      "purpose": "backend/frontend/workflow/test/verification"
     },
     {
       "path": "tests/__init__.py",
@@ -453,6 +755,12 @@
       "sha256": "11e5acdc98c86c63d7c26e79d86c308b0c540ad106732d683c773887980a4666",
       "bytes": 194,
       "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/fixtures/foot_reference_label_baseline.json",
+      "sha256": "f88a2571cd435e377c997d433f369447efe435c4efe7ce3bd9a490e577411541",
+      "bytes": 108125,
+      "purpose": "backend/frontend/workflow/test/verification"
     },
     {
       "path": "tests/fixtures/golden_states.json",
@@ -654,8 +962,8 @@
     },
     {
       "path": "tests/test_api_node.py",
-      "sha256": "2b59161723e4da882e3ebf31702b26e292b3fb50a664a32d56c3d2518a425f24",
-      "bytes": 7083,
+      "sha256": "add70b3a6a51cc6af92cdd122988f19f09ef7803033644fd83a661578c37627b",
+      "bytes": 7169,
       "purpose": "test/fixture"
     },
     {
@@ -672,8 +980,8 @@
     },
     {
       "path": "tests/test_compiler.py",
-      "sha256": "ab2051820cf9bca0431032f73138d8795a39a3b4815737c64670be0f02a3dbe0",
-      "bytes": 12334,
+      "sha256": "a0f5f00cdae20a8475c3a2061fee6261bb93dba817de7038233d4e6e90639aea",
+      "bytes": 12408,
       "purpose": "test/fixture"
     },
     {
@@ -696,8 +1004,8 @@
     },
     {
       "path": "tests/test_part_choices.py",
-      "sha256": "f801e431b5681e41ba7440af6344bffd92fee17f0229df2b1881b419233851eb",
-      "bytes": 8582,
+      "sha256": "e183ffee77fa939100f230b4dac74ed767be3f726ca4d76bbcda47543c57629e",
+      "bytes": 8670,
       "purpose": "test/fixture"
     },
     {
@@ -720,8 +1028,8 @@
     },
     {
       "path": "tests/test_reference_v121.py",
-      "sha256": "164e23fda90d55b5572e16f0a1e932576b663c100a495158b7647fa5ae0be7eb",
-      "bytes": 6227,
+      "sha256": "d69c5a974692c2454caec26bb77d200bd520c7099f8b3cc4fa6a3fa33e7562c2",
+      "bytes": 6253,
       "purpose": "test/fixture"
     },
     {
@@ -729,6 +1037,12 @@
       "sha256": "299c733954134281e6b5e21b2555c208f5f5cc137aa8df189a6b378f442e5354",
       "bytes": 2445,
       "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/test_sheet_assemble.py",
+      "sha256": "a75a35ae9bda65fae12290d460ea16e1419ca21733ed584187ae1942aabb0ce5",
+      "bytes": 10723,
+      "purpose": "backend/frontend/workflow/test/verification"
     },
     {
       "path": "tests/test_styles.py",
@@ -899,6 +1213,12 @@
       "purpose": "verification evidence"
     },
     {
+      "path": "verification/gpu_summary_v150.json",
+      "sha256": "78d87ec4b7cfe14d0cb199c3d28292e660b6a14b6b01f084f1fb842368bf8d26",
+      "bytes": 7676,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
       "path": "verification/javascript_tests.log",
       "sha256": "dff47ba9bab039bec867df5dcc867345b352cfaf18ff2c9241e9c049817c718b",
       "bytes": 12257,
@@ -939,6 +1259,12 @@
       "sha256": "4a84c624d58ed71c1dd528fae4920a73719655e16ea6d62e9689e89d6b1d9451",
       "bytes": 857,
       "purpose": "workflow/test/validation"
+    },
+    {
+      "path": "verification/release_v150.json",
+      "sha256": "58c56d0ecd805f6a236d750998cec1703e7a8e6a6054e69b8db09b774604e21b",
+      "bytes": 2877,
+      "purpose": "backend/frontend/workflow/test/verification"
     },
     {
       "path": "verification/results.json",
@@ -1115,6 +1441,12 @@
       "purpose": "frontend"
     },
     {
+      "path": "web/qwen_image21_character_sheet_designer_reference_v13.js",
+      "sha256": "96c7c6a57016a184544caac137b7078fd7c5f31910bea0f1e57f700302afb7d7",
+      "bytes": 4060,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
       "path": "web/state.js",
       "sha256": "c3fd201d73d5dc1020fd6c7a923c76d04ec74b6fc5f13f3b9ef0a8968b4ada95",
       "bytes": 14520,
@@ -1145,6 +1477,12 @@
       "purpose": "workflow"
     },
     {
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json",
+      "sha256": "a3c24bf80d6dd6f1a96434fb66bf8c604af0d02e75cd46de662d04d4a5b91148",
+      "bytes": 22024,
+      "purpose": "backend/frontend/workflow/test/verification"
+    },
+    {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
       "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
       "bytes": 33150,
@@ -1152,5 +1490,5 @@
     }
   ],
   "manifest_self_hash": "excluded to avoid recursive hashing",
-  "package_version": "1.4.2"
+  "package_version": "1.5.0"
 }

@@ -21,3 +21,13 @@ register_multi_routes()
 register_v12_routes()
 
 __all__ = ["NODE_CLASS_MAPPINGS", "NODE_DISPLAY_NAME_MAPPINGS", "WEB_DIRECTORY"]
+
+from .qwen_image21_character_sheet.reference_v13_node import QwenImage21CharacterSheetDesignerReferenceV13
+from .qwen_image21_character_sheet.sheet_assemble import QwenImage21CharacterSheetAssemble
+from .qwen_image21_character_sheet.reference_v13_preview import register_routes as register_v13_routes
+
+NODE_CLASS_MAPPINGS['QwenImage21CharacterSheetDesignerReferenceV13'] = QwenImage21CharacterSheetDesignerReferenceV13
+NODE_DISPLAY_NAME_MAPPINGS['QwenImage21CharacterSheetDesignerReferenceV13'] = 'Qwen 2.1 Sheet Designer Reference V1.3'
+NODE_CLASS_MAPPINGS['QwenImage21CharacterSheetAssemble'] = QwenImage21CharacterSheetAssemble
+NODE_DISPLAY_NAME_MAPPINGS['QwenImage21CharacterSheetAssemble'] = 'Qwen 2.1 Sheet Assemble'
+register_v13_routes()

@@ -5,6 +5,14 @@
 <img width="1543" height="713" alt="{3DB22210-59B7-4161-8A96-29B0211C5E33}" src="https://github.com/user-attachments/assets/785a18e0-fa55-41ab-b12a-d0d98b40f9ac" />
 
 
+## v1.5.0の変更点
+
+- **Reference V1.3・Sheet Assembleを追加**：ビューを個別生成し、ID・枚数・配置計画を検査して1枚のシートへ合成します。生成サイズと合成サイズを別々に指定できます。
+- **WebP合成テンプレートを追加**：Sheet Encode経由で参照を揃え、個別画像と合成画像を品質70で保存します。RGB／RGBAに対応し、透明部分は白背景に合成します。
+- **足元の参照表現と利用説明を更新**：履物の外形・被覆・開口を維持する指示と中立的な`foot appearance`表現を採用。手・履物の着脱や形状はプロンプト制御のため保証できないことを日英で明記しました。
+
+旧V1／V1.1／V1.2、既存テンプレート、旧Releaseは引き続き利用できます。
+
 ## v1.4.2の変更点
 
 - **Sheet Encode対応テンプレートを追加**：部位参照の画像番号とEncoder入力を同じ参照計画に揃えます。
@@ -20,7 +28,7 @@
 
 旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
 
-**Package v1.4.2** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
+**Package v1.5.0** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
 
@@ -28,12 +36,14 @@ Select views, keep a character consistent with image references, and generate ei
 
 ### ノードとバージョン
 
-パッケージ全体のバージョンは **1.4.2** です。ノードの表示名にあるV1／V1.1／V1.2は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.2** です。
+パッケージ全体のバージョンは **1.5.0** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
 
 | 表示名 | 用途 | ノードID |
 | --- | --- | --- |
-| Qwen 2.1 Sheet Designer Reference V1.2 | 最新版。追加参照3枚、部位選択、個別出力、参照計画 | `QwenImage21CharacterSheetDesignerReferenceV12` |
-| Qwen 2.1 Sheet Encode | V1.2の参照計画に従って画像をCore Encoderへ渡す | `QwenImage21CharacterSheetEncode` |
+| Qwen 2.1 Sheet Designer Reference V1.3 | 最新版。個別生成に合成計画・ビューIDを追加 | `QwenImage21CharacterSheetDesignerReferenceV13` |
+| Qwen 2.1 Sheet Assemble | 個別画像を配置計画に従って合成 | `QwenImage21CharacterSheetAssemble` |
+| Qwen 2.1 Sheet Designer Reference V1.2 | 既存6出力を維持。追加参照3枚、部位選択、個別出力、参照計画 | `QwenImage21CharacterSheetDesignerReferenceV12` |
+| Qwen 2.1 Sheet Encode | Designerの参照計画に従って画像をCore Encoderへ渡す | `QwenImage21CharacterSheetEncode` |
 | Qwen 2.1 Sheet Designer Reference V1.1 | 既存ワークフロー用の互換ノード | `QwenImage21CharacterSheetDesignerMultiReference` |
 | Qwen 2.1 Sheet Designer V1 | 初期ワークフロー用の互換ノード | `QwenImage21CharacterSheetDesigner` |
 
@@ -93,6 +103,8 @@ Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）�
 
 Autoは参照に従う生成指示です。画像認識によって選択欄が自動で変わる機能ではありません。Auto以外は選んだ型・被覆を優先し、部位文で両立する詳細を指定できます。完全な裸足や特定の靴・グローブは部位文へ入力します。衣装正面・背面は「着用」と「衣服のみ」を区別します。着用では頭を画面外に置いた人物、衣服のみでは人体を追加しない指示です。
 
+手や履物の選択は**プロンプトによる生成指示**です。LoRAを使わない標準ワークフローでは、グローブや靴の着用・取り外し、形状、左右の再現を保証しません。参照画像やSeedによっては選択に従わず、再生成が必要な場合があります。指定は必要最小限にし、まずSeedを変えて比較してください。長く複雑な指示を重ねると、指示同士が干渉して汎用性を損なう場合があります。
+
 「部位指定」では追加参照の役割を選びます。同一人物の補足、顔、頭部、衣装全体、衣装正面、衣装背面、手、履物を指定できます。Designerへ接続するだけでは生成用Encoderへ画像は渡りません。上の表のように両方へ接続してください。異なる部位の参照を混ぜる場合はSheet Encodeへ接続する構成が適しています。
 
 「スタイル」は指定なし、アニメ、写真、写実絵画、写実アニメ、油彩、水彩、ガッシュ、色鉛筆、3D CGから選べます。指定なしは参照の画風に従います。数値入力はEnterまたはフォーカス移動で確定します。UIはComfyUIの言語設定に従って日本語／英語を切り替えます。
@@ -120,11 +132,27 @@ V1.2の6出力は`prompt`、`width`、`height`、`layout_image`、`filename_suff
 
 Guide ONは配置の参照画像を作ります。Guide OFFでは作成せずNoneを返します。ガイドはモデルへの指示であり、生成画像を厳密に分割・合成するマスクではありません。向きや細部がずれる場合があります。
 
+### 個別生成からシートへ合成（V1.3）
+
+[合成対応テンプレート](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json)を使用します。V1.3の先頭6出力はV1.2と同じで、追加の`sheet_plan`・`view_records`とデコードしたIMAGEをSheet Assembleへ接続します。参照画像はDesignerとSheet Encodeの同名入力へ接続します。WebP保存には[Save WEBP Meta](https://github.com/ukr8b3g-cmyk/ComfyUI-save-webp-meta-node)が必要です。
+
+**Batch Out ON・latent batch_size=1**で使用してください。Output sizeは各ビューの生成サイズ、Sheet canvas mode / width / heightは合成先のサイズです。合成Autoは選択全体を配置し、合成Manualは入力した幅×高さを固定します。下のシートプレビューは合成先のパネル枠を表示します。
+
+Sheet Assembleは元のリスト長、1ビュー1画像、ビューID、計画ハッシュ、寸法を検査します。欠損・重複・計画不一致はエラーにし、短いリストを末尾画像で補いません。画像はCPUで縦横比を保って白い枠内へ収め、RGBAの透明部分を白背景へ合成します。切り抜き・引き伸ばし・反転は行いません。合成上限は16,777,216画素です。
+
+配置と宣言されたID対応は検査できますが、生成画像内の向き・人数・人物の高さ・足裏の位置や、上流ですでに複製・誤ラベルされた内容は判定しません。
+
 ### 参照の範囲と画質
 
 Sheet Encodeの`reference_regions`で参照範囲を明示できます。空の`{}`は参照全体を使い、画像別・ビュー別の正規化矩形で入力範囲を指定できます。自動分類・自動切り取りはしません。[範囲指定の説明](docs/REFERENCE_REGIONS_JA.md)を参照してください。Encoderの`resolution`は参照のリサンプル量で、出力Width/Heightとは別です。
 
 Qwenで作成した参照を編集する場合、参照作成時とは異なる編集Seedを選び、その編集Seedを比較中は固定する方法を確認しました。強い斑点が改善した局所試験ですが、すべての荒れの原因や解決を保証しません。WebP品質70は保存容量の設定で、生成された画素の不整合を直す設定ではありません。
+
+### v1.5.0の確認範囲
+
+配布対象からPython **1,811件成功・1件スキップ**、JavaScript **216件成功**。実Core CPUで18ノードの入力検証、リスト処理、欠損拒否とGuide OFFを確認しました。GPUでは5ビューの個別生成＋1536×864合成を確認。足元の呼称比較は10組20枚、新しい手・足の参照5枚による比較は15条件です。
+
+追加15条件では着用状態が13条件で一致し、グローブ除去・サンダル除去の2条件は不一致。足指・開口・着用表現にも課題が残ります。この件数は限定試験の結果であり、全画像の成功率ではありません。実ブラウザーでのUI保存・再読込は今回再検証していません。[GPU要約](verification/gpu_summary_v150.json)・[配布検証](verification/release_v150.json)。
 
 ### v1.4.1の変更と確認範囲
 
@@ -139,6 +167,14 @@ Qwenで作成した参照を編集する場合、参照作成時とは異なる�
 記録は[最新GPU検証](verification/gpu_summary_v141.json)、[配布検証](verification/release_v141.json)にあります。公開対象はノード本体・必須UI素材・指定ワークフロー・README・利用説明と検証要約です。作業用仕様書、検証用画像、ローカル構成付き詳細記録と追加テストワークフローはローカルに保持し、配布しません。
 
 ## English
+
+### What's new in v1.5.0
+
+- **Added Reference V1.3 and Sheet Assemble** to combine independently generated views after validating view IDs, list lengths and the sheet plan. Generation dimensions and the final sheet canvas are separate.
+- **Added a WebP assembly template** using Sheet Encode, with individual and assembled images saved at quality 70. RGB/RGBA images are supported; transparency is composited onto white.
+- **Updated foot-reference wording and usage guidance** to preserve silhouette, coverage and existing openings, with neutral `foot appearance` labels. Bilingual guidance explains that prompt-only hand/footwear controls do not guarantee removal, addition or exact shapes.
+
+Legacy V1/V1.1/V1.2 nodes, existing templates and previous releases remain available.
 
 ### What's new in v1.4.2
 
@@ -156,7 +192,7 @@ Qwenで作成した参照を編集する場合、参照作成時とは異なる�
 
 Legacy V1/V1.1 nodes and existing workflows remain compatible.
 
-Package **v1.4.2** includes the latest **Reference V1.2**, **Sheet Encode**, and the compatible **V1/V1.1** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
+Package **v1.5.0** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
 
@@ -168,6 +204,8 @@ Connect each image to both the Designer and the Encoder. Core image slot 1 recei
 
 Select from 13 view cards. The compact controls beneath clothing, hands and footwear choose **Auto / pants / skirt–robe**, **Auto / bare / gloves**, and **Auto / footwear on / footwear off**. All default to Auto, meaning follow references. They are prompts, not image classification. Footwear on leaves shoe type open; footwear off can preserve socks/tights. Use part text for specific details. Choices also apply to naturally visible parts in body views. Worn clothing and garment-only views are distinct.
 
+Hand and footwear choices are **generation instructions in the prompt**. The standard workflow uses no LoRA and does not guarantee that gloves or footwear will be added, removed, shaped or paired as requested. Results depend on the reference image and seed; another generation may be needed. Keep directives minimal and compare another seed first. Long, complex instructions can interfere with each other and reduce generality.
+
 **Batch Out OFF** produces one arranged sheet. **Batch Out ON** independently generates each selected view in card order. Auto chooses sizes by view type; at panel height 1120, busts use 1024×1024, body/clothing 768×1344, hands/footwear 1184×864. **Manual width×height applies to every separate image when Batch Out is ON**, or to the whole sheet when OFF. The preview follows each output aspect ratio. These defaults are not universal quality optima.
 
 The six V1.2 outputs are aligned ComfyUI lists: prompt, width, height, layout_image, filename_suffix, reference_plan. Connect width/height to EmptyLatentImage; keep latent batch_size 1 unless you need multiple samples per view. The supplied seed is shared across views. List execution may finish sampling all views before saving. Errors do not trigger automatic retries. Save nodes determine format, location and compression.
@@ -178,6 +216,20 @@ v1.4.1 improves worn gloves, consistent paired footwear, identifiable footwear c
 
 Previous public package 0.1.0 is preserved on [legacy-v0.1.0](https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer/tree/legacy-v0.1.0); use Code → Download ZIP on that branch. New releases are added as separate versions while previous downloads remain available. Compatible old nodes remain included with their stable IDs.
 
+### Assemble independently generated views (V1.3)
+
+Use the [assembly template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json). Connect decoded IMAGE plus V1.3's sheet_plan and view_records to Sheet Assemble. The first six outputs preserve V1.2's contract. Reference images go to matching Designer and Sheet Encode inputs. This template requires [Save WEBP Meta](https://github.com/ukr8b3g-cmyk/ComfyUI-save-webp-meta-node).
+
+Use **Batch Out ON and latent batch_size=1**. Output size controls each generated image; Sheet canvas mode / width / height controls the final sheet. Sheet Auto packs the complete selection; Sheet Manual fixes the final dimensions. The sheet preview shows destination panel bounds.
+
+Sheet Assemble validates original list lengths, one image per view, IDs, plan hashes and dimensions. Missing, duplicate or mismatched records fail instead of repeating the last image. CPU composition preserves aspect ratio on white, composites RGBA transparency onto white, and neither crops, stretches nor mirrors images. The maximum canvas is 16,777,216 pixels. It verifies declared placement, not generated camera, figure count, body scale, sole alignment or already duplicated/mislabeled upstream content.
+
+### v1.5.0 validation
+
+The staged distribution passed **1,811 Python tests (one historical local-fixture skip) and 216 JavaScript tests**. Actual Core CPU checks covered the 18-node graph, list dispatch, missing-image rejection and Guide OFF. GPU checks included five independent views plus a 1536×864 assembly, ten foot-label comparison pairs (20 images), and 15 conditions using five new hand/foot references.
+
+Coverage matched the requested state in 13 holdout conditions; glove removal and sandal removal failed to follow the selected state. Toe definition, openings and worn-glove depiction still varied. These are limited-sample observations, not a success-rate estimate. Actual browser UI save/reload was not revalidated. See [GPU summary](verification/gpu_summary_v150.json) and [release checks](verification/release_v150.json).
+
 ## Development and provenance
 
 ```sh
@@ -185,7 +237,7 @@ python -m pytest
 node --test tests/js/*.test.js
 ```
 
-Release ZIP validation: 1,734 Python tests passed, one historical local-fixture test skipped, and 216 JavaScript tests passed. The supplied template passed graph and paired-reference wiring checks; its four-title change was not GPU-retested.
+v1.5.0 staged-distribution validation: **1,811 Python tests passed, one historical local-fixture test skipped, and 216 JavaScript tests passed**. Actual Core CPU checks covered the 18-node assembly graph and list dispatch. Browser UI save/reload was not revalidated; static JavaScript tests and backend execution are separate evidence.
 
 Tests distinguish state/layout/CPU contracts from UI and GPU image-quality evidence. One historical snapshot test requires a local pre-change fixture and skips when that fixture is absent. The local-only workflow-builder tests are not part of this distribution.
 

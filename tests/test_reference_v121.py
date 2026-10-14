@@ -79,7 +79,7 @@ def test_worn_coverage_and_detail_counts_remain_explicit_in_sheet():
     assert 'The same character is wearing' in item['prompt']
     assert 'do not add or remove coverage' in item['prompt']
     assert 'Exactly two hands: one left and one right' in item['prompt']
-    assert 'exactly one left and one right foot, shown once each as a matching pair' in item['prompt']
+    assert 'complete matching pair shown in the applicable reference, one left and one right, shown once each' in item['prompt']
     assert 'coverage, construction and openings' in item['prompt']
     assert 'normalized coordinates from 0 to 1' in item['prompt']
     garment = output(state(['clothing_front'], clothing_mode='garment'))['items'][0]['prompt']

@@ -112,7 +112,7 @@ def test_root_pack_only_registers_qwen(monkeypatch,pack_name):
     module=importlib.util.module_from_spec(spec)
     monkeypatch.setitem(sys.modules,pack_name,module)
     spec.loader.exec_module(module)
-    assert set(module.NODE_CLASS_MAPPINGS)=={"QwenImage21CharacterSheetDesigner", "QwenImage21CharacterSheetDesignerMultiReference", "QwenImage21CharacterSheetDesignerReferenceV12", "QwenImage21CharacterSheetEncode"}
+    assert set(module.NODE_CLASS_MAPPINGS)=={"QwenImage21CharacterSheetDesigner", "QwenImage21CharacterSheetDesignerMultiReference", "QwenImage21CharacterSheetDesignerReferenceV12", "QwenImage21CharacterSheetEncode", "QwenImage21CharacterSheetDesignerReferenceV13", "QwenImage21CharacterSheetAssemble"}
     cls=module.NODE_CLASS_MAPPINGS["QwenImage21CharacterSheetDesigner"]
     assert cls.RETURN_TYPES==("STRING","INT","INT","IMAGE")
     assert cls.RETURN_NAMES==("prompt","width","height","layout_image")

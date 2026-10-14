@@ -1,0 +1,103 @@
+{
+  "package_version": "1.5.0",
+  "created_utc": "2026-10-14T04:55:56.823612+00:00",
+  "change_scope": "Added Reference V1.3, validated CPU Sheet Assemble, dedicated WebP template, foot-reference wording and bilingual prompt-control limits.",
+  "cpu_static": {
+    "python_passed": 1811,
+    "python_skipped": 1,
+    "skip_reason": "Historical pre-change local snapshot unavailable",
+    "javascript_passed": 216,
+    "failures": 0,
+    "tested_from_staged_distribution": true,
+    "installed_core_contract_environment_enabled": true
+  },
+  "actual_core_cpu": {
+    "actual_core_validation": true,
+    "api_nodes": 18,
+    "output_nodes": [
+      "6",
+      "15",
+      "18"
+    ],
+    "actual_core_list_dispatch": true,
+    "short_images_rejected_without_padding": true,
+    "guide_off_none": true,
+    "rgb_rgba_verified": true,
+    "cuda_initialized": false,
+    "gpu_submissions": 0,
+    "source_sha256": "b3424c0c1b93faeb566720b0b847bf52b8f8010741e51bbaa4d2c52bc112f6ef",
+    "graph": {
+      "nodes": 19,
+      "links": 32,
+      "topological_order": [
+        1,
+        2,
+        3,
+        4,
+        11,
+        12,
+        13,
+        19,
+        5,
+        9,
+        10,
+        14,
+        15,
+        16,
+        7,
+        8,
+        6,
+        17,
+        18
+      ]
+    },
+    "offline_core_loader_limit": "Unrelated nodes_replacements entry requires PromptServer.instance; required output graph and CPU list dispatch validated successfully."
+  },
+  "template": {
+    "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json",
+    "sha256": "b3424c0c1b93faeb566720b0b847bf52b8f8010741e51bbaa4d2c52bc112f6ef",
+    "graph": {
+      "nodes": 19,
+      "links": 32,
+      "topological_order": [
+        1,
+        2,
+        3,
+        4,
+        11,
+        12,
+        13,
+        19,
+        5,
+        9,
+        10,
+        14,
+        15,
+        16,
+        7,
+        8,
+        6,
+        17,
+        18
+      ]
+    },
+    "generation_size_and_sheet_size_separate": true,
+    "batch_out": true,
+    "latent_batch_size": 1,
+    "save_webp_quality": 70
+  },
+  "gpu_summary": "verification/gpu_summary_v150.json",
+  "gpu_scope": "5-view end-to-end RGB/RGBA assembly succeeded. Foot-label comparison: 10 pairs / 20 images. New holdout: 15 conditions, coverage matched 13; two removals did not follow selected controls. Not universal image-quality acceptance.",
+  "browser_ui": "Actual ComfyUI frontend save/reload was not revalidated in this release; backend registration, static JS and CPU/GPU paths are separate evidence.",
+  "preserved": [
+    "legacy V1/V1.1/V1.2 IDs and output contracts",
+    "existing templates",
+    "existing artwork",
+    "previous releases"
+  ],
+  "private_artifacts_excluded": [
+    "generated reference and test images",
+    "HTML visual reports",
+    "machine-specific APIs and logs"
+  ]
+}

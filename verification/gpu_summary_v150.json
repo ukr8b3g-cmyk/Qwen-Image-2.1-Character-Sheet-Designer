@@ -1,0 +1,175 @@
+{
+  "package_version": "1.5.0",
+  "date": "2026-10-14",
+  "assembly": {
+    "final_e2e": "passed",
+    "individual_images": 5,
+    "assembled_images": 1,
+    "assembled_size": [
+      1536,
+      864
+    ],
+    "rgba_support_verified": true,
+    "metadata_matches": true,
+    "content_quality_not_guaranteed": true
+  },
+  "foot_label_comparison": {
+    "images": 20,
+    "pairs": 10,
+    "materials": 8,
+    "edit_seeds": [
+      4202601013,
+      4202601014
+    ],
+    "auto_complete_fix": false,
+    "auto_body_shortening_tested": false,
+    "outcomes": {
+      "BARE_TEXTURED_S1": [
+        "未解決",
+        "靴の被覆が不自然なまま残る。呼称だけでは素足を安定維持できない。"
+      ],
+      "BARE_TEXTURED_S2": [
+        "改善",
+        "変更前はサンダルを追加。変更後は左右とも素足を維持。"
+      ],
+      "BARE_CLEAN_S1": [
+        "被覆維持・画質課題",
+        "前後とも靴は追加しないが、皮膚の粗い金色テクスチャが発生。"
+      ],
+      "SOCKS_S1": [
+        "被覆維持・画質課題",
+        "前後とも靴下を維持。濃い編み目と足指の過剰な分離が残る。"
+      ],
+      "TIGHTS_S1": [
+        "被覆維持",
+        "前後ともタイツの被覆を維持。"
+      ],
+      "SHOES_S1": [
+        "被覆維持",
+        "前後とも閉じた青いスニーカーを維持。"
+      ],
+      "BOOTS_S1": [
+        "被覆維持",
+        "前後とも左右のブーツと閉じたつま先を維持。"
+      ],
+      "BOOTS_S2": [
+        "被覆維持",
+        "左右の閉じたブーツを維持。変更後は筒の上に下腿が加わる。"
+      ],
+      "SANDALS_S1": [
+        "被覆維持",
+        "前後とも開いたサンダルを維持。"
+      ],
+      "ASYMMETRIC_S1": [
+        "被覆維持・画質課題",
+        "前後とも片側素足・片側ブーツを維持。素足の粗いテクスチャが残る。"
+      ]
+    }
+  },
+  "new_reference_holdout": {
+    "reference_materials": 5,
+    "conditions": 15,
+    "saved_images": 15,
+    "coverage_matches": 13,
+    "coverage_mismatches": 2,
+    "edit_seed": 4202603014,
+    "steps": 30,
+    "cfg": 1,
+    "sampler": "euler",
+    "scheduler": "simple",
+    "output_size": [
+      1184,
+      864
+    ],
+    "webp_quality": 70,
+    "guide": false,
+    "batch_out": true,
+    "lora": false,
+    "route": "Designer V1.2 -> Sheet Encode",
+    "product_sources_unchanged_during_comparison": true,
+    "visual_reviews": {
+      "HANDS_BARE_AUTO": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "素手の左右一組を維持。各5本の指が見え、肌の見え方も参照に近い。片方は手の甲、片方は手のひら。"
+      },
+      "HANDS_BARE_ON": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "素手から白いフルフィンガーグローブを追加。両手の指と手のひらを覆い、手首には肌が見える。グローブの種類は入力で限定していない。"
+      },
+      "HANDS_BARE_OFF": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "素手を維持。左右一組と各5本の指が見える。肌色・質感は参照と完全には一致しない。"
+      },
+      "HANDS_GLOVED_AUTO": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "青緑の布グローブとフルフィンガーの被覆を維持。手首の肌が見え、左右一組が出力された。"
+      },
+      "HANDS_GLOVED_ON": {
+        "coverage_status": "pass",
+        "anatomy_status": "wearing_ambiguous",
+        "observation_ja": "青緑のグローブは維持。ただしカフから腕が続いておらず、空のグローブを並べたようにも見える。着用している表現は不十分。"
+      },
+      "HANDS_GLOVED_OFF": {
+        "coverage_status": "fail",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "素手を選択したが、両手に青緑のグローブが残った。生成文のbare指定とSheet Encode配線・参照番号は照合済み。"
+      },
+      "FEET_BARE_AUTO": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "素足を維持し、靴・サンダルを追加しなかった。各足の指が描かれ、今回の素材では以前の強い斑状の荒れは見られない。"
+      },
+      "FEET_BARE_ON": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "素足にベージュの開いた履物を追加。靴ありの選択には従った。種類を限定していないため、サンダルの生成は選択仕様内。"
+      },
+      "FEET_BARE_OFF": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "靴を追加せず素足を維持。参照より肌色が明るく、肌の質感・コントラストが弱まった。"
+      },
+      "FEET_BOOTS_AUTO": {
+        "coverage_status": "pass",
+        "anatomy_status": "acceptable_in_sample",
+        "observation_ja": "バーガンディ色の閉じたアンクルブーツを維持。空のブーツ参照から、脚を入れて着用した表現を生成。細部や左右の形状は完全一致しない。"
+      },
+      "FEET_BOOTS_ON": {
+        "coverage_status": "pass",
+        "anatomy_status": "opening_changed",
+        "observation_ja": "両足にブーツを維持。ただし左側の側面が大きく開き、肌が見える。着用状態が合っても、参照の閉じた構造までは安定しない。"
+      },
+      "FEET_BOOTS_OFF": {
+        "coverage_status": "pass",
+        "anatomy_status": "poor_toe_definition",
+        "observation_ja": "ブーツは除去された。一方、足指の分離や爪が曖昧で潰れ、人体の足としての形状は不自然。着用状態の一致を画質合格とは扱わない。"
+      },
+      "FEET_OPEN_AUTO": {
+        "coverage_status": "pass",
+        "anatomy_status": "minor_detail_variation",
+        "observation_ja": "黒い開いたストラップサンダルとヒールを維持。つま先を出した被覆も維持。左右のストラップと足指の細部は完全には一致しない。"
+      },
+      "FEET_OPEN_ON": {
+        "coverage_status": "pass",
+        "anatomy_status": "minor_detail_variation",
+        "observation_ja": "黒い開いたサンダルの着用を維持。靴ありの選択には従った。左右の細部と足指の形は厳密な複製ではない。"
+      },
+      "FEET_OPEN_OFF": {
+        "coverage_status": "fail",
+        "anatomy_status": "covered_toes_ambiguous",
+        "observation_ja": "靴なしを選択したが、黒いサンダルが残った。さらに肌が布状の被覆に変わり、足指が曖昧。生成文のunshod指定とSheet Encode配線・参照番号は照合済み。"
+      }
+    },
+    "scope": "Five fresh synthetic dedicated-part references; one fixed edit seed per condition; not an all-character or success-rate estimate."
+  },
+  "limits": [
+    "Glove removal and sandal removal did not follow selected controls in the holdout.",
+    "Footwear-off boot output removed boots but had poor toe definition.",
+    "Coverage correctness does not establish anatomy, material, camera or layout quality.",
+    "No test-end backend shutdown performed."
+  ]
+}

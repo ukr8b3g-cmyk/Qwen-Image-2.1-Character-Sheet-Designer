@@ -146,7 +146,7 @@ def test_auto_feet_preserve_visible_coverage_without_a_default_boot_example():
     value = state(['feet'])
     prompt = output(value)['items'][0]['prompt']
     assert 'matching pair' in prompt
-    assert 'reproduce BOTH corresponding reference feet' in prompt
+    assert 'complete matching pair shown in the applicable reference' in prompt
     assert 'Keep footwear presence consistent across the pair' in prompt
     assert 'preserve left-right differences only when the reference itself shows them' in prompt
     assert 'Do not infer or invent footwear from the outfit' in prompt
@@ -162,5 +162,6 @@ def test_shod_is_identifiable_footwear_in_details_and_mixed_sheets():
     for views in (['feet'], ['face_front', 'body_front', 'body_back']):
         prompt = output(state(views, ('reference', 'reference', 'shod')))['items'][0]['prompt']
         assert 'actual footwear' in prompt
-        assert 'uppers or straps and soles' in prompt
+        assert 'uppers or straps and soles' not in prompt
+        assert 'showing skin only through existing openings' in prompt
         assert 'outfit-appropriate kind only when no reference shows it' in prompt

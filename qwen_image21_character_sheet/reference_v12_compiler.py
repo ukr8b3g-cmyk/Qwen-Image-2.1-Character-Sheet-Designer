@@ -18,7 +18,7 @@ ROLE_TEXT = {
     'clothing_front': 'Use the front clothing surfaces only; they take priority over a complete-outfit reference on the front.',
     'clothing_back': 'Use the rear clothing surfaces only where visible; never move rear decorations to the front or turn the subject to reveal them.',
     'hands': 'Use only the visible hand details and accessories.',
-    'footwear': 'Use only the visible feet and their actual covering, including bare feet when shown; explicit footwear text overrides conflicting details.',
+    'footwear': 'Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.',
 }
 
 
@@ -69,16 +69,18 @@ def _view_instruction(state, view):
                            ' No shoes or boots. Preserve referenced bare feet or compatible socks and tights; do not invent socks.'
                            ' No head, torso, whole figure or collection of alternative designs.')
         elif state.get('footwear_state', 'reference') == 'shod':
-            instruction = ('One isolated close-up of both feet wearing actual footwear, exactly one left and one right, shown once each.'
-                           ' Both feet are inside identifiable footwear with real uppers or straps and soles, not just a sole outline around bare feet.'
-                           ' Preserve the referenced or explicitly requested kind, construction and openings; keep the complete footwear within the frame.'
+            instruction = ('One isolated close-up of a complete matching pair of actual footwear, one left and one right, shown once each.'
+                           ' Match the referenced or explicitly requested silhouette, material, coverage, construction and openings.'
+                           ' Reproduce the enclosing surfaces as continuous material; show skin only through existing openings.'
+                           ' Keep the complete pair within the frame, with only the lower-leg extent needed for it.'
                            ' No head, torso, whole figure or collection of alternative designs.')
         else:
-            instruction = ('One isolated close-up of exactly one left and one right foot, shown once each as a matching pair.'
-                           ' Unless applicable footwear text changes it, reproduce BOTH corresponding reference feet with the same actual covering and openings.'
+            instruction = ('One isolated close-up reproducing the complete matching pair shown in the applicable reference, one left and one right, shown once each.'
+                           ' Unless applicable footwear text changes it, match its silhouette, material, coverage, construction and openings.'
+                           ' Reproduce enclosing surfaces as continuous material and uncovered surfaces as shown; add no openings or coverings.'
                            ' Keep footwear presence consistent across the pair; preserve left-right differences only when the reference itself shows them.'
-                           ' Do not infer or invent footwear from the outfit, add or remove coverings, or expose areas covered in the reference.'
-                           ' Preserve the referenced coverage, construction and openings, showing the complete pair and only the lower-leg extent needed for it.'
+                           ' Do not infer or invent footwear from the outfit.'
+                           ' Show the complete pair with only the lower-leg extent needed for it.'
                            ' No head, torso, whole figure or collection of alternative designs.')
     return label, instruction
 
@@ -107,7 +109,8 @@ def _view_reference_text(state, view, plan):
             side = 'front surfaces only' if role == 'clothing_front' else 'rear surfaces only' if role == 'clothing_back' else 'the referenced garment design'
             lines.append(f'Clothing: use {tag} for {side}, on {surfaces}; replace conflicting baseline details there without expanding the requested crop.')
         else:
-            lines.append(f'Use {tag} for {role} details only within this view\'s visible crop.')
+            description = 'foot appearance' if role == 'footwear' else role
+            lines.append(f'Use {tag} for {description} details only within this view\'s visible crop.')
     if state.get('clothing_type', 'reference') != 'reference' and view in (*BODY_IDS, *CLOTHING_IDS):
         lines.append('The selected lower-garment structure overrides conflicting reference structure only; preserve compatible clothing details.')
     if state.get('footwear_state', 'reference') != 'reference' and view in part_views(state, 'footwear'):
@@ -134,7 +137,8 @@ def compile_prompt(state, layout, plan, *, use_layout_image=False, style='none')
         elif role == 'character':
             lines.append(f'{tag}: baseline identity, proportions and rendering medium.')
         else:
-            lines.append(f'{tag}: {role} reference. {ROLE_TEXT[role]}')
+            description = 'foot appearance' if role == 'footwear' else role
+            lines.append(f'{tag}: {description} reference. {ROLE_TEXT[role]}')
     lines.append('References supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.')
     for index, panel in enumerate(layout['panels'], 1):
         view = panel['id']
@@ -173,8 +177,10 @@ def compile_prompt(state, layout, plan, *, use_layout_image=False, style='none')
                      ' Preserve whether the compatible outfit is separate pieces or one connected garment, its upper clothing, layers, length, colors and materials.'
                      ' This selected structure takes precedence over conflicting reference structure or part text; do not change the camera or crop.')
     if footwear_override:
-        coverage = ('feet wear actual footwear with visible uppers or straps and soles, not only an outline around bare feet;'
-                    ' preserve its referenced kind and design, or choose an outfit-appropriate kind only when no reference shows it'
+        coverage = ('feet wear actual footwear;'
+                    ' preserve its referenced kind and design, coverage, construction and existing openings;'
+                    ' keep enclosing surfaces continuous, showing skin only through existing openings;'
+                    ' choose an outfit-appropriate kind only when no reference shows it'
                     if footwear_state == 'shod' else
                     'no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks')
         lines.append(f'Footwear presence override in view(s) {", ".join(footwear_views)}: {coverage}.'

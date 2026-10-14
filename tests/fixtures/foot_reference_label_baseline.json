@@ -1,0 +1,1682 @@
+[
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+      "batch_out": false,
+      "use_layout_image": false,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": false,
+      "count": 1,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+          "layout": {
+            "canvas": [
+              1216,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.564474,
+                  0.0625,
+                  0.368421,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.067105,
+                  0.0625,
+                  0.460526,
+                  0.875
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "width": 1216,
+          "height": 1280,
+          "prompt": "Generate one character reference sheet with exactly 2 views, each appearing once.\nRegions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].\n<image1>: baseline identity, proportions and rendering medium.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\n1. full-body front, region [0.564474, 0.0625, 0.368421, 0.875]: A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles. Use <image1> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image1>, except for applicable explicit part instructions. Use <image2> for footwear details only within this view's visible crop.\n2. feet and footwear detail, region [0.067105, 0.0625, 0.460526, 0.875]: One isolated close-up reproducing the complete matching pair shown in the applicable reference, one left and one right, shown once each. Unless applicable footwear text changes it, match its silhouette, material, coverage, construction and openings. Reproduce enclosing surfaces as continuous material and uncovered surfaces as shown; add no openings or coverings. Keep footwear presence consistent across the pair; preserve left-right differences only when the reference itself shows them. Do not infer or invent footwear from the outfit. Show the complete pair with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs. Use <image2> for footwear details only within this view's visible crop.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nHighest priority, feet and footwear in view(s) 1, 2; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nKeep every requested view in its assigned region and leave gaps empty. No additional figures, unselected views, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ],
+              "rect": [
+                699,
+                397,
+                421,
+                797
+              ]
+            }
+          },
+          "pixel_count": 1556480,
+          "megapixels": 1.55648,
+          "max_resolution": 16384,
+          "experimental": true,
+          "notices": [],
+          "index": 1,
+          "view_id": "sheet",
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\",\"feet\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+      "batch_out": true,
+      "use_layout_image": false,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": true,
+      "count": 2,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "width": 768,
+          "height": 1344,
+          "prompt": "Generate a single illustration: full-body front. A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles.\n<image1>: baseline identity, proportions and rendering medium.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image1> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image1>, except for applicable explicit part instructions. Use <image2> for footwear details only within this view's visible crop.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nHighest priority, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "rect": [
+                49,
+                37,
+                670,
+                1270
+              ],
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ]
+            }
+          },
+          "pixel_count": 1032192,
+          "megapixels": 1.032192,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 1,
+          "view_id": "body_front",
+          "filename_suffix": "_01_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        },
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "width": 1184,
+          "height": 864,
+          "prompt": "Generate a single illustration: feet and footwear detail. One isolated close-up reproducing the complete matching pair shown in the applicable reference, one left and one right, shown once each. Unless applicable footwear text changes it, match its silhouette, material, coverage, construction and openings. Reproduce enclosing surfaces as continuous material and uncovered surfaces as shown; add no openings or coverings. Keep footwear presence consistent across the pair; preserve left-right differences only when the reference itself shows them. Do not infer or invent footwear from the outfit. Show the complete pair with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs.\n<image1>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image1> for footwear details only within this view's visible crop.\nHighest priority, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 1,
+              "tag": "<image1>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "feet": {
+              "rect": [
+                156,
+                42,
+                872,
+                780
+              ],
+              "crop": [
+                860,
+                820,
+                380,
+                340
+              ]
+            }
+          },
+          "pixel_count": 1022976,
+          "megapixels": 1.022976,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 2,
+          "view_id": "feet",
+          "filename_suffix": "_02_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+      "batch_out": false,
+      "use_layout_image": true,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": false,
+      "count": 1,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+          "layout": {
+            "canvas": [
+              1216,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.564474,
+                  0.0625,
+                  0.368421,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.067105,
+                  0.0625,
+                  0.460526,
+                  0.875
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "width": 1216,
+          "height": 1280,
+          "prompt": "Generate one character reference sheet with exactly 2 views, each appearing once.\nRegions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: baseline identity, proportions and rendering medium.\n<image3>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\n1. full-body front, region [0.564474, 0.0625, 0.368421, 0.875]: A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles. Use <image2> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image2>, except for applicable explicit part instructions. Use <image3> for footwear details only within this view's visible crop.\n2. feet and footwear detail, region [0.067105, 0.0625, 0.460526, 0.875]: One isolated close-up reproducing the complete matching pair shown in the applicable reference, one left and one right, shown once each. Unless applicable footwear text changes it, match its silhouette, material, coverage, construction and openings. Reproduce enclosing surfaces as continuous material and uncovered surfaces as shown; add no openings or coverings. Keep footwear presence consistent across the pair; preserve left-right differences only when the reference itself shows them. Do not infer or invent footwear from the outfit. Show the complete pair with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs. Use <image3> for footwear details only within this view's visible crop.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nHighest priority, feet and footwear in view(s) 1, 2; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nKeep every requested view in its assigned region and leave gaps empty. No additional figures, unselected views, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 2,
+              "tag": "<image2>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 3,
+              "tag": "<image3>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ],
+              "rect": [
+                699,
+                397,
+                421,
+                797
+              ]
+            }
+          },
+          "pixel_count": 1556480,
+          "megapixels": 1.55648,
+          "max_resolution": 16384,
+          "experimental": true,
+          "notices": [],
+          "index": 1,
+          "view_id": "sheet",
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\",\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+      "batch_out": true,
+      "use_layout_image": true,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": true,
+      "count": 2,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "width": 768,
+          "height": 1344,
+          "prompt": "Generate a single illustration: full-body front. A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles.\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: baseline identity, proportions and rendering medium.\n<image3>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image2> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image2>, except for applicable explicit part instructions. Use <image3> for footwear details only within this view's visible crop.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nHighest priority, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 2,
+              "tag": "<image2>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 3,
+              "tag": "<image3>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "rect": [
+                49,
+                37,
+                670,
+                1270
+              ],
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ]
+            }
+          },
+          "pixel_count": 1032192,
+          "megapixels": 1.032192,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 1,
+          "view_id": "body_front",
+          "filename_suffix": "_01_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        },
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"reference\"}",
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "width": 1184,
+          "height": 864,
+          "prompt": "Generate a single illustration: feet and footwear detail. One isolated close-up reproducing the complete matching pair shown in the applicable reference, one left and one right, shown once each. Unless applicable footwear text changes it, match its silhouette, material, coverage, construction and openings. Reproduce enclosing surfaces as continuous material and uncovered surfaces as shown; add no openings or coverings. Keep footwear presence consistent across the pair; preserve left-right differences only when the reference itself shows them. Do not infer or invent footwear from the outfit. Show the complete pair with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs.\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image2> for footwear details only within this view's visible crop.\nHighest priority, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "feet": {
+              "rect": [
+                156,
+                42,
+                872,
+                780
+              ],
+              "crop": [
+                860,
+                820,
+                380,
+                340
+              ]
+            }
+          },
+          "pixel_count": 1022976,
+          "megapixels": 1.022976,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 2,
+          "view_id": "feet",
+          "filename_suffix": "_02_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+      "batch_out": false,
+      "use_layout_image": false,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": false,
+      "count": 1,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+          "layout": {
+            "canvas": [
+              1216,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.564474,
+                  0.0625,
+                  0.368421,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.067105,
+                  0.0625,
+                  0.460526,
+                  0.875
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "width": 1216,
+          "height": 1280,
+          "prompt": "Generate one character reference sheet with exactly 2 views, each appearing once.\nRegions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].\n<image1>: baseline identity, proportions and rendering medium.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\n1. full-body front, region [0.564474, 0.0625, 0.368421, 0.875]: A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles. Use <image1> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image1>, except for applicable explicit part instructions. Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\n2. feet and footwear detail, region [0.067105, 0.0625, 0.460526, 0.875]: One isolated close-up of a complete matching pair of actual footwear, one left and one right, shown once each. Match the referenced or explicitly requested silhouette, material, coverage, construction and openings. Reproduce the enclosing surfaces as continuous material; show skin only through existing openings. Keep the complete pair within the frame, with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs. Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1, 2: feet wear actual footwear; preserve its referenced kind and design, coverage, construction and existing openings; keep enclosing surfaces continuous, showing skin only through existing openings; choose an outfit-appropriate kind only when no reference shows it. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1, 2; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nKeep every requested view in its assigned region and leave gaps empty. No additional figures, unselected views, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ],
+              "rect": [
+                699,
+                397,
+                421,
+                797
+              ]
+            }
+          },
+          "pixel_count": 1556480,
+          "megapixels": 1.55648,
+          "max_resolution": 16384,
+          "experimental": true,
+          "notices": [],
+          "index": 1,
+          "view_id": "sheet",
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\",\"feet\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+      "batch_out": true,
+      "use_layout_image": false,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": true,
+      "count": 2,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "width": 768,
+          "height": 1344,
+          "prompt": "Generate a single illustration: full-body front. A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles.\n<image1>: baseline identity, proportions and rendering medium.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image1> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image1>, except for applicable explicit part instructions. Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1: feet wear actual footwear; preserve its referenced kind and design, coverage, construction and existing openings; keep enclosing surfaces continuous, showing skin only through existing openings; choose an outfit-appropriate kind only when no reference shows it. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "rect": [
+                49,
+                37,
+                670,
+                1270
+              ],
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ]
+            }
+          },
+          "pixel_count": 1032192,
+          "megapixels": 1.032192,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 1,
+          "view_id": "body_front",
+          "filename_suffix": "_01_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        },
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "width": 1184,
+          "height": 864,
+          "prompt": "Generate a single illustration: feet and footwear detail. One isolated close-up of a complete matching pair of actual footwear, one left and one right, shown once each. Match the referenced or explicitly requested silhouette, material, coverage, construction and openings. Reproduce the enclosing surfaces as continuous material; show skin only through existing openings. Keep the complete pair within the frame, with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs.\n<image1>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image1> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nFootwear presence override in view(s) 1: feet wear actual footwear; preserve its referenced kind and design, coverage, construction and existing openings; keep enclosing surfaces continuous, showing skin only through existing openings; choose an outfit-appropriate kind only when no reference shows it. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 1,
+              "tag": "<image1>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "feet": {
+              "rect": [
+                156,
+                42,
+                872,
+                780
+              ],
+              "crop": [
+                860,
+                820,
+                380,
+                340
+              ]
+            }
+          },
+          "pixel_count": 1022976,
+          "megapixels": 1.022976,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 2,
+          "view_id": "feet",
+          "filename_suffix": "_02_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+      "batch_out": false,
+      "use_layout_image": true,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": false,
+      "count": 1,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+          "layout": {
+            "canvas": [
+              1216,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.564474,
+                  0.0625,
+                  0.368421,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.067105,
+                  0.0625,
+                  0.460526,
+                  0.875
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "width": 1216,
+          "height": 1280,
+          "prompt": "Generate one character reference sheet with exactly 2 views, each appearing once.\nRegions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: baseline identity, proportions and rendering medium.\n<image3>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\n1. full-body front, region [0.564474, 0.0625, 0.368421, 0.875]: A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles. Use <image2> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image2>, except for applicable explicit part instructions. Use <image3> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\n2. feet and footwear detail, region [0.067105, 0.0625, 0.460526, 0.875]: One isolated close-up of a complete matching pair of actual footwear, one left and one right, shown once each. Match the referenced or explicitly requested silhouette, material, coverage, construction and openings. Reproduce the enclosing surfaces as continuous material; show skin only through existing openings. Keep the complete pair within the frame, with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs. Use <image3> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1, 2: feet wear actual footwear; preserve its referenced kind and design, coverage, construction and existing openings; keep enclosing surfaces continuous, showing skin only through existing openings; choose an outfit-appropriate kind only when no reference shows it. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1, 2; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nKeep every requested view in its assigned region and leave gaps empty. No additional figures, unselected views, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 2,
+              "tag": "<image2>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 3,
+              "tag": "<image3>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ],
+              "rect": [
+                699,
+                397,
+                421,
+                797
+              ]
+            }
+          },
+          "pixel_count": 1556480,
+          "megapixels": 1.55648,
+          "max_resolution": 16384,
+          "experimental": true,
+          "notices": [],
+          "index": 1,
+          "view_id": "sheet",
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\",\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+      "batch_out": true,
+      "use_layout_image": true,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": true,
+      "count": 2,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "width": 768,
+          "height": 1344,
+          "prompt": "Generate a single illustration: full-body front. A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles.\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: baseline identity, proportions and rendering medium.\n<image3>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image2> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image2>, except for applicable explicit part instructions. Use <image3> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1: feet wear actual footwear; preserve its referenced kind and design, coverage, construction and existing openings; keep enclosing surfaces continuous, showing skin only through existing openings; choose an outfit-appropriate kind only when no reference shows it. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 2,
+              "tag": "<image2>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 3,
+              "tag": "<image3>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "rect": [
+                49,
+                37,
+                670,
+                1270
+              ],
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ]
+            }
+          },
+          "pixel_count": 1032192,
+          "megapixels": 1.032192,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 1,
+          "view_id": "body_front",
+          "filename_suffix": "_01_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        },
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"shod\"}",
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "width": 1184,
+          "height": 864,
+          "prompt": "Generate a single illustration: feet and footwear detail. One isolated close-up of a complete matching pair of actual footwear, one left and one right, shown once each. Match the referenced or explicitly requested silhouette, material, coverage, construction and openings. Reproduce the enclosing surfaces as continuous material; show skin only through existing openings. Keep the complete pair within the frame, with only the lower-leg extent needed for it. No head, torso, whole figure or collection of alternative designs.\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nFootwear presence override in view(s) 1: feet wear actual footwear; preserve its referenced kind and design, coverage, construction and existing openings; keep enclosing surfaces continuous, showing skin only through existing openings; choose an outfit-appropriate kind only when no reference shows it. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "feet": {
+              "rect": [
+                156,
+                42,
+                872,
+                780
+              ],
+              "crop": [
+                860,
+                820,
+                380,
+                340
+              ]
+            }
+          },
+          "pixel_count": 1022976,
+          "megapixels": 1.022976,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 2,
+          "view_id": "feet",
+          "filename_suffix": "_02_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+      "batch_out": false,
+      "use_layout_image": false,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": false,
+      "count": 1,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+          "layout": {
+            "canvas": [
+              1216,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.564474,
+                  0.0625,
+                  0.368421,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.067105,
+                  0.0625,
+                  0.460526,
+                  0.875
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "width": 1216,
+          "height": 1280,
+          "prompt": "Generate one character reference sheet with exactly 2 views, each appearing once.\nRegions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].\n<image1>: baseline identity, proportions and rendering medium.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\n1. full-body front, region [0.564474, 0.0625, 0.368421, 0.875]: A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles. Use <image1> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image1>, except for applicable explicit part instructions. Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\n2. feet and footwear detail, region [0.067105, 0.0625, 0.460526, 0.875]: One isolated close-up of exactly one left and one right complete foot, shown once each. No shoes or boots. Preserve referenced bare feet or compatible socks and tights; do not invent socks. No head, torso, whole figure or collection of alternative designs. Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1, 2: no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1, 2; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nKeep every requested view in its assigned region and leave gaps empty. No additional figures, unselected views, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ],
+              "rect": [
+                699,
+                397,
+                421,
+                797
+              ]
+            }
+          },
+          "pixel_count": 1556480,
+          "megapixels": 1.55648,
+          "max_resolution": 16384,
+          "experimental": true,
+          "notices": [],
+          "index": 1,
+          "view_id": "sheet",
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\",\"feet\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+      "batch_out": true,
+      "use_layout_image": false,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": true,
+      "count": 2,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "width": 768,
+          "height": 1344,
+          "prompt": "Generate a single illustration: full-body front. A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles.\n<image1>: baseline identity, proportions and rendering medium.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image1> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image1>, except for applicable explicit part instructions. Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1: no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "rect": [
+                49,
+                37,
+                670,
+                1270
+              ],
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ]
+            }
+          },
+          "pixel_count": 1032192,
+          "megapixels": 1.032192,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 1,
+          "view_id": "body_front",
+          "filename_suffix": "_01_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        },
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "width": 1184,
+          "height": 864,
+          "prompt": "Generate a single illustration: feet and footwear detail. One isolated close-up of exactly one left and one right complete foot, shown once each. No shoes or boots. Preserve referenced bare feet or compatible socks and tights; do not invent socks. No head, torso, whole figure or collection of alternative designs.\n<image1>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image1> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nFootwear presence override in view(s) 1: no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.\nNo panel borders.",
+          "reference_plan": [
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 1,
+              "tag": "<image1>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "feet": {
+              "rect": [
+                156,
+                42,
+                872,
+                780
+              ],
+              "crop": [
+                860,
+                820,
+                380,
+                340
+              ]
+            }
+          },
+          "pixel_count": 1022976,
+          "megapixels": 1.022976,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 2,
+          "view_id": "feet",
+          "filename_suffix": "_02_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+      "batch_out": false,
+      "use_layout_image": true,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": false,
+      "count": 1,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+          "layout": {
+            "canvas": [
+              1216,
+              1280
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.564474,
+                  0.0625,
+                  0.368421,
+                  0.875
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              },
+              {
+                "id": "feet",
+                "rect": [
+                  0.067105,
+                  0.0625,
+                  0.460526,
+                  0.875
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": 0.93203125
+          },
+          "width": 1216,
+          "height": 1280,
+          "prompt": "Generate one character reference sheet with exactly 2 views, each appearing once.\nRegions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: baseline identity, proportions and rendering medium.\n<image3>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\n1. full-body front, region [0.564474, 0.0625, 0.368421, 0.875]: A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles. Use <image2> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image2>, except for applicable explicit part instructions. Use <image3> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\n2. feet and footwear detail, region [0.067105, 0.0625, 0.460526, 0.875]: One isolated close-up of exactly one left and one right complete foot, shown once each. No shoes or boots. Preserve referenced bare feet or compatible socks and tights; do not invent socks. No head, torso, whole figure or collection of alternative designs. Use <image3> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1, 2: no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1, 2; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nKeep every requested view in its assigned region and leave gaps empty. No additional figures, unselected views, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 2,
+              "tag": "<image2>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 3,
+              "tag": "<image3>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ],
+              "rect": [
+                699,
+                397,
+                421,
+                797
+              ]
+            }
+          },
+          "pixel_count": 1556480,
+          "megapixels": 1.55648,
+          "max_resolution": 16384,
+          "experimental": true,
+          "notices": [],
+          "index": 1,
+          "view_id": "sheet",
+          "filename_suffix": "",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\",\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  },
+  {
+    "options": {
+      "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\", \"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+      "batch_out": true,
+      "use_layout_image": true,
+      "reference_presence": {
+        "character_image": true,
+        "reference_image_1": true
+      }
+    },
+    "before": {
+      "enabled": true,
+      "count": 2,
+      "items": [
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"body_front\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+          "layout": {
+            "canvas": [
+              768,
+              1344
+            ],
+            "panels": [
+              {
+                "id": "body_front",
+                "rect": [
+                  0.019531,
+                  0.011161,
+                  0.960938,
+                  0.977679
+                ],
+                "view": "full-body front",
+                "content": "A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "body_front": {
+                "rect": [
+                  49,
+                  37,
+                  670,
+                  1270
+                ],
+                "crop": [
+                  514,
+                  40,
+                  315,
+                  597
+                ]
+              }
+            }
+          },
+          "width": 768,
+          "height": 1344,
+          "prompt": "Generate a single illustration: full-body front. A neutral standing front view, complete head and hair through both feet or footwear; leave clear space above the head and below the soles.\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: baseline identity, proportions and rendering medium.\n<image3>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image2> for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details. Keep the baseline outfit from <image2>, except for applicable explicit part instructions. Use <image3> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nPreserve the assigned reference hand coverage and accessories; do not invent or remove coverage.\nFootwear presence override in view(s) 1: no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "character_image",
+              "role": "character",
+              "image_number": 2,
+              "tag": "<image2>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 3,
+              "tag": "<image3>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "body_front": {
+              "rect": [
+                49,
+                37,
+                670,
+                1270
+              ],
+              "crop": [
+                514,
+                40,
+                315,
+                597
+              ]
+            }
+          },
+          "pixel_count": 1032192,
+          "megapixels": 1.032192,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 1,
+          "view_id": "body_front",
+          "filename_suffix": "_01_body_front",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"body_front\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"character_image\",\"role\":\"character\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        },
+        {
+          "state_json": "{\"schema_version\": 3, \"views\": [\"feet\"], \"size\": {\"mode\": \"auto\", \"body_height\": 1120, \"manual_width\": 2208, \"manual_height\": 1280}, \"part_prompts\": {\"footwear\": \"Literal wording: footwear reference / footwear details.\"}, \"reference_roles\": {\"reference_image_1\": \"footwear\", \"reference_image_2\": \"same_character\", \"reference_image_3\": \"same_character\"}, \"hand_state\": \"reference\", \"clothing_mode\": \"worn\", \"clothing_type\": \"reference\", \"footwear_state\": \"unshod\"}",
+          "layout": {
+            "canvas": [
+              1184,
+              864
+            ],
+            "panels": [
+              {
+                "id": "feet",
+                "rect": [
+                  0.014358,
+                  0.019676,
+                  0.971284,
+                  0.960648
+                ],
+                "view": "feet and footwear detail",
+                "content": "One isolated close-up of both complete feet or footwear, including visible boot shafts. Keep the resulting barefoot or footwear design; closed shoes do not expose bare toes. No head, torso or whole figure."
+              }
+            ],
+            "feet_y": null,
+            "layout_version": "adaptive-1",
+            "artwork": {
+              "feet": {
+                "rect": [
+                  156,
+                  42,
+                  872,
+                  780
+                ],
+                "crop": [
+                  860,
+                  820,
+                  380,
+                  340
+                ]
+              }
+            }
+          },
+          "width": 1184,
+          "height": 864,
+          "prompt": "Generate a single illustration: feet and footwear detail. One isolated close-up of exactly one left and one right complete foot, shown once each. No shoes or boots. Preserve referenced bare feet or compatible socks and tights; do not invent socks. No head, torso, whole figure or collection of alternative designs.\n<image1> is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.\n<image2>: footwear reference. Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.\nReferences supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.\nRequested view: Use <image2> for footwear details only within this view's visible crop. The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.\nFootwear presence override in view(s) 1: no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks. This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details. Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.\nHighest priority compatible appearance details, feet and footwear in view(s) 1; apply only to visible named parts, preserving the requested camera and crop:\nLiteral wording: footwear reference / footwear details.\nPlain white background, finished opaque artwork, consistent lighting. Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified. For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.\nOnly the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.",
+          "reference_plan": [
+            {
+              "source": "layout_image",
+              "role": "layout",
+              "image_number": 1,
+              "tag": "<image1>"
+            },
+            {
+              "source": "reference_image_1",
+              "role": "footwear",
+              "image_number": 2,
+              "tag": "<image2>"
+            }
+          ],
+          "reference_numbering_provisional": true,
+          "guide_artwork": {
+            "feet": {
+              "rect": [
+                156,
+                42,
+                872,
+                780
+              ],
+              "crop": [
+                860,
+                820,
+                380,
+                340
+              ]
+            }
+          },
+          "pixel_count": 1022976,
+          "megapixels": 1.022976,
+          "max_resolution": 16384,
+          "experimental": false,
+          "notices": [],
+          "index": 2,
+          "view_id": "feet",
+          "filename_suffix": "_02_feet",
+          "reference_plan_json": "{\"schema_version\":1,\"view_ids\":[\"feet\"],\"sources\":[{\"source\":\"layout_image\",\"role\":\"layout\"},{\"source\":\"reference_image_1\",\"role\":\"footwear\"}]}"
+        }
+      ]
+    }
+  }
+]
