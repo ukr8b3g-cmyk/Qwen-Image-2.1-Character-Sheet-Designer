@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-14T10:48:35.459818+00:00",
+  "created_utc": "2026-10-14T11:02:46.769403+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
-  "target_base_commit": "5ff1398d1f46c1bb4590dec797f3b982af6ade9d",
-  "target_state": "v1.5.2 supplied PNG workflows and hidden unconnected auxiliary outputs",
+  "target_base_commit": "6ac17271e558e8ee981c46674be469c29a7e0b8f",
+  "target_state": "v1.5.2 documentation supplement: official Comfy-Org model downloads",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -693,6 +693,11 @@
         "Images and model weights are not bundled"
       ],
       "backend_stopped_or_restarted": false
+    },
+    "official_model_links": {
+      "scope": "Documentation only; four official file pages and their download URLs verified against template Loader selections.",
+      "model_weights_downloaded": false,
+      "workflow_or_generation_settings_changed": false
     }
   },
   "files": [
@@ -938,8 +943,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "f6dc5a1222acd407ce04a3718925d9b22ac9a6cb322086eb0019811be9ff07ac",
-      "bytes": 38786,
+      "sha256": "b189caf5802f5d73fa1f3e57a69f723dfbc983605b722ebac7f85c0dd350f45f",
+      "bytes": 42073,
       "purpose": "package metadata/documentation"
     },
     {

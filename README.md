@@ -6,7 +6,7 @@
 
 - **配布ワークフローを更新**：指定の通常版・Turbo版V1.3と旧V1.2を採用。サブグラフの並び・配置・生成設定を維持し、V1.3は標準Save Image、旧V1.2はSave Image AdvancedでPNG保存します。保存名は保存ノードで直接指定します。
 - **未使用の補助出力を非表示**：`filename_suffix`・`sheet_plan`・`view_records`は未接続なら非表示。右クリックの「補助出力を表示」から戻せます。接続済みの出力と出力番号は維持します。
-- **日英READMEの要件を明記**：ComfyUI Core v0.37.0以上。旧ノード・既存テンプレート・画像・旧Releaseは引き続き利用できます。
+- **日英READMEの要件・モデルリンクを明記**：ComfyUI Core v0.37.0以上。通常モデル・Turboモデル・テキストエンコーダー・VAEのComfy-Org公式ダウンロード先を掲載。旧ノード・既存テンプレート・画像・旧Releaseは引き続き利用できます。
 
 <img width="1543" height="713" alt="{3DB22210-59B7-4161-8A96-29B0211C5E33}" src="https://github.com/user-attachments/assets/785a18e0-fa55-41ab-b12a-d0d98b40f9ac" />
 
@@ -78,6 +78,19 @@ Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）�
 - Qwen Image 2.1のモデル、Qwen3-VLテキストエンコーダー、対応VAEが必要です。モデルは同梱しません。
 - 通常版・Turbo版は標準Save Image、旧V1.2はSave Image AdvancedでPNG保存します。Save WEBP Metaは配布用3本には不要です。
 - ローカルの実機確認環境はCore v0.40.0／Frontend 1.55.17です。初対応版で全機能を実機確認したという意味ではありません。
+
+### 公式モデルのダウンロード
+
+[Comfy-Org公式配布](https://huggingface.co/Comfy-Org/Qwen-Image-2.1)の、テンプレートで使用しているファイルです。通常版は通常モデル、Turbo版はTurboモデルを選び、同じテキストエンコーダーとVAEを使用します。
+
+| 種類 | ファイルの直接ダウンロード | 配置先 |
+| --- | --- | --- |
+| 通常モデル / Normal model | [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) | `ComfyUI/models/diffusion_models/` |
+| テキストエンコーダー / Text encoder | [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) | `ComfyUI/models/text_encoders/` |
+| VAE | [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors) | `ComfyUI/models/vae/` |
+| Turboモデル / Turbo model | [qwen_image_2.1_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors) | `ComfyUI/models/diffusion_models/` |
+
+配置後はLoaderで自分のファイルを選択してください。テンプレートのモデル名に含まれる`qwen\`などのサブフォルダー名も、実際の配置先に合わせて選び直します。Turboテンプレートは8ステップ・CFG 1です。モデル重みは同梱しません。
 
 ### テンプレート
 
@@ -203,7 +216,7 @@ Manualの縦長サイズでは顔画像の余白が大きくなるため、個�
 
 - **Updated distribution workflows**: adopted the supplied normal/Turbo V1.3 and legacy V1.2 templates, preserving subgraph ordering, positions and generation settings. V1.3 uses standard Save Image; legacy V1.2 keeps Save Image Advanced. Both save PNG, with filenames set directly in the save node.
 - **Hidden unused auxiliary outputs**: unconnected `filename_suffix`, `sheet_plan` and `view_records` are hidden. Use “Show auxiliary outputs” from the context menu to reveal them. Connected ports and output indexes stay intact.
-- **Documented requirements in both languages**: ComfyUI Core v0.37.0 or higher. Compatible nodes, existing templates, artwork and previous releases remain available.
+- **Documented requirements and model links in both languages**: ComfyUI Core v0.37.0 or higher, with official Comfy-Org downloads for the normal/Turbo models, text encoder and VAE. Compatible nodes, existing templates, artwork and previous releases remain available.
 
 ### What's new in v1.5.1
 
@@ -245,6 +258,19 @@ Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After you
 - Qwen Image 2.1 model weights, Qwen3-VL text encoder and the matching VAE are required and are not bundled.
 - Normal and Turbo use standard **Save Image (PNG)**; legacy V1.2 keeps **Save Image Advanced (PNG)**. Save WEBP Meta is not required by these three templates; WebP 70 is used for tests.
 - The local validation environment uses Core v0.40.0 / Frontend 1.55.17; this does not claim all-feature runtime validation on the initial supported release.
+
+### Official model downloads
+
+These files are hosted by [Comfy-Org](https://huggingface.co/Comfy-Org/Qwen-Image-2.1) and match the template selections. Use the normal model for the normal workflow, or the Turbo model for the Turbo workflow, with the same text encoder and VAE.
+
+| Component | Direct file download | Destination |
+| --- | --- | --- |
+| 通常モデル / Normal model | [qwen_image_2.1_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_int8_convrot.safetensors) | `ComfyUI/models/diffusion_models/` |
+| テキストエンコーダー / Text encoder | [qwen3vl_8b_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/text_encoders/qwen3vl_8b_int8_convrot.safetensors) | `ComfyUI/models/text_encoders/` |
+| VAE | [qwen_image_2.1_vae_bf16.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/vae/qwen_image_2.1_vae_bf16.safetensors) | `ComfyUI/models/vae/` |
+| Turboモデル / Turbo model | [qwen_image_2.1_turbo_int8_convrot.safetensors](https://huggingface.co/Comfy-Org/Qwen-Image-2.1/resolve/main/diffusion_models/qwen_image_2.1_turbo_int8_convrot.safetensors) | `ComfyUI/models/diffusion_models/` |
+
+Select your installed files in the Loaders. Reselect any subfolder prefix such as `qwen\` to match your actual model path. The Turbo template uses 8 steps and CFG 1. Model weights are not bundled.
 
 Use [normal V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json), [Turbo V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json), or compatible [Reference V1.2](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). V1.3 uses Sheet Encode and standard Save Image; legacy V1.2 keeps direct Core wiring and Save Image Advanced. Filenames are editable in each save node. Normal uses 30 steps / CFG 1 / Euler-simple; Turbo uses the supplied eight-step Manual Sigmas schedule / CFG 1 / Euler. Original save-node position and dimensions are preserved.
 
