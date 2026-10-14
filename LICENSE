@@ -1,10 +1,12 @@
 License scope
 
-The MIT License below applies only to original code and documentation for
-which ukr8b3g-cmyk holds the applicable rights. Third-party material remains
-subject to its original license and notices. Images, artwork, screenshots,
+The MIT License below applies to original code and documentation and to the
+bundled PNG and SVG artwork explicitly listed in NOTICE.md, to the extent
+ukr8b3g-cmyk holds the applicable rights. Third-party material remains
+subject to its original license and notices. Other images and screenshots,
 model weights and user-provided reference materials are not covered by this
-MIT grant. See NOTICE.md for provenance, exclusions and retained terms.
+MIT grant. See NOTICE.md for provenance, the covered asset list, exclusions
+and retained terms.
 
 MIT License
 

@@ -11,7 +11,7 @@ The isolated test excerpt in tests/upstream/core_empty_latent.py comes from Comf
 
 https://github.com/Comfy-Org/ComfyUI
 
-The MIT grant in LICENSE covers only original code and documentation for which ukr8b3g-cmyk holds the applicable rights; it does not relicense third-party material. Preserve applicable upstream notices and licensing when redistributing. No model weights, font files, or reference-image bytes are included.
+The MIT grant in LICENSE covers original code and documentation and the bundled PNG/SVG assets listed below, to the extent ukr8b3g-cmyk holds the applicable rights; it does not relicense third-party material. Preserve applicable upstream notices and licensing when redistributing. No model weights, font files, or reference-image bytes are included.
 
 ## Additional Reference functionality
 
@@ -21,11 +21,26 @@ Detailed local source snapshots and development records are retained locally and
 
 ## License scope and retained upstream terms
 
-Original code and documentation are licensed as described in [LICENSE](LICENSE). The H3 provenance above identifies the source of UI code, state handling, layout mathematics, validation, test-oracle code and artwork; provenance alone does not establish permission for every included asset. Owner-authored H3 code and documentation are covered only to the extent the owner holds the applicable rights. Preserve any applicable original third-party terms.
+Original code, documentation and the specifically listed bundled artwork are licensed as described in [LICENSE](LICENSE). The H3 provenance above identifies the source of UI code, state handling, layout mathematics, validation, test-oracle code and artwork. The maintainer's authorization for the listed artwork is recorded below. The grant applies only to the extent the maintainer holds the applicable rights. Preserve any applicable original third-party terms.
 
-### Images and artwork excluded from MIT
+### Bundled PNG and SVG artwork covered by MIT
 
-The MIT grant does not cover `web/assets/mannequin-atlas.png`, the six PNGs under `web/assets/multi_reference/`, SVG fallback artwork (including H3-derived artwork in `web/avatar.js` and `tests/upstream/web/avatar.js`), verification screenshots, or images/screenshots embedded in or linked from documentation. It also does not cover user-provided references or generated outputs. Display/layout source code is distinct from rights in the depicted artwork. This update does not establish a separate image license or a complete chain of rights; confirm applicable rights before reuse or redistribution.
+On 2026-10-14, the maintainer confirmed that the bundled artwork was created using GPT, confirmed permission to redistribute it, and authorized including the following PNG and SVG assets under the MIT License in [LICENSE](LICENSE):
+
+- `web/assets/mannequin-atlas.png`
+- `web/assets/multi_reference/clothing_back.png`
+- `web/assets/multi_reference/clothing_front.png`
+- `web/assets/multi_reference/face_3q_left.png`
+- `web/assets/multi_reference/face_3q_right.png`
+- `web/assets/multi_reference/face_back.png`
+- `web/assets/multi_reference/face_right.png`
+- SVG fallback artwork in `web/avatar.js` and its retained test-source copy in `tests/upstream/web/avatar.js`
+
+This grant covers the listed bundled artwork to the extent the maintainer holds the applicable rights, including redistribution under the MIT terms. It replaces the earlier MIT exclusion for these specific assets. It does not relicense third-party material or establish rights in unrelated generated content.
+
+### Other images and materials
+
+Verification screenshots, other images/screenshots embedded in or linked from documentation, model weights, user-provided references and user-generated outputs are not included in this MIT grant. Display/layout source code remains distinct from rights in other depicted artwork.
 
 ### ComfyUI test excerpt: GPL, not MIT
 
@@ -37,5 +52,5 @@ The [upstream LICENSE at that commit](https://github.com/Comfy-Org/ComfyUI/blob/
 
 ComfyUI, Qwen models, dependencies and external services retain their own licenses and terms. The MIT grant does not extend to those components or guarantee rights in generated content.
 
-`manifest.json` is preserved as the existing distribution/verification snapshot. Its recorded hashes are not a claim to describe the LICENSE, README or NOTICE after this licensing-documentation update. Runtime code, tests, workflows, images and that manifest are unchanged by this update. Package metadata changes are limited to the PublisherId entry in pyproject.toml; names and versions are unchanged.
+`manifest.json` is preserved as the historical distribution/verification snapshot; it is not a current Registry archive manifest. Registry preparation changes licensing documentation, packaging metadata, exclusion rules and publishing instructions/workflow without changing product runtime code, tests, workflow templates, artwork bytes or the v1.5.3 release tag. The package name and version remain unchanged. The manual Registry workflow pins the audited preparation commit and verifies its exact package file paths, byte counts and SHA256 hashes. Tests (including the GPL excerpt), development tools and verification screenshots are excluded from the Registry ZIP; the retained GPL license text remains included.
 

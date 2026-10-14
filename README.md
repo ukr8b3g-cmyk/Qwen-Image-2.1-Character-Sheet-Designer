@@ -356,6 +356,6 @@ CPU validation: **159 passed**, including **32 new regressions**. The new templa
 
 ## License / ライセンス
 
-Original code and documentation for which ukr8b3g-cmyk holds the applicable rights are available under the [MIT License](LICENSE). Third-party material retains its original terms; images, artwork, screenshots, model weights and user-provided references are outside this MIT grant. See [NOTICE.md](NOTICE.md) before redistributing. This does not guarantee rights to any image or generated output, or replace the terms of ComfyUI, models, dependencies or external services.
+Original code and documentation, plus the seven bundled PNGs and SVG fallback artwork explicitly listed in [NOTICE.md](NOTICE.md), are available under the [MIT License](LICENSE) to the extent ukr8b3g-cmyk holds the applicable rights. The maintainer confirmed that the listed artwork was created using GPT and authorized its redistribution under MIT. Third-party material retains its original terms, including the GPL-licensed ComfyUI test excerpt. Other screenshots, model weights, user-provided references and user-generated outputs are outside this grant. ComfyUI, models, dependencies and external services retain their own terms.
 
-ukr8b3g-cmykが権利を有する自作コード・文書には[MIT License](LICENSE)を適用します。第三者由来の素材は元の条件を維持し、画像・アートワーク・スクリーンショット・モデル重み・利用者の参照素材は今回のMIT許諾に含めません。再配布時は[NOTICE.md](NOTICE.md)を確認してください。画像・生成物の権利を保証するものではなく、ComfyUI・モデル・依存先・外部サービスの条件も別途適用されます。
+ukr8b3g-cmykが権利を有する自作コード・文書と、[NOTICE.md](NOTICE.md)に明記した同梱PNG 7点・SVGフォールバック素材に[MIT License](LICENSE)を適用します。管理者は対象素材がGPTで作成されたことと、MIT条件での再配布を許諾することを確認しています。第三者由来の素材には元の条件を維持し、ComfyUI由来のテスト抜粋はGPLのままです。その他のスクリーンショット、モデル重み、利用者の参照素材・生成物はこの許諾に含めません。ComfyUI・モデル・依存先・外部サービスの条件も別途適用されます。
