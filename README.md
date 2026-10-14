@@ -2,6 +2,13 @@
 
 [English](#english)
 
+## v1.5.3の変更点
+
+- **V1.3の再追加時のUI復元を修正**：ノードを削除してUndoした場合も、合成切替・補助出力メニュー・未接続出力の非表示を復元します。更新監視の重複も防ぎます。
+- **既存の操作・保存形式を維持**：生成処理、出力番号、`state_json`、配布ワークフローは変更しません。
+
+JavaScript 233件と関連CPU試験18件が成功。実ComfyUIでも削除→Undoを3回、設定変更、JSON保存・新規読込を確認しました。今回GPU生成は実施していません。[検証記録](verification/ui_readd_fix.json)
+
 ## v1.5.2の変更点
 
 - **配布ワークフローを更新**：指定の通常版・Turbo版V1.3と旧V1.2を採用。サブグラフの並び・配置・生成設定を維持し、V1.3は標準Save Image、旧V1.2はSave Image AdvancedでPNG保存します。保存名は保存ノードで直接指定します。
@@ -40,7 +47,7 @@
 
 旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
 
-**Package v1.5.2** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
+**Package v1.5.3** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
 
@@ -48,7 +55,7 @@ Select views, keep a character consistent with image references, and generate ei
 
 ### ノードとバージョン
 
-パッケージ全体のバージョンは **1.5.2** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
+パッケージ全体のバージョンは **1.5.3** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
 
 | 表示名 | 用途 | ノードID |
 | --- | --- | --- |
@@ -212,6 +219,13 @@ Manualの縦長サイズでは顔画像の余白が大きくなるため、個�
 
 ## English
 
+### What's new in v1.5.3
+
+- **Restore V1.3 UI after node re-addition**: deleting a node and undoing now restores the assembly toggle, auxiliary-output menu, and hiding of unconnected auxiliary outputs. Update observers are not duplicated.
+- **Keep existing behavior and serialization**: generation code, output indexes, `state_json`, and distributed workflows are unchanged.
+
+All 233 JavaScript tests and 18 relevant CPU tests passed. Actual ComfyUI checks covered three delete/undo cycles, setting changes, JSON export, and fresh loading. No GPU generation was run for this fix. [Verification record](verification/ui_readd_fix.json)
+
 ### What's new in v1.5.2
 
 - **Updated distribution workflows**: adopted the supplied normal/Turbo V1.3 and legacy V1.2 templates, preserving subgraph ordering, positions and generation settings. V1.3 uses standard Save Image; legacy V1.2 keeps Save Image Advanced. Both save PNG, with filenames set directly in the save node.
@@ -248,7 +262,7 @@ Legacy V1/V1.1/V1.2 nodes, existing templates and previous releases remain avail
 
 Legacy V1/V1.1 nodes and existing workflows remain compatible.
 
-Package **v1.5.2** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
+Package **v1.5.3** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
 

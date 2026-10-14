@@ -1,0 +1,88 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-14",
+  "status": "included_in_v1.5.3",
+  "base_commit": "5a221eae1c046fcee794b3656ad4b1f9e502b258",
+  "package_version": "1.5.3",
+  "scope": "V1.3 frontend UI lifecycle reinstallation",
+  "fix": [
+    "Install V1.3 assembly and optional-output controls whenever the base Designer is installed, including same-object re-addition.",
+    "Dispose additional controls and their observer through the base Designer lifecycle.",
+    "Keep repeated nodeCreated/onAdded calls idempotent."
+  ],
+  "automated_tests": {
+    "new_lifecycle_tests": {
+      "before_fix": {
+        "passed": 4,
+        "failed": 3
+      },
+      "after_fix": {
+        "passed": 7,
+        "failed": 0
+      },
+      "host_note": "Actual product integration, V1.3 extension, assembly UI, and optional-output modules in a VM; ComfyUI host, controller, and base UI renderer are test substitutes.",
+      "checks": [
+        "Initial installation",
+        "Three same-object removal/re-addition cycles",
+        "Preview refresh after re-addition",
+        "Fresh node loading from serialized state",
+        "Repeated lifecycle callbacks without duplicate controls or observers",
+        "Legacy shared integration compatibility",
+        "Unavailable DOM fallback"
+      ]
+    },
+    "full_javascript_suite": {
+      "passed": 233,
+      "failed": 0
+    },
+    "relevant_cpu_tests": {
+      "passed": 18,
+      "failed": 0,
+      "deselected": 29,
+      "scope": "V1.3 first-six-output compatibility, defaults, and standard workflow behavior",
+      "full_python_suite_rerun": false
+    }
+  },
+  "actual_comfyui_frontend": {
+    "tested": true,
+    "fixture": "Isolated two-node Designer-to-Assemble graph with two direct auxiliary links; no sampling or save nodes",
+    "delete_undo_cycles": 3,
+    "designer_roots_per_restored_node": 1,
+    "assembly_toggles_per_restored_node": 1,
+    "auxiliary_menu_show_hide": "passed",
+    "assembly_size_edit_and_preview": "passed",
+    "native_json_export_and_fresh_load": "passed",
+    "export_checks": {
+      "nodes": 2,
+      "direct_links": 2,
+      "canonical_widget_values": 7,
+      "output_slots": 8,
+      "generation_size": [
+        1536,
+        864
+      ],
+      "assembly_size": [
+        1792,
+        960
+      ],
+      "connected_auxiliary_outputs_retained": true,
+      "auxiliary_visibility_preference_retained": true
+    },
+    "original_workflow_tabs_retained": 8,
+    "test_tabs_closed_and_original_selection_restored": true
+  },
+  "preserved": [
+    "Python generation and encoding code",
+    "Public node IDs and output indexes",
+    "state_json serialization",
+    "Distributed workflows and artwork",
+    "Existing UI layout and user workflows"
+  ],
+  "gpu_submissions": 0,
+  "backend_restarted_or_stopped": false,
+  "limits": [
+    "GPU generation and image quality were not retested for this frontend-only change.",
+    "Automated lifecycle tests use host substitutes; actual ComfyUI delete/undo and save/load were checked separately.",
+    "No new GitHub Actions configuration was added."
+  ]
+}

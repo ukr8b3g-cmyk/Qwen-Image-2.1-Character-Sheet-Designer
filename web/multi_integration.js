@@ -79,15 +79,15 @@ function recoverReaddedTextarea(node) {
     if (original.value !== element.value) original.value = element.value;
   }, {signal: recovery.abort.signal});
 }
-function armReinstall(node, app, api, profile = PROFILE) {
+function armReinstall(node, app, api, profile = PROFILE, installAdditionalUI) {
   if (pendingReinstall.has(node)) return;
   const unchain = chain(node, 'onAdded', () => {
     unchain(); pendingReinstall.delete(node);
-    recoverReaddedTextarea(node); installDesigner(node, app, api, profile);
+    recoverReaddedTextarea(node); installDesigner(node, app, api, profile, installAdditionalUI);
   });
   pendingReinstall.set(node, unchain);
 }
-export function installDesigner(node, app, api, profile = PROFILE) {
+export function installDesigner(node, app, api, profile = PROFILE, installAdditionalUI) {
   if (instances.has(node)) return instances.get(node);
   pendingReinstall.get(node)?.(); pendingReinstall.delete(node);
   const multiReference = true, reference = true;
@@ -110,7 +110,7 @@ export function installDesigner(node, app, api, profile = PROFILE) {
   const previousSetValue = original.options?.setValue;
   const previousCallback = original.callback;
   let ui, widget, record, installedHooks, observer, frame, ready = false;
-  let unsubscribe = () => {}, restoreValueHook = () => {};
+  let unsubscribe = () => {}, restoreValueHook = () => {}, disposeAdditionalUI;
   const useLayoutImage = () => reference && node.widgets.find(widget => widget.name === 'use_layout_image')?.value === true;
   const styleWidget = reference ? node.widgets.find(widget => widget.name === 'style') : null;
   const previousStyleHidden = styleWidget?.options?.hidden ?? styleWidget?.hidden;
@@ -183,9 +183,9 @@ export function installDesigner(node, app, api, profile = PROFILE) {
       if (record.disposed) return; record.disposed = true; ready = false;
       if (frame !== undefined) window.cancelAnimationFrame?.(frame);
       if (observer !== undefined) clearInterval(observer);
-      unsubscribe(); restoreValueHook(); unhide(); controller.dispose(); ui.dispose();
+      unsubscribe(); restoreValueHook(); disposeAdditionalUI?.(); unhide(); controller.dispose(); ui.dispose();
       removeVisualWidget(node, widget); restoreHooks(installedHooks); instances.delete(node);
-      if (reinstall) armReinstall(node, app, api, profile);
+      if (reinstall) armReinstall(node, app, api, profile, installAdditionalUI);
     }, afterConfigure() { if (!record.disposed) { observedLayoutImage = useLayoutImage(); observedStyle = readStyle(); observedBatchOut = readBatchOut(); controller.restore(original.value); } }};
     instances.set(node, record);
     chain(node, 'onConfigure', () => record.afterConfigure());
@@ -206,12 +206,13 @@ export function installDesigner(node, app, api, profile = PROFILE) {
       frame = window.requestAnimationFrame(observe);
     } else { observer = setInterval(sync, 100); observer.unref?.(); }
     ui.render();
+    disposeAdditionalUI = installAdditionalUI?.(node, record);
     return record;
   } catch (error) {
     ready = false;
     if (frame !== undefined) window.cancelAnimationFrame?.(frame);
     if (observer !== undefined) clearInterval(observer);
-    unsubscribe(); restoreValueHook(); controller.dispose(); ui?.dispose(); instances.delete(node);
+    unsubscribe(); restoreValueHook(); disposeAdditionalUI?.(); controller.dispose(); ui?.dispose(); instances.delete(node);
     original.hidden = previousHidden;
     if (styleWidget) styleWidget.hidden = previousStyleHidden;
     if (element) element.hidden = previousElementHidden;
@@ -224,10 +225,10 @@ export function installDesigner(node, app, api, profile = PROFILE) {
   }
 }
 export function getDesigner(node) { return instances.get(node); }
-export function createExtension(app, api, profile = PROFILE) {
+export function createExtension(app, api, profile = PROFILE, installAdditionalUI) {
   return {
     name: profile.extensionName,
-    nodeCreated(node) { if (node.comfyClass === profile.nodeType || node.type === profile.nodeType) installDesigner(node, app, api, profile); },
+    nodeCreated(node) { if (node.comfyClass === profile.nodeType || node.type === profile.nodeType) installDesigner(node, app, api, profile, installAdditionalUI); },
     afterConfigureGraph() {
       for (const node of app.graph?._nodes ?? []) getDesigner(node)?.afterConfigure();
     },
