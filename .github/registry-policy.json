@@ -1,0 +1,9 @@
+{
+  "node": "qwen-image21-character-sheet-designer",
+  "publisher": "ukr8b3g-cmyk",
+  "repository": "https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
+  "includes": [],
+  "license": {
+    "file": "LICENSE"
+  }
+}
