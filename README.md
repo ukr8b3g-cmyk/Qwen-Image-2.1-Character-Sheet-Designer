@@ -2,6 +2,12 @@
 
 [English](#english)
 
+## v1.5.4の変更点
+
+- **通常版・Turbo版をLoRA対応テンプレートへ更新**：外部のPower Lora Loader (rgthree)でモデルに適用します。初期状態はLoRA未選択。配置・サブグラフ順序・生成設定は指定のワークフローを維持しています。
+- **両版ともSave Image AdvancedでPNG保存**：8-bit／sRGB。保存名は保存ノードで変更できます。通常版・Turbo版には[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)が必要です。
+- **配線と実生成を確認**：CPU 1,819件成功・旧素材不足1件スキップ。実ComfyUIのAPI出力と、通常／Turbo各LoRAなし・ありの4生成を確認しました。検証は1参照・1 Seed・1種類のLoRAに限定します。[検証記録](verification/release_v154.json)
+
 ## v1.5.3の変更点
 
 - **V1.3の再追加時のUI復元を修正**：ノードを削除してUndoした場合も、合成切替・補助出力メニュー・未接続出力の非表示を復元します。更新監視の重複も防ぎます。
@@ -47,7 +53,7 @@ JavaScript 233件と関連CPU試験18件が成功。実ComfyUIでも削除→Und
 
 旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
 
-**Package v1.5.3** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
+**Package v1.5.4** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
 
@@ -55,7 +61,7 @@ Select views, keep a character consistent with image references, and generate ei
 
 ### ノードとバージョン
 
-パッケージ全体のバージョンは **1.5.3** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
+パッケージ全体のバージョンは **1.5.4** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
 
 | 表示名 | 用途 | ノードID |
 | --- | --- | --- |
@@ -79,12 +85,19 @@ ZIPの場合は[Releases](https://github.com/ukr8b3g-cmyk/Qwen-Image-2.1-Charact
 
 Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）とQwen 2.1のモデル・テキストエンコーダー・VAEが必要です。モデルは同梱していません。テンプレート内のモデル名は環境に合わせて選び直してください。
 
+### LoRAの使い方（通常版・Turbo版）
+
+初期状態のままならLoRAなしで生成します。使用する場合は、Qwen Image 2.1に対応した重みを`ComfyUI/models/loras/`へ配置し、Power Lora Loaderで選択・強度を指定してください。適用先はモデルのみで、CLIPは変更しません。接続は`UNETLoader → Power Lora Loader → QwenImage21Cache → Sampler`です。画面上ではサブグラフとの往復接続に見えますが、実行時の依存関係は循環していません。
+
+GPU確認は既存の1種類のLoRA・強度0.5による単独ビューの4枚です。すべてのLoRAや画角の正確さ、参照の完全一致、品質向上を保証するものではありません。旧V1.2テンプレートとノード本体の生成処理は変更していません。
+
 ### システム要件
 
 - **ComfyUI Core v0.37.0以上**。Qwen Image 2.1の初対応版です（2026年9月21日公開）。不具合修正を含む最新の安定版を推奨します。[公式Release](https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.37.0)。
 - Qwen Image 2.1のモデル、Qwen3-VLテキストエンコーダー、対応VAEが必要です。モデルは同梱しません。
-- 通常版・Turbo版は標準Save Image、旧V1.2はSave Image AdvancedでPNG保存します。Save WEBP Metaは配布用3本には不要です。
-- ローカルの実機確認環境はCore v0.40.0／Frontend 1.55.17です。初対応版で全機能を実機確認したという意味ではありません。
+- 通常版・Turbo版・旧V1.2はSave Image AdvancedでPNG保存します。Save WEBP Metaは配布用3本には不要です。
+- 通常版・Turbo版には[rgthree-comfy](https://github.com/rgthree/rgthree-comfy)のPower Lora Loaderが必要です。LoRA重みは任意で、同梱しません。
+- 今回の実生成確認はCore v0.41.0で実施しました。過去のUI確認環境はCore v0.40.0／Frontend 1.55.17です。初対応版で全機能を確認したという意味ではありません。
 
 ### 公式モデルのダウンロード
 
@@ -118,7 +131,7 @@ Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）�
 
 `layout_image`は`images.image_1`へ接続済みです。Guide OFFではNoneとなり、Coreが有効画像の番号を詰めます。追加参照3つは初期状態でバイパスされています。自分の画像を各Load Imageで選び、使う追加参照だけを有効にしてください。画像データは配布物に含めていません。
 
-標準5ビュー、Auto・基準高1120、Guide OFF、Batch Out OFF、30ステップ、CFG 1、Euler／simple、Encoder resolution 1024です。通常版の配布テンプレートは標準`SaveImage`のPNG保存です。Turbo版は8ステップのManual Sigmas・CFG 1・Eulerで、同じく標準`SaveImage`を使用します。
+標準5ビュー、Auto・基準高1120、Guide OFF、Batch Out OFF、30ステップ、CFG 1、Euler／simple、Encoder resolution 1024です。通常版の配布テンプレートは`SaveImageAdvanced`のPNG保存です。Turbo版は8ステップのManual Sigmas・CFG 1・Eulerで、同じく`SaveImageAdvanced`を使用します。
 
 参照の役割をビューごとに振り分ける場合は、Qwen 2.1 Sheet Encodeを使い、Designerの`prompt`・`reference_plan`・`layout_image`と、人物・追加参照を同じ名前の入力へ接続します。WebP保存には[Save WEBP Meta](https://github.com/ukr8b3g-cmyk/ComfyUI-save-webp-meta-node)を利用できます。Core Encoderへ直接つなぐテンプレートでは、`reference_plan`による参照の除外・並べ替えや`reference_regions`の切り取りは実行されません。
 
@@ -144,7 +157,7 @@ Qwen 2.1対応のComfyUI Core（`TextEncodeQwenImage21`、`QwenImage21Cache`）�
 
 Autoは参照に従う生成指示です。画像認識によって選択欄が自動で変わる機能ではありません。Auto以外は選んだ型・被覆を優先し、部位文で両立する詳細を指定できます。完全な裸足や特定の靴・グローブは部位文へ入力します。衣装正面・背面は「着用」と「衣服のみ」を区別します。着用では頭を画面外に置いた人物、衣服のみでは人体を追加しない指示です。
 
-手や履物の選択は**プロンプトによる生成指示**です。LoRAを使わない標準ワークフローでは、グローブや靴の着用・取り外し、形状、左右の再現を保証しません。参照画像やSeedによっては選択に従わず、再生成が必要な場合があります。指定は必要最小限にし、まずSeedを変えて比較してください。長く複雑な指示を重ねると、指示同士が干渉して汎用性を損なう場合があります。
+手や履物の選択は**プロンプトによる生成指示**です。初期状態ではLoRAは未選択です。LoRAを追加しても、グローブや靴の着用・取り外し、形状、左右の再現を保証するものではありません。参照画像やSeedによっては選択に従わず、再生成が必要な場合があります。指定は必要最小限にし、まずSeedを変えて比較してください。長く複雑な指示を重ねると、指示同士が干渉して汎用性を損なう場合があります。
 
 「部位指定」では追加参照の役割を選びます。同一人物の補足、顔、頭部、衣装全体、衣装正面、衣装背面、手、履物を指定できます。Designerへ接続するだけでは生成用Encoderへ画像は渡りません。上の表のように両方へ接続してください。異なる部位の参照を混ぜる場合はSheet Encodeへ接続する構成が適しています。
 
@@ -219,6 +232,13 @@ Manualの縦長サイズでは顔画像の余白が大きくなるため、個�
 
 ## English
 
+### What's new in v1.5.4
+
+- **Updated normal/Turbo templates with optional model-only LoRA loading** through Power Lora Loader (rgthree). No LoRA is selected initially. The supplied layout, subgraph ordering and generation settings are preserved.
+- **Save Image Advanced PNG output in both templates**, using 8-bit sRGB. Edit filenames in the save node. These two templates require [rgthree-comfy](https://github.com/rgthree/rgthree-comfy).
+- **Validated wiring and inference**: 1,819 CPU passes and one unavailable historical-fixture skip; actual ComfyUI API exports and four normal/Turbo LoRA-off/on generations. GPU evidence is limited to one reference, one seed and one adapter. [Verification record](verification/release_v154.json)
+
+
 ### What's new in v1.5.3
 
 - **Restore V1.3 UI after node re-addition**: deleting a node and undoing now restores the assembly toggle, auxiliary-output menu, and hiding of unconnected auxiliary outputs. Update observers are not duplicated.
@@ -262,16 +282,23 @@ Legacy V1/V1.1/V1.2 nodes, existing templates and previous releases remain avail
 
 Legacy V1/V1.1 nodes and existing workflows remain compatible.
 
-Package **v1.5.3** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
+Package **v1.5.4** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
+
+### Optional LoRA loading (normal/Turbo)
+
+Leave the loader empty for generation without a LoRA. To enable one, place Qwen Image 2.1-compatible weights in `ComfyUI/models/loras/`, then select the adapter and strength in Power Lora Loader. This is model-only loading; CLIP is unchanged. The execution path is `UNETLoader → Power Lora Loader → QwenImage21Cache → Sampler`. The visual connection returns through the generator subgraph, but the expanded execution graph is acyclic.
+
+GPU checks covered four single-view outputs using one existing adapter at strength 0.5. They do not establish compatibility with every LoRA, exact camera/identity reproduction, or improved image quality. Legacy V1.2 and the node pack's generation implementation are unchanged.
 
 ### System requirements
 
 - **ComfyUI Core v0.37.0 or higher**: the first stable release with Qwen Image 2.1 support, published September 21, 2026. Use the latest stable release for subsequent fixes. [Official release](https://github.com/Comfy-Org/ComfyUI/releases/tag/v0.37.0).
 - Qwen Image 2.1 model weights, Qwen3-VL text encoder and the matching VAE are required and are not bundled.
-- Normal and Turbo use standard **Save Image (PNG)**; legacy V1.2 keeps **Save Image Advanced (PNG)**. Save WEBP Meta is not required by these three templates; WebP 70 is used for tests.
-- The local validation environment uses Core v0.40.0 / Frontend 1.55.17; this does not claim all-feature runtime validation on the initial supported release.
+- Normal, Turbo and legacy V1.2 use **Save Image Advanced (PNG)**. Save WEBP Meta is not required by these three templates; WebP 70 is used for tests.
+- Normal/Turbo require Power Lora Loader from [rgthree-comfy](https://github.com/rgthree/rgthree-comfy). LoRA weights are optional and are not bundled.
+- This release was tested on Core v0.41.0. Earlier UI checks used Core v0.40.0 / Frontend 1.55.17; this does not claim all-feature validation on the initial supported release.
 
 ### Official model downloads
 
@@ -286,7 +313,7 @@ These files are hosted by [Comfy-Org](https://huggingface.co/Comfy-Org/Qwen-Imag
 
 Select your installed files in the Loaders. Reselect any subfolder prefix such as `qwen\` to match your actual model path. The Turbo template uses 8 steps and CFG 1. Model weights are not bundled.
 
-Use [normal V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json), [Turbo V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json), or compatible [Reference V1.2](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). V1.3 uses Sheet Encode and standard Save Image; legacy V1.2 keeps direct Core wiring and Save Image Advanced. Filenames are editable in each save node. Normal uses 30 steps / CFG 1 / Euler-simple; Turbo uses the supplied eight-step Manual Sigmas schedule / CFG 1 / Euler. Original save-node position and dimensions are preserved.
+Use [normal V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json), [Turbo V1.3](workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json), or compatible [Reference V1.2](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json). V1.3 uses Sheet Encode and optional model-only LoRA loading; legacy V1.2 keeps direct Core wiring. All three use Save Image Advanced. Filenames are editable in each save node. Normal uses 30 steps / CFG 1 / Euler-simple; Turbo uses the supplied eight-step Manual Sigmas schedule / CFG 1 / Euler. Original save-node position and dimensions are preserved.
 
 Use the [Sheet Encode template](workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json) for dedicated references, per-view Batch Out routing or explicit crops. It connects prompt, reference_plan, layout and matching image inputs while preserving output dimensions, sampling and PNG saving. The preserved direct template is for standard sheets using same_character supplements; dedicated roles can make its image tags disagree with Core inputs.
 
@@ -296,7 +323,7 @@ Connect each image to both the Designer and the Encoder. Core image slot 1 recei
 
 Select from 13 view cards. The compact controls beneath clothing, hands and footwear choose **Auto / pants / skirt–robe**, **Auto / bare / gloves**, and **Auto / footwear on / footwear off**. All default to Auto, meaning follow references. They are prompts, not image classification. Footwear on leaves shoe type open; footwear off can preserve socks/tights. Use part text for specific details. Choices also apply to naturally visible parts in body views. Worn clothing and garment-only views are distinct.
 
-Hand and footwear choices are **generation instructions in the prompt**. The standard workflow uses no LoRA and does not guarantee that gloves or footwear will be added, removed, shaped or paired as requested. Results depend on the reference image and seed; another generation may be needed. Keep directives minimal and compare another seed first. Long, complex instructions can interfere with each other and reduce generality.
+Hand and footwear choices are **generation instructions in the prompt**. No LoRA is selected by default. Adding a LoRA does not guarantee that gloves or footwear will be added, removed, shaped or paired as requested. Results depend on the reference image and seed; another generation may be needed. Keep directives minimal and compare another seed first. Long, complex instructions can interfere with each other and reduce generality.
 
 **Batch Out OFF** produces one arranged sheet. **Batch Out ON** independently generates each selected view in card order. Auto chooses sizes by view type; at panel height 1120, busts use 1024×1024, body/clothing 768×1344, hands/footwear 1184×864. **Manual width×height applies to every separate image when Batch Out is ON**, or to the whole sheet when OFF. The preview follows each output aspect ratio. These defaults are not universal quality optima.
 

@@ -17,7 +17,7 @@ def link_rows(graph: dict) -> list:
             if isinstance(link, dict) else link for link in graph["links"]]
 
 
-def validate_scope(graph: dict) -> dict:
+def validate_scope(graph: dict, *, allow_port_cycles=False) -> dict:
     nodes = graph["nodes"]
     lookup = {n["id"]: n for n in nodes}
     if len(lookup) != len(nodes):
@@ -57,14 +57,16 @@ def validate_scope(graph: dict) -> dict:
     while pending:
         ready = sorted(n for n in pending if not ancestors[n] & pending)
         if not ready:
+            if allow_port_cycles:
+                return {"nodes": len(nodes), "links": len(links), "topological_order": None}
             raise ValueError("Workflow contains a cycle")
         order.extend(ready); pending.difference_update(ready)
     return {"nodes": len(nodes), "links": len(links), "topological_order": order}
 
 
 def validate_graph(graph: dict) -> dict:
-    report = validate_scope(graph)
     subgraphs = graph.get("definitions", {}).get("subgraphs", [])
+    report = validate_scope(graph, allow_port_cycles=bool(subgraphs))
     definitions = {item["id"]: item for item in subgraphs}
     if len(definitions) != len(subgraphs):
         raise ValueError("Duplicate subgraph ID")
@@ -79,12 +81,36 @@ def validate_graph(graph: dict) -> dict:
         validate_scope(scope)
     if subgraphs:
         report["subgraphs"] = {item["id"]: {"nodes": len(item["nodes"]), "links": len(item["links"])} for item in subgraphs}
+        # A subgraph may expose its loader and accept the patched model back.
+        # Check the expanded execution graph, not the visual node-level loop.
+        active = copy.deepcopy(graph)
+        for node in active['nodes']:
+            node['mode'] = 0
+        for definition in active.get('definitions', {}).get('subgraphs', []):
+            for node in definition['nodes']:
+                node['mode'] = 0
+        prompt = _api_prompt(active)
+        pending = set(prompt)
+        order = []
+        while pending:
+            ready = sorted(key for key in pending if not any(
+                isinstance(value, list) and len(value) == 2 and isinstance(value[0], str) and value[0] in pending
+                for value in prompt[key]['inputs'].values()))
+            if not ready:
+                raise ValueError("Expanded workflow contains a cycle")
+            order.extend(ready)
+            pending.difference_update(ready)
+        report['execution_order'] = order
     return report
 
 
 def api_prompt(graph: dict) -> dict:
     """Static export of these flat or single-level subgraph templates."""
     validate_graph(graph)
+    return _api_prompt(graph)
+
+
+def _api_prompt(graph: dict) -> dict:
     nodes = {node["id"]: node for node in graph["nodes"]}
     links = {row[0]: row for row in link_rows(graph)}
     definitions = {item["id"]: item for item in graph.get("definitions", {}).get("subgraphs", [])}

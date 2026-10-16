@@ -1,0 +1,106 @@
+{
+  "package_version": "1.5.4",
+  "base_commit": "c1643cd439fd268dd3a38918297bf195d10f2030",
+  "date": "2026-10-16",
+  "scope": "Supplied normal/Turbo model-only LoRA templates; no generation/UI implementation changes",
+  "sources": {
+    "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json": "66ba28e18ccd2c586741d0377cc2e7a8a0de66e5071aeb0d74140da6bcc91739",
+    "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json": "085ac73d14cd45eb01ae789e097e3c4cc0de7fa1bd1eb09146eccb608b40864e"
+  },
+  "preserved": [
+    "Supplied node positions, sizes, subgraph IDs/order and sampling settings",
+    "Legacy nodes/templates, artwork and Registry automation"
+  ],
+  "dependency": "Power Lora Loader (rgthree) from rgthree-comfy; adapter initially unset, model-only, CLIP unchanged",
+  "validation": {
+    "python_full": {
+      "passed": 1797,
+      "skipped": 23
+    },
+    "installed_core_cpu": {
+      "passed": 22,
+      "note": "22 of the initial skips rerun against installed Core"
+    },
+    "combined_python": {
+      "passed": 1819,
+      "skipped": 1
+    },
+    "javascript": "Not rerun; frontend implementation unchanged",
+    "frontend": "Both templates loaded and exported using actual ComfyUI frontend; promoted widgets and expanded LoRA path checked",
+    "template_regressions": "6 tests cover both routes, real cycles and dangling model links"
+  },
+  "environment": {
+    "comfyui": "0.41.0",
+    "python": "3.12.12",
+    "pytorch": "2.14.1+cu130"
+  },
+  "gpu": {
+    "conditions": 4,
+    "images": 4,
+    "view": "body_front",
+    "size": [
+      608,
+      1280
+    ],
+    "batch_out": false,
+    "seed": 123456789,
+    "lora": "qwen-image-2.1-consistency-2000.safetensors",
+    "strength": 0.5,
+    "test_save": "Save WebP Meta quality 70",
+    "cases": [
+      {
+        "case": "Normal_none",
+        "prompt_id": "0341b7f0-5ff0-46cd-8962-bc8cb5e6d43a",
+        "seconds": 57.18,
+        "status": "success"
+      },
+      {
+        "case": "Normal_lora",
+        "prompt_id": "e75bb2c5-61d6-4f5d-8f80-be7ca6ac2207",
+        "seconds": 30.26,
+        "status": "success"
+      },
+      {
+        "case": "Turbo_none",
+        "prompt_id": "31e591be-ffd1-4d2e-87ed-a03fe50b61e7",
+        "seconds": 12.07,
+        "status": "success"
+      },
+      {
+        "case": "Turbo_lora",
+        "prompt_id": "43949651-ae9e-4bd1-aa01-d475c2ebba87",
+        "seconds": 12.02,
+        "status": "success"
+      }
+    ],
+    "visual_inspection": "All four decode and show complete nonblank characters. Outputs remain three-quarter rather than exact front; one Turbo LoRA output changes head accessories. No claim of camera/identity perfection or quality improvement.",
+    "same_seed_mean_channel_absolute_difference": {
+      "normal": [
+        17.1744,
+        17.4754,
+        17.9737
+      ],
+      "turbo": [
+        14.1683,
+        13.9816,
+        14.0826
+      ]
+    },
+    "limits": "One reference, one seed, one adapter and one strength; not all views/references/LoRAs"
+  },
+  "png_save_cpu": {
+    "cases": 2,
+    "node": "SaveImageAdvanced",
+    "format": "PNG",
+    "bit_depth": "8-bit",
+    "input_color_space": "sRGB",
+    "size": [
+      840,
+      1256
+    ],
+    "source": "existing input image",
+    "note": "Actual server save checks; no model inference"
+  },
+  "backend_stopped_or_restarted": false,
+  "packaging": "No weights, input/reference images or generated test images are bundled"
+}

@@ -1,8 +1,8 @@
 {
   "id": "677ab4c3-c9bf-4d56-92cf-50522ae03cb5",
   "revision": 0,
-  "last_node_id": 28,
-  "last_link_id": 58,
+  "last_node_id": 29,
+  "last_link_id": 62,
   "nodes": [
     {
       "id": 1,
@@ -307,7 +307,7 @@
     },
     {
       "id": 27,
-      "type": "SaveImage",
+      "type": "SaveImageAdvanced",
       "pos": [
         1100,
         420
@@ -317,7 +317,7 @@
         1030
       ],
       "flags": {},
-      "order": 6,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
@@ -330,19 +330,25 @@
         {
           "name": "images",
           "type": "IMAGE",
-          "links": []
+          "links": null
         }
       ],
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.40.0",
-        "Node name for S&R": "SaveImage"
+        "Node name for S&R": "SaveImageAdvanced"
       },
       "widgets_values": [
-        "qwen21_character_sheet_multi"
+        "qwen21_character_sheet_multi",
+        "png",
+        "8-bit",
+        "sRGB"
       ],
       "widgets_values_named": {
-        "filename_prefix": "qwen21_character_sheet_multi"
+        "filename_prefix": "qwen21_character_sheet_multi",
+        "format": "png",
+        "format.bit_depth": "8-bit",
+        "format.input_color_space": "sRGB"
       }
     },
     {
@@ -357,7 +363,7 @@
         340
       ],
       "flags": {},
-      "order": 5,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -415,6 +421,11 @@
           "shape": 7,
           "type": "IMAGE",
           "link": 53
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 61
         }
       ],
       "outputs": [
@@ -423,6 +434,13 @@
           "type": "IMAGE",
           "links": [
             54
+          ]
+        },
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            62
           ]
         }
       ],
@@ -434,7 +452,7 @@
       "widgets_values": [
         1024,
         1024,
-        881944604995303,
+        791644593169013,
         "qwen_image_2.1_vae_bf16.safetensors",
         "qwen3vl_8b_int8_convrot.safetensors",
         "qwen\\qwen_image_2.1_turbo_int8_convrot.safetensors"
@@ -442,11 +460,82 @@
       "widgets_values_named": {
         "width": 1024,
         "height": 1024,
-        "noise_seed": 881944604995303,
+        "noise_seed": 791644593169013,
         "vae_name": "qwen_image_2.1_vae_bf16.safetensors",
         "clip_name": "qwen3vl_8b_int8_convrot.safetensors",
         "unet_name": "qwen\\qwen_image_2.1_turbo_int8_convrot.safetensors"
       }
+    },
+    {
+      "id": 29,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        1630,
+        50
+      ],
+      "size": [
+        560,
+        240
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 62
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "links": [
+            61
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "lth_extended_prompting_nodes",
+        "ver": "unknown",
+        "Show Strengths": "Single Strength",
+        "Match": ""
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {},
+        ""
+      ],
+      "widgets_values_named": {
+        "divider": {},
+        "PowerLoraLoaderHeaderWidget": {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        "divider#1": {},
+        "➕ Add Lora": ""
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -555,6 +644,22 @@
       "IMAGE"
     ],
     [
+      61,
+      29,
+      0,
+      28,
+      9,
+      "MODEL"
+    ],
+    [
+      62,
+      28,
+      1,
+      29,
+      0,
+      "MODEL"
+    ],
+    [
       54,
       28,
       0,
@@ -571,8 +676,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 0,
-          "lastNodeId": 28,
-          "lastLinkId": 58,
+          "lastNodeId": 29,
+          "lastLinkId": 62,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -581,10 +686,10 @@
         "inputNode": {
           "id": -10,
           "bounding": [
-            884.1640625,
-            436,
+            560,
+            340,
             155.8359375,
-            308
+            328
           ]
         },
         "outputNode": {
@@ -593,7 +698,7 @@
             2180,
             516,
             128,
-            68
+            88
           ]
         },
         "inputs": [
@@ -606,8 +711,8 @@
             ],
             "localized_name": "width",
             "pos": [
-              1016,
-              460
+              691.8359375,
+              364
             ]
           },
           {
@@ -619,8 +724,8 @@
             ],
             "localized_name": "height",
             "pos": [
-              1016,
-              480
+              691.8359375,
+              384
             ]
           },
           {
@@ -631,8 +736,8 @@
               58
             ],
             "pos": [
-              1016,
-              500
+              691.8359375,
+              404
             ]
           },
           {
@@ -643,8 +748,8 @@
               55
             ],
             "pos": [
-              1016,
-              520
+              691.8359375,
+              424
             ]
           },
           {
@@ -655,8 +760,8 @@
               56
             ],
             "pos": [
-              1016,
-              540
+              691.8359375,
+              444
             ]
           },
           {
@@ -667,8 +772,8 @@
               57
             ],
             "pos": [
-              1016,
-              560
+              691.8359375,
+              464
             ]
           },
           {
@@ -681,8 +786,8 @@
             ],
             "localized_name": "source",
             "pos": [
-              1016,
-              580
+              691.8359375,
+              484
             ]
           },
           {
@@ -694,8 +799,8 @@
             ],
             "localized_name": "reference_plan",
             "pos": [
-              1016,
-              600
+              691.8359375,
+              504
             ]
           },
           {
@@ -708,8 +813,8 @@
             "localized_name": "layout_image",
             "shape": 7,
             "pos": [
-              1016,
-              620
+              691.8359375,
+              524
             ]
           },
           {
@@ -722,8 +827,8 @@
             "localized_name": "character_image",
             "shape": 7,
             "pos": [
-              1016,
-              640
+              691.8359375,
+              544
             ]
           },
           {
@@ -736,8 +841,8 @@
             "localized_name": "reference_image_1",
             "shape": 7,
             "pos": [
-              1016,
-              660
+              691.8359375,
+              564
             ]
           },
           {
@@ -750,8 +855,8 @@
             "localized_name": "reference_image_2",
             "shape": 7,
             "pos": [
-              1016,
-              680
+              691.8359375,
+              584
             ]
           },
           {
@@ -764,8 +869,20 @@
             "localized_name": "reference_image_3",
             "shape": 7,
             "pos": [
-              1016,
-              700
+              691.8359375,
+              604
+            ]
+          },
+          {
+            "id": "68d3323e-2e9b-4f2f-b290-d42f3ff3ef07",
+            "name": "model",
+            "type": "MODEL",
+            "linkIds": [
+              60
+            ],
+            "pos": [
+              691.8359375,
+              624
             ]
           }
         ],
@@ -781,6 +898,18 @@
             "pos": [
               2204,
               540
+            ]
+          },
+          {
+            "id": "c80fd94f-ae12-4789-a17b-e448db372c45",
+            "name": "MODEL",
+            "type": "MODEL",
+            "linkIds": [
+              59
+            ],
+            "pos": [
+              2204,
+              560
             ]
           }
         ],
@@ -1202,7 +1331,7 @@
                 "localized_name": "model",
                 "name": "model",
                 "type": "MODEL",
-                "link": 39
+                "link": 60
               }
             ],
             "outputs": [
@@ -1419,7 +1548,7 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  39
+                  59
                 ]
               }
             ],
@@ -1547,14 +1676,6 @@
             "target_id": 23,
             "target_slot": 4,
             "type": "LATENT"
-          },
-          {
-            "id": 39,
-            "origin_id": 13,
-            "origin_slot": 0,
-            "target_id": 25,
-            "target_slot": 0,
-            "type": "MODEL"
           },
           {
             "id": 15,
@@ -1707,6 +1828,22 @@
             "target_id": 10,
             "target_slot": 8,
             "type": "IMAGE"
+          },
+          {
+            "id": 59,
+            "origin_id": 13,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 1,
+            "type": "MODEL"
+          },
+          {
+            "id": 60,
+            "origin_id": -10,
+            "origin_slot": 13,
+            "target_id": 25,
+            "target_slot": 0,
+            "type": "MODEL"
           }
         ],
         "extra": {}
@@ -1717,13 +1854,16 @@
   "extra": {
     "k2cf_state_id": "k2cf_1791958350418_9t85xro4bn6",
     "ds": {
-      "scale": 0.35808814937786543,
+      "scale": 0.6978125000000003,
       "offset": [
-        2202.043120938614,
-        652.9962759192359
+        -113.28549592884576,
+        258.73891583299155
       ]
     },
     "frontendVersion": "1.55.17"
   },
-  "version": 0.4
+  "version": 0.4,
+  "seed_widgets": {
+    "28": 2
+  }
 }

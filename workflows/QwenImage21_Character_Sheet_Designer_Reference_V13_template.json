@@ -1,8 +1,8 @@
 {
   "id": "be8f947d-b141-4dd1-9ffb-bd0822f3e7b5",
   "revision": 0,
-  "last_node_id": 27,
-  "last_link_id": 55,
+  "last_node_id": 28,
+  "last_link_id": 59,
   "nodes": [
     {
       "id": 1,
@@ -323,17 +323,17 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "# Qwen 2.1 Sheet Designer Reference V1.3\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Distribution output uses standard Save Image (PNG). Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。\n\nDistribution: standard Save Image (PNG). Set filename_prefix directly in the save node. ComfyUI Core v0.37.0 or higher is required; the latest stable release is recommended.\n配布用は標準Save ImageのPNG保存です。保存名は保存ノードで直接指定します。ComfyUI Core v0.37.0以上が必要です。最新の安定版を推奨します。"
+        "# Qwen 2.1 Sheet Designer Reference V1.3\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Output uses Save WEBP Meta, WebP quality 70. Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。"
       ],
       "widgets_values_named": {
-        "text": "# Qwen 2.1 Sheet Designer Reference V1.3\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Distribution output uses standard Save Image (PNG). Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。\n\nDistribution: standard Save Image (PNG). Set filename_prefix directly in the save node. ComfyUI Core v0.37.0 or higher is required; the latest stable release is recommended.\n配布用は標準Save ImageのPNG保存です。保存名は保存ノードで直接指定します。ComfyUI Core v0.37.0以上が必要です。最新の安定版を推奨します。"
+        "text": "# Qwen 2.1 Sheet Designer Reference V1.3\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Output uses Save WEBP Meta, WebP quality 70. Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。"
       },
       "color": "#432",
       "bgcolor": "#653"
     },
     {
       "id": 26,
-      "type": "SaveImage",
+      "type": "SaveImageAdvanced",
       "pos": [
         1110,
         410
@@ -343,7 +343,7 @@
         1030
       ],
       "flags": {},
-      "order": 7,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -362,13 +362,19 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.40.0",
-        "Node name for S&R": "SaveImage"
+        "Node name for S&R": "SaveImageAdvanced"
       },
       "widgets_values": [
-        "qwen21_character_sheet_multi"
+        "qwen21_character_sheet_multi",
+        "png",
+        "8-bit",
+        "sRGB"
       ],
       "widgets_values_named": {
-        "filename_prefix": "qwen21_character_sheet_multi"
+        "filename_prefix": "qwen21_character_sheet_multi",
+        "format": "png",
+        "format.bit_depth": "8-bit",
+        "format.input_color_space": "sRGB"
       }
     },
     {
@@ -380,10 +386,10 @@
       ],
       "size": [
         480,
-        350
+        370
       ],
       "flags": {},
-      "order": 6,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -441,6 +447,11 @@
           "shape": 7,
           "type": "IMAGE",
           "link": 48
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 58
         }
       ],
       "outputs": [
@@ -449,6 +460,13 @@
           "type": "IMAGE",
           "links": [
             49
+          ]
+        },
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            59
           ]
         }
       ],
@@ -483,6 +501,77 @@
         "vae_name": "qwen_image_2.1_vae_bf16.safetensors",
         "unet_name": "qwen\\qwen_image_2.1_int8_convrot.safetensors"
       }
+    },
+    {
+      "id": 28,
+      "type": "Power Lora Loader (rgthree)",
+      "pos": [
+        1630,
+        70
+      ],
+      "size": [
+        560,
+        220
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "dir": 3,
+          "name": "model",
+          "type": "MODEL",
+          "link": 59
+        },
+        {
+          "dir": 3,
+          "name": "clip",
+          "type": "CLIP",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "dir": 4,
+          "name": "MODEL",
+          "shape": 3,
+          "type": "MODEL",
+          "links": [
+            58
+          ]
+        },
+        {
+          "dir": 4,
+          "name": "CLIP",
+          "shape": 3,
+          "type": "CLIP",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "lth_extended_prompting_nodes",
+        "ver": "unknown",
+        "Show Strengths": "Single Strength",
+        "Match": ""
+      },
+      "widgets_values": [
+        {},
+        {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        {},
+        ""
+      ],
+      "widgets_values_named": {
+        "divider": {},
+        "PowerLoraLoaderHeaderWidget": {
+          "type": "PowerLoraLoaderHeaderWidget"
+        },
+        "divider#1": {},
+        "➕ Add Lora": ""
+      },
+      "color": "#232",
+      "bgcolor": "#353"
     }
   ],
   "links": [
@@ -591,6 +680,22 @@
       "IMAGE"
     ],
     [
+      58,
+      28,
+      0,
+      27,
+      9,
+      "MODEL"
+    ],
+    [
+      59,
+      27,
+      1,
+      28,
+      0,
+      "MODEL"
+    ],
+    [
       49,
       27,
       0,
@@ -607,8 +712,8 @@
         "version": 1,
         "state": {
           "lastGroupId": 1,
-          "lastNodeId": 27,
-          "lastLinkId": 55,
+          "lastNodeId": 28,
+          "lastLinkId": 59,
           "lastRerouteId": 0
         },
         "revision": 0,
@@ -620,7 +725,7 @@
             914.1640625,
             391,
             155.8359375,
-            228
+            368
           ]
         },
         "outputNode": {
@@ -629,7 +734,7 @@
             2370,
             471,
             128,
-            68
+            88
           ]
         },
         "inputs": [
@@ -642,8 +747,8 @@
             ],
             "localized_name": "width",
             "pos": [
-              51,
-              24
+              1046,
+              415
             ]
           },
           {
@@ -655,8 +760,8 @@
             ],
             "localized_name": "height",
             "pos": [
-              51,
-              44
+              1046,
+              435
             ]
           },
           {
@@ -667,8 +772,8 @@
               50
             ],
             "pos": [
-              0,
-              0
+              1046,
+              455
             ]
           },
           {
@@ -679,8 +784,8 @@
               52
             ],
             "pos": [
-              0,
-              0
+              1046,
+              475
             ]
           },
           {
@@ -691,8 +796,8 @@
               53
             ],
             "pos": [
-              0,
-              0
+              1046,
+              495
             ]
           },
           {
@@ -703,8 +808,8 @@
               51
             ],
             "pos": [
-              0,
-              0
+              1046,
+              515
             ]
           },
           {
@@ -715,8 +820,8 @@
               55
             ],
             "pos": [
-              0,
-              0
+              1046,
+              535
             ]
           },
           {
@@ -727,8 +832,8 @@
               54
             ],
             "pos": [
-              0,
-              0
+              1046,
+              555
             ]
           },
           {
@@ -741,8 +846,8 @@
             ],
             "localized_name": "prompt",
             "pos": [
-              51,
-              64
+              1046,
+              575
             ]
           },
           {
@@ -754,8 +859,8 @@
             ],
             "localized_name": "reference_plan",
             "pos": [
-              51,
-              84
+              1046,
+              595
             ]
           },
           {
@@ -768,8 +873,8 @@
             "localized_name": "layout_image",
             "shape": 7,
             "pos": [
-              51,
-              104
+              1046,
+              615
             ]
           },
           {
@@ -782,8 +887,8 @@
             "localized_name": "character_image",
             "shape": 7,
             "pos": [
-              51,
-              124
+              1046,
+              635
             ]
           },
           {
@@ -796,8 +901,8 @@
             "localized_name": "reference_image_1",
             "shape": 7,
             "pos": [
-              51,
-              144
+              1046,
+              655
             ]
           },
           {
@@ -810,8 +915,8 @@
             "localized_name": "reference_image_2",
             "shape": 7,
             "pos": [
-              51,
-              164
+              1046,
+              675
             ]
           },
           {
@@ -824,8 +929,20 @@
             "localized_name": "reference_image_3",
             "shape": 7,
             "pos": [
-              51,
-              184
+              1046,
+              695
+            ]
+          },
+          {
+            "id": "8774aba7-7ab4-4d48-8c0b-ab35d7a46341",
+            "name": "model",
+            "type": "MODEL",
+            "linkIds": [
+              57
+            ],
+            "pos": [
+              1046,
+              715
             ]
           }
         ],
@@ -839,8 +956,20 @@
             ],
             "localized_name": "IMAGE",
             "pos": [
-              24,
-              24
+              2394,
+              495
+            ]
+          },
+          {
+            "id": "24330fcd-d953-4c8a-a65e-c8893bc88902",
+            "name": "MODEL",
+            "type": "MODEL",
+            "linkIds": [
+              56
+            ],
+            "pos": [
+              2394,
+              515
             ]
           }
         ],
@@ -1315,7 +1444,7 @@
                 "localized_name": "model",
                 "name": "model",
                 "type": "MODEL",
-                "link": 14
+                "link": 57
               }
             ],
             "outputs": [
@@ -1346,8 +1475,8 @@
             "id": 13,
             "type": "UNETLoader",
             "pos": [
-              1130,
-              0
+              870,
+              -20
             ],
             "size": [
               360,
@@ -1373,7 +1502,7 @@
                 "name": "MODEL",
                 "type": "MODEL",
                 "links": [
-                  14
+                  56
                 ]
               }
             ],
@@ -1457,14 +1586,6 @@
             "target_id": 7,
             "target_slot": 3,
             "type": "LATENT"
-          },
-          {
-            "id": 14,
-            "origin_id": 13,
-            "origin_slot": 0,
-            "target_id": 9,
-            "target_slot": 0,
-            "type": "MODEL"
           },
           {
             "id": 39,
@@ -1601,6 +1722,22 @@
             "target_id": 10,
             "target_slot": 8,
             "type": "IMAGE"
+          },
+          {
+            "id": 56,
+            "origin_id": 13,
+            "origin_slot": 0,
+            "target_id": -20,
+            "target_slot": 1,
+            "type": "MODEL"
+          },
+          {
+            "id": 57,
+            "origin_id": -10,
+            "origin_slot": 15,
+            "target_id": 9,
+            "target_slot": 0,
+            "type": "MODEL"
           }
         ],
         "extra": {}
@@ -1609,15 +1746,18 @@
   },
   "config": {},
   "extra": {
+    "k2cf_state_id": "k2cf_1791958350418_9t85xro4bn6",
     "ds": {
-      "scale": 0.4958677685950449,
+      "scale": 0.9295630733944957,
       "offset": [
-        880.3246921976768,
-        253.2367561102899
+        -491.94992715083936,
+        267.2084929414651
       ]
     },
-    "k2cf_state_id": "k2cf_1791958350418_9t85xro4bn6",
     "frontendVersion": "1.55.17"
   },
-  "version": 0.4
+  "version": 0.4,
+  "seed_widgets": {
+    "27": 2
+  }
 }
