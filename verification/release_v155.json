@@ -1,0 +1,49 @@
+{
+  "version": "1.5.5",
+  "kind": "hotfix",
+  "date_jst": "2026-10-24",
+  "base_commit": "3aefc07061382624207fb2fe76939b3d01aa06e5",
+  "fixes": [
+    "Unused optional assembly failures do not block normal generation; Sheet Assemble still rejects invalid plans before canvas allocation.",
+    "V1.2/V1.3 show matching Sheet Encode connection guidance; V1.1 retains legacy guidance.",
+    "Valid independent outputs retain previews when the overview exceeds the image-size limit; generation items and saved state are unchanged.",
+    "Localized missing-reference notifications are collected across outputs and clear when applicable references are available."
+  ],
+  "compatibility": {
+    "node_ids_and_output_order": "unchanged",
+    "distributed_workflows": 6,
+    "distributed_workflow_bytes": "unchanged",
+    "runtime_artwork": "unchanged",
+    "state_schema": "unchanged"
+  },
+  "cpu_validation": {
+    "python_full": {
+      "passed": 1811,
+      "skipped": 23
+    },
+    "additional_installed_core_source_cpu_cases": 22,
+    "combined_unique_python": {
+      "passed": 1833,
+      "skipped": 1
+    },
+    "javascript_passed": 243,
+    "skip_reason": "Historical local fixture unavailable.",
+    "post_deployment_python_passed": 61,
+    "post_deployment_javascript_passed": 16,
+    "core_scope": "Installed Core function bodies with CPU CLIP/VAE test doubles, not real models."
+  },
+  "live_preview_api": {
+    "unused_assembly_error_does_not_abort_preview": true,
+    "large_v12_and_v13_batches_return_13_items": true,
+    "largest_individual_edge": 8064,
+    "missing_reference_notice_returned_and_cleared": true,
+    "dedicated_footwear_reference_is_image1": true,
+    "served_javascript_matches_local_patch": true
+  },
+  "not_retested": [
+    "Actual browser UI interactions and workflow save/reopen after this patch",
+    "GPU generation, image quality, VRAM and speed"
+  ],
+  "assembly_limit": "16,777,216 pixels retained. Invalid assembly is rejected at the consumer, which may execute after individual generation.",
+  "background_preservation_change": false
+}

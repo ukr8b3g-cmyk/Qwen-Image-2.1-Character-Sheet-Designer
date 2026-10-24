@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
-  "created_utc": "2026-10-16T08:54:13.045057+00:00",
+  "created_utc": "2026-10-24T02:51:43.690294+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
-  "target_base_commit": "c1643cd439fd268dd3a38918297bf195d10f2030",
-  "target_state": "v1.5.4 optional model-only LoRA distribution templates",
+  "target_base_commit": "3aefc07061382624207fb2fe76939b3d01aa06e5",
+  "target_state": "v1.5.5 hotfix payload; CPU and live preview API checked; browser UI and GPU not retested",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -52,1810 +52,1528 @@
     }
   ],
   "results": {
-    "release_v141": {
-      "package_version": "1.4.1",
-      "created_utc": "2026-10-13T14:00:25.334216+00:00",
-      "cpu_static": {
-        "python_passed": 1734,
-        "python_skipped": 1,
-        "skip_reason": "Historical pre-change local snapshot fixture unavailable",
-        "javascript_passed": 216,
-        "failures": 0,
-        "tested_from_public_distribution": true,
-        "installed_core_tests_run_with_explicit_local_test_environment": true
-      },
-      "template": {
-        "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
-        "graph": {
-          "nodes": 8,
-          "links": 13,
-          "topological_order": [
-            1,
-            13,
-            15,
-            16,
-            17,
-            18,
-            20,
-            19
-          ],
-          "subgraphs": {
-            "712dbc53-d94c-4ef3-957e-570f290b4961": {
-              "nodes": 9,
-              "links": 25
-            }
-          }
+    "date": "2026-10-05",
+    "change": "Black frames stay in final artwork; gray contents replaced one-for-one",
+    "cpu": {
+      "passed": 955,
+      "failed": 0,
+      "suites": [
+        "test_compiler.py",
+        "test_layout_image.py",
+        "test_api_node.py",
+        "test_workflows.py"
+      ],
+      "black_frame_selection_combinations": 127,
+      "guided_and_unguided_selection_combinations": 127,
+      "new_dependencies": false
+    },
+    "javascript": {
+      "passed": 80,
+      "failed": 0
+    },
+    "frontend": {
+      "scope": "Real isolated ComfyUI frontend; seven UI toggles and preview API",
+      "seven_checkbox_toggles": [
+        {
+          "id": "face_front",
+          "off": 6,
+          "on": 7
         },
-        "load_image_titles": {
-          "1": "Character Image",
-          "15": "Reference Image 1",
-          "16": "Reference Image 2",
-          "17": "Reference Image 3"
+        {
+          "id": "face_left",
+          "off": 6,
+          "on": 7
         },
-        "only_four_titles_changed": true,
-        "settings_and_wiring_preserved": true,
-        "optional_references_bypassed_by_default": true,
-        "gpu_retested_for_title_change": false,
-        "native_core_cpu_validation": {
-          "actual_core_prompt_validation": true,
-          "api_nodes": 12,
-          "bypass_resolved_for_cpu_validation": true,
-          "default_output": [
-            2816,
-            1280
-          ],
-          "guide_off_is_none": true,
-          "cuda_initialized": false,
-          "gpu_submissions": 0,
-          "original_subgraph_wiring_and_widget_values_preserved": true,
-          "validated_output_nodes": [
-            "20:12",
-            "19"
-          ]
+        {
+          "id": "body_front",
+          "off": 6,
+          "on": 7
+        },
+        {
+          "id": "body_left",
+          "off": 6,
+          "on": 7
+        },
+        {
+          "id": "body_back",
+          "off": 6,
+          "on": 7
+        },
+        {
+          "id": "hands",
+          "off": 6,
+          "on": 7
+        },
+        {
+          "id": "feet",
+          "off": 6,
+          "on": 7
         }
-      },
-      "node_ids_preserved": true,
-      "legacy_workflows_preserved": true,
-      "legacy_public_package": {
-        "version": "0.1.0",
-        "branch": "legacy-v0.1.0",
-        "commit": "277da76a9de9f4b31b8d23d92b2db3694c581bd7"
-      },
-      "gpu_evidence": "verification/gpu_summary_v141.json",
-      "gpu_scope": {
-        "final_frozen_prompt_cases": 10,
-        "live_designer_cases": 4,
-        "live_designer_decoded_pixels_match": 4,
-        "arbitrary_reference_guarantee": false
-      },
-      "server_lifecycle_actions_during_publication": false,
-      "distribution": {
-        "contains_model_weights": false,
-        "contains_user_reference_images": false,
-        "superseded_user_templates_excluded": true,
-        "contains_private_development_records": false,
-        "private_development_records_preserved_locally": true,
-        "reference_image_screenshots_excluded": true,
-        "runtime_mannequin_assets_visually_inspected": 6,
-        "runtime_assets_identical_to_owner_h3_source": 6,
-        "remaining_new_ui_screenshots_are_reference_free_harness_views": false,
-        "ui_verification_screenshots_distributed": false,
-        "supplementary_test_workflows_distributed": false,
-        "unused_combined_atlas_not_distributed": true
-      }
-    },
-    "gpu_summary_v141": {
-      "package_version": "1.4.1",
-      "cpu_repair_tests_passed": 578,
-      "core_cpu_graphs": 12,
-      "cuda_initialized_for_cpu_checks": false,
-      "frozen_prompt_images_reviewed": 12,
-      "initial_candidate_passed": 6,
-      "initial_auto_failures_not_adopted": 2,
-      "revised_auto_cases_passed": 4,
-      "final_adopted_prompt_conditions": 10,
-      "live_designer_conditions": 4,
-      "live_designer_pixels_matching_accepted_candidates": 4,
-      "coverage": {
-        "reference_material_sets": 3,
-        "edit_seeds": 2,
-        "steps": 30,
-        "cfg": 1,
-        "webp_quality": 70
-      },
-      "limitations": [
-        "No guarantee for arbitrary references or every visual detail.",
-        "Boot upper framing may touch the image edge; lower legs can remain in foot details.",
-        "Glove-specific fingerless styles are CPU priority-checked, not GPU-tested.",
-        "Guide ON and frontend interaction were unchanged and not retested."
       ],
-      "all_reference_images_guaranteed": false,
-      "note": "Public results summary. Detailed development records are preserved locally and are not distributed."
-    },
-    "release_v142": {
-      "package_version": "1.4.2",
-      "change_scope": "Added Sheet Encode template; corrected direct-wiring note; routing regression tests; bilingual documentation",
-      "cpu": {
-        "tests_passed": 159,
-        "failures": 0,
-        "added_regression_cases": 32,
-        "actual_comfyui_core_prompt_validation": true,
-        "api_nodes": 15,
-        "cuda_initialized": false,
-        "gpu_submissions": 0,
-        "offline_core_loader_limit": "An unrelated nodes_replacements entry requires PromptServer.instance; required nodes and output graph validated successfully."
-      },
-      "gpu": "Not rerun for v1.4.2; earlier GPU evidence applies to v1.4.1",
-      "preserved": [
-        "existing README image",
-        "legacy nodes",
-        "direct template connections and settings",
-        "old releases"
-      ],
-      "new_template": "QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json"
-    },
-    "release_v150": {
-      "package_version": "1.5.0",
-      "created_utc": "2026-10-14T04:55:56.823612+00:00",
-      "change_scope": "Added Reference V1.3, validated CPU Sheet Assemble, dedicated WebP template, foot-reference wording and bilingual prompt-control limits.",
-      "cpu_static": {
-        "python_passed": 1811,
-        "python_skipped": 1,
-        "skip_reason": "Historical pre-change local snapshot unavailable",
-        "javascript_passed": 216,
-        "failures": 0,
-        "tested_from_staged_distribution": true,
-        "installed_core_contract_environment_enabled": true
-      },
-      "actual_core_cpu": {
-        "actual_core_validation": true,
-        "api_nodes": 18,
-        "output_nodes": [
-          "6",
-          "15",
-          "18"
-        ],
-        "actual_core_list_dispatch": true,
-        "short_images_rejected_without_padding": true,
-        "guide_off_none": true,
-        "rgb_rgba_verified": true,
-        "cuda_initialized": false,
-        "gpu_submissions": 0,
-        "source_sha256": "b3424c0c1b93faeb566720b0b847bf52b8f8010741e51bbaa4d2c52bc112f6ef",
-        "graph": {
-          "nodes": 19,
-          "links": 32,
-          "topological_order": [
-            1,
-            2,
-            3,
-            4,
-            11,
-            12,
-            13,
-            19,
-            5,
-            9,
-            10,
-            14,
-            15,
-            16,
-            7,
-            8,
-            6,
-            17,
-            18
-          ]
+      "black_frames": [
+        {
+          "id": "face_front",
+          "color": "rgb(0, 0, 0)",
+          "width": 1,
+          "style": "solid"
         },
-        "offline_core_loader_limit": "Unrelated nodes_replacements entry requires PromptServer.instance; required output graph and CPU list dispatch validated successfully."
-      },
-      "template": {
-        "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json",
-        "sha256": "b3424c0c1b93faeb566720b0b847bf52b8f8010741e51bbaa4d2c52bc112f6ef",
-        "graph": {
-          "nodes": 19,
-          "links": 32,
-          "topological_order": [
-            1,
-            2,
-            3,
-            4,
-            11,
-            12,
-            13,
-            19,
-            5,
-            9,
-            10,
-            14,
-            15,
-            16,
-            7,
-            8,
-            6,
-            17,
-            18
-          ]
+        {
+          "id": "face_left",
+          "color": "rgb(0, 0, 0)",
+          "width": 1,
+          "style": "solid"
         },
-        "generation_size_and_sheet_size_separate": true,
-        "batch_out": true,
-        "latent_batch_size": 1,
-        "save_webp_quality": 70
-      },
-      "gpu_summary": "verification/gpu_summary_v150.json",
-      "gpu_scope": "5-view end-to-end RGB/RGBA assembly succeeded. Foot-label comparison: 10 pairs / 20 images. New holdout: 15 conditions, coverage matched 13; two removals did not follow selected controls. Not universal image-quality acceptance.",
-      "browser_ui": "Actual ComfyUI frontend save/reload was not revalidated in this release; backend registration, static JS and CPU/GPU paths are separate evidence.",
-      "preserved": [
-        "legacy V1/V1.1/V1.2 IDs and output contracts",
-        "existing templates",
-        "existing artwork",
-        "previous releases"
-      ],
-      "private_artifacts_excluded": [
-        "generated reference and test images",
-        "HTML visual reports",
-        "machine-specific APIs and logs"
-      ]
-    },
-    "gpu_v150": {
-      "package_version": "1.5.0",
-      "date": "2026-10-14",
-      "assembly": {
-        "final_e2e": "passed",
-        "individual_images": 5,
-        "assembled_images": 1,
-        "assembled_size": [
-          1536,
-          864
-        ],
-        "rgba_support_verified": true,
-        "metadata_matches": true,
-        "content_quality_not_guaranteed": true
-      },
-      "foot_label_comparison": {
-        "images": 20,
-        "pairs": 10,
-        "materials": 8,
-        "edit_seeds": [
-          4202601013,
-          4202601014
-        ],
-        "auto_complete_fix": false,
-        "auto_body_shortening_tested": false,
-        "outcomes": {
-          "BARE_TEXTURED_S1": [
-            "未解決",
-            "靴の被覆が不自然なまま残る。呼称だけでは素足を安定維持できない。"
-          ],
-          "BARE_TEXTURED_S2": [
-            "改善",
-            "変更前はサンダルを追加。変更後は左右とも素足を維持。"
-          ],
-          "BARE_CLEAN_S1": [
-            "被覆維持・画質課題",
-            "前後とも靴は追加しないが、皮膚の粗い金色テクスチャが発生。"
-          ],
-          "SOCKS_S1": [
-            "被覆維持・画質課題",
-            "前後とも靴下を維持。濃い編み目と足指の過剰な分離が残る。"
-          ],
-          "TIGHTS_S1": [
-            "被覆維持",
-            "前後ともタイツの被覆を維持。"
-          ],
-          "SHOES_S1": [
-            "被覆維持",
-            "前後とも閉じた青いスニーカーを維持。"
-          ],
-          "BOOTS_S1": [
-            "被覆維持",
-            "前後とも左右のブーツと閉じたつま先を維持。"
-          ],
-          "BOOTS_S2": [
-            "被覆維持",
-            "左右の閉じたブーツを維持。変更後は筒の上に下腿が加わる。"
-          ],
-          "SANDALS_S1": [
-            "被覆維持",
-            "前後とも開いたサンダルを維持。"
-          ],
-          "ASYMMETRIC_S1": [
-            "被覆維持・画質課題",
-            "前後とも片側素足・片側ブーツを維持。素足の粗いテクスチャが残る。"
-          ]
+        {
+          "id": "body_front",
+          "color": "rgb(0, 0, 0)",
+          "width": 1,
+          "style": "solid"
+        },
+        {
+          "id": "body_left",
+          "color": "rgb(0, 0, 0)",
+          "width": 1,
+          "style": "solid"
+        },
+        {
+          "id": "body_back",
+          "color": "rgb(0, 0, 0)",
+          "width": 1,
+          "style": "solid"
+        },
+        {
+          "id": "hands",
+          "color": "rgb(0, 0, 0)",
+          "width": 1,
+          "style": "solid"
+        },
+        {
+          "id": "feet",
+          "color": "rgb(0, 0, 0)",
+          "width": 1,
+          "style": "solid"
         }
-      },
-      "new_reference_holdout": {
-        "reference_materials": 5,
-        "conditions": 15,
-        "saved_images": 15,
-        "coverage_matches": 13,
-        "coverage_mismatches": 2,
-        "edit_seed": 4202603014,
-        "steps": 30,
-        "cfg": 1,
-        "sampler": "euler",
-        "scheduler": "simple",
-        "output_size": [
-          1184,
-          864
-        ],
-        "webp_quality": 70,
-        "guide": false,
-        "batch_out": true,
-        "lora": false,
-        "route": "Designer V1.2 -> Sheet Encode",
-        "product_sources_unchanged_during_comparison": true,
-        "visual_reviews": {
-          "HANDS_BARE_AUTO": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "素手の左右一組を維持。各5本の指が見え、肌の見え方も参照に近い。片方は手の甲、片方は手のひら。"
-          },
-          "HANDS_BARE_ON": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "素手から白いフルフィンガーグローブを追加。両手の指と手のひらを覆い、手首には肌が見える。グローブの種類は入力で限定していない。"
-          },
-          "HANDS_BARE_OFF": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "素手を維持。左右一組と各5本の指が見える。肌色・質感は参照と完全には一致しない。"
-          },
-          "HANDS_GLOVED_AUTO": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "青緑の布グローブとフルフィンガーの被覆を維持。手首の肌が見え、左右一組が出力された。"
-          },
-          "HANDS_GLOVED_ON": {
-            "coverage_status": "pass",
-            "anatomy_status": "wearing_ambiguous",
-            "observation_ja": "青緑のグローブは維持。ただしカフから腕が続いておらず、空のグローブを並べたようにも見える。着用している表現は不十分。"
-          },
-          "HANDS_GLOVED_OFF": {
-            "coverage_status": "fail",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "素手を選択したが、両手に青緑のグローブが残った。生成文のbare指定とSheet Encode配線・参照番号は照合済み。"
-          },
-          "FEET_BARE_AUTO": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "素足を維持し、靴・サンダルを追加しなかった。各足の指が描かれ、今回の素材では以前の強い斑状の荒れは見られない。"
-          },
-          "FEET_BARE_ON": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "素足にベージュの開いた履物を追加。靴ありの選択には従った。種類を限定していないため、サンダルの生成は選択仕様内。"
-          },
-          "FEET_BARE_OFF": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "靴を追加せず素足を維持。参照より肌色が明るく、肌の質感・コントラストが弱まった。"
-          },
-          "FEET_BOOTS_AUTO": {
-            "coverage_status": "pass",
-            "anatomy_status": "acceptable_in_sample",
-            "observation_ja": "バーガンディ色の閉じたアンクルブーツを維持。空のブーツ参照から、脚を入れて着用した表現を生成。細部や左右の形状は完全一致しない。"
-          },
-          "FEET_BOOTS_ON": {
-            "coverage_status": "pass",
-            "anatomy_status": "opening_changed",
-            "observation_ja": "両足にブーツを維持。ただし左側の側面が大きく開き、肌が見える。着用状態が合っても、参照の閉じた構造までは安定しない。"
-          },
-          "FEET_BOOTS_OFF": {
-            "coverage_status": "pass",
-            "anatomy_status": "poor_toe_definition",
-            "observation_ja": "ブーツは除去された。一方、足指の分離や爪が曖昧で潰れ、人体の足としての形状は不自然。着用状態の一致を画質合格とは扱わない。"
-          },
-          "FEET_OPEN_AUTO": {
-            "coverage_status": "pass",
-            "anatomy_status": "minor_detail_variation",
-            "observation_ja": "黒い開いたストラップサンダルとヒールを維持。つま先を出した被覆も維持。左右のストラップと足指の細部は完全には一致しない。"
-          },
-          "FEET_OPEN_ON": {
-            "coverage_status": "pass",
-            "anatomy_status": "minor_detail_variation",
-            "observation_ja": "黒い開いたサンダルの着用を維持。靴ありの選択には従った。左右の細部と足指の形は厳密な複製ではない。"
-          },
-          "FEET_OPEN_OFF": {
-            "coverage_status": "fail",
-            "anatomy_status": "covered_toes_ambiguous",
-            "observation_ja": "靴なしを選択したが、黒いサンダルが残った。さらに肌が布状の被覆に変わり、足指が曖昧。生成文のunshod指定とSheet Encode配線・参照番号は照合済み。"
-          }
-        },
-        "scope": "Five fresh synthetic dedicated-part references; one fixed edit seed per condition; not an all-character or success-rate estimate."
-      },
-      "limits": [
-        "Glove removal and sandal removal did not follow selected controls in the holdout.",
-        "Footwear-off boot output removed boots but had poor toe definition.",
-        "Coverage correctness does not establish anatomy, material, camera or layout quality.",
-        "No test-end backend shutdown performed."
-      ]
+      ],
+      "displayed_prompt_matches_node_compiler": true,
+      "page_errors": []
     },
-    "release_v151": {
-      "package_version": "1.5.1",
-      "created_utc": "2026-10-14T08:25:19.057222+00:00",
-      "change_scope": "V1.2 interface continuity, optional in-place assembly controls and one-save standard WebP template.",
-      "cpu_static": {
-        "python_passed": 1815,
-        "python_skipped": 1,
-        "skip_reason": "Historical pre-change local fixture unavailable",
-        "javascript_passed": 222,
-        "failures": 0,
-        "actual_core_cpu": true,
-        "templates_validated": 7
-      },
-      "browser_ui": {
-        "environment": "Actual ComfyUI frontend",
-        "checks": [
-          "selection and Manual dimensions Undo/Redo",
-          "workflow export and reimport",
-          "Designer delete and undo without duplicate UI",
-          "assembly Manual size Undo/Redo and reload",
-          "generation and assembly sizes independent"
-        ],
-        "extra_preview_rows": 0,
-        "existing_user_workflows_preserved": true
-      },
-      "gpu": {
-        "conditions": 5,
-        "images": 10,
-        "seed": 4202601013,
-        "steps": 30,
-        "cfg": 1,
-        "sampler": "euler",
-        "scheduler": "simple",
-        "webp_quality": 70,
-        "lora": false,
-        "cases": [
-          {
-            "case": "G01_AUTO_SHEET",
-            "seconds": 122.42,
-            "dimensions": [
-              [
-                2816,
-                1280
-              ]
-            ],
-            "metadata_matched": true,
-            "visual_review": {
-              "status": "major_views_passed",
-              "note": "正面・横顔・全身正面／側面／背面の5ビュー。人物・衣装と素足を維持。Guide OFFのため厳密な矩形一致は保証しない。"
-            }
-          },
-          {
-            "case": "G02_MANUAL_SHEET",
-            "seconds": 41.03,
-            "dimensions": [
-              [
-                1536,
-                864
-              ]
-            ],
-            "metadata_matched": true,
-            "visual_review": {
-              "status": "major_views_passed",
-              "note": "指定1536×864で5ビュー。寸法を変更しても主要ビューの欠損なし。"
-            }
-          },
-          {
-            "case": "G03_AUTO_BATCH5",
-            "seconds": 137.89,
-            "dimensions": [
-              [
-                1024,
-                1024
-              ],
-              [
-                1024,
-                1024
-              ],
-              [
-                768,
-                1344
-              ],
-              [
-                768,
-                1344
-              ],
-              [
-                768,
-                1344
-              ]
-            ],
-            "metadata_matched": true,
-            "visual_review": {
-              "status": "major_views_passed",
-              "note": "顔2枚は1024×1024、全身3枚は768×1344。各画像の向きとファイル名のビューIDが対応。"
-            }
-          },
-          {
-            "case": "G04_MANUAL_BATCH2",
-            "seconds": 56.2,
-            "dimensions": [
-              [
-                768,
-                1344
-              ],
-              [
-                768,
-                1344
-              ]
-            ],
-            "metadata_matched": true,
-            "visual_review": {
-              "status": "passed_with_spacing_note",
-              "note": "顔・全身とも指定768×1344を維持。顔画像の下部に大きな余白あり。Manualはビューに合わせて自動変更しないため、個別生成の基本はAutoを推奨。"
-            }
-          },
-          {
-            "case": "G05_MANUAL_GUIDE_ON",
-            "seconds": 51.42,
-            "dimensions": [
-              [
-                1536,
-                864
-              ]
-            ],
-            "metadata_matched": true,
-            "visual_review": {
-              "status": "major_views_passed",
-              "note": "Guide ONで5ビューと枠を描画。顔2ビューを左列に縦積みし、全身3ビューを配置。人物参照の混入・灰色マネキンの残存は今回見られない。厳密な幾何一致の保証ではない。"
-            }
-          }
-        ],
-        "pre_update_pixel_matches": 5,
-        "scope": "One reference, one seed, five configurations; not universal image-quality acceptance."
-      },
-      "defaults": {
-        "batch_out": false,
-        "use_layout_image": false,
-        "standard_save_nodes": 1
-      },
-      "preserved": [
-        "six registered nodes",
-        "legacy IDs and output contracts",
-        "previous templates and artwork",
-        "previous releases",
-        "public license documents and PublisherId"
-      ],
-      "limits": [
-        "Manual uses the requested dimensions per image and can leave large margins",
-        "Guide does not guarantee exact geometry",
-        "Prompt-only hand and footwear controls can fail and may require another generation"
-      ],
-      "private_artifacts_excluded": [
-        "test and reference images",
-        "screenshots",
-        "local APIs and detailed machine logs"
-      ],
-      "backend_left_running": true
-    },
-    "release_v152": {
-      "package_version": "1.5.2",
-      "created_utc": "2026-10-14T10:48:35.459818+00:00",
-      "change_scope": "Auxiliary-output visibility, user-supplied normal/Turbo/legacy templates, editable save filename and bilingual requirements.",
-      "cpu_static": {
-        "python_passed": 1813,
-        "python_skipped": 1,
-        "skip_reason": "Historical pre-change local fixture unavailable",
-        "javascript_passed": 226,
-        "failures": 0,
-        "installed_core_cpu_checks": true,
-        "templates_validated": 6
-      },
-      "browser_ui": {
-        "actual_frontend": true,
-        "templates_loaded": 3,
-        "exported_api_parameters_verified": true,
-        "cases": [
-          {
-            "template": "QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
-            "save_node": "SaveImageAdvanced",
-            "source_layout_wiring_and_generation_settings_preserved": true,
-            "actual_frontend_api_settings_match": true
-          },
-          {
-            "template": "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json",
-            "save_node": "SaveImage",
-            "source_layout_wiring_and_generation_settings_preserved": true,
-            "actual_frontend_api_settings_match": true
-          },
-          {
-            "template": "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json",
-            "save_node": "SaveImage",
-            "source_layout_wiring_and_generation_settings_preserved": true,
-            "actual_frontend_api_settings_match": true
-          }
-        ],
-        "existing_user_workflows_preserved": true
-      },
-      "gpu": {
-        "new_submissions": 0,
-        "note": "No new model inference in this workflow/UI/documentation update. Historical GPU evidence remains in release_v151.json."
-      },
-      "source_adjustments": [
-        "The legacy direct-Core note retains the dedicated-reference warning; no ports, ordering, sizes, positions or generation settings were changed."
-      ],
-      "preserved": [
-        "Registered node IDs and output indexes",
-        "Legacy workflows and previous releases",
-        "Existing artwork and licenses"
-      ],
-      "template_sha256": {
-        "QwenImage21_Character_Sheet_Designer_Reference_V12_template.json": "ad94af1f187c2c453f2b2f22e76ee10db1f34cfb75cb3d15a4e2cdebcece9f61",
-        "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json": "e785e1536bb4c2bb93d195c5c9143406468bc2b5034b7e01148095d66951286d",
-        "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json": "bcfdd345e5dc65f652d7b2845353758f6e00744ce9318d7ca1e9d3f5dc7fc3ed"
-      },
-      "limits": [
-        "Prompt-only hand and footwear controls do not guarantee exact results",
-        "Legacy direct-Core routing does not execute reference selection or crops",
-        "Images and model weights are not bundled"
-      ],
-      "backend_stopped_or_restarted": false
-    },
-    "official_model_links": {
-      "scope": "Documentation only; four official file pages and their download URLs verified against template Loader selections.",
-      "model_weights_downloaded": false,
-      "workflow_or_generation_settings_changed": false
-    },
-    "release_v153": {
-      "schema_version": 1,
-      "date": "2026-10-14",
-      "status": "included_in_v1.5.3",
-      "base_commit": "5a221eae1c046fcee794b3656ad4b1f9e502b258",
-      "package_version": "1.5.3",
-      "scope": "V1.3 frontend UI lifecycle reinstallation",
-      "fix": [
-        "Install V1.3 assembly and optional-output controls whenever the base Designer is installed, including same-object re-addition.",
-        "Dispose additional controls and their observer through the base Designer lifecycle.",
-        "Keep repeated nodeCreated/onAdded calls idempotent."
-      ],
-      "automated_tests": {
-        "new_lifecycle_tests": {
-          "before_fix": {
-            "passed": 4,
-            "failed": 3
-          },
-          "after_fix": {
-            "passed": 7,
-            "failed": 0
-          },
-          "host_note": "Actual product integration, V1.3 extension, assembly UI, and optional-output modules in a VM; ComfyUI host, controller, and base UI renderer are test substitutes.",
-          "checks": [
-            "Initial installation",
-            "Three same-object removal/re-addition cycles",
-            "Preview refresh after re-addition",
-            "Fresh node loading from serialized state",
-            "Repeated lifecycle callbacks without duplicate controls or observers",
-            "Legacy shared integration compatibility",
-            "Unavailable DOM fallback"
-          ]
-        },
-        "full_javascript_suite": {
-          "passed": 233,
-          "failed": 0
-        },
-        "relevant_cpu_tests": {
-          "passed": 18,
-          "failed": 0,
-          "deselected": 29,
-          "scope": "V1.3 first-six-output compatibility, defaults, and standard workflow behavior",
-          "full_python_suite_rerun": false
-        }
-      },
-      "actual_comfyui_frontend": {
-        "tested": true,
-        "fixture": "Isolated two-node Designer-to-Assemble graph with two direct auxiliary links; no sampling or save nodes",
-        "delete_undo_cycles": 3,
-        "designer_roots_per_restored_node": 1,
-        "assembly_toggles_per_restored_node": 1,
-        "auxiliary_menu_show_hide": "passed",
-        "assembly_size_edit_and_preview": "passed",
-        "native_json_export_and_fresh_load": "passed",
-        "export_checks": {
-          "nodes": 2,
-          "direct_links": 2,
-          "canonical_widget_values": 7,
-          "output_slots": 8,
-          "generation_size": [
-            1536,
-            864
-          ],
-          "assembly_size": [
-            1792,
-            960
-          ],
-          "connected_auxiliary_outputs_retained": true,
-          "auxiliary_visibility_preference_retained": true
-        },
-        "original_workflow_tabs_retained": 8,
-        "test_tabs_closed_and_original_selection_restored": true
-      },
-      "preserved": [
-        "Python generation and encoding code",
-        "Public node IDs and output indexes",
-        "state_json serialization",
-        "Distributed workflows and artwork",
-        "Existing UI layout and user workflows"
-      ],
-      "gpu_submissions": 0,
-      "backend_restarted_or_stopped": false,
-      "limits": [
-        "GPU generation and image quality were not retested for this frontend-only change.",
-        "Automated lifecycle tests use host substitutes; actual ComfyUI delete/undo and save/load were checked separately.",
-        "No new GitHub Actions configuration was added."
-      ]
-    },
-    "release_v154": {
-      "package_version": "1.5.4",
-      "base_commit": "c1643cd439fd268dd3a38918297bf195d10f2030",
-      "date": "2026-10-16",
-      "scope": "Supplied normal/Turbo model-only LoRA templates; no generation/UI implementation changes",
-      "sources": {
-        "QwenImage21_Character_Sheet_Designer_Reference_V13_template.json": "66ba28e18ccd2c586741d0377cc2e7a8a0de66e5071aeb0d74140da6bcc91739",
-        "QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json": "085ac73d14cd45eb01ae789e097e3c4cc0de7fa1bd1eb09146eccb608b40864e"
-      },
-      "preserved": [
-        "Supplied node positions, sizes, subgraph IDs/order and sampling settings",
-        "Legacy nodes/templates, artwork and Registry automation"
-      ],
-      "dependency": "Power Lora Loader (rgthree) from rgthree-comfy; adapter initially unset, model-only, CLIP unchanged",
-      "validation": {
-        "python_full": {
-          "passed": 1797,
-          "skipped": 23
-        },
-        "installed_core_cpu": {
-          "passed": 22,
-          "note": "22 of the initial skips rerun against installed Core"
-        },
-        "combined_python": {
-          "passed": 1819,
-          "skipped": 1
-        },
-        "javascript": "Not rerun; frontend implementation unchanged",
-        "frontend": "Both templates loaded and exported using actual ComfyUI frontend; promoted widgets and expanded LoRA path checked",
-        "template_regressions": "6 tests cover both routes, real cycles and dangling model links"
-      },
-      "environment": {
-        "comfyui": "0.41.0",
-        "python": "3.12.12",
-        "pytorch": "2.14.1+cu130"
-      },
-      "gpu": {
-        "conditions": 4,
-        "images": 4,
-        "view": "body_front",
-        "size": [
-          608,
+    "gpu": {
+      "initial": {
+        "execution": "PASS",
+        "live_new_node_executed": true,
+        "prompt_from_node": true,
+        "layout_pixels_match": true,
+        "fresh_gpu_sampling": true,
+        "canvas": [
+          2816,
           1280
         ],
-        "batch_out": false,
-        "seed": 123456789,
-        "lora": "qwen-image-2.1-consistency-2000.safetensors",
-        "strength": 0.5,
-        "test_save": "Save WebP Meta quality 70",
-        "cases": [
-          {
-            "case": "Normal_none",
-            "prompt_id": "0341b7f0-5ff0-46cd-8962-bc8cb5e6d43a",
-            "seconds": 57.18,
-            "status": "success"
-          },
-          {
-            "case": "Normal_lora",
-            "prompt_id": "e75bb2c5-61d6-4f5d-8f80-be7ca6ac2207",
-            "seconds": 30.26,
-            "status": "success"
-          },
-          {
-            "case": "Turbo_none",
-            "prompt_id": "31e591be-ffd1-4d2e-87ed-a03fe50b61e7",
-            "seconds": 12.07,
-            "status": "success"
-          },
-          {
-            "case": "Turbo_lora",
-            "prompt_id": "43949651-ae9e-4bd1-aa01-d475c2ebba87",
-            "seconds": 12.02,
-            "status": "success"
-          }
-        ],
-        "visual_inspection": "All four decode and show complete nonblank characters. Outputs remain three-quarter rather than exact front; one Turbo LoRA output changes head accessories. No claim of camera/identity perfection or quality improvement.",
-        "same_seed_mean_channel_absolute_difference": {
-          "normal": [
-            17.1744,
-            17.4754,
-            17.9737
+        "seconds": 243.44,
+        "visual_review": {
+          "black_frames_retained": true,
+          "selected_study_count": true,
+          "front_profile_back_bodies": true,
+          "gray_template_remaining": [
+            "feet"
           ],
-          "turbo": [
-            14.1683,
-            13.9816,
-            14.0826
-          ]
-        },
-        "limits": "One reference, one seed, one adapter and one strength; not all views/references/LoRAs"
+          "profile_bust": "three-quarter",
+          "footwear_consistency": false
+        }
       },
-      "png_save_cpu": {
-        "cases": 2,
-        "node": "SaveImageAdvanced",
-        "format": "PNG",
-        "bit_depth": "8-bit",
-        "input_color_space": "sRGB",
-        "size": [
-          840,
-          1256
+      "final": {
+        "execution": "PASS",
+        "live_new_node_executed": true,
+        "prompt_from_node": true,
+        "layout_pixels_match": true,
+        "fresh_gpu_sampling": true,
+        "canvas": [
+          2816,
+          1280
         ],
-        "source": "existing input image",
-        "note": "Actual server save checks; no model inference"
+        "seconds": 243.75,
+        "visual_review": {
+          "black_frames_retained": true,
+          "selected_study_count": true,
+          "busts": 2,
+          "standing_figures": 3,
+          "hand_pairs": 1,
+          "foot_pairs": 1,
+          "front_profile_back_bodies": true,
+          "front_bust_frontal": true,
+          "profile_bust": "side profile",
+          "gray_template_remaining": [],
+          "footwear_consistency": true,
+          "pixel_exact_person_size_and_crop": "not asserted",
+          "other_people_and_seeds": "not tested"
+        }
       },
-      "backend_stopped_or_restarted": false,
-      "packaging": "No weights, input/reference images or generated test images are bundled"
+      "sampler": {
+        "steps": 25,
+        "cfg": 1.0,
+        "sampler_name": "euler",
+        "scheduler": "simple",
+        "denoise": 1.0
+      },
+      "live_new_node_executed": true
+    },
+    "backend_source_hashes": {
+      "compiler.py": "2dcd078db7ea7b5e28b5f455dbaab97938901c4b78d9730cafe0941bcaf2ae7d",
+      "layout_image.py": "b9d0180c2891a093a637bcd7f268bc8efc0e99db1d7d380d2d738441aafc53d4"
+    },
+    "limitations": [
+      "Visual confirmation uses one character and one seed.",
+      "Frame retention is model guidance; exact generated pixels and person dimensions are not guaranteed."
+    ],
+    "service": {
+      "user_server_restarted": false,
+      "stop_status": "Verified processes exited and port closed"
+    },
+    "styles": {
+      "checked_utc": "2026-10-05T11:03:49.998569+00:00",
+      "scope": "Local style implementation; CPU and actual ComfyUI frontend checks",
+      "python": {
+        "passed": 1041,
+        "initial_temp_directory_setup_errors": 2,
+        "temp_directory_errors_resolved_and_retested": true
+      },
+      "javascript": {
+        "passed": 82
+      },
+      "contracts": {
+        "none_byte_identical_cases": 40,
+        "frontend_backend_style_ids_match": true,
+        "live_optional_style_registered": true,
+        "live_preview_styles": 10,
+        "saved_style": "photo",
+        "saved_state_json_unchanged": true,
+        "gpu_generation_performed": false
+      },
+      "browser": {
+        "legacyDefaultNone": true,
+        "choices": 10,
+        "photoSelection": true,
+        "badgeVisibleOnLayoutAndParts": true,
+        "undoRedo": true,
+        "saveReloadPhoto": true,
+        "clearRestoresOriginalPrompt": true,
+        "keyboardTabNavigation": true,
+        "radioAndLabelSelection": true
+      },
+      "gpu_style_quality_validated": false,
+      "user_backend_restarted": false,
+      "public_release_updated": false
+    },
+    "templates": {
+      "checked_utc": "2026-10-05T11:41:54.038754+00:00",
+      "scope": "Local default presets, supplied workflow templates and node size",
+      "source_sha256": "1e9d18f09efe535ae5e1ff3b8e0a28c187165cc3d9922aac50ef0fca73cc94e5",
+      "python_passed": 1043,
+      "javascript_passed": 83,
+      "default_preset": "five",
+      "default_style": "none",
+      "node_size": [
+        870,
+        1100
+      ],
+      "standard_dimensions": [
+        2816,
+        1280
+      ],
+      "basic_dimensions": [
+        2208,
+        1280
+      ],
+      "source_subgraph_and_generation_settings_preserved": true,
+      "source_state_json_preserved": true,
+      "reference_order": {
+        "image_1": "layout_image",
+        "image_2": "character_reference"
+      },
+      "frontend_api_inputs_match_static_export": true,
+      "browser": {
+        "standard_loaded": true,
+        "preset_four_five_switch": true,
+        "basic_save_reload_preserved": true,
+        "style_none_checked": true,
+        "new_node_defaults_and_size_saved": true
+      },
+      "gpu_generation_performed": false,
+      "isolated_service_missing_model_files": 3,
+      "user_backend_restarted": false,
+      "public_release_updated": false,
+      "single_template_cleanup": {
+        "checked_utc": "2026-10-05T12:05:50.554304+00:00",
+        "python_passed": 1041,
+        "javascript_passed": 83,
+        "bundled_workflows": [
+          "workflows/QwenImage21_Character_Sheet_Designer.json"
+        ],
+        "removed_workflow_files": 7,
+        "builder_outputs_only_standard_template": true,
+        "template_unchanged_since_actual_frontend_check": true,
+        "gpu_generation_performed": false
+      }
+    },
+    "distribution": {
+      "checked_utc": "2026-10-05T15:20:51.521970+00:00",
+      "scope": "Replacement workflow filename, graph, reference order, builder and package manifest",
+      "source_commit": "35ebd69db6c74acdec482c7c8fcc61e4523f9369",
+      "workflow": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
+      "workflow_sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
+      "workflow_preserved_byte_for_byte": true,
+      "python_workflow_tests": {
+        "passed": 4,
+        "failed": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "graph": {
+        "nodes": 5,
+        "links": 6,
+        "topological_order": [
+          4,
+          15,
+          500,
+          498,
+          20
+        ],
+        "subgraphs": {
+          "9181cf6c-a72b-4008-a58a-fafb0253d0bd": {
+            "nodes": 9,
+            "links": 22
+          }
+        }
+      },
+      "reference_order": {
+        "image_1": "layout_image",
+        "image_2": "character_reference"
+      },
+      "readme_header_preserved": true,
+      "frontend_save_reload_queue_repeated": false,
+      "gpu_generation_performed": false
+    },
+    "release_v155": {
+      "version": "1.5.5",
+      "kind": "hotfix",
+      "date_jst": "2026-10-24",
+      "base_commit": "3aefc07061382624207fb2fe76939b3d01aa06e5",
+      "fixes": [
+        "Unused optional assembly failures do not block normal generation; Sheet Assemble still rejects invalid plans before canvas allocation.",
+        "V1.2/V1.3 show matching Sheet Encode connection guidance; V1.1 retains legacy guidance.",
+        "Valid independent outputs retain previews when the overview exceeds the image-size limit; generation items and saved state are unchanged.",
+        "Localized missing-reference notifications are collected across outputs and clear when applicable references are available."
+      ],
+      "compatibility": {
+        "node_ids_and_output_order": "unchanged",
+        "distributed_workflows": 6,
+        "distributed_workflow_bytes": "unchanged",
+        "runtime_artwork": "unchanged",
+        "state_schema": "unchanged"
+      },
+      "cpu_validation": {
+        "python_full": {
+          "passed": 1811,
+          "skipped": 23
+        },
+        "additional_installed_core_source_cpu_cases": 22,
+        "combined_unique_python": {
+          "passed": 1833,
+          "skipped": 1
+        },
+        "javascript_passed": 243,
+        "skip_reason": "Historical local fixture unavailable.",
+        "post_deployment_python_passed": 61,
+        "post_deployment_javascript_passed": 16,
+        "core_scope": "Installed Core function bodies with CPU CLIP/VAE test doubles, not real models."
+      },
+      "live_preview_api": {
+        "unused_assembly_error_does_not_abort_preview": true,
+        "large_v12_and_v13_batches_return_13_items": true,
+        "largest_individual_edge": 8064,
+        "missing_reference_notice_returned_and_cleared": true,
+        "dedicated_footwear_reference_is_image1": true,
+        "served_javascript_matches_local_patch": true
+      },
+      "not_retested": [
+        "Actual browser UI interactions and workflow save/reopen after this patch",
+        "GPU generation, image quality, VRAM and speed"
+      ],
+      "assembly_limit": "16,777,216 pixels retained. Invalid assembly is rejected at the consumer, which may execute after individual generation.",
+      "background_preservation_change": false
     }
   },
   "files": [
     {
       "path": ".comfyignore",
       "sha256": "4ad74fb40352ccc3257f624849c554aef0407089d8b48e2f7ff93f539df73505",
-      "bytes": 706
-    },
-    {
-      "path": ".github/REGISTRY_PUBLICATION.md",
-      "sha256": "6c281e1880220fac88fc9e0864e952c91ddf64838170b23c03ec1a0c5bb35ae7",
-      "bytes": 2335
+      "bytes": 706,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": ".github/registry-policy.json",
       "sha256": "305b69674abb1bad7f860017acb64110bb156b59afeb2852101d5212a65da2db",
-      "bytes": 236
+      "bytes": 236,
+      "purpose": "package metadata/documentation"
+    },
+    {
+      "path": ".github/REGISTRY_PUBLICATION.md",
+      "sha256": "6c281e1880220fac88fc9e0864e952c91ddf64838170b23c03ec1a0c5bb35ae7",
+      "bytes": 2335,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": ".github/registry_release.py",
       "sha256": "8663030e7cb2844eaf872ac6f9ce374ce2c5d2ec920a0e202d3c9ed00f18d854",
-      "bytes": 12590
+      "bytes": 12590,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": ".github/test_registry_release.py",
       "sha256": "97a726bc00d4014f8be5ac722ce941c8be04964dd29efe0ebedb5273047c28f7",
-      "bytes": 15661
+      "bytes": 15661,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": ".github/workflows/publish_registry.yml",
       "sha256": "616f656b3a4add4ddc20b00c11683fa4a9a5b03dab6ab1bbd21cc410b0dd3efb",
-      "bytes": 5782
+      "bytes": 5782,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": ".github/workflows/registry_validation.yml",
       "sha256": "44360b9c04722ce4cc1f2c5af577d98344d76fedd971fcf6cb94a48bd8419cc7",
-      "bytes": 677
+      "bytes": 677,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": ".github/workflows/release.yml",
       "sha256": "b64031134bf299253a00c6da35ed793b72c10e8e5b3ee055a1ef2702fad87bd2",
-      "bytes": 2408
+      "bytes": 2408,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": ".gitignore",
       "sha256": "b4d3599747a1872acdfb1313fd0e7fbca20a77fbd43dbd486950e35845f13697",
-      "bytes": 1567
-    },
-    {
-      "path": "LICENSE",
-      "sha256": "360ccaa73cc9837049fc2d5d2f5f6f5262759fcefb7cb69897b3f8f76d6ae041",
-      "bytes": 1553
-    },
-    {
-      "path": "LICENSES/ComfyUI-GPL-3.0.txt",
-      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
-      "bytes": 35149
-    },
-    {
-      "path": "NOTICE.md",
-      "sha256": "43ef29f6a32a063ee2bc775faabfd2e7943159fad391c5b824f560e97785d7cb",
-      "bytes": 6116
-    },
-    {
-      "path": "README.md",
-      "sha256": "9ce597295bc3b8cdcd9f2684432f1ec3537b701141f2d8ad6c93b188a39935a5",
-      "bytes": 47203
+      "bytes": 1567,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": "__init__.py",
       "sha256": "a3ffcfef9e97cd6a41bc4c4bb8fd3def59cb810ddd0fe6aa66453dfc436002d7",
-      "bytes": 2493
+      "bytes": 2493,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": "docs/ATLAS_VERIFICATION_JA.md",
       "sha256": "47625a1858513383a4047e1b4137cfd1ad3edc875f84d01eda5b876466351b8a",
-      "bytes": 3000
+      "bytes": 3000,
+      "purpose": "documentation"
     },
     {
       "path": "docs/IMPLEMENTATION_NOTES_JA.md",
       "sha256": "10b00a21fb33edec79d3df6bfe90be558ce596e4fd8f77636ebe78d5a6854cc5",
-      "bytes": 4975
+      "bytes": 4975,
+      "purpose": "documentation"
     },
     {
       "path": "docs/LAYOUT_REFERENCE_JA.md",
       "sha256": "a10c9a8e5a7fedc8035369cd2123c75251edebefb4ceaaeae5ca366233030a91",
-      "bytes": 9300
+      "bytes": 9300,
+      "purpose": "documentation"
     },
     {
       "path": "docs/PART_CHOICES_JA.html",
       "sha256": "08a96890255822e6109c46fbfe1e463f62d342ec3807fe94867c80311e660467",
-      "bytes": 4176
+      "bytes": 4176,
+      "purpose": "documentation"
     },
     {
       "path": "docs/REFERENCE_REGIONS_JA.md",
       "sha256": "6bf133fe88d19e3a09c9936f3f244b97fd92fbf796ae618b7fa2ec004205b2d8",
-      "bytes": 3704
+      "bytes": 3704,
+      "purpose": "documentation"
     },
     {
       "path": "docs/REGISTRY_PUBLISHING.md",
       "sha256": "edbb96cbe1ca427f167289b5a1e15023474e78d61f97acb20783ed165f9a2f9c",
-      "bytes": 4463
+      "bytes": 4463,
+      "purpose": "documentation"
     },
     {
       "path": "docs/VERIFICATION_JA.md",
       "sha256": "1fb8dad77abc9f8ab33fedc3014c34da422640c9fc3964331594c72eaa41f795",
-      "bytes": 5791
+      "bytes": 5791,
+      "purpose": "documentation"
+    },
+    {
+      "path": "LICENSE",
+      "sha256": "360ccaa73cc9837049fc2d5d2f5f6f5262759fcefb7cb69897b3f8f76d6ae041",
+      "bytes": 1553,
+      "purpose": "package metadata/documentation"
+    },
+    {
+      "path": "LICENSES/ComfyUI-GPL-3.0.txt",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986",
+      "bytes": 35149,
+      "purpose": "package metadata/documentation"
+    },
+    {
+      "path": "NOTICE.md",
+      "sha256": "43ef29f6a32a063ee2bc775faabfd2e7943159fad391c5b824f560e97785d7cb",
+      "bytes": 6116,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": "package.json",
-      "sha256": "508f3ccb1f5cf18656662ee5a2d6d10259d28d357090068674db8fc8693cee2f",
-      "bytes": 203
+      "sha256": "4d19df4b4d5cfb673d4a01f14418ab3cc487ef8fe1cc73ab5db0bf3c7c6ebbb2",
+      "bytes": 219,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": "pyproject.toml",
-      "sha256": "bc5dad2142b4e2e851e3d42e15712f23ad66f35599a5bbfdfbca773f31b6e4d4",
-      "bytes": 601
+      "sha256": "bfd0b8ccc77cc9aeb7b0454787d19cd51f1ea7704dd4a8756bb8636df43401a0",
+      "bytes": 601,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": "qwen_image21_character_sheet/__init__.py",
       "sha256": "69b7e98fc1dfcea315875311e3c8297303217b0ddd5d0c6197e25435bbfd6890",
-      "bytes": 68
+      "bytes": 68,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/adaptive_layout.py",
       "sha256": "90badad0f7545fcdd6a2d11bfa89b8c142993502af50ceb8230422d8b619848b",
-      "bytes": 6768
+      "bytes": 6768,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/common/__init__.py",
       "sha256": "67ea61d122a3e62a21352e511ae9ce4ec1fbbefd0cf1e58fbab3269b58f6e66b",
-      "bytes": 67
+      "bytes": 67,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/common/geometry.py",
       "sha256": "6b557ffbdc3d5376b8736285ae732e4d39598fa63f2fa64487bbb7ed4edea96e",
-      "bytes": 4411
+      "bytes": 4411,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/common/layout_serialization.py",
       "sha256": "44a1053ec8b11dc35b397e74ce635ee9b9aaaa756b830e69be31c198d64e7246",
-      "bytes": 982
+      "bytes": 982,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/common/state.py",
       "sha256": "de97d0fc0feb09047fbeb8538de2b57d10d4a1b113f4ad41fccd8f5cfee29407",
-      "bytes": 11009
+      "bytes": 11009,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/compiler.py",
       "sha256": "a6b7e7abff3c572e675da6247a86ce01df4199e325b6c3772396602d507d9c6b",
-      "bytes": 15482
+      "bytes": 15482,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/layout_image.py",
       "sha256": "b9d0180c2891a093a637bcd7f268bc8efc0e99db1d7d380d2d738441aafc53d4",
-      "bytes": 1568
+      "bytes": 1568,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/multi_guide_geometry.py",
       "sha256": "74682292075101b2592bc28b7b3530a65d46a51ccc901bdc4fb5023e93d1d56d",
-      "bytes": 2304
+      "bytes": 2304,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/multi_layout_image.py",
       "sha256": "f6ee23db7065065e58a5f5d138930b074b363ba2d464cbc86fb1ea1779d06186",
-      "bytes": 2884
+      "bytes": 2884,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/multi_preview.py",
       "sha256": "bf067959ed286497e016c940a23d3b35e6b524ccbf7f2f7d57af8dc31e991dad",
-      "bytes": 3503
+      "bytes": 3503,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/multi_reference_compiler.py",
       "sha256": "96ed339aac4175e0343dfaf0f201bcf09dd15aad2b1793a91424aec4b841e106",
-      "bytes": 27813
+      "bytes": 27813,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/multi_reference_node.py",
       "sha256": "d23edb28883a1e3964e2345e0621e687d55d881d294af7f5aa32b9befa8f607f",
-      "bytes": 4582
+      "bytes": 4582,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/node.py",
       "sha256": "02e2dfb2c959990fc9f5af81a2feabba9a1a5f8120536d72d068f3170a3da996",
-      "bytes": 2576
+      "bytes": 2576,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/output_plan.py",
-      "sha256": "5f038828d38d13fb357d66eb7631ff844bea4fbe7ba3f83f630a9714b56ce394",
-      "bytes": 2642
+      "sha256": "cb36ce83e3fa36eebf8d04ab99075a1a6e81f1f7939a98d5c3662d217cbd2f25",
+      "bytes": 3296,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/preview.py",
       "sha256": "60090a2143728d9ad9e8ff1d11b147b227882508d4eb1a314a5680990bc7c3b2",
-      "bytes": 3294
+      "bytes": 3294,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_plan.py",
       "sha256": "110d2b2150464685715531e4d7d82c57fb6ab836bc301459fa9a5d8173463228",
-      "bytes": 1582
+      "bytes": 1582,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_regions.py",
       "sha256": "6d67360ad819fc126b39c2c5e97b48c5ec6658aad314eff5b9929f052f5791fb",
-      "bytes": 2179
+      "bytes": 2179,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v12_compiler.py",
-      "sha256": "28b3d27056b80a7d0d37246f2cca69980dc335761eed82e132f33faddf824fc8",
-      "bytes": 18601
+      "sha256": "a090f7deddefe9852339ae93618d92d1cfd9a05771d9535c4b3afda0850538bb",
+      "bytes": 18551,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v12_node.py",
       "sha256": "18a1d7273b8be5f6a6d9a0813bed5d258c4f8e8ead3c4721fe918e9ba977059f",
-      "bytes": 3441
+      "bytes": 3441,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v12_plan.py",
       "sha256": "85b33b249781e091753819dc12dfa4f1596d9f905cecf87c6179c2cb3379644e",
-      "bytes": 4266
+      "bytes": 4266,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v12_preview.py",
       "sha256": "f4c6b2a29891290bc9131b3d6a27a5496f6eddd2b1c12dc7e99e4e23964b0215",
-      "bytes": 2591
+      "bytes": 2591,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v13_node.py",
-      "sha256": "d3efe682e88028ec5de1bd07104e6a201a97689bc1aeede4dbf744c69c6a7dc3",
-      "bytes": 3397
+      "sha256": "888071844ef59eecc69a4767fd407b8bb7c0697f55659e50340ab6b0142766af",
+      "bytes": 3349,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v13_preview.py",
-      "sha256": "00ee5bdfacd747a4c75330923912d390dd860be68388c8a474bf0109e9dd65b1",
-      "bytes": 2692
+      "sha256": "79171817e3a9b70216ed9230d7f6b87066bb620bbbaeeb0aed179b6054ccd573",
+      "bytes": 2696,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/sheet_assemble.py",
       "sha256": "061ab4e352204967ed853771e8bf848ac3e4b09bc8d4b6373a8ae3502e59a66a",
-      "bytes": 4880
+      "bytes": 4880,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/sheet_encode.py",
       "sha256": "1d3330fe262b32b6af0ed674aead4b5a4a66082f78491210efc229b9fd66e726",
-      "bytes": 3011
+      "bytes": 3011,
+      "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/sheet_plan.py",
-      "sha256": "763ebefd6fd5049b3a761d7d5bde66f6049e3c1e2c25062fb60b5a94ed9d9d80",
-      "bytes": 4379
+      "sha256": "51dd19cc8a0516726793efb744a50722c63d98471272acd70e169deb8f4afbd6",
+      "bytes": 4952,
+      "purpose": "backend"
+    },
+    {
+      "path": "README.md",
+      "sha256": "3063f32690ca913e5e593d2065fd748437eefb65415a7b59bb6d46f37abf3511",
+      "bytes": 48913,
+      "purpose": "package metadata/documentation"
     },
     {
       "path": "tests/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": 0
+      "bytes": 0,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/browser/harness.js",
       "sha256": "de04ac98507d138e5b94a3b25ef297fb81fe70fd00b85fee6a9729b2dde51894",
-      "bytes": 5229
+      "bytes": 5229,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/browser/index.html",
       "sha256": "ea181d26d9b951f9c5aa0bacad00d44e79c36a2c2b112dd3a3a5befb9e35158e",
-      "bytes": 905
+      "bytes": 905,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/browser/multi_harness.js",
       "sha256": "d98fa04543919352066914bc0c8f493afccc4c7c687956a8c8e8db21872d83db",
-      "bytes": 4161
+      "bytes": 4161,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/browser/multi_index.html",
       "sha256": "335544d93de98f752890fd22750e93492b553ed1f4a8d9cd167dc2fb4331865a",
-      "bytes": 1138
+      "bytes": 1138,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/browser/offline_bundle.py",
       "sha256": "3171839bf33398ee4e4e902d3f2d11a74e8b95398583f1a4d93850a44f28ed74",
-      "bytes": 3387
+      "bytes": 3387,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/browser/verify_browser.py",
       "sha256": "5c0ba6887e138c485f2142308e8bc54b34690e5daf75e803734d805e3deaca9e",
-      "bytes": 8069
+      "bytes": 8069,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/five_view_state.json",
       "sha256": "11e5acdc98c86c63d7c26e79d86c308b0c540ad106732d683c773887980a4666",
-      "bytes": 194
+      "bytes": 194,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/foot_reference_label_baseline.json",
       "sha256": "f88a2571cd435e377c997d433f369447efe435c4efe7ce3bd9a490e577411541",
-      "bytes": 108125
+      "bytes": 108125,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/golden_states.json",
       "sha256": "defd6d4ef604ad174c75145ccd9af428ccf9a1c3dc48714f11f327fb4c556392",
-      "bytes": 2741
+      "bytes": 2741,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/multi_state_cases.json",
       "sha256": "a3670fd403374364b0df6544ad70e4a499e22de1dbaa250b2c595bc998d21db8",
-      "bytes": 92781
+      "bytes": 92781,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/public_source_contract.json",
       "sha256": "c3db707494614f2611ea43936411ba9776d033ea71ec5fc6cce3b059eb7a81ab",
-      "bytes": 4948
+      "bytes": 4948,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/reference_v120_contract.json",
       "sha256": "8469cb1b285e5fd1ee4da9e28918a0d51ea487b5fd7ccf165c7f51b13dee726e",
-      "bytes": 54262
+      "bytes": 54262,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/fixtures/state_cases.json",
       "sha256": "cd09bfa867cad3fbfa6e54bdff76eb1d2deb1e3ab2fc0446ad3ab1d8206a9908",
-      "bytes": 45301
+      "bytes": 45301,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/artwork.test.js",
       "sha256": "0cc026934a003caf985577a4550512dd25a560f1b86754d33db93803b1b0ac5b",
-      "bytes": 3349
+      "bytes": 3349,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/multi_artwork.test.js",
       "sha256": "0eef81e77f3931b421841d7a1e7fe2e9ea3731fb1a901a7804a178a99b6fe79d",
-      "bytes": 2559
+      "bytes": 2559,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/multi_state.test.js",
       "sha256": "da8fc499c58442fa363dffffdb129ee6cb4e846d67d71b471a8b723f78edcbac",
-      "bytes": 6459
+      "bytes": 6459,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/optional_outputs.test.js",
       "sha256": "23dc19edcd42f9f874c06b4791aa74e2d177e84c2207e50bbb114479513f9721",
-      "bytes": 3203
+      "bytes": 3203,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/output_preview.test.js",
       "sha256": "63aad334189d3768e42104d7e6ee2244460d5d712bf03bb9653f4609415eae5a",
-      "bytes": 1934
+      "bytes": 1934,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/part_choices.test.js",
       "sha256": "268210f37b24f515efcb25aee2e64430e202e5a5883dbd768cbe690c2295217c",
-      "bytes": 3096
+      "bytes": 3096,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/reference_image_3.test.js",
       "sha256": "ace3e85e41f1eb4042748ed275505759a95059c2e16cf7cce20db06de8371aea",
-      "bytes": 2028
+      "bytes": 2028,
+      "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/js/reference_notices.test.js",
+      "sha256": "c55da98e96ce403a8a663bfff28928974dd7515720c8e4294cca88c07d8f06e5",
+      "bytes": 5510,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/reference_v13_lifecycle.test.js",
       "sha256": "d535bdabadf11c48219b6f348dfe5faf0676d28c2ae38eb3099f67a0bda1f97e",
-      "bytes": 10680
+      "bytes": 10680,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/sheet_assembly_ui.test.js",
-      "sha256": "34df6572a654b5241b8257345a3e47de5683bb29e51be94c6e7c0453d7133ada",
-      "bytes": 5699
+      "sha256": "b87cf31f9078e3fd3f842dd0ed8d07a5d6742bf54d5922e097283a22ff262bcf",
+      "bytes": 6703,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/js/state.test.js",
       "sha256": "17605de967edbb8a56628185f40ce7c69091e229d97ba2a75268f1006d23c2b6",
-      "bytes": 8300
+      "bytes": 8300,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/basic.h3.txt",
       "sha256": "a9b8895238692a3bfba10141f616579f8672c037f5cded205284bd718d57a809",
-      "bytes": 4858
+      "bytes": 4858,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/basic.qwen.txt",
       "sha256": "a2cc8b1fb15109b452c0b48ae3f1244afbb822d0f6622187c3b10bd3dc2270c6",
-      "bytes": 1946
+      "bytes": 1946,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/detail.h3.txt",
       "sha256": "bc6f37149a4547cb9c02c1e4120769429851c001949265a74aba17cf81b7211d",
-      "bytes": 8576
+      "bytes": 8576,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/detail.qwen.txt",
       "sha256": "a096a91807a8e639db4d233c00ac7b067c602d15e737a9a3d42e29742b4433f6",
-      "bytes": 3060
+      "bytes": 3060,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/feet_only.h3.txt",
       "sha256": "0a9792f88f631827574254f97aa285c69146d2fd149aa01289bd9c061bdaff74",
-      "bytes": 4359
+      "bytes": 4359,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/feet_only.qwen.txt",
       "sha256": "ccdb440745108a222a921f1ef80429e80ecee9e6a2eb8ef7635ad7ba05366535",
-      "bytes": 1197
+      "bytes": 1197,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/hands_and_feet.h3.txt",
       "sha256": "5c60d54acfb96f18375207efd20c56b009b4c17e3299ee45f700ae49e1a3cd35",
-      "bytes": 4959
+      "bytes": 4959,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/hands_and_feet.qwen.txt",
       "sha256": "d7d22b6ab2b9f89220cd830aa7e38e286ef6e5a1ada4f0ef245c29e20524d390",
-      "bytes": 1489
+      "bytes": 1489,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/left_and_feet.h3.txt",
       "sha256": "77c9ec6d5c7feaf3a7644f9550ee686beeabe18996c11162d9df3d6f3e318bc0",
-      "bytes": 5227
+      "bytes": 5227,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/left_and_feet.qwen.txt",
       "sha256": "b9ba4e22ff15b9075d3c5c275a2e0a4122acb8ae61c81f33e84a093e2f7fd608",
-      "bytes": 1580
+      "bytes": 1580,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/legacy_six.h3.txt",
       "sha256": "906065c032ca3fcfb80cb6e034068c4f52c5a341b3366b480af469d21b5e201b",
-      "bytes": 7582
+      "bytes": 7582,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/legacy_six.qwen.txt",
       "sha256": "509c217d4ddc3ca02b89e051977bcd02311aac84b59e63ead9213c1eb2793c96",
-      "bytes": 2681
+      "bytes": 2681,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/parts.h3.txt",
       "sha256": "7052d0d4fb8d6e303b61580f613ecbcd83d0a6f3fc7ba82f5d9926f3886ef7cf",
-      "bytes": 14759
+      "bytes": 14759,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/parts.qwen.txt",
       "sha256": "dbb36e40322273a8ac494719a3c7e7adf4da9b65b8d620dca45c203839fecdb3",
-      "bytes": 3603
+      "bytes": 3603,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/portraits.h3.txt",
       "sha256": "0636e55b9d73e66f0da48d494187b9c098839d2dcce4536026120e537c184c52",
-      "bytes": 3752
+      "bytes": 3752,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/portraits.qwen.txt",
       "sha256": "794f8883ccb8a17c35e226dd52c81926e0e82c2bd3b2ee4a6949d4227b8dc6ca",
-      "bytes": 1546
+      "bytes": 1546,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/single.h3.txt",
       "sha256": "8d3c63fb0886834749e81355f50b68368865e9e2d7eee587cecc9080f3ce98c6",
-      "bytes": 2987
+      "bytes": 2987,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/single.qwen.txt",
       "sha256": "a5384a984882845348e3ab21d902cb581dbfd455a7b9283feb90fb558d36b989",
-      "bytes": 1075
+      "bytes": 1075,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/turnaround.h3.txt",
       "sha256": "1f5a505e0c3bb1f46ea82f7a78256788e32adba0e20bf78906bc9d1000cd1c0e",
-      "bytes": 4187
+      "bytes": 4187,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/snapshots/turnaround.qwen.txt",
       "sha256": "277dddcb865cdf7f8f9b615985631acec29ea01df13080d30440fc8e7cda1703",
-      "bytes": 1566
+      "bytes": 1566,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_adaptive_output.py",
       "sha256": "52f11587e80ec796578539b3d09dbb84f44e315b07a6e9a1dd124c26f892957e",
-      "bytes": 5470
+      "bytes": 5470,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_api_node.py",
       "sha256": "add70b3a6a51cc6af92cdd122988f19f09ef7803033644fd83a661578c37627b",
-      "bytes": 7169
+      "bytes": 7169,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_artwork_import.py",
       "sha256": "82dceabdb50311c7ef4ce5abb5bf1d8f741b63412f371eb2033aed00963cc209",
-      "bytes": 1179
+      "bytes": 1179,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_batch_out.py",
       "sha256": "5ff995d9aa4698e3df752540acd30513dfe455fc86dfe1cd4a1f01e82197b934",
-      "bytes": 11716
+      "bytes": 11716,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_compiler.py",
       "sha256": "a0f5f00cdae20a8475c3a2061fee6261bb93dba817de7038233d4e6e90639aea",
-      "bytes": 12408
+      "bytes": 12408,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_core_contract_isolated.py",
       "sha256": "ec87151bb22964e0ab28f294145568005534d5e989fde1fd58ecca5560bc2699",
-      "bytes": 1549
+      "bytes": 1549,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_layout_image.py",
       "sha256": "3cbce9ec3f4beeba39f0a5de5276e47f08da49c0db4d92f4a094493e05d22800",
-      "bytes": 3731
+      "bytes": 3731,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_lora_templates.py",
       "sha256": "66d1131b0e7c284e2d2ad6f3a57a6c25387a7cb1d1a62e098bb0541224310817",
-      "bytes": 2841
+      "bytes": 2841,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_multi_reference.py",
       "sha256": "360c927463551e4fe38ce98c99f9e88569a78fe38435e2a8dc7d958e2373b2d3",
-      "bytes": 17502
+      "bytes": 17502,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_part_choices.py",
       "sha256": "e183ffee77fa939100f230b4dac74ed767be3f726ca4d76bbcda47543c57629e",
-      "bytes": 8670
+      "bytes": 8670,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_reference_image_3.py",
       "sha256": "a2967cae8049b1731dc3eadf9bb2351c1036763e885ef1cbc86447dea38a4a20",
-      "bytes": 4487
+      "bytes": 4487,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_reference_regions.py",
       "sha256": "f68a32defcba14afc04dcd065c311381099dad621b553d02473fbcff8a550d34",
-      "bytes": 5987
+      "bytes": 5987,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_reference_v12.py",
       "sha256": "9b4698e7371fbddb72a24cc343add6725ec41eb59f3412ba22de91fa691bb069",
-      "bytes": 6657
+      "bytes": 6657,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_reference_v121.py",
       "sha256": "d69c5a974692c2454caec26bb77d200bd520c7099f8b3cc4fa6a3fa33e7562c2",
-      "bytes": 6253
+      "bytes": 6253,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_release_template.py",
       "sha256": "299c733954134281e6b5e21b2555c208f5f5cc137aa8df189a6b378f442e5354",
-      "bytes": 2445
+      "bytes": 2445,
+      "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/test_review_regressions.py",
+      "sha256": "2a5709b73fbe2252521e313575c5fcea863cc229dc604aceed96e1b1dfc4df15",
+      "bytes": 4587,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_sheet_assemble.py",
       "sha256": "cb115755609bdf6c196937b2ae829606f457bf5b2e11f190b67f5c04b54beb31",
-      "bytes": 12888
+      "bytes": 12888,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_styles.py",
       "sha256": "78b2d5c84b81bfaade27629182a4643df915c10fc5078f00622281189b5ac867",
-      "bytes": 3542
+      "bytes": 3542,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_template_reference_contracts.py",
       "sha256": "83da282914b70eedf687b38437ad8ee9f523bdcd4bc9ea6d8924932e02e68840",
-      "bytes": 5126
+      "bytes": 5126,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_validation.py",
       "sha256": "e183ce47b32411fe983bc438baf0f2faa43ac448e0b921946142dd0e72886914",
-      "bytes": 2985
+      "bytes": 2985,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/test_workflows.py",
       "sha256": "4e6432071026e3950b47b9eebf8668109e40e99623a16eaaa754fcb1a071a151",
-      "bytes": 3838
+      "bytes": 3838,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/__init__.py",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "bytes": 0
+      "bytes": 0,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/core_empty_latent.py",
       "sha256": "2483a095cb2ed64278346fcb97277f21f1136f00574d471441729422d7a394e6",
-      "bytes": 1758
+      "bytes": 1758,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/h3_compiler.py",
       "sha256": "cde6efca8e0ab82bb678fb0c642c763af3a1ed6b8d19a01c9220906d753690d0",
-      "bytes": 30625
+      "bytes": 30625,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/web/artwork.js",
       "sha256": "a7c49e6ccd2c66afd579dd80a9b57dfd1eb41938c3105c8aa4d72053667e6eca",
-      "bytes": 286
+      "bytes": 286,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/web/avatar.js",
       "sha256": "abc3c1a3b2d47d28326eee41f3a9803c6fc7a4f3f4e2e0020504de2383fa4b3a",
-      "bytes": 15408
+      "bytes": 15408,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/web/integration.js",
       "sha256": "90337ca7cbf59d3f660b73b131b0cd33d4ceaccdf43948f436fc5f0d3749f225",
-      "bytes": 12025
+      "bytes": 12025,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/web/state.js",
       "sha256": "9c28c9dc68fe4fa044ae422d45ce7d436b676605d027251a9bcc2ef8d84fcca5",
-      "bytes": 14444
+      "bytes": 14444,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/web/style.css",
       "sha256": "02b0fd8cee953ffc0cade7d29879e9c9971865c95e10ce8fa124689dd646bac6",
-      "bytes": 10261
+      "bytes": 10261,
+      "purpose": "test/fixture"
     },
     {
       "path": "tests/upstream/web/ui.js",
       "sha256": "d954bc0a0aa1d60ef3709ba4c13c9b1d485bacbf1faf8cf329f468c1e87113e8",
-      "bytes": 29226
+      "bytes": 29226,
+      "purpose": "test/fixture"
     },
     {
       "path": "tools/import_h3_artwork.py",
       "sha256": "f268acbb956f45d9e61806c9ca4e105378f74824a14829100e55c1a1ec3db056",
-      "bytes": 1878
+      "bytes": 1878,
+      "purpose": "development utility"
     },
     {
       "path": "tools/make_manifest.py",
       "sha256": "f7539b8166310cf29ebdb0d70ca23686065d3198ba936f1c83e90e3102a1964f",
-      "bytes": 2238
+      "bytes": 2238,
+      "purpose": "development utility"
     },
     {
       "path": "tools/serve_demo.py",
       "sha256": "dcfb2224269086f1eb660e0ab47a1a4370668cd94a66985a0619bae8b4473546",
-      "bytes": 1366
+      "bytes": 1366,
+      "purpose": "development utility"
     },
     {
       "path": "tools/serve_multi_demo.py",
       "sha256": "25db5ff193b56c8f8f5d79c8c9c1c3c4656afdcf2056ff6ec52dde79f572e520",
-      "bytes": 872
+      "bytes": 872,
+      "purpose": "development utility"
     },
     {
       "path": "tools/workflow.py",
       "sha256": "30739e0fa0b1c98080153462969930244b54288c3c940e4575350d233f7b848b",
-      "bytes": 9339
+      "bytes": 9339,
+      "purpose": "development utility"
     },
     {
       "path": "verification/atlas_results.json",
       "sha256": "b0c92de6623a796ed137a698ba7f1c234321657b182f63a3f255b081c1eed25b",
-      "bytes": 1133
+      "bytes": 1133,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/black_frames.json",
       "sha256": "b17c8e65b9eb1c0bedc7e4469c5b5013dd5f63ffcf97c85c830c82934f013f49",
-      "bytes": 4173
+      "bytes": 4173,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/browser_http_attempt.log",
       "sha256": "15e8c6f151f7ab320e71d6dec8f31b9c150bda88fb03aeddc6b90a9c807bcb49",
-      "bytes": 2047
+      "bytes": 2047,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/browser_results.json",
       "sha256": "c9077285a66070bac7ce2f20a4dc8bdbd45a14adcda8517a8bbe68ee1b9bf54a",
-      "bytes": 2490
+      "bytes": 2490,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/browser_tests.log",
       "sha256": "c9077285a66070bac7ce2f20a4dc8bdbd45a14adcda8517a8bbe68ee1b9bf54a",
-      "bytes": 2490
+      "bytes": 2490,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/bust_refinement.json",
       "sha256": "145ffcb17264c9dfb22da5d38c8b909a2ef9b9d52f7592f18801bde1e70d6662",
-      "bytes": 6022
+      "bytes": 6022,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/demo_server.log",
       "sha256": "2aef6345b518b611ababbd386ee69337db5afd343517218569b8c732da94a1fa",
-      "bytes": 74
+      "bytes": 74,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/distribution.json",
       "sha256": "04126099486043fa7d6b234a9da90863b22642e0dfdcc6f2c66a2b8a4016123b",
-      "bytes": 995
+      "bytes": 995,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/environment.json",
       "sha256": "64f6c2077b05b52a2e861c0220388e269a6cca47e626390f60a51f269094a074",
-      "bytes": 521
+      "bytes": 521,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/gpu_summary_v141.json",
       "sha256": "23d1f7f1ce4b49f0e2ef0a003c4d8706500cdddf203c33a57086d60b8b5468bb",
-      "bytes": 1042
+      "bytes": 1042,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/gpu_summary_v150.json",
       "sha256": "78d87ec4b7cfe14d0cb199c3d28292e660b6a14b6b01f084f1fb842368bf8d26",
-      "bytes": 7676
+      "bytes": 7676,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/javascript_tests.log",
       "sha256": "dff47ba9bab039bec867df5dcc867345b352cfaf18ff2c9241e9c049817c718b",
-      "bytes": 12257
+      "bytes": 12257,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/layout_reference.json",
       "sha256": "93fbfb94bec498a2afd926bec13cb293fe6b03927413eabb6d010ee217ce64a8",
-      "bytes": 2301
+      "bytes": 2301,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/loader_simulation_initial.log",
       "sha256": "680fa0ccfc5897fe357a55dc28b284a90cbb3c899b58c0ecf45b1c45146ea2d4",
-      "bytes": 2475
+      "bytes": 2475,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/python_first.log",
       "sha256": "6edf2fb49d59687e52934b5c0ffdc01d3fef0215832145bbbd3f3dc247492699",
-      "bytes": 660
+      "bytes": 660,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/python_tests.log",
       "sha256": "a1f95414fec42d51053813f72198c89ba3027fe05e52bec695a11dbb98562095",
-      "bytes": 740
+      "bytes": 740,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v141.json",
       "sha256": "45fb877392f569d07f1074bc1db2ae46df5606cc95b65cc3dcf459543c4d5928",
-      "bytes": 2800
+      "bytes": 2800,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v142.json",
       "sha256": "4a84c624d58ed71c1dd528fae4920a73719655e16ea6d62e9689e89d6b1d9451",
-      "bytes": 857
+      "bytes": 857,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v150.json",
       "sha256": "58c56d0ecd805f6a236d750998cec1703e7a8e6a6054e69b8db09b774604e21b",
-      "bytes": 2877
+      "bytes": 2877,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v151.json",
       "sha256": "b64ac68707ebadded817bce130243cd49ccb85f6227bbb74c1863599efd2dcd9",
-      "bytes": 4556
+      "bytes": 4556,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v152.json",
       "sha256": "21fe043cdd5cd2528ed7f67e5f70118ca6c3a0bd8316df6ea41fbc028d77312a",
-      "bytes": 2708
+      "bytes": 2708,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/release_v154.json",
       "sha256": "e2873951b0684483183c8b1b4ef9c3cf9d1aa00ea02e8b66ec576fccd9a572a6",
-      "bytes": 3450
+      "bytes": 3450,
+      "purpose": "verification evidence"
+    },
+    {
+      "path": "verification/release_v155.json",
+      "sha256": "bc8752943b5d35f16324746ee79637b5693c0c1aa676dbbb169735fb3086a82e",
+      "bytes": 2073,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/results.json",
       "sha256": "991aee1df63079b62d40e53395d3abcf86311da454525f0937728f9707e9c0dc",
-      "bytes": 1187
+      "bytes": 1187,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/selected_views.json",
       "sha256": "08276d24c00b099e64c5b7b5a48c272b469358511135b895954501fee5e2ba48",
-      "bytes": 3349
+      "bytes": 3349,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/styles.json",
       "sha256": "0e46a2ce4e2c51400fd47d9b8da48ec518e1011441f0a1169e8cae39dee785de",
-      "bytes": 1016
+      "bytes": 1016,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/templates.json",
       "sha256": "48f3d3e8c2ffedfebe60679eddaab389576f7fe68be5edf593263edaf869c9d9",
-      "bytes": 1495
+      "bytes": 1495,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/ui_ja.png",
       "sha256": "84cdff411fb1a00c6c31e9983a626bc14e12a0b931ac2387bfce2f595d7a5e36",
-      "bytes": 449786
+      "bytes": 449786,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/ui_parts_en.png",
       "sha256": "625045999d283683fc219a9f31a343f6cad13c774651466e424d43add6e29d78",
-      "bytes": 270586
+      "bytes": 270586,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/ui_readd_fix.json",
       "sha256": "8f62b7432f451f18e82edc2e96194d4201a7555cc19e0a90c39ad68242111714",
-      "bytes": 3081
+      "bytes": 3081,
+      "purpose": "verification evidence"
     },
     {
       "path": "verification/workflow_build.log",
       "sha256": "7441a71519d762a3a7429c59f1fa7c80ca15905531b82a4ed8c006ba3f9bc877",
-      "bytes": 763
+      "bytes": 763,
+      "purpose": "verification evidence"
     },
     {
       "path": "web/artwork.js",
       "sha256": "b67dfc8adfbd74df845fcc7741645a45c0534726563d55d0c17b20ae1c51a356",
-      "bytes": 2765
+      "bytes": 2765,
+      "purpose": "frontend"
     },
     {
       "path": "web/artwork_config.js",
       "sha256": "242f1dfaaf6f8b1308851d3c3a0760741df25dfa5627c060ffe21988f1c8e5ed",
-      "bytes": 104
+      "bytes": 104,
+      "purpose": "frontend"
     },
     {
       "path": "web/assets/mannequin-atlas.png",
       "sha256": "7213405d101a6ccc0152304680ab5a1b4f17ba456086f3469b41be1319b2b8f6",
-      "bytes": 823743
+      "bytes": 823743,
+      "purpose": "frontend"
     },
     {
       "path": "web/assets/multi_reference/clothing_back.png",
       "sha256": "79593c4d1e276ee2bb098ebae68c7aa8d8855354c4b43e23a45a571892536ccc",
-      "bytes": 153541
+      "bytes": 153541,
+      "purpose": "frontend"
     },
     {
       "path": "web/assets/multi_reference/clothing_front.png",
       "sha256": "284b89ed1150e597a14e0c198a658c239daf85303dca190b06fce49eab82e339",
-      "bytes": 153235
+      "bytes": 153235,
+      "purpose": "frontend"
     },
     {
       "path": "web/assets/multi_reference/face_3q_left.png",
       "sha256": "8641dc94f1b5403bbbe3bb02bf65f1adf8666636d64d6d5e22394226dac35b2a",
-      "bytes": 176302
+      "bytes": 176302,
+      "purpose": "frontend"
     },
     {
       "path": "web/assets/multi_reference/face_3q_right.png",
       "sha256": "196b662f8f4f32c19fbbf7ddb590c7f8bb548d9fde9829df4ce90fa6a73b6c4b",
-      "bytes": 179194
+      "bytes": 179194,
+      "purpose": "frontend"
     },
     {
       "path": "web/assets/multi_reference/face_back.png",
       "sha256": "55019cf29dbd3ca2c6897ba6dbb24c4b884657de5863348ac43c8fe8b7413ba3",
-      "bytes": 187760
+      "bytes": 187760,
+      "purpose": "frontend"
     },
     {
       "path": "web/assets/multi_reference/face_right.png",
       "sha256": "52fda30d24dfa3eebe5b11b7734e8cc1c3a7e449f00c712e189a9c7cb707f5b0",
-      "bytes": 145359
+      "bytes": 145359,
+      "purpose": "frontend"
     },
     {
       "path": "web/avatar.js",
       "sha256": "3e7821ffb2afa3c653557fcffe8fa485287fe11bc5bf2eb480e8d806114550dc",
-      "bytes": 15412
+      "bytes": 15412,
+      "purpose": "frontend"
     },
     {
       "path": "web/integration.js",
       "sha256": "f0cdcebb746e580c6c08071752f4b1f3bfc55c40cf7d2d9dd24ad3c5fcb192ff",
-      "bytes": 13477
+      "bytes": 13477,
+      "purpose": "frontend"
     },
     {
       "path": "web/multi_artwork.js",
       "sha256": "0195e55db61d77df01e485e9d7fd83c51770cb0df579388d0fe888d56d9ce6b4",
-      "bytes": 4613
+      "bytes": 4613,
+      "purpose": "frontend"
     },
     {
       "path": "web/multi_integration.js",
       "sha256": "8c5c4709dd522402af53b3cb52683635eae37969483b95180d8d4ee149c86c16",
-      "bytes": 15681
+      "bytes": 15681,
+      "purpose": "frontend"
     },
     {
       "path": "web/multi_profile.js",
       "sha256": "18f45e595d8df81483f7cb69891e4eb614737fb073445c7f88e6d2e55d9d87ae",
-      "bytes": 308
+      "bytes": 308,
+      "purpose": "frontend"
     },
     {
       "path": "web/multi_state.js",
       "sha256": "f1b3ca69cf8bcc22f32b5f9e266d00153b3ba5b3a4b161cf87342a4eef8d9401",
-      "bytes": 13797
+      "bytes": 13797,
+      "purpose": "frontend"
     },
     {
       "path": "web/multi_style.css",
       "sha256": "0bc4cd248c3122fb807eca3f0cf60edea895849c3eb5f18e28a99dcf0bae6a49",
-      "bytes": 15938
+      "bytes": 15938,
+      "purpose": "frontend"
     },
     {
       "path": "web/multi_ui.js",
-      "sha256": "2d74a28910377cc06835c04db24159b3f7eab0133dae29418733a48219f5f8c3",
-      "bytes": 56172
+      "sha256": "6413444d0aedf6c0bfd6282cd741e5833f2fe4df6e2ce13d8879e5da92f487c7",
+      "bytes": 57332,
+      "purpose": "frontend"
     },
     {
       "path": "web/optional_outputs.js",
       "sha256": "2c3ab603cf5bf8acffe15b9da2d8786846b70eb343cfa6347d71d87d0bd75723",
-      "bytes": 3772
+      "bytes": 3772,
+      "purpose": "frontend"
     },
     {
       "path": "web/output_preview.js",
       "sha256": "2c5e4b3db58cbe71cb585aa64c96b0c54c1e808b8088bc4f13271f2f5d3a9146",
-      "bytes": 2550
+      "bytes": 2550,
+      "purpose": "frontend"
     },
     {
       "path": "web/profile.js",
       "sha256": "d16a232282dd2c43452e4fdbde23398341c3bb78f999036972a61c9d73c9c5eb",
-      "bytes": 348
+      "bytes": 348,
+      "purpose": "frontend"
     },
     {
       "path": "web/qwen_image21_character_sheet_designer.js",
       "sha256": "5c4ef35ee47f31a6ccee46c416ef6d9a0d05d692ad910bd916f2dfa8a983a370",
-      "bytes": 184
+      "bytes": 184,
+      "purpose": "frontend"
     },
     {
       "path": "web/qwen_image21_character_sheet_designer_multi_reference.js",
       "sha256": "1a92d53d33cdd8693c1ceef19acd4c7c9b9fe2ae170d728e4028ddf2013be443",
-      "bytes": 190
+      "bytes": 190,
+      "purpose": "frontend"
     },
     {
       "path": "web/qwen_image21_character_sheet_designer_reference_v12.js",
       "sha256": "31b4b670b6d997f152a7b2c3c3da112e259716af75f9abf824b60cb7e89c8963",
-      "bytes": 505
+      "bytes": 505,
+      "purpose": "frontend"
     },
     {
       "path": "web/qwen_image21_character_sheet_designer_reference_v13.js",
       "sha256": "1f2ffe04edfbb3d04cd511af87b0896e825cf4f0b13ff53b0ec16226ed7302e4",
-      "bytes": 2513
+      "bytes": 2513,
+      "purpose": "frontend"
     },
     {
       "path": "web/sheet_assembly_ui.js",
-      "sha256": "5ff48a2ddb4147e3e29e6aa73b526a2e536aae203eee6997e88c037b113284f6",
-      "bytes": 6216
+      "sha256": "74d6fe8ecff55833c887da54507db497942c927debfe3660eac5c062ec41e54a",
+      "bytes": 6634,
+      "purpose": "frontend"
     },
     {
       "path": "web/state.js",
       "sha256": "c3fd201d73d5dc1020fd6c7a923c76d04ec74b6fc5f13f3b9ef0a8968b4ada95",
-      "bytes": 14520
+      "bytes": 14520,
+      "purpose": "frontend"
     },
     {
       "path": "web/style.css",
       "sha256": "2755dbb3c5375779f577289833633789d02fe023614e709c746e512301f78e63",
-      "bytes": 11851
+      "bytes": 11851,
+      "purpose": "frontend"
     },
     {
       "path": "web/ui.js",
       "sha256": "e240e543cdd978b4a536bf5829607185dedad7c524ef9ff6a49a0848754bae3e",
-      "bytes": 35590
+      "bytes": 35590,
+      "purpose": "frontend"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json",
       "sha256": "8dbeb1d2fb92e5282268c6fbc9f05eba066ae04cb46069b575f64858016fe74b",
-      "bytes": 40550
+      "bytes": 40550,
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
       "sha256": "970d466f0fc8f131767e6939f4451858ec4727a48325984e8dba7a9af849327a",
-      "bytes": 39809
+      "bytes": 39809,
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json",
       "sha256": "a3c24bf80d6dd6f1a96434fb66bf8c604af0d02e75cd46de662d04d4a5b91148",
-      "bytes": 22024
+      "bytes": 22024,
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json",
       "sha256": "66ba28e18ccd2c586741d0377cc2e7a8a0de66e5071aeb0d74140da6bcc91739",
-      "bytes": 41576
+      "bytes": 41576,
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json",
       "sha256": "085ac73d14cd45eb01ae789e097e3c4cc0de7fa1bd1eb09146eccb608b40864e",
-      "bytes": 43102
+      "bytes": 43102,
+      "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
       "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
-      "bytes": 33150
+      "bytes": 33150,
+      "purpose": "workflow"
     }
   ],
   "manifest_self_hash": "excluded to avoid recursive hashing",
-  "package_version": "1.5.4"
+  "package_version": "1.5.5"
 }

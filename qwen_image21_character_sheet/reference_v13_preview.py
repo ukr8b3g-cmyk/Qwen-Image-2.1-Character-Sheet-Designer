@@ -3,7 +3,7 @@ from .compiler import STATE_MAX_BYTES, StateValidationError, decode_json
 from .node import runtime_max_resolution
 import json
 from .reference_v12_preview import compile_preview_request as compile_v12_request
-from .sheet_plan import make_sheet_plan
+from .sheet_plan import sheet_plan_output
 
 PREVIEW_PATH = '/qwen_image21_character_sheet_designer/reference_v13_preview'
 
@@ -18,7 +18,7 @@ def compile_preview_request(body, *, max_resolution):
     from_options = {key: envelope[key] for key in sheet_keys if key in envelope}
     base = {key: value for key, value in envelope.items() if key not in sheet_keys}
     result = compile_v12_request(json.dumps(base).encode('utf-8'), max_resolution=max_resolution)
-    result['sheet_plan'] = make_sheet_plan(envelope['state_json'], max_resolution=max_resolution, **from_options)
+    result['sheet_plan'] = sheet_plan_output(envelope['state_json'], max_resolution=max_resolution, **from_options)
     return result
 
 

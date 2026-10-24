@@ -95,6 +95,8 @@ Object.assign(EN, {
   role_clothing: 'Complete outfit', role_clothing_front: 'Front of outfit', role_clothing_back: 'Back of outfit',
   role_hands: 'Hands / accessories', role_footwear: 'Feet / footwear',
   referenceRoleHint: 'Fan out each LoadImage to this Designer and Core Encoder (character: image_2; extra 1: image_3; extra 2: image_4; extra 3: image_5). Roles apply wherever visible, even with the detail card off.',
+  sheetEncodeHint: 'Connect prompt, reference_plan and layout_image to the matching Sheet Encode inputs. Connect each LoadImage to both the Designer and the matching Sheet Encode image input. Image numbers follow the reference plan, including with Guide OFF.',
+  missingReferences: 'Connect a character image or an applicable part reference for:',
   numberingProvisional: 'Planned <imageN> numbers from connections; actual images are resolved at execution.',
 });
 Object.assign(JA, {
@@ -129,6 +131,8 @@ Object.assign(JA, {
   role_clothing: '衣装全体', role_clothing_front: '衣装前面', role_clothing_back: '衣装背面',
   role_hands: '手・小物', role_footwear: '足・履物',
   referenceRoleHint: '各LoadImageをDesignerとCore Encoderへ分岐接続（人物:image_2、追加1:image_3、追加2:image_4、追加3:image_5）します。詳細カードがOFFでも、見える部位へ適用します。',
+  sheetEncodeHint: 'prompt・reference_plan・layout_imageをSheet Encodeの同名入力へ接続します。各LoadImageはDesignerとSheet Encodeの同名画像入力へ分岐してください。Guide OFF時も画像番号は参照計画に従います。',
+  missingReferences: '次のビューに人物画像または適用できる部位参照を接続してください：',
   numberingProvisional: '接続に基づく<imageN>予定番号です。実際の画像は実行時に確定します。',
 });
 export const translations = {en: EN, ja: JA};
@@ -400,7 +404,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
       for (const option of item.select.options) option.textContent = t[item.optionPrefix + option.value];
     }
     qualityHint.textContent = partChoices ? t.garmentChoiceHint : t.qualityHint;
-    rolesTitle.textContent = t.references; rolesHint.textContent = t.referenceRoleHint;
+    rolesTitle.textContent = t.references; rolesHint.textContent = perOutputReferences ? t.sheetEncodeHint : t.referenceRoleHint;
     for (const [input, item] of roleMap) {
       item.label.textContent = t.extraReference + ' ' + (item.index + 1) + ' · ' + (presence[input] ? t.connected : t.notConnected);
       item.select.disabled = !state; item.select.value = state?.reference_roles?.[input] ?? 'same_character';
@@ -528,9 +532,12 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     warning.textContent = t.resolutionWarning; warning.hidden = badge.hidden;
     metrics.classList.toggle('q21-mr-stale', Boolean(displayP && !current));
     status.textContent = controller.pending ? (displayP ? t.stale : t.pending) : controller.previewError ? `${t.unavailable}${displayP ? ` · ${t.previous}` : ''}` : compatibilityWarning ? t.undoWarning : t.committed;
-    const missingCharacter = current && p?.notices?.includes('missing_character');
+    const notices = current ? [...(p?.notices ?? []), ...(p?.batch_plan?.items ?? []).flatMap(item => item.notices ?? [])] : [];
+    const missingViews = [...new Set(notices.filter(n => n.startsWith('missing_reference:')).map(n => n.slice('missing_reference:'.length)))];
+    const missingCharacter = notices.includes('missing_character');
+    const missingMessage = missingViews.length ? `${t.missingReferences} ${missingViews.map(view => t[view] ?? view).join(', ')}. ${t.sheetEncodeHint}` : missingCharacter ? t.missingCharacter : '';
     const problem = controller.error || localError || controller.previewError;
-    errorBox.textContent = problem ? `${controller.error ? `${t.invalid} ` : ''}${errorText(problem, language)}` : ''; errorBox.hidden = !problem && !missingCharacter; if (missingCharacter && !problem) errorBox.textContent = t.missingCharacter;
+    errorBox.textContent = problem ? `${controller.error ? `${t.invalid} ` : ''}${errorText(problem, language)}` : missingMessage; errorBox.hidden = !problem && !missingMessage;
     retry.textContent = t.retry; retry.hidden = !controller.previewError || !state;
     footer.textContent = activeTab === 'parts' ? t.partGuide : activeTab === 'style' ? t.styleHint : t.caveat;
     generatedSummary.textContent = `${t.generatedPrompt} · ${multiReference ? t.numberingProvisional : useLayoutImage() ? t.layoutReference : t.characterOnly}${readStyle() === 'none' ? '' : ` · ${t.style}：${t[`style_${readStyle()}`] ?? readStyle()}`}`;

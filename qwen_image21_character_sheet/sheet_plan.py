@@ -63,8 +63,21 @@ def serialize_sheet_plan(plan):
     return json.dumps(plan, ensure_ascii=False, separators=(',', ':'))
 
 
+def sheet_plan_output(state_json, **options):
+    """Keep optional assembly errors out of the generation path."""
+    try:
+        return make_sheet_plan(state_json, **options)
+    except StateValidationError as exc:
+        return {'error': {'code': exc.code, 'message': str(exc)}}
+
+
 def parse_sheet_plan(raw, *, max_resolution=16384):
-    return validate_sheet_plan(decode_json(raw), max_resolution=max_resolution)
+    plan = decode_json(raw)
+    if type(plan) is dict and set(plan) == {'error'}:
+        error = plan['error']
+        if type(error) is dict and set(error) == {'code', 'message'} and all(type(error[k]) is str for k in error):
+            raise StateValidationError(error['message'], error['code'])
+    return validate_sheet_plan(plan, max_resolution=max_resolution)
 
 
 def contain_bounds(bounds, width, height):

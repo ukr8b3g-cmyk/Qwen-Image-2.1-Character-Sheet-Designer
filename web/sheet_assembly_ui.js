@@ -77,12 +77,17 @@ export function installAssemblyUI(node, designer, writeValue) {
     toggle.textContent = active ? 'Layout / レイアウト' : 'Assembly / 合成';
     toggle.setAttribute('aria-pressed', String(active));
     const plan = designer.controller.preview?.sheet_plan;
+    const error = plan?.error;
+    canvas.hidden = !plan || !!error;
+    hint.textContent = error
+      ? `Assembly unavailable: ${error.message} / 合成サイズを確認してください。生成サイズは変更されません。`
+      : 'Sheet canvas only. Output size still controls each generated image. / 合成先のみ。生成サイズは上のOutput size。';
     inputs.forEach((input, i) => {
       input.disabled = i > 0 && widgets[0].value === 'auto';
-      const value = i > 0 && widgets[0].value === 'auto' && plan ? plan.canvas[i - 1] : widgets[i].value;
+      const value = i > 0 && widgets[0].value === 'auto' && plan?.canvas ? plan.canvas[i - 1] : widgets[i].value;
       if (document.activeElement !== input) input.value = String(value);
     });
-    if (!active || !plan) return;
+    if (!active || !plan || error) { rendered = undefined; return; }
     overlay.style.opacity = designer.controller.isCurrentPreview ? '1' : '.5';
     if (rendered !== plan.plan_hash) {
       rendered = plan.plan_hash;

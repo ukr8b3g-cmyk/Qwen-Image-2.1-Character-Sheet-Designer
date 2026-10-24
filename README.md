@@ -2,6 +2,13 @@
 
 [English](#english)
 
+## v1.5.5の変更点 — ホットフィックス
+
+- 未使用の合成設定でV1.3の通常生成を止めないように修正。合成設定エラーはSheet Assembleで報告し、キャンバス確保前に拒否します。
+- 有効な個別生成は、全体概要がサイズ上限を超えてもプレビューを表示します。各画像の生成寸法・保存値は変更しません。
+- V1.2／V1.3のGUI接続案内をSheet Encode方式へ修正し、参照不足を日英で表示します。旧V1.1の案内・ノードID・出力順・配布ワークフローは維持しています。
+- CPU検証：Python 1,833件成功・過去素材不足1件スキップ、JavaScript 243件成功。再起動後の実プレビューAPIも確認。実画面の表示・保存再読込とGPU生成は今回未検証です。[検証記録](verification/release_v155.json)
+
 ## v1.5.4の変更点
 
 - **通常版・Turbo版をLoRA対応テンプレートへ更新**：外部のPower Lora Loader (rgthree)でモデルに適用します。初期状態はLoRA未選択。配置・サブグラフ順序・生成設定は指定のワークフローを維持しています。
@@ -231,6 +238,13 @@ Manualの縦長サイズでは顔画像の余白が大きくなるため、個�
 記録は[最新GPU検証](verification/gpu_summary_v141.json)、[配布検証](verification/release_v141.json)にあります。公開対象はノード本体・必須UI素材・指定ワークフロー・README・利用説明と検証要約です。作業用仕様書、検証用画像、ローカル構成付き詳細記録と追加テストワークフローはローカルに保持し、配布しません。
 
 ## English
+
+### What's new in v1.5.5 — Hotfix
+
+- Unused assembly settings no longer block V1.3 generation. Sheet Assemble reports invalid assembly plans and rejects them before allocating its canvas.
+- Valid individual outputs retain their previews even when the whole-selection overview exceeds the size limit. Per-image dimensions and saved values are unchanged.
+- V1.2/V1.3 GUI instructions now describe Sheet Encode, and missing references are reported in English/Japanese. Legacy V1.1 guidance, node IDs, output order and distributed workflows are preserved.
+- CPU validation: 1,833 Python passes, one unavailable historical-fixture skip, and 243 JavaScript passes. The restarted ComfyUI preview API was also checked. Browser UI/save-reload and GPU generation were not retested. [Verification record](verification/release_v155.json)
 
 ### What's new in v1.5.4
 

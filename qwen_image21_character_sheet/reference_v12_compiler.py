@@ -5,7 +5,7 @@ from .multi_reference_compiler import (
     BODY_IDS, CLOTHING_IDS, PORTRAIT_IDS, DEFAULT_MULTI_STATE, StateValidationError, panel_details,
     parse_multi_state, part_views,
 )
-from .output_plan import compile_output_plan
+from .output_plan import compile_output_plan, preview_summary
 from .reference_v12_plan import build_reference_plan, numbered_references, serialize_reference_plan
 
 DEFAULT_V12_STATE_JSON = serialize_state({**DEFAULT_MULTI_STATE, 'clothing_type': 'reference', 'footwear_state': 'reference'})
@@ -229,6 +229,5 @@ def compile_output_plan_v12(state_json, *, strict=True, **options):
 
 def compile_output_preview_v12(state_json, **options):
     plan = compile_output_plan_v12(state_json, strict=False, **options)
-    summary = plan['items'][0] if not plan['enabled'] else compile_output_plan_v12(
-        state_json, strict=False, **{**options, 'batch_out': False})['items'][0]
+    summary = preview_summary(state_json, plan, compile_output_plan_v12, strict=False, **options)
     return {**{k: v for k, v in summary.items() if k not in ('index', 'view_id', 'filename_suffix')}, 'batch_plan': plan}

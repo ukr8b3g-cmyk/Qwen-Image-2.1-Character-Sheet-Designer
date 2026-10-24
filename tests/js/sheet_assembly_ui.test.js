@@ -35,6 +35,21 @@ test('Standard UI adds no root row, keeps Layout, hides only assembly widgets an
   assert.equal(widgets[0].hidden, undefined);
   assert.ok(widgets.slice(1).every(widget => widget.hidden));
 }));
+
+test('Assembly errors leave existing size controls usable and clear the stale canvas', () => fixture(({node, widgets, ui, toggle, overlay, plan}) => {
+  node.outputs[0].links = [1]; widgets[0].value = true; ui.update(); toggle.events.click();
+  const canvas = overlay.children[1].children[0], hint = overlay.children[2];
+  const original = structuredClone(plan);
+  delete plan.canvas; delete plan.views; delete plan.plan_hash;
+  plan.error = {code: 'sheet_pixel_limit', message: 'Sheet canvas exceeds 16,777,216 pixels.'};
+  ui.update(); assert.equal(canvas.hidden, true); assert.match(hint.textContent, /16,777,216/);
+  const inputs = overlay.children[0].children.map(label => label.children[1]);
+  assert.equal(inputs[0].disabled, false);
+  inputs[0].value = 'manual'; inputs[0].events.change();
+  assert.equal(inputs[1].disabled, false);
+  delete plan.error; Object.assign(plan, original); ui.update();
+  assert.equal(canvas.hidden, false); assert.doesNotMatch(hint.textContent, /unavailable/);
+}));
 test('Assembly is available only when linked, Batch Out ON and Layout visible', () => fixture(({node, widgets, ui, toggle, overlay, stage, tag}) => {
   node.outputs[0].links = [1]; ui.update(); assert.equal(toggle.hidden, true);
   widgets[0].value = true; ui.update(); assert.equal(toggle.hidden, false); assert.equal(tag.hidden, true);

@@ -34,12 +34,25 @@ def compile_output_plan(state_json, *, max_resolution=DEFAULT_MAX_RESOLUTION,
     return {'enabled': batch_out, 'count': len(items), 'items': items}
 
 
+def preview_summary(state_json, plan, compiler, **options):
+    if not plan['enabled']:
+        return plan['items'][0]
+    try:
+        return compiler(state_json, **{**options, 'batch_out': False})['items'][0]
+    except StateValidationError as exc:
+        if exc.code != 'size_limit':
+            raise
+    # A selection overview is not a generated image. Fit it to a supported
+    # canvas without changing any individual output or the saved state.
+    state = parse_multi_state(state_json, max_resolution=options.get('max_resolution', DEFAULT_MAX_RESOLUTION))
+    state['size'].update(mode='manual',
+        manual_width=max(item['width'] for item in plan['items']),
+        manual_height=max(item['height'] for item in plan['items']))
+    summary = compiler(json.dumps(state), **{**options, 'batch_out': False})['items'][0]
+    return {**summary, 'state_json': state_json, 'overview_only': True}
+
+
 def compile_output_preview(state_json, **options):
     plan = compile_output_plan(state_json, **options)
-    if not plan['enabled']:
-        summary = plan['items'][0]
-    else:
-        # The root remains a selection overview for canonical state validation;
-        # the UI and execution use each output's actual dimensions and geometry.
-        summary = compile_output_plan(state_json, **{**options, 'batch_out': False})['items'][0]
+    summary = preview_summary(state_json, plan, compile_output_plan, **options)
     return {**{key: value for key, value in summary.items() if key not in ('index', 'view_id', 'filename_suffix')}, 'batch_plan': plan}

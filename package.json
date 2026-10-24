@@ -1,8 +1,12 @@
 {
   "name": "qwen-image21-character-sheet-designer",
-  "version": "1.5.4",
+  "version": "1.5.5",
   "private": true,
   "type": "module",
-  "scripts": {"test": "node --test tests/js/*.test.js"},
-  "engines": {"node": ">=22"}
+  "scripts": {
+    "test": "node --test tests/js/*.test.js"
+  },
+  "engines": {
+    "node": ">=22"
+  }
 }
