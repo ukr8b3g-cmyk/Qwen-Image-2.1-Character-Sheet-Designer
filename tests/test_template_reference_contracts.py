@@ -64,7 +64,7 @@ def test_batch_views_reselect_refs_and_keep_numbering(guide,monkeypatch):
     assert 'character_image' not in [r['source'] for r in items[-1]['reference_plan']]
 
 def load(name):
-    return json.loads((ROOT/'workflows'/name).read_text(encoding='utf-8'))
+    return json.loads((ROOT/'tests/fixtures/workflows'/name).read_text(encoding='utf-8'))
 
 def exported(graph):
     graph=deepcopy(graph)

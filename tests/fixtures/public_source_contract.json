@@ -154,7 +154,7 @@
     },
     {
       "group": "qwen",
-      "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
+      "path": "tests/fixtures/workflows/QwenImage21_Character_Sheet_Designer_wf.json",
       "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
       "text": true
     }

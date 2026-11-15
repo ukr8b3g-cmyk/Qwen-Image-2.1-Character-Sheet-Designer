@@ -240,7 +240,7 @@ def test_multi_http_and_route_registration_are_independent(monkeypatch):
 
 def test_legacy_modules_and_all_new_assets_match_pinned_source_baseline():
     baseline = json.loads((ROOT / 'tests/fixtures/public_source_contract.json').read_text(encoding='utf-8'))
-    protected = ('qwen_image21_character_sheet/', 'web/', 'workflows/')
+    protected = ('qwen_image21_character_sheet/', 'web/', 'tests/fixtures/workflows/')
     for row in baseline['files']:
         if row['group'] == 'qwen' and row['path'].startswith(protected):
             assert hashlib.sha256((ROOT / row['path']).read_bytes().replace(b'\r\n', b'\n') if row['text'] else (ROOT / row['path']).read_bytes()).hexdigest() == row['sha256'], row['path']

@@ -197,7 +197,7 @@ def test_v13_defaults_match_v12_single_sheet_without_guide():
 
 def test_standard_v13_workflow_has_one_save_for_both_modes_and_no_assembly_branch():
     from tools.workflow import validate_graph, api_prompt
-    path = Path(__file__).parents[1] / 'workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json'
+    path = Path(__file__).parents[1] / 'workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template.json'
     graph = json.loads(path.read_text(encoding='utf-8'))
     validate_graph(graph)
     designer = next(node for node in graph['nodes'] if node['type'] == 'QwenImage21CharacterSheetDesignerReferenceV13')

@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def template(turbo):
     suffix = '_Turbo' if turbo else ''
-    return json.loads((ROOT / ('workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template'+suffix+'.json')).read_text(encoding='utf-8'))
+    return json.loads((ROOT / ('workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template'+suffix+'.json')).read_text(encoding='utf-8'))
 
 
 @pytest.mark.parametrize('turbo', [False, True])

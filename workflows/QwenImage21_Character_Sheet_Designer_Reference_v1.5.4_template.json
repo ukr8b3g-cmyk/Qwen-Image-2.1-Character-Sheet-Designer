@@ -303,7 +303,8 @@
         "sheet_size_mode": "auto",
         "sheet_width": 1536,
         "sheet_height": 864
-      }
+      },
+      "title": "Qwen 2.1 Sheet Designer Reference v1.5.4"
     },
     {
       "id": 19,
@@ -323,10 +324,10 @@
       "outputs": [],
       "properties": {},
       "widgets_values": [
-        "# Qwen 2.1 Sheet Designer Reference V1.3\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Output uses Save WEBP Meta, WebP quality 70. Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。"
+        "# Qwen 2.1 Sheet Designer Reference v1.5.4\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Output uses Save WEBP Meta, WebP quality 70. Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。"
       ],
       "widgets_values_named": {
-        "text": "# Qwen 2.1 Sheet Designer Reference V1.3\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Output uses Save WEBP Meta, WebP quality 70. Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。"
+        "text": "# Qwen 2.1 Sheet Designer Reference v1.5.4\n\n1. Replace Character Image; optional Reference Image 1 / 2 / 3 remain bypassed until needed. Connect each reference to the matching Designer and Sheet Encode input.\n2. Batch Out OFF (default): generate one sheet. ON: generate selected views individually through the same Output save node. Keep latent batch_size=1.\n3. Output size Auto calculates generation sizes; Manual applies width × height to the sheet (OFF) or each image (ON). Use Layout Image is a separate optional guide; it defaults OFF.\n4. Output uses Save WEBP Meta, WebP quality 70. Sheet Assemble is optional; use the separate assembly template if needed.\n\nBatch Out OFFは1枚のシート、ONは選択ビューごとの生成。同じ保存ノードを使用します。Autoは生成サイズの計算、Use Layout Imageはガイド参照の投入です。合成は任意の別テンプレートです。"
       },
       "color": "#432",
       "bgcolor": "#653"

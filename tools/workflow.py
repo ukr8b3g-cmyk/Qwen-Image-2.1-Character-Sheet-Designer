@@ -189,7 +189,7 @@ def build(source: Path) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--source", type=Path, required=True)
-    parser.add_argument("--out", type=Path, default=ROOT / "workflows")
+    parser.add_argument("--out", type=Path, required=True)
     args = parser.parse_args()
     graph = build(args.source)
     args.out.mkdir(parents=True, exist_ok=True)

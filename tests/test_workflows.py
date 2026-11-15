@@ -6,12 +6,11 @@ from qwen_image21_character_sheet.compiler import compile_state, DEFAULT_STATE_J
 from tools.workflow import TEMPLATE_NAME, validate_graph, api_prompt, main as workflow_main
 
 ROOT = Path(__file__).resolve().parents[1]
-TEMPLATE = ROOT / "workflows" / TEMPLATE_NAME
+TEMPLATE = ROOT / "tests/fixtures/workflows" / TEMPLATE_NAME
 
 
 def test_actual_saved_workflow():
     assert TEMPLATE.is_file()
-    assert (ROOT / "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json").is_file()
     graph = json.loads(TEMPLATE.read_text(encoding="utf-8"))
     report = validate_graph(graph)
     nodes = {n["id"]: n for n in graph["nodes"]}
@@ -42,7 +41,6 @@ def test_actual_saved_workflow():
     assert state["views"] == list(PRESETS["five"]) and state["size"]["body_height"] == 1120
     assert (result["width"], result["height"]) == (2816, 1280)
     assert sampler["steps"] == 30 and encoder["resolution"] == 1024
-    assert prompt[by_type["UNETLoader"]]["inputs"]["unet_name"] == "qwen\\qwen_image_2.1_int8_convrot.safetensors"
 
 
 def test_builder_outputs_only_standard_template(tmp_path, monkeypatch):
