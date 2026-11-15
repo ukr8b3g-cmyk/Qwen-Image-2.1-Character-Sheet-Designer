@@ -2,8 +2,8 @@
   "schema_version": 1,
   "created_utc": "2026-10-24T02:51:43.690294+00:00",
   "target_repository": "ukr8b3g-cmyk/Qwen-Image-2.1-Character-Sheet-Designer",
-  "target_base_commit": "3aefc07061382624207fb2fe76939b3d01aa06e5",
-  "target_state": "v1.5.5 hotfix payload; CPU and live preview API checked; browser UI and GPU not retested",
+  "target_base_commit": "3cb36df57c84da69d20f1a7b32fbda65564720ee",
+  "target_state": "v1.5.6 release payload with verified clothing-free layout and view prompt controls",
   "text_hash_line_endings": "LF",
   "sources": [
     {
@@ -400,6 +400,41 @@
       ],
       "assembly_limit": "16,777,216 pixels retained. Invalid assembly is rejected at the consumer, which may execute after individual generation.",
       "background_preservation_change": false
+    },
+    "release_v156": {
+      "version": "1.5.6",
+      "date_jst": "2026-11-15",
+      "base_commit": "3cb36df57c84da69d20f1a7b32fbda65564720ee",
+      "compatibility": {
+        "node_ids": "unchanged",
+        "size_settings": "unchanged",
+        "workflow_sha256": {
+          "workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template.json": "6f69b86fa7bfbb1023003a9ccb80eac2d48adbf7d049cabb13f9d39c7af22915",
+          "workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template_Turbo.json": "7fd494277b5f3a71b44021b19520643a70ffc286f9aa077168f76f826cc091b5",
+          "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json": "ad8239c13be12529bf6e97f07e4f34c9ebd93d3214c7ccfa8a56cedc7425027a"
+        }
+      },
+      "cpu": {
+        "python_passed": 1841,
+        "python_skipped": 1,
+        "skip_reason": "Historical local fixture unavailable",
+        "javascript_passed": 244
+      },
+      "gpu": {
+        "workflow": "Turbo",
+        "reference": "Wolf character",
+        "seed": 42,
+        "width": 3424,
+        "height": 1280,
+        "layout_image": true,
+        "views": 11,
+        "top_right_portrait": "left profile",
+        "middle_right_portrait": "left three-quarter with far eye visible",
+        "full_body_front": "frontal",
+        "visible_guide_lines": false,
+        "side_and_rear_heights_equal_to_front": false,
+        "scope": "Prior local run with the released implementation"
+      }
     }
   },
   "files": [
@@ -525,13 +560,13 @@
     },
     {
       "path": "package.json",
-      "sha256": "4d19df4b4d5cfb673d4a01f14418ab3cc487ef8fe1cc73ab5db0bf3c7c6ebbb2",
+      "sha256": "41a5251f0a9543613cea3eaffa072bb10ab121802d168eb2734821ab1357be07",
       "bytes": 219,
       "purpose": "package metadata/documentation"
     },
     {
       "path": "pyproject.toml",
-      "sha256": "bfd0b8ccc77cc9aeb7b0454787d19cd51f1ea7704dd4a8756bb8636df43401a0",
+      "sha256": "6e14aff9dc55827bc01bb9963dc9abbbc29dddf9e6bb9d8792680d7c8bf2401f",
       "bytes": 601,
       "purpose": "package metadata/documentation"
     },
@@ -591,8 +626,8 @@
     },
     {
       "path": "qwen_image21_character_sheet/multi_layout_image.py",
-      "sha256": "f6ee23db7065065e58a5f5d138930b074b363ba2d464cbc86fb1ea1779d06186",
-      "bytes": 2884,
+      "sha256": "8b7441a4b2a76d0734cd4adec21f56aeaa04d89df2db18a0290f103fdd7c39a9",
+      "bytes": 3476,
       "purpose": "backend"
     },
     {
@@ -645,14 +680,14 @@
     },
     {
       "path": "qwen_image21_character_sheet/reference_v12_compiler.py",
-      "sha256": "a090f7deddefe9852339ae93618d92d1cfd9a05771d9535c4b3afda0850538bb",
-      "bytes": 18551,
+      "sha256": "75c22d9896f353e11e17959c177faf0d3d8c5fa052524e4f256c1311b8fb7c79",
+      "bytes": 26243,
       "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v12_node.py",
-      "sha256": "18a1d7273b8be5f6a6d9a0813bed5d258c4f8e8ead3c4721fe918e9ba977059f",
-      "bytes": 3441,
+      "sha256": "7321a25686803c904816873e3e5e845e02a886aefd3e136b8baab906ee8cfee4",
+      "bytes": 3800,
       "purpose": "backend"
     },
     {
@@ -668,15 +703,21 @@
       "purpose": "backend"
     },
     {
+      "path": "qwen_image21_character_sheet/reference_v13_compiler.py",
+      "sha256": "664d7af9ec9264bd9fb223b63238e79f8338cc89f404aa2b30640e669c499184",
+      "bytes": 6354,
+      "purpose": "backend"
+    },
+    {
       "path": "qwen_image21_character_sheet/reference_v13_node.py",
-      "sha256": "888071844ef59eecc69a4767fd407b8bb7c0697f55659e50340ab6b0142766af",
-      "bytes": 3349,
+      "sha256": "baf05f312cb983d4713618556f9fe06e2b3edaab0e14a0503e7b3b991312161b",
+      "bytes": 3714,
       "purpose": "backend"
     },
     {
       "path": "qwen_image21_character_sheet/reference_v13_preview.py",
-      "sha256": "79171817e3a9b70216ed9230d7f6b87066bb620bbbaeeb0aed179b6054ccd573",
-      "bytes": 2696,
+      "sha256": "71e6741ee9cac131b2571e6b1d25bc7ef58a0d018554a0326d62f9487477d9c2",
+      "bytes": 3018,
       "purpose": "backend"
     },
     {
@@ -699,8 +740,8 @@
     },
     {
       "path": "README.md",
-      "sha256": "3063f32690ca913e5e593d2065fd748437eefb65415a7b59bb6d46f37abf3511",
-      "bytes": 48913,
+      "sha256": "e49f7a83b390a38a5b3b1b94c2357e8473e7e11ae45bd004f7d40139c8078344",
+      "bytes": 47729,
       "purpose": "package metadata/documentation"
     },
     {
@@ -771,8 +812,8 @@
     },
     {
       "path": "tests/fixtures/public_source_contract.json",
-      "sha256": "c3db707494614f2611ea43936411ba9776d033ea71ec5fc6cce3b059eb7a81ab",
-      "bytes": 4948,
+      "sha256": "3b4c240b61b8f11b84336c3eac2b94f5b07d8041eb2218ad389b8f8d03bedbc3",
+      "bytes": 4963,
       "purpose": "test/fixture"
     },
     {
@@ -785,6 +826,24 @@
       "path": "tests/fixtures/state_cases.json",
       "sha256": "cd09bfa867cad3fbfa6e54bdff76eb1d2deb1e3ab2fc0446ad3ab1d8206a9908",
       "bytes": 45301,
+      "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/fixtures/workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json",
+      "sha256": "8dbeb1d2fb92e5282268c6fbc9f05eba066ae04cb46069b575f64858016fe74b",
+      "bytes": 40550,
+      "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/fixtures/workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
+      "sha256": "970d466f0fc8f131767e6939f4451858ec4727a48325984e8dba7a9af849327a",
+      "bytes": 39809,
+      "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/fixtures/workflows/QwenImage21_Character_Sheet_Designer_wf.json",
+      "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
+      "bytes": 33150,
       "purpose": "test/fixture"
     },
     {
@@ -839,6 +898,12 @@
       "path": "tests/js/reference_v13_lifecycle.test.js",
       "sha256": "d535bdabadf11c48219b6f348dfe5faf0676d28c2ae38eb3099f67a0bda1f97e",
       "bytes": 10680,
+      "purpose": "test/fixture"
+    },
+    {
+      "path": "tests/js/reference_v13_view_controls.test.js",
+      "sha256": "838979439bb6f045271b38d0e216f152494eb2444df8f5d9ea67130871e9a3ff",
+      "bytes": 1627,
       "purpose": "test/fixture"
     },
     {
@@ -1017,14 +1082,14 @@
     },
     {
       "path": "tests/test_lora_templates.py",
-      "sha256": "66d1131b0e7c284e2d2ad6f3a57a6c25387a7cb1d1a62e098bb0541224310817",
-      "bytes": 2841,
+      "sha256": "a8d06ce6f5c1838902fbaa28344274768dfa6077c0451ae5eaef2fd239888279",
+      "bytes": 2844,
       "purpose": "test/fixture"
     },
     {
       "path": "tests/test_multi_reference.py",
-      "sha256": "360c927463551e4fe38ce98c99f9e88569a78fe38435e2a8dc7d958e2373b2d3",
-      "bytes": 17502,
+      "sha256": "dea726c4e5f7f97c37f863547935f8ad3d646f7364fcc81febc8b961828869c1",
+      "bytes": 17517,
       "purpose": "test/fixture"
     },
     {
@@ -1058,6 +1123,12 @@
       "purpose": "test/fixture"
     },
     {
+      "path": "tests/test_reference_v13_view_controls.py",
+      "sha256": "3fb952c82bd1a67cd4c4a1c3f68149394eae71b8d943085cd1bb444e9059906b",
+      "bytes": 9136,
+      "purpose": "test/fixture"
+    },
+    {
       "path": "tests/test_release_template.py",
       "sha256": "299c733954134281e6b5e21b2555c208f5f5cc137aa8df189a6b378f442e5354",
       "bytes": 2445,
@@ -1071,8 +1142,8 @@
     },
     {
       "path": "tests/test_sheet_assemble.py",
-      "sha256": "cb115755609bdf6c196937b2ae829606f457bf5b2e11f190b67f5c04b54beb31",
-      "bytes": 12888,
+      "sha256": "b3cafe322cfb1c0fbebdcefe8bf9f8e9023021403fc91c836f4e6b4053dbfa95",
+      "bytes": 13129,
       "purpose": "test/fixture"
     },
     {
@@ -1083,8 +1154,8 @@
     },
     {
       "path": "tests/test_template_reference_contracts.py",
-      "sha256": "83da282914b70eedf687b38437ad8ee9f523bdcd4bc9ea6d8924932e02e68840",
-      "bytes": 5126,
+      "sha256": "315633ab9f4eafdc205b79e3ef1ed266c8365939f21af22a22485ff0de1380ae",
+      "bytes": 5141,
       "purpose": "test/fixture"
     },
     {
@@ -1095,8 +1166,8 @@
     },
     {
       "path": "tests/test_workflows.py",
-      "sha256": "4e6432071026e3950b47b9eebf8668109e40e99623a16eaaa754fcb1a071a151",
-      "bytes": 3838,
+      "sha256": "fc8f9f4d62e7ae4e2ec5145b004d9d9b5f636a2ec639993544d8259751f5d945",
+      "bytes": 3631,
       "purpose": "test/fixture"
     },
     {
@@ -1179,8 +1250,8 @@
     },
     {
       "path": "tools/workflow.py",
-      "sha256": "30739e0fa0b1c98080153462969930244b54288c3c940e4575350d233f7b848b",
-      "bytes": 9339,
+      "sha256": "fcac3512ad36353b2a4a32cb95764f4c5e91e4fe4ed87acde902fc30c44bfa65",
+      "bytes": 9326,
       "purpose": "development utility"
     },
     {
@@ -1322,6 +1393,12 @@
       "purpose": "verification evidence"
     },
     {
+      "path": "verification/release_v156.json",
+      "sha256": "a71f42244dd70b7f69d258269af5289a031cd6a59b794b94bd801aa849fa3418",
+      "bytes": 1328,
+      "purpose": "verification evidence"
+    },
+    {
       "path": "verification/results.json",
       "sha256": "991aee1df63079b62d40e53395d3abcf86311da454525f0937728f9707e9c0dc",
       "bytes": 1187,
@@ -1443,8 +1520,8 @@
     },
     {
       "path": "web/multi_integration.js",
-      "sha256": "8c5c4709dd522402af53b3cb52683635eae37969483b95180d8d4ee149c86c16",
-      "bytes": 15681,
+      "sha256": "12b789baa0f83a40b70f13eb3d32a165cc72fd04dc59050448a0555f4a03c4cc",
+      "bytes": 15771,
       "purpose": "frontend"
     },
     {
@@ -1455,20 +1532,20 @@
     },
     {
       "path": "web/multi_state.js",
-      "sha256": "f1b3ca69cf8bcc22f32b5f9e266d00153b3ba5b3a4b161cf87342a4eef8d9401",
-      "bytes": 13797,
+      "sha256": "68080850b7510a31d1cb1f3ac9ee9c34b80073427ece2ac8e2bb66c2ae8eae42",
+      "bytes": 16169,
       "purpose": "frontend"
     },
     {
       "path": "web/multi_style.css",
-      "sha256": "0bc4cd248c3122fb807eca3f0cf60edea895849c3eb5f18e28a99dcf0bae6a49",
-      "bytes": 15938,
+      "sha256": "055a4902991426b40ae7035356e8e2067a9355ddc267d5930daa69d4cee98254",
+      "bytes": 16072,
       "purpose": "frontend"
     },
     {
       "path": "web/multi_ui.js",
-      "sha256": "6413444d0aedf6c0bfd6282cd741e5833f2fe4df6e2ce13d8879e5da92f487c7",
-      "bytes": 57332,
+      "sha256": "765a776e437e84eb8a0d220f1f73c5112d2b4f782cad3c62d10892d2718be235",
+      "bytes": 64108,
       "purpose": "frontend"
     },
     {
@@ -1479,8 +1556,8 @@
     },
     {
       "path": "web/output_preview.js",
-      "sha256": "2c5e4b3db58cbe71cb585aa64c96b0c54c1e808b8088bc4f13271f2f5d3a9146",
-      "bytes": 2550,
+      "sha256": "98d61c3e0eecb92f4a80bf481aa953dc5b9688a335727982531a42b93ea1d4f2",
+      "bytes": 2566,
       "purpose": "frontend"
     },
     {
@@ -1509,8 +1586,8 @@
     },
     {
       "path": "web/qwen_image21_character_sheet_designer_reference_v13.js",
-      "sha256": "1f2ffe04edfbb3d04cd511af87b0896e825cf4f0b13ff53b0ec16226ed7302e4",
-      "bytes": 2513,
+      "sha256": "428328cfeeabd5b6be89c875dbf5cdf3cd1f481c54f971f678196625f327c20a",
+      "bytes": 2532,
       "purpose": "frontend"
     },
     {
@@ -1538,42 +1615,24 @@
       "purpose": "frontend"
     },
     {
-      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_Sheet_Encode_template.json",
-      "sha256": "8dbeb1d2fb92e5282268c6fbc9f05eba066ae04cb46069b575f64858016fe74b",
-      "bytes": 40550,
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template.json",
+      "sha256": "6f69b86fa7bfbb1023003a9ccb80eac2d48adbf7d049cabb13f9d39c7af22915",
+      "bytes": 41640,
+      "purpose": "workflow"
+    },
+    {
+      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template_Turbo.json",
+      "sha256": "7fd494277b5f3a71b44021b19520643a70ffc286f9aa077168f76f826cc091b5",
+      "bytes": 43162,
       "purpose": "workflow"
     },
     {
       "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json",
-      "sha256": "970d466f0fc8f131767e6939f4451858ec4727a48325984e8dba7a9af849327a",
-      "bytes": 39809,
-      "purpose": "workflow"
-    },
-    {
-      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_Assemble_template.json",
-      "sha256": "a3c24bf80d6dd6f1a96434fb66bf8c604af0d02e75cd46de662d04d4a5b91148",
-      "bytes": 22024,
-      "purpose": "workflow"
-    },
-    {
-      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template.json",
-      "sha256": "66ba28e18ccd2c586741d0377cc2e7a8a0de66e5071aeb0d74140da6bcc91739",
-      "bytes": 41576,
-      "purpose": "workflow"
-    },
-    {
-      "path": "workflows/QwenImage21_Character_Sheet_Designer_Reference_V13_template_Turbo.json",
-      "sha256": "085ac73d14cd45eb01ae789e097e3c4cc0de7fa1bd1eb09146eccb608b40864e",
-      "bytes": 43102,
-      "purpose": "workflow"
-    },
-    {
-      "path": "workflows/QwenImage21_Character_Sheet_Designer_wf.json",
-      "sha256": "6c0273767f4df88d89eec9d9a5bddc0417ebd3143ad598c56b1d13a9f88aa733",
-      "bytes": 33150,
+      "sha256": "ad8239c13be12529bf6e97f07e4f34c9ebd93d3214c7ccfa8a56cedc7425027a",
+      "bytes": 39206,
       "purpose": "workflow"
     }
   ],
   "manifest_self_hash": "excluded to avoid recursive hashing",
-  "package_version": "1.5.5"
+  "package_version": "1.5.6"
 }

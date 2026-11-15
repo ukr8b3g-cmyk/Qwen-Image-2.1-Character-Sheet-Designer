@@ -2,7 +2,7 @@
 import {
   normalizeState, parseJSONStrict, StateError, validatePreview,
   VIEW_IDS, parseState, serializeState, migratePartState,
-  validateSize, validatePartPrompt, PART_IDS, PRESETS,
+  validateSize, validatePartPrompt, MAX_BYTES, PART_IDS, PRESETS,
 } from './state.js';
 /** One persistent value, with separate advisory preview and request identity. */
 export class DesignerController {
@@ -101,7 +101,7 @@ export class DesignerController {
       const timeout = new Promise((_, reject) => { this.timer = setTimeout(() => { abort.abort(); reject(new StateError('timeout')); }, this.timeoutMs); });
       const result = await Promise.race([this.requestPreview(raw, abort.signal), timeout]);
       if (!current()) return;
-      this.preview = validatePreview(result, state); this.previewRaw = raw;
+      this.preview = (this.adapter?.validatePreview ?? validatePreview)(result, state); this.previewRaw = raw;
       if (Number.isSafeInteger(result.max_resolution) && result.max_resolution >= 32) this.maxResolution = result.max_resolution;
       this.pending = false; this.previewError = null; this.emit('preview');
     } catch (error) {
@@ -121,6 +121,10 @@ export const REFERENCE_INPUTS = Object.freeze(['reference_image_1', 'reference_i
 export const HAND_STATES = Object.freeze(['reference', 'bare', 'gloved']);
 export const CLOTHING_MODES = Object.freeze(['worn', 'garment']);
 export const CLOTHING_TYPES = Object.freeze(['reference', 'pants', 'skirt_robe']);
+export const CLOTHING_VIEWS = Object.freeze(['clothing_front', 'clothing_back']);
+export const VIEW_PROMPT_MAX_LENGTH = 2000;
+export const effectiveViews = state => state.clothing_type === 'none'
+  ? state.views.filter(view => !CLOTHING_VIEWS.includes(view)) : state.views;
 export const FOOTWEAR_STATES = Object.freeze(['reference', 'shod', 'unshod']);
 export const MULTI_MIRRORED_VIEWS = Object.freeze(['face_left', 'face_right', 'face_3q_left', 'face_3q_right', 'body_left']);
 export const REFERENCE_ROLES = Object.freeze([
@@ -142,19 +146,27 @@ function keys(value, expected, path) {
   const actual = Object.keys(value);
   if (actual.length !== expected.length || actual.some(key => !expected.includes(key))) fail('keys', path);
 }
-export function normalizeMultiState(state, maxResolution = Infinity) {
+function validateViewPrompt(text) {
+  if (typeof text !== 'string' || !text.isWellFormed()) fail('invalidViewPrompts');
+  if (text.length > VIEW_PROMPT_MAX_LENGTH) fail('viewPromptLength');
+}
+export function normalizeMultiState(state, maxResolution = Infinity, viewOptions = false) {
   if (!state || typeof state !== 'object' || Array.isArray(state)) fail('object', 'state');
   if ([1, 2].includes(state.schema_version)) return normalizeState(state, maxResolution);
   if (state.schema_version !== 3) fail('version');
   state = {...state, hand_state: Object.hasOwn(state, 'hand_state') ? state.hand_state : 'reference',
     clothing_mode: Object.hasOwn(state, 'clothing_mode') ? state.clothing_mode : 'worn'};
   const choices = Object.fromEntries(['clothing_type', 'footwear_state'].filter(key => Object.hasOwn(state, key)).map(key => [key, state[key]]));
-  keys(state, ['schema_version', 'views', 'size', 'part_prompts', 'reference_roles', 'hand_state', 'clothing_mode', ...Object.keys(choices)], 'state');
-  if (Object.hasOwn(choices, 'clothing_type') && !CLOTHING_TYPES.includes(choices.clothing_type)) fail('clothingType');
+  const hasViewPrompts = viewOptions && Object.hasOwn(state, 'view_prompts');
+  keys(state, ['schema_version', 'views', 'size', 'part_prompts', 'reference_roles', 'hand_state', 'clothing_mode',
+    ...Object.keys(choices), ...(hasViewPrompts ? ['view_prompts'] : [])], 'state');
+  if (Object.hasOwn(choices, 'clothing_type') && !CLOTHING_TYPES.includes(choices.clothing_type)
+      && !(viewOptions && choices.clothing_type === 'none')) fail('clothingType');
   if (Object.hasOwn(choices, 'footwear_state') && !FOOTWEAR_STATES.includes(choices.footwear_state)) fail('footwearState');
   if (!HAND_STATES.includes(state.hand_state)) fail('handState');
   if (!CLOTHING_MODES.includes(state.clothing_mode)) fail('clothingMode');
   if (!Array.isArray(state.views) || !state.views.length || state.views.some(view => !MULTI_VIEW_IDS.includes(view))) fail('views');
+  if (!effectiveViews(state).length) fail('noEffectiveViews');
   keys(state.size, ['mode', 'body_height', 'manual_width', 'manual_height'], 'size');
   if (!['auto', 'manual'].includes(state.size.mode)) fail('mode');
   const normalized = {
@@ -183,10 +195,20 @@ export function normalizeMultiState(state, maxResolution = Infinity) {
   normalized.hand_state = state.hand_state;
   normalized.clothing_mode = state.clothing_mode;
   Object.assign(normalized, choices);
+  if (hasViewPrompts) {
+    const overrides = state.view_prompts;
+    if (!overrides || typeof overrides !== 'object' || Array.isArray(overrides)
+        || Object.keys(overrides).some(view => !MULTI_VIEW_IDS.includes(view))) fail('invalidViewPrompts');
+    for (const text of Object.values(overrides)) validateViewPrompt(text);
+    if (Object.keys(overrides).length) {
+      normalized.view_prompts = Object.fromEntries(
+        MULTI_VIEW_IDS.filter(view => Object.hasOwn(overrides, view)).map(view => [view, overrides[view]]));
+    }
+  }
   return normalized;
 }
-export function migrateMultiState(state) {
-  const next = normalizeMultiState(state);
+export function migrateMultiState(state, viewOptions = false) {
+  const next = normalizeMultiState(state, Infinity, viewOptions);
   if (next.schema_version < 3) return {
     ...next, schema_version: 3, part_prompts: next.part_prompts ?? {},
     reference_roles: Object.fromEntries(REFERENCE_INPUTS.map(input => [input, 'same_character'])),
@@ -197,11 +219,19 @@ export function migrateMultiState(state) {
 export const parseMultiState = (raw, max) => normalizeMultiState(parseJSONStrict(raw), max);
 export const serializeMultiState = (state, max) => JSON.stringify(normalizeMultiState(state, max));
 export class MultiReferenceController extends DesignerController {
-  constructor(options) {
+  constructor({viewOptions = false, ...options}) {
     super({...options, adapter: {
-      parse: parseMultiState, serialize: serializeMultiState, migrate: migrateMultiState,
+      parse: viewOptions ? (raw, max) => normalizeMultiState(parseJSONStrict(raw), max, true) : parseMultiState,
+      serialize: viewOptions ? (state, max) => {
+        const raw = JSON.stringify(normalizeMultiState(state, max, true));
+        if (new TextEncoder().encode(raw).length > MAX_BYTES) fail('oversize');
+        return raw;
+      } : serializeMultiState,
+      migrate: state => migrateMultiState(state, viewOptions),
+      validatePreview: viewOptions ? (data, state) => validatePreview(data, {...state, views: effectiveViews(state)}) : validatePreview,
       viewIds: MULTI_VIEW_IDS, presets: MULTI_PRESETS,
     }});
+    this.viewOptions = viewOptions;
   }
   setMode(mode, output = null) {
     if (mode !== 'manual' || !output) return super.setMode(mode);
@@ -225,8 +255,18 @@ export class MultiReferenceController extends DesignerController {
     return this.change(next => { next.clothing_mode = value; });
   }
   setClothingType(value) {
-    if (!CLOTHING_TYPES.includes(value)) fail('clothingType');
+    if (!CLOTHING_TYPES.includes(value) && !(this.viewOptions && value === 'none')) fail('clothingType');
     return this.change(next => { next.clothing_type = value; });
+  }
+  setViewPrompt(view, text) {
+    if (!this.viewOptions || !MULTI_VIEW_IDS.includes(view)) fail('invalidViewPrompts');
+    if (text !== null) validateViewPrompt(text);
+    return this.change(next => {
+      next.view_prompts ??= {};
+      if (text === null) delete next.view_prompts[view];
+      else next.view_prompts[view] = text;
+      if (!Object.keys(next.view_prompts).length) delete next.view_prompts;
+    });
   }
   setFootwearState(value) {
     if (!FOOTWEAR_STATES.includes(value)) fail('footwearState');

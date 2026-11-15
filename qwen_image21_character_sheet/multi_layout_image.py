@@ -25,25 +25,36 @@ def render_layout_image(layout: dict, *, multi_reference=True, clothing_mode='wo
     canvas = Image.new("RGB", (width, height), "white")
     draw = ImageDraw.Draw(canvas)
     frame_width = max(1, (min(width, height) + 128) // 256)
-    with Image.open(ATLAS_PATH) as source:
-        atlas = source.convert("RGBA")
+    atlas = None
+    soft_placement_mask = None
     body_artwork = body_artwork_placements(layout) if multi_reference else {}
     for panel in layout["panels"]:
         x, y, w, h = panel["rect"]
         left, top = round(x * width), round(y * height)
         right, bottom = round((x + w) * width), round((y + h) * height)
         view = panel["id"]
-        if multi_reference and clothing_mode == 'garment' and view in ('clothing_front', 'clothing_back'):
-            draw.rectangle((left, top, right - 1, bottom - 1), outline="black", width=frame_width)
+        if panel.get('blank') or (multi_reference and clothing_mode == 'garment' and view in ('clothing_front', 'clothing_back')):
+            fill = panel.get('guide_fill')
+            if fill:
+                if soft_placement_mask is None:
+                    # Fade to white before the bounds so no hard outline enters conditioning.
+                    soft_placement_mask = Image.radial_gradient('L').point(lambda value: max(0, 255 - value * 3 // 2))
+                mask = soft_placement_mask.resize((right - left, bottom - top), Image.Resampling.BILINEAR)
+                canvas.paste(fill, (left, top, right, bottom), mask)
+            else:
+                draw.rectangle((left, top, right - 1, bottom - 1), outline="black", width=frame_width)
             continue
         if view in EXTRA_VIEWS:
             with Image.open(ATLAS_PATH.parent / "multi_reference" / f"{view}.png") as extra:
                 artwork = extra.convert("RGBA")
-        elif view in body_artwork:
-            crop_x, crop_y, crop_w, crop_h = body_artwork[view].get('crop', BODY_CROPS.get(view, (0, 0, 1, 1)))
-            artwork = atlas.crop((crop_x, crop_y, crop_x + crop_w, crop_y + crop_h))
         else:
-            crop_x, crop_y, crop_w, crop_h = ATLAS_CROPS[view]
+            if atlas is None:
+                with Image.open(ATLAS_PATH) as source:
+                    atlas = source.convert("RGBA")
+            if view in body_artwork:
+                crop_x, crop_y, crop_w, crop_h = body_artwork[view].get('crop', BODY_CROPS.get(view, (0, 0, 1, 1)))
+            else:
+                crop_x, crop_y, crop_w, crop_h = ATLAS_CROPS[view]
             artwork = atlas.crop((crop_x, crop_y, crop_x + crop_w, crop_y + crop_h))
         if multi_reference and view in MIRRORED_VIEWS:
             artwork = ImageOps.mirror(artwork)

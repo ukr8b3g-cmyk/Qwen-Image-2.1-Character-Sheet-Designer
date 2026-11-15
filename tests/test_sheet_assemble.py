@@ -119,9 +119,18 @@ def test_v13_keeps_six_generation_outputs_and_separates_sheet_dimensions(generat
     options = dict(state_json=raw, character_image=image, use_layout_image=guide, batch_out=batch)
     old = V12().compile(**options)
     new = V13().compile(**options, sheet_size_mode=sheet_mode, sheet_width=width, sheet_height=height)
-    for i in (0, 1, 2, 4, 5): assert old[i] == new[i]
+    widened_guide = generation_mode == 'auto' and guide and not batch
+    for i in (1, 2, 4, 5):
+        assert old[i] == new[i]
+    if not widened_guide:
+        assert old[0] == new[0]
     for a, b in zip(old[3], new[3]):
-        assert (a is None and b is None) if not guide else torch.equal(a, b)
+        if not guide:
+            assert a is None and b is None
+        elif widened_guide:
+            assert a.shape == b.shape
+        else:
+            assert torch.equal(a, b)
     assert V12.RETURN_TYPES == V13.RETURN_TYPES[:6] and len(V12.RETURN_TYPES) == 6
     sheet = json.loads(new[6])
     assert len(sheet['views']) == 5

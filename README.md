@@ -2,6 +2,13 @@
 
 [English](#english)
 
+## v1.5.6の変更点
+
+- Reference V1.3の衣服設定に **衣服なし／体表を保持** を追加。13面の選択を保存したまま、衣装の前後を除いた11面を生成します。Autoに戻すと衣装の前後も対象に戻ります。
+- **プロンプト** タブからビュー別の基本文を編集できます。通常版とTurbo版で使えます。
+- Layout Image ONの標準5面では全身ガイドの幅を調整しました。衣服なしの11面では、全身正面と左右の顔の配置を明示し、白い余白で分けるガイドを使います。
+- Turbo版でオオカミ参照・seed 42・3424×1280・Layout Image ONを使い、右上の左横顔と右中央の左斜め顔を含む11面を確認しました。全身側面・背面の描画サイズには差が残ります。既存のノードID・解像度設定・配布ワークフロー3件は同じです。[検証記録](verification/release_v156.json)
+
 ## v1.5.5の変更点 — ホットフィックス
 
 - 未使用の合成設定でV1.3の通常生成を止めないように修正。合成設定エラーはSheet Assembleで報告し、キャンバス確保前に拒否します。
@@ -60,7 +67,7 @@ JavaScript 233件と関連CPU試験18件が成功。実ComfyUIでも削除→Und
 
 旧V1／V1.1ノードと既存ワークフローを互換用に保持しています。
 
-**Package v1.5.4** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
+**Package v1.5.6** — a visual character-sheet designer for ComfyUI and Qwen Image 2.1.
 
 Select views, keep a character consistent with image references, and generate either a sheet or independent images. No LLM, classifier, extra model, or H3 installation is required by this node pack. Model loading, encoding, sampling and saving remain in the workflow.
 
@@ -68,7 +75,7 @@ Select views, keep a character consistent with image references, and generate ei
 
 ### ノードとバージョン
 
-パッケージ全体のバージョンは **1.5.4** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
+パッケージ全体のバージョンは **1.5.6** です。ノードの表示名にあるV1／V1.1／V1.2／V1.3は、互換性を保つためのノード系列名です。最新版は **Qwen 2.1 Sheet Designer Reference V1.3** です。
 
 | 表示名 | 用途 | ノードID |
 | --- | --- | --- |
@@ -227,6 +234,13 @@ Manualの縦長サイズでは顔画像の余白が大きくなるため、個�
 
 ## English
 
+### What's new in v1.5.6
+
+- Reference V1.3 adds **No clothing · natural body surface**. A 13-view selection remains saved while the sheet generates 11 views without the outfit front and back. Switch to Auto to restore the outfit views.
+- Edit individual view prompts in the **Prompts** tab in both Normal and Turbo.
+- With Layout Image on, the standard five-view guide gives full-body views more width. The clothing-free 11-view layout uses white gaps and assigns the frontal body and portrait angles explicitly.
+- A Turbo GPU run with the wolf reference, seed 42, and a 3424 × 1280 canvas confirmed 11 views, including the upper-right left profile and middle-right left three-quarter portrait. Full-body side and rear height can still vary. Node IDs, size settings and all three distributed workflows are unchanged. [Verification](verification/release_v156.json)
+
 ### What's new in v1.5.5 — Hotfix
 
 - Unused assembly settings no longer block V1.3 generation. Sheet Assemble reports invalid assembly plans and rejects them before allocating its canvas.
@@ -284,7 +298,7 @@ Legacy V1/V1.1/V1.2 nodes, existing templates and previous releases remain avail
 
 Legacy V1/V1.1 nodes and existing workflows remain compatible.
 
-Package **v1.5.5** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
+Package **v1.5.6** includes **Reference V1.3**, **Sheet Assemble**, **Sheet Encode**, and compatible **V1/V1.1/V1.2** nodes. Node display versions identify compatible node families; they are not the package release number. No H3 installation or additional inference model is required by this pack.
 
 Install this folder in `ComfyUI/custom_nodes`, or use the release ZIP. After your active work finishes, restart the ComfyUI backend and reload the browser. Qwen 2.1-capable ComfyUI Core, model weights, text encoder and VAE are required. Choose installed model files and your own images in the workflow.
 

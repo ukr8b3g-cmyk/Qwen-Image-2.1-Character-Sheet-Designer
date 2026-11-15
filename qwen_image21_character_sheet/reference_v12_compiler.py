@@ -21,6 +21,34 @@ ROLE_TEXT = {
     'footwear': 'Match the visible pair: its silhouette, material, coverage and existing openings. Keep covered surfaces covered and uncovered surfaces uncovered; explicit footwear text overrides conflicting details.',
 }
 
+NATURAL_PORTRAITS = {
+    'face_front': 'Straight-on portrait with both eyes visible.',
+    'face_left': 'Strict profile facing image-left, with one eye visible.',
+    'face_right': 'Strict profile facing image-right, with one eye visible.',
+    'face_3q_left': 'Three-quarter portrait turned 45 degrees toward image-left, with both eyes visible.',
+    'face_3q_right': 'Three-quarter portrait turned 45 degrees toward image-right, with both eyes visible.',
+    'face_back': 'Direct rear portrait showing only the back of the head and shoulders, with no face visible.',
+}
+NATURAL_BODY_DIRECTIONS = {
+    'body_front': 'Face straight forward.',
+    'body_left': 'Turn the entire body into a strict profile facing image-left.',
+    'body_back': 'Face directly away from the viewer so the face is hidden.',
+}
+
+NATURAL_TURNAROUND_SLOTS = {
+    'face_front': 'Top-left portrait frame',
+    'face_left': 'Top-right portrait frame',
+    'face_right': 'Middle-left portrait frame',
+    'face_3q_left': 'Middle-right portrait frame',
+    'face_3q_right': 'Bottom-left portrait frame',
+    'face_back': 'Bottom-right portrait frame',
+    'body_front': 'First tall frame in the middle block',
+    'body_left': 'Second tall frame in the middle block',
+    'body_back': 'Third tall frame in the middle block',
+    'hands': 'Upper frame in the far-right column',
+    'feet': 'Lower frame in the far-right column',
+}
+
 
 def _view_references(state, view, plan):
     presence = {entry['source']: True for entry in plan['sources'] if entry['role'] != 'layout'}
@@ -31,7 +59,19 @@ def _view_references(state, view, plan):
 
 def _view_instruction(state, view):
     label, instruction = panel_details(state, view)
-    clothing_choice = state.get('clothing_type', 'reference') != 'reference'
+    if state.get('clothing_type') == 'none':
+        if view in NATURAL_PORTRAITS:
+            return label, NATURAL_PORTRAITS[view] + ' Include the whole head and crop at the upper chest.'
+        if view in BODY_IDS:
+            return label, (
+                NATURAL_BODY_DIRECTIONS[view] + ' Show the complete silhouette. Match the stance, limb arrangement '
+                'and proportions of the reference character, including any visible ears, tail and paws.'
+            )
+        if view == 'hands' and state['hand_state'] != 'gloved':
+            return label, 'One isolated close-up of the complete left and right hands or forepaws, cropped at the wrists. No whole figure.'
+        if view == 'feet' and state.get('footwear_state', 'reference') == 'reference':
+            return label, 'One isolated close-up of the complete left and right feet or hind paws, with any footwear shown in the applicable reference. No whole figure.'
+    clothing_choice = state.get('clothing_type') in ('pants', 'skirt_robe')
     if view in CLOTHING_IDS and (clothing_choice or state['clothing_mode'] == 'worn'):
         side = 'front-facing' if view == 'clothing_front' else 'direct rear'
         if state['clothing_mode'] == 'garment':
@@ -85,6 +125,11 @@ def _view_instruction(state, view):
     return label, instruction
 
 
+def _requested_view_instruction(state, view):
+    label, default = _view_instruction(state, view)
+    return label, state.get('view_prompts', {}).get(view, default)
+
+
 def _view_reference_text(state, view, plan):
     refs = _view_references(state, view, plan)
     lines = []
@@ -95,6 +140,9 @@ def _view_reference_text(state, view, plan):
         if role == 'character':
             subject = view in (*PORTRAIT_IDS, *BODY_IDS) or (view in CLOTHING_IDS and state['clothing_mode'] == 'worn')
             if subject:
+                if state.get('clothing_type') == 'none':
+                    lines.append(f'Use {tag} for the character design and visible natural markings.')
+                    continue
                 lines.append(f'Use {tag} for the visible baseline identity, proportions and rendering medium; preserve unspecified visible details.')
                 if outfit_refs:
                     lines.append(f'Keep clothing from {tag} only on visible surfaces with no assigned clothing reference or named-part edit; ignore conflicting baseline clothing on assigned surfaces.')
@@ -111,11 +159,17 @@ def _view_reference_text(state, view, plan):
         else:
             description = 'foot appearance' if role == 'footwear' else role
             lines.append(f'Use {tag} for {description} details only within this view\'s visible crop.')
-    if state.get('clothing_type', 'reference') != 'reference' and view in (*BODY_IDS, *CLOTHING_IDS):
+    if state.get('clothing_type') in ('pants', 'skirt_robe') and view in (*BODY_IDS, *CLOTHING_IDS):
         lines.append('The selected lower-garment structure overrides conflicting reference structure only; preserve compatible clothing details.')
     if state.get('footwear_state', 'reference') != 'reference' and view in part_views(state, 'footwear'):
         lines.append('The selected footwear presence overrides conflicting reference footwear only; preserve compatible details and reference socks or tights.')
     return ' '.join(lines)
+
+
+def uses_guided_natural_turnaround(state, layout, use_layout_image):
+    return (use_layout_image and state.get('clothing_type') == 'none'
+            and len(layout['panels']) == len(NATURAL_TURNAROUND_SLOTS)
+            and layout.get('layout_version') != 'adaptive-1')
 
 
 def compile_prompt(state, layout, plan, *, use_layout_image=False, style='none'):
@@ -124,48 +178,92 @@ def compile_prompt(state, layout, plan, *, use_layout_image=False, style='none')
     active = {part: text for part, text in state['part_prompts'].items()
               if any(v in part_views(state, part) for v in views)}
     single = len(views) == 1
+    natural = state.get('clothing_type') == 'none'
+    natural_turnaround = uses_guided_natural_turnaround(state, layout, use_layout_image)
     if single:
-        label, instruction = _view_instruction(state, views[0])
-        lines = [f'Generate a single illustration: {label}. {instruction}']
+        label, instruction = _requested_view_instruction(state, views[0])
+        lines = [f'Generate a single illustration: {label}.' + (f' {instruction}' if instruction else '')]
     else:
         lines = [f'Generate one character reference sheet with exactly {len(views)} views, each appearing once.']
-        lines.append('Regions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].')
+        if not natural_turnaround:
+            lines.append('Regions use normalized coordinates from 0 to 1, with the origin at the top-left: [left, top, width, height].')
     for ref in refs:
         tag, role = ref['tag'], ref['role']
         if role == 'layout':
-            lines.append(f'{tag} is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.')
+            if natural_turnaround:
+                lines.append(f'Use the eleven soft placement marks in {tag} as an invisible alignment guide. '
+                             'Keep the exact position, size and spacing of each drawing. '
+                             'The left block has portraits in three rows of two, the middle block has three tall full-body slots, '
+                             'and the far-right column has two detail slots. Draw one view in each existing slot on pure white.')
+            elif natural:
+                lines.append(f'{tag} is a guide to panel positions only. Fill each requested region with finished artwork and leave white gaps between views.')
+            else:
+                lines.append(f'{tag} is only a layout guide. Keep its frames, camera directions and crops. Replace gray placeholders with finished artwork; do not copy their anatomy, colors or clothing.')
         elif role == 'character':
             lines.append(f'{tag}: baseline identity, proportions and rendering medium.')
         else:
             description = 'foot appearance' if role == 'footwear' else role
-            lines.append(f'{tag}: {description} reference. {ROLE_TEXT[role]}')
+            role_text = ROLE_TEXT[role]
+            if natural and role == 'same_character':
+                role_text = 'Use as an additional angle of the same character; keep the requested camera and crop.'
+            lines.append(f'{tag}: {description} reference. {role_text}')
     lines.append('References supply appearance only; use the requested camera, crop and arrangement. Ignore unrelated referenced parts and backgrounds.')
+    if natural:
+        lines.append('Keep the character unclothed. Preserve its natural body surface, markings, anatomy and proportions. Retain compatible accessories and follow the separate hand and footwear settings.')
     for index, panel in enumerate(layout['panels'], 1):
         view = panel['id']
         references = _view_reference_text(state, view, plan)
         if single:
             lines.append('Requested view: ' + references)
+        elif natural_turnaround:
+            _, instruction = _requested_view_instruction(state, view)
+            if view not in state.get('view_prompts', {}):
+                if view == 'face_left':
+                    instruction = ('A strict 90-degree profile facing image-left, with only the near eye visible. '
+                                   'Include the whole head and crop at the upper chest.')
+                elif view == 'face_3q_left':
+                    instruction = ('Directly below the top-right portrait, show a three-quarter view turned only about 25 degrees '
+                                   'from straight on toward image-left. Keep the nose slightly left of center. '
+                                   'Show two distinct eyes with both irises clearly visible on opposite sides of the nose. '
+                                   'Show the entire head through the upper chest.')
+                elif view == 'body_front':
+                    instruction = ('Direct full-body front view with the camera centered. The face, shoulders, chest, hips '
+                                   'and feet all face straight toward the viewer, with both sides equally visible. '
+                                   'Keep the reference stance and show the entire silhouette.')
+            lines.append(f'{NATURAL_TURNAROUND_SLOTS[view]}: {instruction} {references}')
+        elif natural:
+            label, instruction = _requested_view_instruction(state, view)
+            lines.append(f'{label.capitalize()} in region {panel["rect"]}: {instruction} {references}')
         else:
-            label, instruction = _view_instruction(state, view)
+            label, instruction = _requested_view_instruction(state, view)
             lines.append(f'{index}. {label}, region {panel["rect"]}: {instruction} {references}')
     rows = {}
     for panel in layout['panels']:
         if panel['id'] in BODY_IDS:
-            rows.setdefault(panel['rect'][1], []).append(panel['id'])
+            row = (panel['rect'][1], panel['rect'][3]) if natural else panel['rect'][1]
+            rows.setdefault(row, []).append(panel['id'])
+    unedited = set(BODY_IDS) - state.get('view_prompts', {}).keys()
     if any(len(row) > 1 for row in rows.values()):
-        lines.append('Within each row of full-body figures, keep their height equal and align the soles. Keep every complete head and foot within its own region.')
+        if all(v in unedited for row in rows.values() for v in row):
+            lines.append('Within each row of full-body figures, keep their height equal and align the soles. Keep every complete head and foot within its own region.')
+        else:
+            for row in rows.values():
+                matched = [panel_details(state, view)[0] for view in row if view in unedited]
+                if len(matched) > 1:
+                    lines.append(f'Use matching scale and aligned ground contact for the {" and ".join(matched)} views.')
     hands_visible = any(v in part_views(state, 'hands') for v in views)
     clothing_views = [str(i) for i, v in enumerate(views, 1) if v in (*BODY_IDS, *CLOTHING_IDS)]
     footwear_views = [str(i) for i, v in enumerate(views, 1) if v in part_views(state, 'footwear')]
     clothing_type = state.get('clothing_type', 'reference')
     footwear_state = state.get('footwear_state', 'reference')
-    clothing_override = bool(clothing_views) and clothing_type != 'reference'
+    clothing_override = bool(clothing_views) and clothing_type in ('pants', 'skirt_robe')
     footwear_override = bool(footwear_views) and footwear_state != 'reference'
     has_choices = clothing_override or footwear_override or (hands_visible and state['hand_state'] != 'reference')
     if hands_visible and state['hand_state'] == 'reference':
         lines.append('Preserve the assigned reference hand coverage and accessories; do not invent or remove coverage.')
     elif hands_visible:
-        coverage = ('bare skin, no gloves' if state['hand_state'] == 'bare' else
+        uncovered = 'uncovered, with the natural surface visible and no gloves' if natural else 'bare skin, no gloves'
+        coverage = (uncovered if state['hand_state'] == 'bare' else
                     'gloved, wearing actual gloves over the hands; replace reference bare hands with gloves.'
                     ' Follow applicable glove details and finger openings; otherwise use full-finger gloves with covered fingers and palms')
         eligible = ', '.join(str(i) for i, v in enumerate(views, 1) if v in part_views(state, 'hands'))
@@ -185,7 +283,8 @@ def compile_prompt(state, layout, plan, *, use_layout_image=False, style='none')
                     'no shoes or boots; keep referenced bare feet, socks or tights, without inventing socks')
         lines.append(f'Footwear presence override in view(s) {", ".join(footwear_views)}: {coverage}.'
                      ' This selected presence takes precedence over conflicting footwear or part text only for footwear presence; preserve compatible appearance details.'
-                     ' Keep the same resulting footwear or foot covering across visible views, without changing garment length or revealing hidden feet.')
+                     ' Keep the same resulting footwear or foot covering across visible views,'
+                     + (' without revealing hidden feet.' if natural else ' without changing garment length or revealing hidden feet.'))
     for part, text in active.items():
         eligible = ', '.join(str(i) for i, v in enumerate(views, 1) if v in part_views(state, part))
         priority = 'Highest priority compatible appearance details' if has_choices else 'Highest priority'
@@ -197,8 +296,9 @@ def compile_prompt(state, layout, plan, *, use_layout_image=False, style='none')
     if style != 'none':
         lines.append('Rendering technique only: ' + STYLE_PROMPTS[style])
     if has_choices:
-        lines.append('Plain white background, finished opaque artwork, consistent lighting.'
-                     ' Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified.'
+        priority = ('Selected part controls take precedence wherever explicitly specified.' if natural else
+                    'Selected part controls take precedence only for lower-garment structure, hand coverage and footwear presence where specified.')
+        lines.append(f'Plain white background, finished opaque artwork, consistent lighting. {priority}'
                      ' For compatible appearance details, follow explicit part text first, dedicated references next, then preserve unspecified baseline details.')
     else:
         lines.append('Plain white background, finished opaque artwork, consistent lighting. Follow explicit part text first, dedicated references next, then preserve unspecified baseline details.')
@@ -206,24 +306,36 @@ def compile_prompt(state, layout, plan, *, use_layout_image=False, style='none')
         lines.append('Only the one requested view, centered and enlarged with a small white margin. No additional figures, alternative designs, contact sheets, captions or watermarks.')
     else:
         lines.append('Keep every requested view in its assigned region and leave gaps empty. No additional figures, unselected views, captions or watermarks.')
-    if not use_layout_image:
+    if natural_turnaround:
+        lines.append('The far-right column contains only the paired hands above the paired feet. '
+                     'The middle block contains one front, one side and one rear drawing. '
+                     'Use an uninterrupted pure white background behind and between all drawings. '
+                     'Separate them with white space only. Erase the placement marks and omit borders, labels and numbers.')
+    elif not use_layout_image or natural:
         lines.append('No panel borders.')
+    if natural and not single and not natural_turnaround:
+        lines.append('Use only white space to separate views. Keep every guide slot distinct, with one requested view in each. The sheet contains artwork only, with no labels or numbers.')
     return '\n'.join(lines)
 
 
 def compile_output_plan_v12(state_json, *, strict=True, **options):
     state = parse_multi_state(state_json, max_resolution=options.get('max_resolution', 16384))
     plan = compile_output_plan(state_json, **options)
+    return apply_reference_prompts(plan, state, strict=strict,
+                                   reference_presence=options.get('reference_presence'),
+                                   use_layout_image=options.get('use_layout_image', False), style=options.get('style', 'none'))
+
+
+def apply_reference_prompts(plan, state, *, strict, reference_presence, use_layout_image, style):
     for item in plan['items']:
         selected = {**state, 'views': [p['id'] for p in item['layout']['panels']]}
-        refs, missing = build_reference_plan(selected, options.get('reference_presence'), use_layout_image=options.get('use_layout_image', False))
+        refs, missing = build_reference_plan(selected, reference_presence, use_layout_image=use_layout_image)
         if strict and missing:
             raise StateValidationError('Connect character_image or an applicable part reference for: ' + ', '.join(missing), 'missing_reference')
         item['reference_plan'] = numbered_references(refs)
         item['reference_plan_json'] = serialize_reference_plan(refs)
         item['notices'] = ['missing_reference:' + v for v in missing]
-        item['prompt'] = '' if missing else compile_prompt(selected, item['layout'], refs,
-                                                          use_layout_image=options.get('use_layout_image', False), style=options.get('style', 'none'))
+        item['prompt'] = '' if missing else compile_prompt(selected, item['layout'], refs, use_layout_image=use_layout_image, style=style)
     return plan
 
 

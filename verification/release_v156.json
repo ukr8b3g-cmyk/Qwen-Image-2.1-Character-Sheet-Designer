@@ -1,0 +1,35 @@
+{
+  "version": "1.5.6",
+  "date_jst": "2026-11-15",
+  "base_commit": "3cb36df57c84da69d20f1a7b32fbda65564720ee",
+  "compatibility": {
+    "node_ids": "unchanged",
+    "size_settings": "unchanged",
+    "workflow_sha256": {
+      "workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template.json": "6f69b86fa7bfbb1023003a9ccb80eac2d48adbf7d049cabb13f9d39c7af22915",
+      "workflows/QwenImage21_Character_Sheet_Designer_Reference_v1.5.4_template_Turbo.json": "7fd494277b5f3a71b44021b19520643a70ffc286f9aa077168f76f826cc091b5",
+      "workflows/QwenImage21_Character_Sheet_Designer_Reference_V12_template.json": "ad8239c13be12529bf6e97f07e4f34c9ebd93d3214c7ccfa8a56cedc7425027a"
+    }
+  },
+  "cpu": {
+    "python_passed": 1841,
+    "python_skipped": 1,
+    "skip_reason": "Historical local fixture unavailable",
+    "javascript_passed": 244
+  },
+  "gpu": {
+    "workflow": "Turbo",
+    "reference": "Wolf character",
+    "seed": 42,
+    "width": 3424,
+    "height": 1280,
+    "layout_image": true,
+    "views": 11,
+    "top_right_portrait": "left profile",
+    "middle_right_portrait": "left three-quarter with far eye visible",
+    "full_body_front": "frontal",
+    "visible_guide_lines": false,
+    "side_and_rear_heights_equal_to_front": false,
+    "scope": "Prior local run with the released implementation"
+  }
+}

@@ -1,8 +1,7 @@
 """Independent V1.3 preview route; no image data or inference in requests."""
 from .compiler import STATE_MAX_BYTES, StateValidationError, decode_json
 from .node import runtime_max_resolution
-import json
-from .reference_v12_preview import compile_preview_request as compile_v12_request
+from .reference_v13_compiler import compile_output_preview_v13, effective_state, layout_state_json, parse_v13_state
 from .sheet_plan import sheet_plan_output
 
 PREVIEW_PATH = '/qwen_image21_character_sheet_designer/reference_v13_preview'
@@ -13,12 +12,15 @@ def compile_preview_request(body, *, max_resolution):
         raise StateValidationError('Preview request exceeds 192 KiB.', 'request_too_large')
     envelope = decode_json(body.decode('utf-8'), byte_limit=3 * STATE_MAX_BYTES)
     sheet_keys = {'sheet_size_mode', 'sheet_width', 'sheet_height'}
-    if type(envelope) is not dict:
+    preview_keys = {'state_json', 'use_layout_image', 'style', 'reference_presence', 'batch_out'}
+    if type(envelope) is not dict or 'state_json' not in envelope or set(envelope) - (sheet_keys | preview_keys):
         raise StateValidationError('Invalid preview request.', 'invalid_request')
     from_options = {key: envelope[key] for key in sheet_keys if key in envelope}
-    base = {key: value for key, value in envelope.items() if key not in sheet_keys}
-    result = compile_v12_request(json.dumps(base).encode('utf-8'), max_resolution=max_resolution)
-    result['sheet_plan'] = sheet_plan_output(envelope['state_json'], max_resolution=max_resolution, **from_options)
+    raw = envelope['state_json']
+    saved = parse_v13_state(raw, max_resolution=max_resolution)
+    options = {key: envelope[key] for key in preview_keys - {'state_json'} if key in envelope}
+    result = compile_output_preview_v13(saved, raw, max_resolution=max_resolution, **options)
+    result['sheet_plan'] = sheet_plan_output(layout_state_json(effective_state(saved)), max_resolution=max_resolution, **from_options)
     return result
 
 

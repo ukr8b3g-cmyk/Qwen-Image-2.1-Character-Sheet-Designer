@@ -1,7 +1,7 @@
 import {selectedOutput, renderOutputGallery} from './output_preview.js';
 import {VIEW_IDS, PART_IDS, PART_PROMPT_MAX_LENGTH, PRESETS, presetOf, StateError} from './state.js';
 import {createArtwork} from './multi_artwork.js';
-import {MULTI_VIEW_IDS, MULTI_PRESETS, REFERENCE_INPUTS, REFERENCE_ROLES, HAND_STATES, CLOTHING_MODES, CLOTHING_TYPES, FOOTWEAR_STATES, MULTI_MIRRORED_VIEWS} from './multi_state.js';
+import {MULTI_VIEW_IDS, MULTI_PRESETS, REFERENCE_INPUTS, REFERENCE_ROLES, HAND_STATES, CLOTHING_MODES, CLOTHING_TYPES, CLOTHING_VIEWS, FOOTWEAR_STATES, MULTI_MIRRORED_VIEWS, VIEW_PROMPT_MAX_LENGTH, effectiveViews} from './multi_state.js';
 let sequence = 0;
 export const HEIGHT_PRESETS = [672, 896, 1120, 1344, 1792];
 export const STYLE_IDS = ['none', 'anime', 'photo', 'realistic_painting', 'semi_realistic_anime', 'oil_painting', 'watercolor', 'gouache', 'colored_pencil', '3d'];
@@ -67,6 +67,17 @@ Object.assign(EN, {
   clothingType: 'Unknown clothing type.', footwearState: 'Unknown footwear state.',
   choiceClothingLabel: 'Clothing shape · front/back', choiceHandsLabel: 'Hands', choiceFeetLabel: 'Feet',
   choice_clothing_reference: 'Auto', choice_clothing_pants: 'Pants', choice_clothing_skirt_robe: 'Skirt / robe',
+  choice_clothing_none: 'No clothing · natural body surface',
+  noClothingHint: 'Keeps the natural body surface. Outfit views and clothing part text are saved but skipped. Hands and footwear have separate settings.',
+  noClothingView: 'This outfit view returns when you switch Clothing shape to Auto.',
+  noEffectiveViews: 'Select at least one non-clothing view.',
+  planned: 'to generate',
+  promptsTab: 'Prompts', editViewPrompts: 'Edit view prompts', viewPrompt: 'View base prompt',
+  viewPromptHint: 'Replace the base text for this view. Blank is allowed. Layout, references and part instructions are added separately.',
+  applyViewPrompt: 'Apply', resetViewPrompt: 'Reset this prompt',
+  unappliedViewPrompt: 'Apply to use your edit in generation and save it to the workflow.',
+  invalidViewPrompts: 'Use valid text and a known view for each view prompt.',
+  viewPromptLength: 'Keep each view prompt within 2,000 UTF-16 units.',
   choice_hand_reference: 'Auto', choice_hand_bare: 'Bare hands', choice_hand_gloved: 'Gloves',
   choice_feet_reference: 'Auto', choice_feet_shod: 'Footwear on', choice_feet_unshod: 'Footwear off',
   choiceFeetCard: 'Feet / footwear',
@@ -103,6 +114,17 @@ Object.assign(JA, {
   clothingType: '未知の衣装の型です。', footwearState: '未知の足の状態です。',
   choiceClothingLabel: '衣装の形（正面・背面共通）', choiceHandsLabel: '手の状態', choiceFeetLabel: '足の状態',
   choice_clothing_reference: 'Auto', choice_clothing_pants: 'パンツ型', choice_clothing_skirt_robe: 'スカート・ローブ型',
+  choice_clothing_none: '衣服なし／体表を保持',
+  noClothingHint: '毛並みや模様などを保ちます。衣装ビューと衣装の部位文は保存し、生成では省きます。手袋と履物は個別に設定できます。',
+  noClothingView: '衣装の型をAutoに戻すと、このビューを生成できます。',
+  noEffectiveViews: '衣服以外のビューを1つ以上選んでください。',
+  planned: '面を生成',
+  promptsTab: 'プロンプト', editViewPrompts: 'ビュー別プロンプトを編集', viewPrompt: 'ビューの基本文',
+  viewPromptHint: '選んだビューの基本文を変更します。空欄も指定できます。配置・参照画像・部位指示は別に追加されます。',
+  applyViewPrompt: '適用', resetViewPrompt: 'この文を初期化',
+  unappliedViewPrompt: '適用すると生成に使われ、ワークフローに保存されます。',
+  invalidViewPrompts: 'ビューの基本文に有効な文字を入力してください。',
+  viewPromptLength: 'ビューの基本文はUTF-16で2,000単位以内にしてください。',
   choice_hand_reference: 'Auto', choice_hand_bare: '素手', choice_hand_gloved: 'グローブ',
   choice_feet_reference: 'Auto', choice_feet_shod: '靴あり', choice_feet_unshod: '靴なし',
   choiceFeetCard: '足・履物',
@@ -154,7 +176,11 @@ export function errorText(error, locale = 'en') {
     const key = error.code === 'size' ? 'sizeError' : error.code;
     return `${t[key] ?? t.network}${['duplicateKey', 'keys', 'object', 'maxSize'].includes(error.code) && error.detail ? ` (${error.detail})` : ''}`;
   }
-  const serverCodes = {duplicate_key: 'duplicateKey', non_finite: 'integer', invalid_integer: 'integer', invalid_size: 'sizeError', size_limit: 'maxSize', unsupported_schema: 'version', empty_views: 'views', unknown_view: 'views', invalid_mode: 'mode', missing_key: 'keys', unknown_key: 'keys', invalid_json: 'json', invalid_utf8: 'json', state_too_large: 'oversize', request_too_large: 'oversize', unknown_part: 'parts', part_prompt_too_long: 'partLength', invalid_hand_state: 'handState', invalid_clothing_mode: 'clothingMode'};
+  if (error?.serverCode === 'clothing_reference_conflict' && locale === 'ja') {
+    const slots = (error.serverMessage?.match(/reference_image_[123]/g) ?? []).map(slot => slot.at(-1));
+    return `衣服なしと衣装専用の参照が競合しています。追加参照${slots.join('、')}の接続を外すか、役割を変更してください。`;
+  }
+  const serverCodes = {duplicate_key: 'duplicateKey', non_finite: 'integer', invalid_integer: 'integer', invalid_size: 'sizeError', size_limit: 'maxSize', unsupported_schema: 'version', empty_views: 'views', unknown_view: 'views', invalid_mode: 'mode', missing_key: 'keys', unknown_key: 'keys', invalid_json: 'json', invalid_utf8: 'json', state_too_large: 'oversize', request_too_large: 'oversize', unknown_part: 'parts', part_prompt_too_long: 'partLength', invalid_hand_state: 'handState', invalid_clothing_mode: 'clothingMode', no_effective_views: 'noEffectiveViews', invalid_view_prompts: 'invalidViewPrompts', view_prompt_too_long: 'viewPromptLength'};
   return error?.serverCode && serverCodes[error.serverCode] ? t[serverCodes[error.serverCode]] : error?.serverMessage || t.network;
 }
 function element(tag, className, text) { const el = document.createElement(tag); if (className) el.className = className; if (text) el.textContent = text; return el; }
@@ -165,7 +191,7 @@ export function loadStyles() {
 }
 
 /** Real UI renderer shared by the ComfyUI extension and the browser test harness. */
-export function createDesignerUI({controller, locale = 'en', compatibilityWarning = false, useLayoutImage = () => false, readStyle = () => 'none', readBatchOut = () => false, outputAware = true, perOutputReferences = false, partChoices = false, writeStyle = null, reference = true, multiReference = true, readReferencePresence = () => ({character_image: false, reference_image_1: false, reference_image_2: false, reference_image_3: false})}) {
+export function createDesignerUI({controller, locale = 'en', compatibilityWarning = false, useLayoutImage = () => false, readStyle = () => 'none', readBatchOut = () => false, outputAware = true, perOutputReferences = false, partChoices = false, viewOptions = false, writeStyle = null, reference = true, multiReference = true, readReferencePresence = () => ({character_image: false, reference_image_1: false, reference_image_2: false, reference_image_3: false})}) {
   loadStyles();
   const id = `q21-mr-sheet-${++sequence}`;
   const root = element('section', 'q21-mr-designer'); root.dataset.instance = id; root.classList.toggle('q21-mr-reference', reference); root.setAttribute('aria-label', reference ? 'Qwen Image 2.1 Character Sheet Designer Multi Reference' : 'Qwen Image 2.1 Character Sheet Designer Multi Reference');
@@ -196,7 +222,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   if (partChoices && multiReference) {
     const row = element('div', 'q21-mr-choice-row');
     for (const [field, values, group, labelKey, prefix, setter] of [
-      ['clothing_type', CLOTHING_TYPES, 'clothing', 'choiceClothingLabel', 'choice_clothing_', value => controller.setClothingType(value)],
+      ['clothing_type', viewOptions ? [...CLOTHING_TYPES, 'none'] : CLOTHING_TYPES, 'clothing', 'choiceClothingLabel', 'choice_clothing_', value => controller.setClothingType(value)],
       ['hand_state', HAND_STATES, 'hands', 'choiceHandsLabel', 'choice_hand_', value => controller.setHandState(value)],
       ['footwear_state', FOOTWEAR_STATES, 'feet', 'choiceFeetLabel', 'choice_feet_', value => controller.setFootwearState(value)],
     ]) {
@@ -257,6 +283,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   const previewHead = element('div', 'q21-mr-preview-head'), tabs = element('div', 'q21-mr-tabs'), previewTag = element('span', 'q21-mr-preview-tag');
   tabs.setAttribute('role', 'tablist'); const tabMap = new Map();
   const tabNames = reference ? ['layout', 'parts', 'style'] : ['layout', 'parts'];
+  if (viewOptions) tabNames.push('prompts');
   for (const name of tabNames) {
     const tab = button('q21-mr-tab'); tab.id = `${id}-${name}-tab`; tab.dataset.tab = name;
     tab.setAttribute('role', 'tab'); tab.setAttribute('aria-controls', `${id}-${name}-panel`);
@@ -329,6 +356,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     listen(input, 'change', () => { if (input.checked) act(() => writeStyle(style)); });
   }
   stylePanel.append(styleHint, styleChoices);
+  const viewEditor = viewOptions ? createViewPromptEditor() : null;
   const footer = element('div', 'q21-mr-footer');
   const generated = element('details', 'q21-mr-generated-prompt'), generatedSummary = element('summary'), generatedText = element('pre');
   generatedText.dataset.generatedPrompt = ''; generated.append(generatedSummary, generatedText);
@@ -338,6 +366,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   if (reference) root.append(styleStatus);
   root.append(previewHead, stage, partPanel);
   if (reference) root.append(stylePanel);
+  if (viewEditor) root.append(viewEditor.panel);
   root.append(footer);
   if (reference) root.append(generated);
   root.append(jsonDetails);
@@ -346,6 +375,55 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   const resizeObserver = typeof ResizeObserver === 'function' ? new ResizeObserver(() => fitSheet()) : null;
   resizeObserver?.observe(stage);
   function act(fn) { try { localError = null; fn(); } catch (error) { localError = error; } render(); }
+  function createViewPromptEditor() {
+    const panel = element('div', 'q21-mr-part-panel');
+    panel.id = `${id}-prompts-panel`; panel.setAttribute('role', 'tabpanel');
+    panel.setAttribute('aria-labelledby', `${id}-prompts-tab`);
+    const row = element('div', 'q21-mr-part-row'), label = element('label'), select = element('select', 'q21-mr-select');
+    select.id = `${id}-view-prompt-select`; select.dataset.viewPromptSelect = ''; label.htmlFor = select.id;
+    for (const view of viewIds) { const option = element('option'); option.value = view; select.append(option); }
+    select.value = viewIds[0];
+    row.append(label, select);
+    const input = element('textarea', 'q21-mr-part-input'), help = element('div', 'q21-mr-part-hint');
+    input.dataset.viewPrompt = ''; input.rows = 5; input.spellcheck = false; input.maxLength = VIEW_PROMPT_MAX_LENGTH;
+    help.id = `${id}-view-prompt-help`; input.setAttribute('aria-describedby', help.id);
+    const actions = element('div', 'q21-mr-view-prompt-actions'), apply = button('q21-mr-apply'), reset = button('q21-mr-apply');
+    apply.dataset.applyViewPrompt = ''; reset.dataset.resetViewPrompt = '';
+    actions.append(apply, reset); panel.append(row, input, help, actions);
+    const pending = new Map();
+    listen(select, 'change', () => render());
+    listen(input, 'keydown', event => event.stopPropagation());
+    listen(input, 'input', () => { pending.set(select.value, input.value); update(); });
+    listen(apply, 'click', () => act(() => {
+      const view = select.value;
+      if (pending.has(view)) controller.setViewPrompt(view, pending.get(view));
+      pending.delete(view);
+    }));
+    listen(reset, 'click', () => act(() => {
+      const view = select.value;
+      if (Object.hasOwn(controller.state?.view_prompts ?? {}, view)) controller.setViewPrompt(view, null);
+      pending.delete(view);
+    }));
+    function update() {
+      const state = controller.state, overrides = state?.view_prompts ?? {}, view = select.value;
+      const edited = Object.hasOwn(overrides, view);
+      const draft = pending.get(view);
+      const defaults = controller.isCurrentPreview ? controller.preview?.default_view_prompts : null;
+      const inactive = state?.clothing_type === 'none' && CLOTHING_VIEWS.includes(view);
+      panel.hidden = activeTab !== 'prompts';
+      label.textContent = t.editViewPrompts;
+      select.disabled = !state;
+      for (const option of select.options) option.textContent = `${Object.hasOwn(overrides, option.value) ? '● ' : ''}${t[option.value]}`;
+      input.setAttribute('aria-label', t.viewPrompt);
+      const text = draft ?? (edited ? overrides[view] : defaults?.[view]) ?? '';
+      if (input.value !== text) input.value = text;
+      input.disabled = !state || (!edited && draft === undefined && defaults?.[view] === undefined);
+      help.textContent = [t.viewPromptHint, inactive ? t.noClothingView : '', draft === undefined ? '' : t.unappliedViewPrompt].filter(Boolean).join(' ');
+      apply.textContent = t.applyViewPrompt; apply.disabled = !state || draft === undefined;
+      reset.textContent = t.resetViewPrompt; reset.disabled = !state || (!edited && draft === undefined);
+    }
+    return {panel, update, clear: () => pending.clear()};
+  }
   function commitDraft(field) {
     const draft = drafts.get(field); if (!draft) return;
     try {
@@ -365,7 +443,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     const state = controller.state, prompts = state?.part_prompts ?? {}, draft = partDrafts.get(selectedPart);
     tabs.setAttribute('aria-label', t.diagram);
     for (const [name, tab] of tabMap) {
-      tab.textContent = name === 'layout' ? t.layoutTab : name === 'style' ? t.styleTab : `${t.partsTab}${Object.keys(prompts).length ? ` (${Object.keys(prompts).length})` : ''}`;
+      tab.textContent = name === 'parts' && Object.keys(prompts).length ? `${t.partsTab} (${Object.keys(prompts).length})` : t[`${name}Tab`];
       tab.setAttribute('aria-selected', String(name === activeTab)); tab.tabIndex = name === activeTab ? 0 : -1;
     }
     stage.hidden = activeTab !== 'layout'; partPanel.hidden = activeTab !== 'parts'; stylePanel.hidden = activeTab !== 'style';
@@ -398,12 +476,13 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
       item.label.textContent = t[item.labelKey]; item.select.disabled = !state; item.select.value = state?.[field] ?? 'reference';
       for (const option of item.select.options) option.textContent = t[item.prefix + option.value];
     }
-    choiceHint.textContent = t.partChoicesHint;
+    const natural = state?.clothing_type === 'none';
+    choiceHint.textContent = natural ? t.noClothingHint : t.partChoicesHint;
     for (const [field, item] of qualityMap) {
-      item.label.textContent = t[item.labelKey]; item.select.disabled = !state; item.select.value = state?.[field] ?? (field === 'hand_state' ? 'reference' : 'worn');
+      item.label.textContent = t[item.labelKey]; item.select.disabled = !state || (natural && field === 'clothing_mode'); item.select.value = state?.[field] ?? (field === 'hand_state' ? 'reference' : 'worn');
       for (const option of item.select.options) option.textContent = t[item.optionPrefix + option.value];
     }
-    qualityHint.textContent = partChoices ? t.garmentChoiceHint : t.qualityHint;
+    qualityHint.textContent = natural ? t.noClothingHint : partChoices ? t.garmentChoiceHint : t.qualityHint;
     rolesTitle.textContent = t.references; rolesHint.textContent = perOutputReferences ? t.sheetEncodeHint : t.referenceRoleHint;
     for (const [input, item] of roleMap) {
       item.label.textContent = t.extraReference + ' ' + (item.index + 1) + ' · ' + (presence[input] ? t.connected : t.notConnected);
@@ -471,14 +550,17 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
           const [left, top, width, height] = panel.rect;
           Object.assign(box.style, {left: `${left * 100}%`, top: `${top * 100}%`, width: `${width * 100}%`, height: `${height * 100}%`});
           const body = multiReference && p.guide_artwork?.[panel.id];
-          if (multiReference && controller.state.clothing_mode === 'garment' && panel.id.startsWith('clothing_')) {
-            // The frame is intentionally blank; generation supplies garments only.
-          } else if (body) {
+          const blank = panel.blank || (multiReference && controller.state.clothing_mode === 'garment' && CLOTHING_VIEWS.includes(panel.id));
+          if (panel.guide_fill) {
+            box.style.backgroundImage = `radial-gradient(ellipse closest-side, ${panel.guide_fill}, transparent 94%)`;
+            box.style.borderWidth = '0';
+          }
+          if (!blank && body) {
             const artworkBox = element('div'); artworkBox.style.position = 'absolute';
             const [x, y, w, h] = body.rect;
             Object.assign(artworkBox.style, {left: `${(x / p.width - left) / width * 100}%`, top: `${(y / p.height - top) / height * 100}%`, width: `${w / p.width / width * 100}%`, height: `${h / p.height / height * 100}%`});
             artworkBox.append(createArtwork(panel.id, `${id}-preview-${panel.id}`, {crop: body.crop, mirror: MULTI_MIRRORED_VIEWS.includes(panel.id)})); box.append(artworkBox);
-          } else if (!(multiReference && controller.state.clothing_mode === 'garment' && panel.id.startsWith('clothing_'))) {
+          } else if (!blank) {
             box.append(createArtwork(panel.id, `${id}-preview-${panel.id}`, {mirror: multiReference && MULTI_MIRRORED_VIEWS.includes(panel.id)}));
           }
           canvas.append(box);
@@ -492,35 +574,43 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
   }
   function render(reason) {
     if (disposed) return;
-    if (reason === 'restore') { activeOutput = 0; drafts.clear(); partDrafts.clear(); customHeight = false; localError = null; }
+    if (reason === 'restore') { activeOutput = 0; drafts.clear(); partDrafts.clear(); viewEditor?.clear(); customHeight = false; localError = null; }
     t = translations[language] ?? EN; root.lang = language;
     const state = controller.state, current = controller.isCurrentPreview;
+    const natural = state?.clothing_type === 'none', outputCount = state ? effectiveViews(state).length : 0;
     intro.textContent = t.intro; count.textContent = `${state?.views.length ?? 0} / ${viewIds.length} ${t.selected}`;
+    if (natural) count.textContent += ` · ${outputCount} ${t.planned}`;
     for (const [view, {card, label, clothingMode}] of cardMap) {
-      card.setAttribute('aria-pressed', String(Boolean(state?.views.includes(view)))); card.disabled = !state;
+      card.setAttribute('aria-pressed', String(Boolean(state?.views.includes(view))));
+      const inactive = natural && CLOTHING_VIEWS.includes(view);
+      card.disabled = !state || inactive;
       const tip = multiReference && view === 'hands' ? t.multiHandsTip : multiReference && state?.clothing_mode === 'garment' && view.startsWith('clothing_') ? t.garmentTip : multiReference && multiTips[language]?.[view] || t[`${view}_tip`];
       const viewLabel = partChoices && view === 'feet' ? t.choiceFeetCard : t[view];
-      card.title = tip; card.setAttribute('aria-label', `${viewLabel}: ${tip}`); label.textContent = viewLabel;
+      const cardHint = inactive ? t.noClothingView : tip;
+      card.title = cardHint; card.setAttribute('aria-label', `${viewLabel}: ${cardHint}`); label.textContent = viewLabel;
       if (clothingMode) {
         card.dataset.clothingMode = state?.clothing_mode ?? 'worn';
         clothingMode.textContent = t[`clothing_card_${card.dataset.clothingMode}`];
-        card.setAttribute('aria-label', `${t[view]} (${clothingMode.textContent}): ${tip}`);
+        card.setAttribute('aria-label', `${t[view]} (${clothingMode.textContent}): ${cardHint}`);
       }
     }
     presetLabel.textContent = t.preset; preset.disabled = !state; preset.value = Object.entries(presets).find(([, views]) => views.join() === state?.views.join())?.[0] ?? 'custom';
-    for (const option of preset.options) option.textContent = multiReference && option.value === 'detail' ? t.multiDetail : t[option.value];
+    for (const option of preset.options) {
+      option.textContent = multiReference && option.value === 'detail' ? t.multiDetail : t[option.value];
+      option.disabled = option.value === 'custom' || (natural && option.value === 'clothing');
+    }
     auto.textContent = t.auto; manual.textContent = state?.size.mode === 'auto' && !current ? t.updating : t.manual;
     auto.disabled = !state; manual.disabled = !state || (state.size.mode === 'auto' && !current);
     auto.setAttribute('aria-pressed', String(state?.size.mode === 'auto')); manual.setAttribute('aria-pressed', String(state?.size.mode === 'manual'));
     sizeLabel.textContent = t.size; returnAuto.textContent = t.returnAuto; returnAuto.hidden = state?.size.mode !== 'manual';
     const batchOut = outputAware && readBatchOut();
     modeHint.textContent = batchOut ? (language === 'ja' ? '寸法は1枚あたり。Autoはビュー種別ごとの寸法。クリックした画像の寸法をManualで固定できます。' : 'Dimensions are per image. Auto uses the view type. Select a preview to freeze its size in Manual.') : state?.size.mode === 'manual' ? (language === 'ja' ? '指定サイズ内に選択ビューを再配置します。' : 'Selected views are rearranged inside the requested canvas.') : t.autoHint;
-    renderFields(); renderParts(); renderRoles();
+    renderFields(); renderParts(); renderRoles(); viewEditor?.update();
     const p = controller.preview, actual = displayOutput(), displayP = actual && state;
     dimensions.textContent = displayP ? `${actual.width.toLocaleString('en-US')} × ${actual.height.toLocaleString('en-US')}${batchOut ? ' · ' + (language === 'ja' ? '1枚あたり' : 'per image') : ''}` : '— × —';
     const plan = current && p?.batch_plan?.enabled === batchOut ? p.batch_plan : null;
     batchDetails.hidden = !batchOut;
-    batchSummary.textContent = `${t.batchOutputs}: ${state?.views.length ?? 0} ${t.batchImages}${plan ? '' : ` · ${t.updating}`}`;
+    batchSummary.textContent = `${t.batchOutputs}: ${outputCount} ${t.batchImages}${plan ? '' : ` · ${t.updating}`}`;
     batchList.replaceChildren();
     if (batchOut && plan) for (const item of plan.items) {
       const row = element('li'); row.dataset.batchView = item.view_id;
@@ -540,6 +630,7 @@ export function createDesignerUI({controller, locale = 'en', compatibilityWarnin
     errorBox.textContent = problem ? `${controller.error ? `${t.invalid} ` : ''}${errorText(problem, language)}` : missingMessage; errorBox.hidden = !problem && !missingMessage;
     retry.textContent = t.retry; retry.hidden = !controller.previewError || !state;
     footer.textContent = activeTab === 'parts' ? t.partGuide : activeTab === 'style' ? t.styleHint : t.caveat;
+    footer.hidden = activeTab === 'prompts';
     generatedSummary.textContent = `${t.generatedPrompt} · ${multiReference ? t.numberingProvisional : useLayoutImage() ? t.layoutReference : t.characterOnly}${readStyle() === 'none' ? '' : ` · ${t.style}：${t[`style_${readStyle()}`] ?? readStyle()}`}`;
     generatedText.textContent = batchOut ? (plan ? plan.items.map(item => `${item.index}. ${t[item.view_id]} (${item.width} × ${item.height})\n${item.prompt}`).join('\n\n') : controller.pending ? t.pending : t.unavailable) : current && typeof p?.prompt === 'string' ? p.prompt : controller.pending ? t.pending : t.unavailable;
     summary.textContent = t.editJSON; rawHint.textContent = t.rawHint; apply.textContent = t.apply;

@@ -1,12 +1,11 @@
 """Composition-ready Designer; V1.2's existing six output slots stay intact."""
 import json
 
-from .reference_v12_node import QwenImage21CharacterSheetDesignerReferenceV12
+from .reference_v12_node import QwenImage21CharacterSheetDesignerReferenceV12, reference_presence, render_outputs
 from .node import runtime_max_resolution
 from .sheet_plan import sheet_plan_output, serialize_sheet_plan
-from .reference_v12_compiler import compile_output_plan_v12
+from .reference_v13_compiler import compile_output_plan_v13, effective_state, layout_state_json, parse_v13_state
 from .compiler import StateValidationError
-from .multi_reference_compiler import parse_multi_state
 
 
 class QwenImage21CharacterSheetDesignerReferenceV13(QwenImage21CharacterSheetDesignerReferenceV12):
@@ -28,7 +27,9 @@ class QwenImage21CharacterSheetDesignerReferenceV13(QwenImage21CharacterSheetDes
     def VALIDATE_INPUTS(cls, state_json, use_layout_image=False, style='none', batch_out=False,
                         sheet_size_mode='auto', sheet_width=1536, sheet_height=864):
         try:
-            compile_output_plan_v12(state_json, strict=False, max_resolution=runtime_max_resolution(),
+            limit = runtime_max_resolution()
+            state = effective_state(parse_v13_state(state_json, max_resolution=limit))
+            compile_output_plan_v13(state, strict=False, max_resolution=limit,
                                     use_layout_image=use_layout_image, style=style, batch_out=batch_out)
         except StateValidationError as exc:
             return str(exc)
@@ -37,15 +38,18 @@ class QwenImage21CharacterSheetDesignerReferenceV13(QwenImage21CharacterSheetDes
     def compile(self, state_json, character_image=None, reference_image_1=None, reference_image_2=None,
                 reference_image_3=None, use_layout_image=False, style='none', batch_out=False,
                 sheet_size_mode='auto', sheet_width=1536, sheet_height=864):
-        outputs = super().compile(state_json, character_image, reference_image_1, reference_image_2,
-                                  reference_image_3, use_layout_image, style, batch_out)
-        sheet = sheet_plan_output(state_json, sheet_size_mode=sheet_size_mode, sheet_width=sheet_width,
-                                  sheet_height=sheet_height, max_resolution=runtime_max_resolution())
+        limit = runtime_max_resolution()
+        state = effective_state(parse_v13_state(state_json, max_resolution=limit))
+        presence = reference_presence(character_image, reference_image_1, reference_image_2, reference_image_3)
+        plan = compile_output_plan_v13(state, max_resolution=limit, reference_presence=presence,
+                                       use_layout_image=use_layout_image, style=style, batch_out=batch_out)
+        outputs = render_outputs(plan, use_layout_image=use_layout_image, clothing_mode=state['clothing_mode'])
+        sheet = sheet_plan_output(layout_state_json(state), sheet_size_mode=sheet_size_mode, sheet_width=sheet_width,
+                                  sheet_height=sheet_height, max_resolution=limit)
         records = []
         if batch_out:
-            views = parse_multi_state(state_json, max_resolution=runtime_max_resolution())['views']
-            for view, prompt, width, height in zip(views, outputs[0], outputs[1], outputs[2], strict=True):
-                records.append(json.dumps({'schema_version': 1, 'view_id': view,
-                    'sheet_plan_hash': sheet.get('plan_hash'), 'width': width, 'height': height, 'prompt': prompt},
+            for item in plan['items']:
+                records.append(json.dumps({'schema_version': 1, 'view_id': item['view_id'],
+                    'sheet_plan_hash': sheet.get('plan_hash'), 'width': item['width'], 'height': item['height'], 'prompt': item['prompt']},
                     ensure_ascii=False, separators=(',', ':')))
         return (*outputs, serialize_sheet_plan(sheet), records)

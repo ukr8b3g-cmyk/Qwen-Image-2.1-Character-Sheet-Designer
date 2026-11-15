@@ -7,6 +7,24 @@ from .multi_layout_image import render_layout_image
 from .multi_reference_compiler import parse_multi_state
 from .node import runtime_max_resolution
 from .reference_v12_compiler import DEFAULT_V12_STATE_JSON, compile_output_plan_v12
+from .reference_plan import EXTRA_INPUTS
+
+
+def reference_presence(character_image, reference_image_1, reference_image_2, reference_image_3):
+    return {slot: image is not None for slot, image in zip(
+        ('character_image', *EXTRA_INPUTS),
+        (character_image, reference_image_1, reference_image_2, reference_image_3), strict=True)}
+
+
+def render_outputs(plan, *, use_layout_image, clothing_mode):
+    images = [None] * plan['count']
+    if use_layout_image:
+        for index, item in enumerate(plan['items']):
+            image = render_layout_image(item['layout'], clothing_mode=clothing_mode)
+            images[index] = torch.from_numpy(np.asarray(image, dtype=np.float32) / 255.0).unsqueeze(0)
+    return ([i['prompt'] for i in plan['items']], [i['width'] for i in plan['items']],
+            [i['height'] for i in plan['items']], images,
+            [i['filename_suffix'] for i in plan['items']], [i['reference_plan_json'] for i in plan['items']])
 
 
 class QwenImage21CharacterSheetDesignerReferenceV12:
@@ -37,18 +55,9 @@ class QwenImage21CharacterSheetDesignerReferenceV12:
 
     def compile(self, state_json, character_image=None, reference_image_1=None, reference_image_2=None,
                 reference_image_3=None, use_layout_image=False, style='none', batch_out=False):
-        presence = {name: value is not None for name, value in (
-            ('character_image', character_image), ('reference_image_1', reference_image_1),
-            ('reference_image_2', reference_image_2), ('reference_image_3', reference_image_3))}
+        presence = reference_presence(character_image, reference_image_1, reference_image_2, reference_image_3)
         plan = compile_output_plan_v12(state_json, max_resolution=runtime_max_resolution(),
                                       use_layout_image=use_layout_image, style=style,
                                       batch_out=batch_out, reference_presence=presence)
-        images = [None] * plan['count']
-        if use_layout_image:
-            state = parse_multi_state(state_json, max_resolution=runtime_max_resolution())
-            for index, item in enumerate(plan['items']):
-                image = render_layout_image(item['layout'], clothing_mode=state['clothing_mode'])
-                images[index] = torch.from_numpy(np.asarray(image, dtype=np.float32) / 255.0).unsqueeze(0)
-        return ([i['prompt'] for i in plan['items']], [i['width'] for i in plan['items']],
-                [i['height'] for i in plan['items']], images,
-                [i['filename_suffix'] for i in plan['items']], [i['reference_plan_json'] for i in plan['items']])
+        mode = parse_multi_state(state_json, max_resolution=runtime_max_resolution())['clothing_mode'] if use_layout_image else 'worn'
+        return render_outputs(plan, use_layout_image=use_layout_image, clothing_mode=mode)

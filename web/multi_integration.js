@@ -125,6 +125,7 @@ export function installDesigner(node, app, api, profile = PROFILE, installAdditi
   let observedLayoutImage = useLayoutImage(), observedStyle = readStyle(), observedPresence = JSON.stringify(readReferencePresence()), observedBatchOut = readBatchOut();
   const Controller = MultiReferenceController;
   const controller = new Controller({
+    viewOptions: Boolean(profile.viewOptions),
     raw: original.value, readRaw: () => original.value, writeRaw: value => { original.value = value; },
     requestPreview: previewRequester(api, useLayoutImage, readStyle, readReferencePresence, readBatchOut, profile),
     transaction: change => graphTransaction(node, change, app?.canvas),
@@ -145,7 +146,7 @@ export function installDesigner(node, app, api, profile = PROFILE, installAdditi
     sync();
   } : null;
   try {
-    ui = createDesignerUI({controller, locale: getLocale(app), reference, multiReference, readReferencePresence, useLayoutImage, readStyle, readBatchOut, writeStyle, perOutputReferences: Boolean(profile.perOutputReferences), partChoices: Boolean(profile.partChoices), compatibilityWarning: Boolean(node.graph && (typeof node.graph.beforeChange !== 'function' || typeof node.graph.afterChange !== 'function'))});
+    ui = createDesignerUI({controller, locale: getLocale(app), reference, multiReference, readReferencePresence, useLayoutImage, readStyle, readBatchOut, writeStyle, perOutputReferences: Boolean(profile.perOutputReferences), partChoices: Boolean(profile.partChoices), viewOptions: Boolean(profile.viewOptions), compatibilityWarning: Boolean(node.graph && (typeof node.graph.beforeChange !== 'function' || typeof node.graph.afterChange !== 'function'))});
     let name = 'q21_mr_designer_ui', suffix = 1;
     while (node.widgets.some(candidate => candidate.name === name)) name = `q21_mr_designer_ui_${suffix++}`;
     widget = node.addDOMWidget(name, 'Q21_MR_DESIGNER_UI', ui.root, {

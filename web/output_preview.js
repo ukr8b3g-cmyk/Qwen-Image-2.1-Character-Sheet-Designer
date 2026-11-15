@@ -24,7 +24,7 @@ export function renderOutputGallery(root, plan, {prefix, id, label, createArtwor
       const [left, top, width, height] = panel.rect;
       Object.assign(box.style, {left: `${left * 100}%`, top: `${top * 100}%`, width: `${width * 100}%`, height: `${height * 100}%`});
       const placement = item.guide_artwork?.[panel.id];
-      if (!(garmentOnly && panel.id.startsWith('clothing_'))) {
+      if (!panel.blank && !(garmentOnly && panel.id.startsWith('clothing_'))) {
         const art = document.createElement('div');
         if (placement) {
           const [x, y, w, h] = placement.rect;

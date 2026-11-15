@@ -98,6 +98,8 @@
 .q21-mr-json-editor textarea { resize: vertical; min-height: 160px; width: 100%; margin-top: 8px; padding: 10px; background: #101820; border: 1px solid #687e92; border-radius: 6px; font: 16px/1.5 ui-monospace, monospace; }
 .q21-mr-json-editor p { font-size: 14px; color: var(--q21-mr-muted); }
 .q21-mr-json-editor .q21-mr-apply { display: block; }
+.q21-mr-view-prompt-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.q21-mr-card[aria-pressed="true"]:disabled { opacity: .5; }
 @container (max-width: 720px) {
   .q21-mr-cards { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .q21-mr-mode-row, .q21-mr-number-row { flex-basis: 100%; }

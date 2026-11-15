@@ -9,7 +9,7 @@ const profile = {
   displayName: 'Qwen 2.1 Sheet Designer Reference V1.3',
   extensionName: 'qwen21.CharacterSheetDesignerReferenceV13',
   previewPath: '/qwen_image21_character_sheet_designer/reference_v13_preview',
-  perOutputReferences: true, partChoices: true,
+  perOutputReferences: true, partChoices: true, viewOptions: true,
 };
 const instances = new WeakMap();
 
